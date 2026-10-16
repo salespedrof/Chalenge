@@ -31,7 +31,9 @@ O Elevate é um tablet com Raspberry Pi para a equipe de manutenção. Ele mostr
 | Sincronização | Simulação do tablet sem conexão e fila de envio |
 | Dados | Gera um dataset novo no próprio navegador e exporta os CSVs |
 
-Use o menu **Cenário de demonstração**, no topo, para ir direto aos casos preparados, e o botão **Apresentar** para esconder os controles da simulação.
+O painel abre em **tempo real**: segue a hora do próprio aparelho, sem nenhum ajuste. Os 90 dias de dados simulados terminam hoje, e as leituras de 6h, 10h, 14h, 18h e 22h entram quando o horário chega.
+
+Para apresentar, o botão **Modo demonstração** libera o relógio controlável (pausar, acelerar, ir para uma data) e o menu **Cenário de demonstração**, com casos preparados nas datas originais do dataset. **Voltar ao tempo real** retorna à hora do aparelho. O botão **Apresentar** esconde os controles.
 
 ## Como usar
 
