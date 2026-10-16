@@ -1,0 +1,1982 @@
+atendimento_id,escada_id,tecnico_id,tipo,motivo,entrada,saida,duracao_min
+1,LUZ-ER13,T04,preventiva,P1 mensal,2026-07-01 00:20,2026-07-01 02:18,118
+2,HIG-ER05,T06,preventiva,P1 mensal,2026-07-01 00:36,2026-07-01 03:05,149
+3,MBI-ER06,T03,preventiva,P1 mensal,2026-07-01 00:43,2026-07-01 02:45,123
+4,VSO-ER18,T12,preventiva,P1 mensal,2026-07-01 00:51,2026-07-01 03:36,166
+5,PTA-ER10,T03,preventiva,P1 mensal,2026-07-01 01:04,2026-07-01 03:29,146
+6,FRE-ER19,T05,preventiva,P1 mensal,2026-07-01 01:15,2026-07-01 03:39,144
+7,PIN-ER10,T12,preventiva,P1 mensal,2026-07-01 01:19,2026-07-01 03:44,145
+8,PIN-ER01,T01,preventiva,P1 mensal,2026-07-01 01:52,2026-07-01 03:58,127
+9,LUZ-ER16,T06,preventiva,P1 mensal,2026-07-01 02:14,2026-07-01 04:30,136
+10,MBI-ER02,T10,preventiva,P1 mensal,2026-07-01 03:25,2026-07-01 05:32,127
+11,FAL-ER03,T01,corretiva,parada de seguranca (reset),2026-07-01 06:09,2026-07-01 06:29,20
+12,VSO-ER18,T11,corretiva,parada de seguranca (reset),2026-07-01 06:21,2026-07-01 06:46,25
+13,VSO-ER15,T05,corretiva,parada de seguranca (reset),2026-07-01 10:20,2026-07-01 10:56,36
+14,FAL-ER03,T08,corretiva,parada de seguranca (reset),2026-07-01 14:17,2026-07-01 14:58,41
+15,PIN-ER24,T02,corretiva,parada de seguranca (reset),2026-07-01 14:28,2026-07-01 14:41,13
+16,FRE-ER08,T04,corretiva,parada de seguranca (reset),2026-07-01 14:29,2026-07-01 15:02,33
+17,HIG-ER21,T06,corretiva,parada de seguranca (reset),2026-07-01 18:07,2026-07-01 18:44,37
+18,FAL-ER02,T11,corretiva,parada de seguranca (reset),2026-07-01 18:10,2026-07-01 18:49,39
+19,PTA-ER06,T07,corretiva,parada de seguranca (reset),2026-07-01 18:15,2026-07-01 18:38,23
+20,HIG-ER17,T12,corretiva,parada de seguranca (reset),2026-07-01 18:19,2026-07-01 18:41,22
+21,PTA-ER07,T12,corretiva,parada de seguranca (reset),2026-07-01 22:14,2026-07-01 22:42,28
+22,PIN-ER17,T08,preventiva,P1 mensal,2026-07-02 00:19,2026-07-02 01:55,97
+23,FRE-ER01,T05,preventiva,P1 mensal,2026-07-02 00:59,2026-07-02 03:21,143
+24,FRE-ER09,T08,preventiva,P1 mensal,2026-07-02 01:13,2026-07-02 02:53,100
+25,FRA-ER05,T10,preventiva,P1 mensal,2026-07-02 01:16,2026-07-02 02:47,92
+26,FAL-ER06,T02,preventiva,P1 mensal,2026-07-02 01:48,2026-07-02 04:27,159
+27,PIN-ER20,T03,preventiva,P1 mensal,2026-07-02 02:11,2026-07-02 04:34,143
+28,TVS-ER06,T12,preventiva,P1 mensal,2026-07-02 02:16,2026-07-02 03:53,97
+29,PIN-ER08,T09,preventiva,P1 mensal,2026-07-02 02:58,2026-07-02 05:19,142
+30,LUZ-ER18,T03,preventiva,P1 mensal,2026-07-02 03:17,2026-07-02 06:01,164
+31,PTA-ER16,T09,corretiva,parada de seguranca (reset),2026-07-02 10:12,2026-07-02 10:48,36
+32,PIN-ER05,T10,corretiva,parada de seguranca (reset),2026-07-02 10:18,2026-07-02 10:49,31
+33,PIN-ER31,T09,corretiva,parada de seguranca (reset),2026-07-02 10:25,2026-07-02 10:41,16
+34,FRA-ER07,T09,corretiva,parada de seguranca (reset),2026-07-02 14:16,2026-07-02 14:26,10
+35,VSO-ER12,T01,corretiva,parada de seguranca (reset),2026-07-02 14:18,2026-07-02 14:42,24
+36,MBI-ER02,T07,corretiva,parada de seguranca (reset),2026-07-02 18:07,2026-07-02 18:51,44
+37,FRE-ER12,T04,corretiva,parada de seguranca (reset),2026-07-02 22:08,2026-07-02 22:27,19
+38,HIG-ER09,T07,corretiva,parada de seguranca (reset),2026-07-02 22:24,2026-07-02 22:58,34
+39,PIN-ER21,T06,corretiva,parada de seguranca (reset),2026-07-02 22:28,2026-07-02 23:01,33
+40,PTA-ER18,T04,preventiva,P1 mensal,2026-07-03 01:00,2026-07-03 02:48,109
+41,PTA-ER05,T11,preventiva,P1 mensal,2026-07-03 01:27,2026-07-03 04:10,164
+42,HIG-ER06,T04,preventiva,P1 mensal,2026-07-03 02:02,2026-07-03 04:25,143
+43,PIN-ER12,T10,preventiva,P1 mensal,2026-07-03 02:24,2026-07-03 04:36,133
+44,PTA-ER17,T04,preventiva,P1 mensal,2026-07-03 02:55,2026-07-03 04:25,91
+45,FRE-ER07,T11,corretiva,parada de seguranca (reset),2026-07-03 06:10,2026-07-03 06:25,15
+46,FAL-ER02,T01,corretiva,parada de seguranca (reset),2026-07-03 06:14,2026-07-03 06:24,10
+47,PIN-ER03,T12,corretiva,status critico,2026-07-03 06:16,2026-07-03 14:20,484
+48,BUT-ER07,T03,corretiva,parada de seguranca (reset),2026-07-03 06:19,2026-07-03 06:56,37
+49,FRE-ER06,T08,corretiva,parada de seguranca (reset),2026-07-03 06:25,2026-07-03 06:47,22
+50,PIN-ER28,T04,corretiva,parada de seguranca (reset),2026-07-03 06:26,2026-07-03 06:39,13
+51,HIG-ER21,T10,corretiva,parada de seguranca (reset),2026-07-03 10:16,2026-07-03 10:57,41
+52,LUZ-ER08,T10,corretiva,sem resposta do sensor,2026-07-03 10:24,2026-07-03 13:02,158
+53,PIN-ER24,T04,corretiva,parada de seguranca (reset),2026-07-03 10:28,2026-07-03 11:08,40
+54,BUT-ER08,T03,corretiva,parada de seguranca (reset),2026-07-03 14:05,2026-07-03 14:28,23
+55,LUZ-ER06,T11,corretiva,parada de seguranca (reset),2026-07-03 14:29,2026-07-03 14:58,29
+56,FRA-ER03,T09,corretiva,sem resposta do sensor,2026-07-03 15:52,2026-07-03 18:29,158
+57,HIG-ER05,T09,corretiva,parada de seguranca (reset),2026-07-03 18:10,2026-07-03 18:51,41
+58,REP-ER61,T11,corretiva,parada de seguranca (reset),2026-07-03 18:11,2026-07-03 18:49,38
+59,BUT-ER13,T02,corretiva,parada de seguranca (reset),2026-07-03 18:29,2026-07-03 19:04,35
+60,FRE-ER13,T06,corretiva,status critico,2026-07-03 18:55,2026-07-04 15:21,1226
+61,PIN-ER32,T03,corretiva,parada de seguranca (reset),2026-07-03 22:27,2026-07-03 22:43,16
+62,PIN-ER11,T06,preventiva,P1 mensal,2026-07-04 01:12,2026-07-04 03:14,122
+63,BUT-ER03,T01,preventiva,P1 mensal,2026-07-04 02:00,2026-07-04 03:32,92
+64,FAL-ER03,T01,preventiva,P1 mensal,2026-07-04 02:34,2026-07-04 04:45,131
+65,BUT-ER02,T10,preventiva,P1 mensal,2026-07-04 02:40,2026-07-04 04:32,112
+66,PTA-ER09,T05,preventiva,P1 mensal,2026-07-04 03:10,2026-07-04 05:22,132
+67,LUZ-ER13,T06,corretiva,parada de seguranca (reset),2026-07-04 06:05,2026-07-04 06:45,40
+68,VSO-ER08,T10,corretiva,parada de seguranca (reset),2026-07-04 06:05,2026-07-04 06:41,36
+69,VSO-ER04,T12,corretiva,parada de seguranca (reset),2026-07-04 06:07,2026-07-04 06:51,44
+70,PIN-ER03,T03,corretiva,parada de seguranca (reset),2026-07-04 06:20,2026-07-04 06:48,28
+71,BUT-ER12,T07,corretiva,parada de seguranca (reset),2026-07-04 10:07,2026-07-04 10:38,31
+72,LUZ-ER14,T10,corretiva,parada de seguranca (reset),2026-07-04 10:09,2026-07-04 10:47,38
+73,BUT-ER08,T02,corretiva,parada de seguranca (reset),2026-07-04 10:14,2026-07-04 10:49,35
+74,PIN-ER11,T02,corretiva,parada de seguranca (reset),2026-07-04 10:16,2026-07-04 10:45,29
+75,REP-ER59,T06,corretiva,parada de seguranca (reset),2026-07-04 14:11,2026-07-04 14:21,10
+76,LUZ-ER15,T01,corretiva,parada de seguranca (reset),2026-07-04 14:17,2026-07-04 14:50,33
+77,LUZ-ER03,T06,corretiva,parada de seguranca (reset),2026-07-04 14:19,2026-07-04 14:53,34
+78,LUZ-ER12,T08,corretiva,parada de seguranca (reset),2026-07-04 14:29,2026-07-04 15:07,38
+79,MBI-ER08,T05,corretiva,parada de seguranca (reset),2026-07-04 18:10,2026-07-04 18:53,43
+80,REP-ER59,T08,corretiva,parada de seguranca (reset),2026-07-04 18:19,2026-07-04 19:02,43
+81,FRA-ER07,T02,corretiva,parada de seguranca (reset),2026-07-04 18:27,2026-07-04 18:51,24
+82,LUZ-ER01,T10,corretiva,parada de seguranca (reset),2026-07-04 22:12,2026-07-04 22:27,15
+83,VSO-ER13,T03,corretiva,parada de seguranca (reset),2026-07-04 22:21,2026-07-04 22:57,36
+84,FAL-ER06,T05,corretiva,parada de seguranca (reset),2026-07-04 22:26,2026-07-04 22:44,18
+85,FRA-ER01,T01,preventiva,P1 mensal,2026-07-05 00:14,2026-07-05 02:06,113
+86,MBI-ER04,T11,preventiva,P1 mensal,2026-07-05 01:06,2026-07-05 03:18,132
+87,BUT-ER14,T08,preventiva,P1 mensal,2026-07-05 01:50,2026-07-05 04:05,136
+88,LUZ-ER06,T10,preventiva,P1 mensal,2026-07-05 02:13,2026-07-05 04:44,151
+89,PIN-ER31,T04,preventiva,P1 mensal,2026-07-05 03:13,2026-07-05 04:55,102
+90,HIG-ER10,T08,corretiva,parada de seguranca (reset),2026-07-05 06:05,2026-07-05 06:17,12
+91,REP-ER61,T04,corretiva,parada de seguranca (reset),2026-07-05 06:15,2026-07-05 06:52,37
+92,BUT-ER08,T06,corretiva,parada de seguranca (reset),2026-07-05 06:23,2026-07-05 06:43,20
+93,BUT-ER12,T09,corretiva,parada de seguranca (reset),2026-07-05 10:06,2026-07-05 10:46,40
+94,MBI-ER02,T12,corretiva,parada de seguranca (reset),2026-07-05 14:05,2026-07-05 14:46,41
+95,PTA-ER17,T12,corretiva,parada de seguranca (reset),2026-07-05 14:06,2026-07-05 14:43,37
+96,LUZ-ER04,T02,corretiva,parada de seguranca (reset),2026-07-05 14:13,2026-07-05 14:27,14
+97,PIN-ER21,T09,corretiva,parada de seguranca (reset),2026-07-05 14:14,2026-07-05 14:26,12
+98,FAL-ER06,T11,corretiva,parada de seguranca (reset),2026-07-05 18:05,2026-07-05 18:27,22
+99,FRA-ER06,T08,corretiva,parada de seguranca (reset),2026-07-05 18:06,2026-07-05 18:49,43
+100,PTA-ER14,T06,corretiva,parada de seguranca (reset),2026-07-05 18:11,2026-07-05 18:52,41
+101,PIN-ER31,T08,corretiva,parada de seguranca (reset),2026-07-05 18:13,2026-07-05 18:37,24
+102,HIG-ER17,T06,corretiva,parada de seguranca (reset),2026-07-05 18:27,2026-07-05 19:05,38
+103,FAL-ER01,T08,corretiva,parada de seguranca (reset),2026-07-05 22:20,2026-07-05 22:30,10
+104,FAL-ER02,T06,corretiva,status critico,2026-07-05 23:55,2026-07-06 03:17,203
+105,FRA-ER03,T06,preventiva,P1 mensal,2026-07-06 00:13,2026-07-06 02:46,153
+106,PIN-ER26,T01,preventiva,P1 mensal,2026-07-06 00:15,2026-07-06 02:58,163
+107,HIG-ER09,T05,preventiva,P1 mensal,2026-07-06 00:55,2026-07-06 02:59,124
+108,REP-ER26,T07,preventiva,P1 mensal,2026-07-06 01:29,2026-07-06 03:10,101
+109,FAL-ER08,T11,preventiva,P1 mensal,2026-07-06 02:00,2026-07-06 04:44,164
+110,VSO-ER13,T04,preventiva,P1 mensal,2026-07-06 02:24,2026-07-06 04:36,132
+111,BUT-ER04,T06,preventiva,P1 mensal,2026-07-06 02:43,2026-07-06 04:27,104
+112,PIN-ER06,T10,preventiva,P1 mensal,2026-07-06 03:12,2026-07-06 05:53,161
+113,VSO-ER16,T08,preventiva,P1 mensal,2026-07-06 03:24,2026-07-06 04:56,92
+114,VSO-ER19,T05,preventiva,P1 mensal,2026-07-06 03:47,2026-07-06 05:46,119
+115,VSO-ER08,T12,corretiva,parada de seguranca (reset),2026-07-06 06:14,2026-07-06 06:44,30
+116,FAL-ER05,T04,corretiva,parada de seguranca (reset),2026-07-06 06:15,2026-07-06 06:50,35
+117,VSO-ER19,T03,corretiva,parada de seguranca (reset),2026-07-06 06:21,2026-07-06 07:05,44
+118,PTA-ER04,T01,corretiva,parada de seguranca (reset),2026-07-06 06:25,2026-07-06 06:46,21
+119,PTA-ER12,T09,corretiva,parada de seguranca (reset),2026-07-06 10:15,2026-07-06 10:54,39
+120,HIG-ER18,T01,corretiva,parada de seguranca (reset),2026-07-06 10:23,2026-07-06 10:47,24
+121,MBI-ER03,T07,corretiva,parada de seguranca (reset),2026-07-06 10:24,2026-07-06 11:04,40
+122,FRA-ER03,T11,corretiva,parada de seguranca (reset),2026-07-06 14:07,2026-07-06 14:40,33
+123,MBI-ER03,T06,corretiva,parada de seguranca (reset),2026-07-06 14:11,2026-07-06 14:51,40
+124,PTA-ER04,T06,corretiva,parada de seguranca (reset),2026-07-06 18:05,2026-07-06 18:40,35
+125,LUZ-ER06,T02,corretiva,parada de seguranca (reset),2026-07-06 18:09,2026-07-06 18:40,31
+126,PTA-ER09,T07,corretiva,parada de seguranca (reset),2026-07-06 18:13,2026-07-06 18:39,26
+127,HIG-ER15,T12,corretiva,parada de seguranca (reset),2026-07-06 18:23,2026-07-06 18:45,22
+128,PTA-ER06,T05,corretiva,parada de seguranca (reset),2026-07-06 18:27,2026-07-06 19:08,41
+129,FAL-ER10,T10,corretiva,parada de seguranca (reset),2026-07-06 22:17,2026-07-06 23:00,43
+130,BUT-ER12,T10,corretiva,parada de seguranca (reset),2026-07-06 22:21,2026-07-06 22:34,13
+131,HIG-ER04,T09,preventiva,P1 mensal,2026-07-07 00:08,2026-07-07 02:46,158
+132,HIG-ER19,T11,preventiva,P1 mensal,2026-07-07 01:54,2026-07-07 03:55,121
+133,MBI-ER11,T10,preventiva,P1 mensal,2026-07-07 02:07,2026-07-07 03:43,96
+134,LUZ-ER15,T08,preventiva,P1 mensal,2026-07-07 02:57,2026-07-07 04:47,110
+135,FRA-ER04,T11,preventiva,P1 mensal,2026-07-07 03:18,2026-07-07 04:49,91
+136,MBI-ER09,T04,preventiva,P1 mensal,2026-07-07 03:45,2026-07-07 05:29,104
+137,MBI-ER09,T08,corretiva,parada de seguranca (reset),2026-07-07 06:10,2026-07-07 06:52,42
+138,PTA-ER07,T09,corretiva,parada de seguranca (reset),2026-07-07 10:17,2026-07-07 10:50,33
+139,FRA-ER02,T01,corretiva,parada de seguranca (reset),2026-07-07 10:19,2026-07-07 10:50,31
+140,HIG-ER18,T12,corretiva,parada de seguranca (reset),2026-07-07 10:21,2026-07-07 10:42,21
+141,LUZ-ER09,T06,corretiva,parada de seguranca (reset),2026-07-07 10:21,2026-07-07 10:49,28
+142,PIN-ER17,T05,corretiva,parada de seguranca (reset),2026-07-07 10:28,2026-07-07 10:46,18
+143,PIN-ER18,T01,corretiva,parada de seguranca (reset),2026-07-07 14:20,2026-07-07 14:40,20
+144,PIN-ER28,T04,corretiva,parada de seguranca (reset),2026-07-07 14:21,2026-07-07 14:54,33
+145,PIN-ER26,T10,corretiva,parada de seguranca (reset),2026-07-07 14:22,2026-07-07 14:44,22
+146,LUZ-ER05,T04,corretiva,parada de seguranca (reset),2026-07-07 14:24,2026-07-07 14:57,33
+147,REP-ER26,T06,corretiva,sem resposta do sensor,2026-07-07 15:39,2026-07-07 18:56,197
+148,PTA-ER12,T04,corretiva,parada de seguranca (reset),2026-07-07 18:05,2026-07-07 18:43,38
+149,BUT-ER05,T07,corretiva,parada de seguranca (reset),2026-07-07 18:06,2026-07-07 18:38,32
+150,HIG-ER09,T04,corretiva,parada de seguranca (reset),2026-07-07 18:16,2026-07-07 18:41,25
+151,LUZ-ER01,T11,corretiva,parada de seguranca (reset),2026-07-07 18:26,2026-07-07 19:01,35
+152,HIG-ER13,T12,corretiva,parada de seguranca (reset),2026-07-07 22:07,2026-07-07 22:46,39
+153,LUZ-ER20,T07,corretiva,parada de seguranca (reset),2026-07-07 22:19,2026-07-07 22:44,25
+154,PTA-ER16,T12,corretiva,parada de seguranca (reset),2026-07-07 22:19,2026-07-07 22:29,10
+155,PIN-ER18,T03,corretiva,parada de seguranca (reset),2026-07-07 22:21,2026-07-07 22:35,14
+156,HIG-ER18,T02,corretiva,parada de seguranca (reset),2026-07-07 22:27,2026-07-07 22:52,25
+157,FRA-ER09,T01,preventiva,P1 mensal,2026-07-08 00:56,2026-07-08 03:32,157
+158,FRE-ER02,T01,preventiva,P1 mensal,2026-07-08 00:56,2026-07-08 03:29,154
+159,HIG-ER25,T12,preventiva,P1 mensal,2026-07-08 02:48,2026-07-08 04:50,122
+160,PIN-ER32,T09,preventiva,P1 mensal,2026-07-08 02:54,2026-07-08 05:37,163
+161,PTA-ER12,T03,preventiva,P1 mensal,2026-07-08 03:31,2026-07-08 05:20,110
+162,LUZ-ER03,T08,preventiva,P1 mensal,2026-07-08 03:33,2026-07-08 06:07,154
+163,HIG-ER11,T05,preventiva,P1 mensal,2026-07-08 03:52,2026-07-08 05:44,112
+164,VSO-ER15,T08,corretiva,parada de seguranca (reset),2026-07-08 06:11,2026-07-08 06:45,34
+165,LUZ-ER20,T02,corretiva,parada de seguranca (reset),2026-07-08 06:13,2026-07-08 06:31,18
+166,MBI-ER07,T03,corretiva,status critico,2026-07-08 07:10,2026-07-08 10:10,181
+167,PIN-ER17,T06,corretiva,parada de seguranca (reset),2026-07-08 10:26,2026-07-08 11:01,35
+168,FAL-ER02,T11,corretiva,parada de seguranca (reset),2026-07-08 14:08,2026-07-08 14:30,22
+169,PIN-ER01,T04,corretiva,parada de seguranca (reset),2026-07-08 14:15,2026-07-08 14:30,15
+170,FRA-ER09,T01,corretiva,parada de seguranca (reset),2026-07-08 14:17,2026-07-08 14:39,22
+171,BUT-ER04,T07,corretiva,parada de seguranca (reset),2026-07-08 14:18,2026-07-08 14:50,32
+172,HIG-ER13,T11,corretiva,parada de seguranca (reset),2026-07-08 14:27,2026-07-08 15:05,38
+173,LUZ-ER06,T04,corretiva,parada de seguranca (reset),2026-07-08 14:29,2026-07-08 14:48,19
+174,LUZ-ER10,T01,corretiva,parada de seguranca (reset),2026-07-08 18:15,2026-07-08 18:44,29
+175,PIN-ER12,T05,corretiva,parada de seguranca (reset),2026-07-08 18:17,2026-07-08 18:38,21
+176,PTA-ER11,T01,corretiva,parada de seguranca (reset),2026-07-08 22:13,2026-07-08 22:28,15
+177,PIN-ER29,T09,preventiva,P1 mensal,2026-07-09 00:24,2026-07-09 02:45,141
+178,VSO-ER09,T01,preventiva,P1 mensal,2026-07-09 00:33,2026-07-09 02:51,139
+179,PIN-ER18,T03,preventiva,P1 mensal,2026-07-09 01:00,2026-07-09 02:53,113
+180,TVS-ER05,T01,preventiva,P1 mensal,2026-07-09 02:14,2026-07-09 04:28,134
+181,VSO-ER08,T05,preventiva,P1 mensal,2026-07-09 02:37,2026-07-09 04:11,95
+182,HIG-ER02,T12,preventiva,P1 mensal,2026-07-09 02:48,2026-07-09 04:21,93
+183,PIN-ER03,T11,preventiva,P1 mensal,2026-07-09 03:10,2026-07-09 05:00,110
+184,BUT-ER06,T07,preventiva,P1 mensal,2026-07-09 03:35,2026-07-09 05:35,120
+185,PTA-ER01,T08,corretiva,parada de seguranca (reset),2026-07-09 10:21,2026-07-09 11:04,43
+186,FRA-ER08,T12,corretiva,parada de seguranca (reset),2026-07-09 14:20,2026-07-09 14:54,34
+187,HIG-ER18,T10,corretiva,parada de seguranca (reset),2026-07-09 18:14,2026-07-09 18:34,20
+188,PIN-ER30,T07,corretiva,parada de seguranca (reset),2026-07-09 18:29,2026-07-09 19:06,37
+189,HIG-ER26,T08,corretiva,status critico,2026-07-09 18:40,2026-07-09 21:50,191
+190,REP-ER60,T12,corretiva,parada de seguranca (reset),2026-07-09 22:16,2026-07-09 22:49,33
+191,MBI-ER03,T03,preventiva,P1 mensal,2026-07-10 00:26,2026-07-10 02:49,143
+192,PIN-ER27,T03,preventiva,P1 mensal,2026-07-10 01:03,2026-07-10 02:51,109
+193,BUT-ER01,T01,preventiva,P1 mensal,2026-07-10 01:30,2026-07-10 03:22,113
+194,PIN-ER09,T02,preventiva,P1 mensal,2026-07-10 02:27,2026-07-10 05:07,161
+195,PIN-ER05,T12,corretiva,parada de seguranca (reset),2026-07-10 06:19,2026-07-10 06:45,26
+196,HIG-ER18,T07,corretiva,parada de seguranca (reset),2026-07-10 10:05,2026-07-10 10:36,31
+197,LUZ-ER16,T01,corretiva,parada de seguranca (reset),2026-07-10 10:18,2026-07-10 10:35,17
+198,LUZ-ER18,T06,corretiva,parada de seguranca (reset),2026-07-10 10:25,2026-07-10 10:45,20
+199,MBI-ER01,T12,corretiva,parada de seguranca (reset),2026-07-10 14:11,2026-07-10 14:53,42
+200,PTA-ER17,T10,corretiva,parada de seguranca (reset),2026-07-10 18:24,2026-07-10 18:43,19
+201,PIN-ER02,T11,corretiva,parada de seguranca (reset),2026-07-10 18:27,2026-07-10 19:07,40
+202,FRE-ER05,T09,corretiva,parada de seguranca (reset),2026-07-10 22:20,2026-07-10 23:04,44
+203,HIG-ER05,T11,corretiva,parada de seguranca (reset),2026-07-10 22:20,2026-07-10 22:58,38
+204,LUZ-ER15,T06,corretiva,parada de seguranca (reset),2026-07-10 22:29,2026-07-10 23:00,31
+205,PIN-ER06,T06,corretiva,status critico,2026-07-10 22:31,2026-07-11 01:40,189
+206,LUZ-ER08,T10,preventiva,P1 mensal,2026-07-11 00:15,2026-07-11 01:58,104
+207,VSO-ER04,T03,preventiva,P1 mensal,2026-07-11 00:47,2026-07-11 02:43,116
+208,BUT-ER12,T05,preventiva,P1 mensal,2026-07-11 00:56,2026-07-11 03:33,158
+209,VSO-ER15,T06,preventiva,P1 mensal,2026-07-11 01:09,2026-07-11 03:28,139
+210,LUZ-ER14,T02,preventiva,P1 mensal,2026-07-11 01:22,2026-07-11 03:57,155
+211,HIG-ER01,T02,preventiva,P1 mensal,2026-07-11 01:32,2026-07-11 03:56,145
+212,PTA-ER04,T04,preventiva,P1 mensal,2026-07-11 02:49,2026-07-11 04:37,109
+213,MBI-ER07,T02,preventiva,P1 mensal,2026-07-11 02:52,2026-07-11 05:33,161
+214,VSO-ER07,T02,preventiva,P1 mensal,2026-07-11 02:54,2026-07-11 05:30,156
+215,VSO-ER12,T06,preventiva,P1 mensal,2026-07-11 03:05,2026-07-11 05:05,120
+216,LUZ-ER04,T09,preventiva,P1 mensal,2026-07-11 03:18,2026-07-11 05:18,121
+217,PTA-ER06,T06,preventiva,P1 mensal,2026-07-11 03:20,2026-07-11 04:57,97
+218,FRE-ER04,T07,preventiva,P1 mensal,2026-07-11 03:24,2026-07-11 04:55,92
+219,VSO-ER02,T03,preventiva,P1 mensal,2026-07-11 03:33,2026-07-11 05:58,146
+220,FAL-ER09,T07,corretiva,parada de seguranca (reset),2026-07-11 06:05,2026-07-11 06:37,32
+221,PIN-ER18,T04,corretiva,parada de seguranca (reset),2026-07-11 06:24,2026-07-11 06:57,33
+222,HIG-ER03,T06,corretiva,parada de seguranca (reset),2026-07-11 06:28,2026-07-11 06:56,28
+223,FAL-ER02,T11,corretiva,parada de seguranca (reset),2026-07-11 10:13,2026-07-11 10:51,38
+224,BUT-ER08,T08,corretiva,parada de seguranca (reset),2026-07-11 10:17,2026-07-11 10:35,18
+225,PTA-ER14,T10,corretiva,parada de seguranca (reset),2026-07-11 10:19,2026-07-11 10:42,23
+226,FRE-ER09,T10,corretiva,parada de seguranca (reset),2026-07-11 10:29,2026-07-11 10:52,23
+227,PTA-ER07,T08,corretiva,parada de seguranca (reset),2026-07-11 14:10,2026-07-11 14:51,41
+228,PTA-ER02,T09,corretiva,parada de seguranca (reset),2026-07-11 14:13,2026-07-11 14:44,31
+229,REP-ER25,T05,corretiva,parada de seguranca (reset),2026-07-11 14:13,2026-07-11 14:37,24
+230,FAL-ER06,T02,corretiva,parada de seguranca (reset),2026-07-11 14:29,2026-07-11 14:54,25
+231,LUZ-ER04,T06,corretiva,parada de seguranca (reset),2026-07-11 18:05,2026-07-11 18:36,31
+232,TVS-ER03,T02,corretiva,parada de seguranca (reset),2026-07-11 18:07,2026-07-11 18:24,17
+233,LUZ-ER19,T04,corretiva,parada de seguranca (reset),2026-07-11 18:29,2026-07-11 18:48,19
+234,MBI-ER09,T01,corretiva,parada de seguranca (reset),2026-07-11 22:10,2026-07-11 22:50,40
+235,PTA-ER10,T10,corretiva,parada de seguranca (reset),2026-07-11 22:24,2026-07-11 23:06,42
+236,PTA-ER01,T04,corretiva,parada de seguranca (reset),2026-07-11 22:27,2026-07-11 23:08,41
+237,PIN-ER30,T06,preventiva,P1 mensal,2026-07-12 01:08,2026-07-12 03:44,156
+238,FAL-ER10,T11,preventiva,P1 mensal,2026-07-12 01:15,2026-07-12 03:24,130
+239,FAL-ER08,T04,corretiva,parada de seguranca (reset),2026-07-12 06:06,2026-07-12 06:49,43
+240,FRA-ER06,T02,corretiva,parada de seguranca (reset),2026-07-12 06:20,2026-07-12 07:03,43
+241,PIN-ER15,T11,corretiva,parada de seguranca (reset),2026-07-12 10:17,2026-07-12 10:40,23
+242,BUT-ER08,T02,corretiva,parada de seguranca (reset),2026-07-12 10:20,2026-07-12 10:44,24
+243,FRE-ER04,T06,corretiva,parada de seguranca (reset),2026-07-12 10:23,2026-07-12 10:59,36
+244,REP-ER60,T09,corretiva,parada de seguranca (reset),2026-07-12 10:24,2026-07-12 10:56,32
+245,PTA-ER16,T01,corretiva,parada de seguranca (reset),2026-07-12 14:05,2026-07-12 14:19,14
+246,TVS-ER04,T05,corretiva,parada de seguranca (reset),2026-07-12 14:08,2026-07-12 14:25,17
+247,LUZ-ER20,T06,corretiva,parada de seguranca (reset),2026-07-12 14:10,2026-07-12 14:32,22
+248,LUZ-ER18,T01,corretiva,parada de seguranca (reset),2026-07-12 14:25,2026-07-12 14:42,17
+249,MBI-ER13,T03,corretiva,status critico,2026-07-12 14:28,2026-07-12 21:13,406
+250,FRE-ER13,T02,corretiva,parada de seguranca (reset),2026-07-12 14:29,2026-07-12 14:56,27
+251,MBI-ER02,T12,corretiva,sem resposta do sensor,2026-07-12 15:12,2026-07-12 17:52,161
+252,VSO-ER20,T12,corretiva,parada de seguranca (reset),2026-07-12 18:08,2026-07-12 18:48,40
+253,PIN-ER10,T11,corretiva,parada de seguranca (reset),2026-07-12 18:16,2026-07-12 18:48,32
+254,PTA-ER14,T01,corretiva,parada de seguranca (reset),2026-07-12 18:18,2026-07-12 18:43,25
+255,FAL-ER02,T07,corretiva,parada de seguranca (reset),2026-07-12 18:19,2026-07-12 18:57,38
+256,PIN-ER21,T02,corretiva,parada de seguranca (reset),2026-07-12 18:21,2026-07-12 18:31,10
+257,PTA-ER09,T11,corretiva,parada de seguranca (reset),2026-07-12 18:21,2026-07-12 18:54,33
+258,TVS-ER07,T09,corretiva,parada de seguranca (reset),2026-07-12 18:22,2026-07-12 18:57,35
+259,PIN-ER28,T09,corretiva,parada de seguranca (reset),2026-07-12 18:28,2026-07-12 18:48,20
+260,PIN-ER25,T06,corretiva,parada de seguranca (reset),2026-07-12 22:08,2026-07-12 22:36,28
+261,HIG-ER25,T07,corretiva,parada de seguranca (reset),2026-07-12 22:18,2026-07-12 22:30,12
+262,FRE-ER02,T09,corretiva,parada de seguranca (reset),2026-07-12 22:20,2026-07-12 23:00,40
+263,FRE-ER09,T08,corretiva,parada de seguranca (reset),2026-07-12 22:23,2026-07-12 22:59,36
+264,HIG-ER22,T10,corretiva,parada de seguranca (reset),2026-07-12 22:29,2026-07-12 22:43,14
+265,PTA-ER15,T09,preventiva,P1 mensal,2026-07-13 00:09,2026-07-13 01:45,97
+266,MBI-ER08,T10,preventiva,P1 mensal,2026-07-13 00:10,2026-07-13 02:16,127
+267,PTA-ER01,T02,preventiva,P1 mensal,2026-07-13 00:49,2026-07-13 02:55,126
+268,LUZ-ER10,T08,preventiva,P1 mensal,2026-07-13 01:06,2026-07-13 03:47,161
+269,HIG-ER14,T07,preventiva,P1 mensal,2026-07-13 02:23,2026-07-13 04:35,133
+270,VSO-ER20,T09,preventiva,P1 mensal,2026-07-13 02:52,2026-07-13 05:17,146
+271,VSO-ER11,T12,preventiva,P1 mensal,2026-07-13 02:58,2026-07-13 04:56,118
+272,REP-ER60,T10,corretiva,parada de seguranca (reset),2026-07-13 06:10,2026-07-13 06:26,16
+273,PTA-ER06,T10,corretiva,parada de seguranca (reset),2026-07-13 06:12,2026-07-13 06:48,36
+274,PTA-ER16,T11,corretiva,parada de seguranca (reset),2026-07-13 06:15,2026-07-13 06:36,21
+275,PIN-ER11,T04,corretiva,parada de seguranca (reset),2026-07-13 06:28,2026-07-13 06:50,22
+276,FRE-ER10,T09,corretiva,status critico,2026-07-13 10:10,2026-07-13 16:46,396
+277,PIN-ER21,T01,corretiva,parada de seguranca (reset),2026-07-13 10:16,2026-07-13 10:55,39
+278,PIN-ER11,T05,corretiva,parada de seguranca (reset),2026-07-13 10:17,2026-07-13 10:27,10
+279,MBI-ER02,T03,corretiva,parada de seguranca (reset),2026-07-13 10:25,2026-07-13 10:49,24
+280,PIN-ER01,T12,corretiva,parada de seguranca (reset),2026-07-13 14:21,2026-07-13 14:56,35
+281,MBI-ER09,T03,corretiva,parada de seguranca (reset),2026-07-13 14:29,2026-07-13 14:46,17
+282,MBI-ER11,T07,corretiva,sem resposta do sensor,2026-07-13 14:44,2026-07-14 04:58,854
+283,HIG-ER20,T04,corretiva,parada de seguranca (reset),2026-07-13 18:18,2026-07-13 18:32,14
+284,TVS-ER09,T12,preventiva,P1 mensal,2026-07-14 00:03,2026-07-14 02:03,120
+285,HIG-ER20,T05,preventiva,P1 mensal,2026-07-14 00:54,2026-07-14 02:49,115
+286,LUZ-ER19,T09,preventiva,P1 mensal,2026-07-14 01:12,2026-07-14 03:34,143
+287,FRA-ER07,T05,preventiva,P1 mensal,2026-07-14 01:25,2026-07-14 03:26,122
+288,PTA-ER14,T01,preventiva,P1 mensal,2026-07-14 01:50,2026-07-14 03:32,102
+289,BUT-ER09,T05,preventiva,P1 mensal,2026-07-14 02:18,2026-07-14 04:06,108
+290,PIN-ER16,T12,corretiva,parada de seguranca (reset),2026-07-14 06:07,2026-07-14 06:22,15
+291,HIG-ER12,T11,corretiva,parada de seguranca (reset),2026-07-14 06:08,2026-07-14 06:46,38
+292,LUZ-ER13,T02,corretiva,alerta prolongado,2026-07-14 06:18,2026-07-15 03:27,1270
+293,LUZ-ER06,T06,corretiva,parada de seguranca (reset),2026-07-14 06:23,2026-07-14 06:34,11
+294,PIN-ER06,T11,corretiva,parada de seguranca (reset),2026-07-14 06:24,2026-07-14 06:47,23
+295,PIN-ER32,T06,corretiva,parada de seguranca (reset),2026-07-14 10:16,2026-07-14 10:45,29
+296,PIN-ER32,T01,corretiva,parada de seguranca (reset),2026-07-14 14:05,2026-07-14 14:32,27
+297,REP-ER60,T04,corretiva,parada de seguranca (reset),2026-07-14 14:09,2026-07-14 14:19,10
+298,PIN-ER09,T06,corretiva,parada de seguranca (reset),2026-07-14 18:05,2026-07-14 18:24,19
+299,FAL-ER05,T04,corretiva,parada de seguranca (reset),2026-07-14 18:11,2026-07-14 18:54,43
+300,HIG-ER04,T02,corretiva,parada de seguranca (reset),2026-07-14 18:20,2026-07-14 18:58,38
+301,PIN-ER10,T09,corretiva,parada de seguranca (reset),2026-07-14 22:06,2026-07-14 22:40,34
+302,FRA-ER03,T01,corretiva,parada de seguranca (reset),2026-07-14 22:16,2026-07-14 22:49,33
+303,PIN-ER19,T03,corretiva,parada de seguranca (reset),2026-07-14 22:17,2026-07-14 23:00,43
+304,FRE-ER01,T01,corretiva,parada de seguranca (reset),2026-07-14 22:19,2026-07-14 22:35,16
+305,HIG-ER08,T02,preventiva,P1 mensal,2026-07-15 00:03,2026-07-15 02:30,148
+306,BUT-ER08,T01,preventiva,P1 mensal,2026-07-15 02:54,2026-07-15 04:45,111
+307,MBI-ER05,T05,preventiva,P1 mensal,2026-07-15 03:07,2026-07-15 05:25,139
+308,FRE-ER15,T11,corretiva,parada de seguranca (reset),2026-07-15 06:14,2026-07-15 06:39,25
+309,FRA-ER07,T10,corretiva,parada de seguranca (reset),2026-07-15 06:18,2026-07-15 06:33,15
+310,FRE-ER01,T01,corretiva,parada de seguranca (reset),2026-07-15 06:21,2026-07-15 07:02,41
+311,FRE-ER13,T08,corretiva,parada de seguranca (reset),2026-07-15 06:24,2026-07-15 06:39,15
+312,PTA-ER12,T04,corretiva,parada de seguranca (reset),2026-07-15 06:26,2026-07-15 06:50,24
+313,LUZ-ER07,T10,corretiva,parada de seguranca (reset),2026-07-15 10:10,2026-07-15 10:51,41
+314,VSO-ER19,T09,corretiva,parada de seguranca (reset),2026-07-15 10:15,2026-07-15 10:51,36
+315,FRE-ER18,T12,corretiva,parada de seguranca (reset),2026-07-15 14:06,2026-07-15 14:29,23
+316,FRE-ER13,T11,corretiva,parada de seguranca (reset),2026-07-15 14:11,2026-07-15 14:37,26
+317,FRE-ER20,T05,corretiva,parada de seguranca (reset),2026-07-15 14:20,2026-07-15 14:45,25
+318,FAL-ER05,T10,corretiva,parada de seguranca (reset),2026-07-15 14:27,2026-07-15 15:09,42
+319,HIG-ER24,T07,corretiva,parada de seguranca (reset),2026-07-15 18:08,2026-07-15 18:27,19
+320,REP-ER61,T08,corretiva,parada de seguranca (reset),2026-07-15 18:09,2026-07-15 18:26,17
+321,PIN-ER10,T04,corretiva,parada de seguranca (reset),2026-07-15 18:17,2026-07-15 18:52,35
+322,HIG-ER06,T02,corretiva,parada de seguranca (reset),2026-07-15 18:22,2026-07-15 18:35,13
+323,PIN-ER06,T09,corretiva,parada de seguranca (reset),2026-07-15 18:27,2026-07-15 19:00,33
+324,VSO-ER12,T01,corretiva,parada de seguranca (reset),2026-07-15 22:15,2026-07-15 22:56,41
+325,HIG-ER21,T01,corretiva,parada de seguranca (reset),2026-07-15 22:19,2026-07-15 22:54,35
+326,LUZ-ER20,T10,preventiva,P1 mensal,2026-07-16 01:11,2026-07-16 03:43,152
+327,PIN-ER19,T02,preventiva,P1 mensal,2026-07-16 01:22,2026-07-16 03:52,151
+328,FAL-ER07,T01,preventiva,P1 mensal,2026-07-16 01:38,2026-07-16 03:33,116
+329,PIN-ER14,T11,preventiva,P1 mensal,2026-07-16 01:41,2026-07-16 03:27,107
+330,HIG-ER21,T11,preventiva,P1 mensal,2026-07-16 02:00,2026-07-16 03:59,119
+331,PIN-ER23,T10,preventiva,P1 mensal,2026-07-16 02:05,2026-07-16 04:26,141
+332,VSO-ER14,T03,preventiva,P1 mensal,2026-07-16 02:09,2026-07-16 04:18,130
+333,FRE-ER11,T06,preventiva,P1 mensal,2026-07-16 02:56,2026-07-16 05:11,136
+334,HIG-ER26,T02,preventiva,P1 mensal,2026-07-16 03:02,2026-07-16 04:41,100
+335,PTA-ER03,T12,preventiva,P1 mensal,2026-07-16 03:55,2026-07-16 05:54,119
+336,FRE-ER05,T09,corretiva,parada de seguranca (reset),2026-07-16 06:16,2026-07-16 06:48,32
+337,HIG-ER26,T10,corretiva,parada de seguranca (reset),2026-07-16 06:17,2026-07-16 06:34,17
+338,VSO-ER07,T06,corretiva,parada de seguranca (reset),2026-07-16 06:17,2026-07-16 06:58,41
+339,PIN-ER23,T03,corretiva,status critico,2026-07-16 06:56,2026-07-16 08:38,103
+340,HIG-ER05,T04,corretiva,parada de seguranca (reset),2026-07-16 10:15,2026-07-16 10:39,24
+341,LUZ-ER06,T07,corretiva,parada de seguranca (reset),2026-07-16 10:18,2026-07-16 11:02,44
+342,FAL-ER08,T11,corretiva,parada de seguranca (reset),2026-07-16 10:21,2026-07-16 10:47,26
+343,FAL-ER07,T07,corretiva,parada de seguranca (reset),2026-07-16 10:22,2026-07-16 11:06,44
+344,FRE-ER17,T01,corretiva,parada de seguranca (reset),2026-07-16 14:11,2026-07-16 14:51,40
+345,LUZ-ER15,T11,corretiva,status critico,2026-07-16 14:27,2026-07-16 17:23,176
+346,MBI-ER04,T10,corretiva,parada de seguranca (reset),2026-07-16 18:11,2026-07-16 18:27,16
+347,FRA-ER04,T09,corretiva,parada de seguranca (reset),2026-07-16 18:24,2026-07-16 19:03,39
+348,PIN-ER05,T05,corretiva,parada de seguranca (reset),2026-07-16 18:29,2026-07-16 19:00,31
+349,LUZ-ER14,T03,corretiva,sem resposta do sensor,2026-07-16 19:40,2026-07-17 06:58,678
+350,BUT-ER12,T11,corretiva,parada de seguranca (reset),2026-07-16 22:18,2026-07-16 22:46,28
+351,VSO-ER19,T09,corretiva,parada de seguranca (reset),2026-07-16 22:24,2026-07-16 23:04,40
+352,LUZ-ER10,T05,corretiva,parada de seguranca (reset),2026-07-16 22:27,2026-07-16 22:37,10
+353,LUZ-ER15,T07,corretiva,parada de seguranca (reset),2026-07-16 22:27,2026-07-16 22:58,31
+354,PTA-ER08,T10,preventiva,P1 mensal,2026-07-17 01:39,2026-07-17 03:09,91
+355,PTA-ER16,T04,preventiva,P1 mensal,2026-07-17 01:46,2026-07-17 03:35,110
+356,HIG-ER23,T02,preventiva,P1 mensal,2026-07-17 02:03,2026-07-17 03:33,91
+357,REP-ER59,T07,preventiva,P1 mensal,2026-07-17 02:11,2026-07-17 04:45,154
+358,HIG-ER10,T03,preventiva,P1 mensal,2026-07-17 02:28,2026-07-17 04:02,95
+359,FRE-ER14,T08,preventiva,P1 mensal,2026-07-17 03:29,2026-07-17 05:10,101
+360,FAL-ER01,T07,preventiva,P1 mensal,2026-07-17 03:50,2026-07-17 06:25,155
+361,PIN-ER02,T06,preventiva,P1 mensal,2026-07-17 03:54,2026-07-17 05:36,102
+362,MBI-ER10,T04,corretiva,parada de seguranca (reset),2026-07-17 06:06,2026-07-17 06:44,38
+363,HIG-ER20,T06,corretiva,parada de seguranca (reset),2026-07-17 06:13,2026-07-17 06:38,25
+364,VSO-ER03,T08,corretiva,parada de seguranca (reset),2026-07-17 06:15,2026-07-17 06:26,11
+365,PIN-ER05,T03,corretiva,parada de seguranca (reset),2026-07-17 06:17,2026-07-17 06:56,39
+366,LUZ-ER10,T07,corretiva,parada de seguranca (reset),2026-07-17 06:22,2026-07-17 07:04,42
+367,VSO-ER08,T06,corretiva,parada de seguranca (reset),2026-07-17 06:28,2026-07-17 07:07,39
+368,PIN-ER10,T05,corretiva,status critico,2026-07-17 07:22,2026-07-17 13:36,374
+369,PIN-ER05,T01,corretiva,parada de seguranca (reset),2026-07-17 14:05,2026-07-17 14:46,41
+370,PIN-ER29,T04,corretiva,parada de seguranca (reset),2026-07-17 14:06,2026-07-17 14:31,25
+371,LUZ-ER03,T10,corretiva,parada de seguranca (reset),2026-07-17 14:20,2026-07-17 14:41,21
+372,PIN-ER16,T02,corretiva,parada de seguranca (reset),2026-07-17 18:20,2026-07-17 18:45,25
+373,PIN-ER28,T10,corretiva,parada de seguranca (reset),2026-07-17 18:20,2026-07-17 18:31,11
+374,FAL-ER05,T02,corretiva,parada de seguranca (reset),2026-07-17 22:06,2026-07-17 22:35,29
+375,PIN-ER19,T12,corretiva,parada de seguranca (reset),2026-07-17 22:07,2026-07-17 22:19,12
+376,FAL-ER03,T12,corretiva,parada de seguranca (reset),2026-07-17 22:11,2026-07-17 22:27,16
+377,PIN-ER31,T10,corretiva,parada de seguranca (reset),2026-07-17 22:11,2026-07-17 22:46,35
+378,HIG-ER23,T01,corretiva,parada de seguranca (reset),2026-07-17 22:20,2026-07-17 22:59,39
+379,HIG-ER12,T08,corretiva,parada de seguranca (reset),2026-07-17 22:22,2026-07-17 22:36,14
+380,BUT-ER08,T03,corretiva,status critico,2026-07-17 23:14,2026-07-19 00:29,1515
+381,PIN-ER13,T03,preventiva,P1 mensal,2026-07-18 01:15,2026-07-18 03:31,136
+382,FRE-ER18,T08,preventiva,P1 mensal,2026-07-18 01:46,2026-07-18 03:24,98
+383,FRE-ER03,T07,preventiva,P1 mensal,2026-07-18 03:27,2026-07-18 05:20,113
+384,BUT-ER01,T03,corretiva,parada de seguranca (reset),2026-07-18 06:15,2026-07-18 06:51,36
+385,PTA-ER04,T10,corretiva,parada de seguranca (reset),2026-07-18 06:29,2026-07-18 07:10,41
+386,FRE-ER03,T06,corretiva,parada de seguranca (reset),2026-07-18 10:06,2026-07-18 10:43,37
+387,PTA-ER08,T04,corretiva,parada de seguranca (reset),2026-07-18 14:14,2026-07-18 14:41,27
+388,BUT-ER13,T03,corretiva,parada de seguranca (reset),2026-07-18 18:09,2026-07-18 18:44,35
+389,FRA-ER04,T07,corretiva,parada de seguranca (reset),2026-07-18 18:14,2026-07-18 18:49,35
+390,PIN-ER11,T03,corretiva,parada de seguranca (reset),2026-07-18 22:13,2026-07-18 22:37,24
+391,FAL-ER04,T02,corretiva,parada de seguranca (reset),2026-07-18 22:18,2026-07-18 22:42,24
+392,PTA-ER07,T06,corretiva,alerta prolongado,2026-07-18 23:04,2026-07-19 11:51,767
+393,MBI-ER01,T05,preventiva,P1 mensal,2026-07-19 01:11,2026-07-19 03:56,165
+394,FRE-ER06,T01,preventiva,P1 mensal,2026-07-19 02:40,2026-07-19 04:51,131
+395,LUZ-ER12,T10,preventiva,P1 mensal,2026-07-19 02:40,2026-07-19 04:31,111
+396,VSO-ER17,T02,preventiva,P1 mensal,2026-07-19 03:14,2026-07-19 04:44,90
+397,LUZ-ER02,T10,preventiva,P1 mensal,2026-07-19 03:19,2026-07-19 05:21,122
+398,PTA-ER02,T01,preventiva,P1 mensal,2026-07-19 03:29,2026-07-19 06:11,162
+399,LUZ-ER11,T08,preventiva,P1 mensal,2026-07-19 03:45,2026-07-19 05:55,130
+400,FAL-ER02,T08,corretiva,parada de seguranca (reset),2026-07-19 06:20,2026-07-19 06:30,10
+401,PTA-ER15,T12,corretiva,parada de seguranca (reset),2026-07-19 06:25,2026-07-19 06:49,24
+402,LUZ-ER04,T03,corretiva,parada de seguranca (reset),2026-07-19 10:11,2026-07-19 10:52,41
+403,MBI-ER05,T09,corretiva,parada de seguranca (reset),2026-07-19 10:12,2026-07-19 10:45,33
+404,FRE-ER14,T09,corretiva,parada de seguranca (reset),2026-07-19 10:16,2026-07-19 10:28,12
+405,PTA-ER12,T04,corretiva,parada de seguranca (reset),2026-07-19 10:19,2026-07-19 10:55,36
+406,PTA-ER11,T08,corretiva,parada de seguranca (reset),2026-07-19 10:22,2026-07-19 10:58,36
+407,REP-ER59,T11,corretiva,parada de seguranca (reset),2026-07-19 14:05,2026-07-19 14:25,20
+408,LUZ-ER17,T11,corretiva,parada de seguranca (reset),2026-07-19 14:16,2026-07-19 14:44,28
+409,FAL-ER03,T12,corretiva,parada de seguranca (reset),2026-07-19 14:20,2026-07-19 15:03,43
+410,HIG-ER21,T02,corretiva,parada de seguranca (reset),2026-07-19 18:05,2026-07-19 18:45,40
+411,FRE-ER09,T06,corretiva,parada de seguranca (reset),2026-07-19 18:06,2026-07-19 18:18,12
+412,PIN-ER19,T04,corretiva,parada de seguranca (reset),2026-07-19 18:13,2026-07-19 18:53,40
+413,HIG-ER16,T09,corretiva,parada de seguranca (reset),2026-07-19 18:22,2026-07-19 18:32,10
+414,FAL-ER03,T10,corretiva,alerta prolongado,2026-07-19 18:47,2026-07-21 00:47,1800
+415,PIN-ER22,T05,corretiva,parada de seguranca (reset),2026-07-19 22:26,2026-07-19 22:54,28
+416,REP-ER26,T12,corretiva,parada de seguranca (reset),2026-07-19 22:29,2026-07-19 22:46,17
+417,FRE-ER06,T03,corretiva,status critico,2026-07-19 23:21,2026-07-20 02:30,190
+418,FRE-ER05,T04,preventiva,P1 mensal,2026-07-20 00:38,2026-07-20 02:15,98
+419,TVS-ER04,T04,preventiva,P1 mensal,2026-07-20 00:51,2026-07-20 03:13,143
+420,TVS-ER07,T10,preventiva,P1 mensal,2026-07-20 00:58,2026-07-20 03:42,164
+421,FRE-ER12,T01,preventiva,P1 mensal,2026-07-20 01:40,2026-07-20 03:42,123
+422,FAL-ER05,T11,preventiva,P1 mensal,2026-07-20 02:23,2026-07-20 04:33,130
+423,MBI-ER10,T06,preventiva,P1 mensal,2026-07-20 03:07,2026-07-20 05:50,164
+424,FRE-ER20,T12,preventiva,P1 mensal,2026-07-20 03:56,2026-07-20 06:21,146
+425,VSO-ER08,T09,corretiva,parada de seguranca (reset),2026-07-20 06:12,2026-07-20 06:54,42
+426,LUZ-ER12,T12,corretiva,parada de seguranca (reset),2026-07-20 06:16,2026-07-20 06:38,22
+427,MBI-ER05,T08,corretiva,parada de seguranca (reset),2026-07-20 06:19,2026-07-20 06:55,36
+428,PTA-ER11,T07,corretiva,parada de seguranca (reset),2026-07-20 10:06,2026-07-20 10:47,41
+429,HIG-ER24,T01,corretiva,parada de seguranca (reset),2026-07-20 10:21,2026-07-20 10:33,12
+430,PIN-ER03,T06,corretiva,parada de seguranca (reset),2026-07-20 10:23,2026-07-20 10:43,20
+431,VSO-ER20,T01,corretiva,parada de seguranca (reset),2026-07-20 10:23,2026-07-20 10:54,31
+432,PTA-ER16,T11,corretiva,parada de seguranca (reset),2026-07-20 10:27,2026-07-20 11:07,40
+433,FRE-ER02,T11,corretiva,parada de seguranca (reset),2026-07-20 14:06,2026-07-20 14:46,40
+434,VSO-ER07,T08,corretiva,parada de seguranca (reset),2026-07-20 14:07,2026-07-20 14:44,37
+435,PTA-ER03,T06,corretiva,parada de seguranca (reset),2026-07-20 14:08,2026-07-20 14:40,32
+436,MBI-ER08,T08,corretiva,parada de seguranca (reset),2026-07-20 14:12,2026-07-20 14:37,25
+437,PTA-ER17,T07,corretiva,parada de seguranca (reset),2026-07-20 14:14,2026-07-20 14:51,37
+438,VSO-ER08,T10,corretiva,parada de seguranca (reset),2026-07-20 14:17,2026-07-20 14:38,21
+439,BUT-ER09,T02,corretiva,parada de seguranca (reset),2026-07-20 14:22,2026-07-20 14:49,27
+440,PIN-ER05,T02,corretiva,parada de seguranca (reset),2026-07-20 14:24,2026-07-20 14:42,18
+441,HIG-ER18,T08,corretiva,parada de seguranca (reset),2026-07-20 14:25,2026-07-20 14:57,32
+442,BUT-ER02,T01,corretiva,parada de seguranca (reset),2026-07-20 14:29,2026-07-20 14:47,18
+443,FRA-ER02,T04,corretiva,sem resposta do sensor,2026-07-20 15:02,2026-07-20 18:30,208
+444,PIN-ER29,T05,corretiva,status critico,2026-07-20 15:31,2026-07-20 16:56,86
+445,FRA-ER05,T07,corretiva,parada de seguranca (reset),2026-07-20 18:16,2026-07-20 18:32,16
+446,PTA-ER11,T11,corretiva,parada de seguranca (reset),2026-07-20 18:20,2026-07-20 18:58,38
+447,PIN-ER28,T02,corretiva,parada de seguranca (reset),2026-07-20 18:23,2026-07-20 18:56,33
+448,BUT-ER03,T12,corretiva,parada de seguranca (reset),2026-07-20 18:27,2026-07-20 18:55,28
+449,PIN-ER32,T11,corretiva,parada de seguranca (reset),2026-07-20 18:28,2026-07-20 18:51,23
+450,PTA-ER17,T03,corretiva,parada de seguranca (reset),2026-07-20 22:07,2026-07-20 22:45,38
+451,HIG-ER16,T06,corretiva,parada de seguranca (reset),2026-07-20 22:13,2026-07-20 22:39,26
+452,HIG-ER04,T01,corretiva,status critico,2026-07-20 23:28,2026-07-21 03:36,248
+453,FRE-ER13,T06,preventiva,P1 mensal,2026-07-21 02:22,2026-07-21 04:07,105
+454,FAL-ER04,T08,preventiva,P1 mensal,2026-07-21 03:04,2026-07-21 05:14,130
+455,PIN-ER04,T04,preventiva,P1 mensal,2026-07-21 03:05,2026-07-21 05:36,152
+456,REP-ER61,T06,preventiva,P1 mensal,2026-07-21 03:23,2026-07-21 05:07,104
+457,REP-ER60,T01,preventiva,P1 mensal,2026-07-21 03:39,2026-07-21 05:24,105
+458,BUT-ER03,T02,corretiva,parada de seguranca (reset),2026-07-21 06:08,2026-07-21 06:33,25
+459,REP-ER26,T07,corretiva,parada de seguranca (reset),2026-07-21 06:14,2026-07-21 06:45,31
+460,LUZ-ER07,T10,corretiva,parada de seguranca (reset),2026-07-21 06:26,2026-07-21 06:48,22
+461,HIG-ER01,T07,corretiva,status critico,2026-07-21 06:38,2026-07-22 04:09,1291
+462,FRE-ER13,T06,corretiva,parada de seguranca (reset),2026-07-21 10:24,2026-07-21 10:57,33
+463,PTA-ER05,T12,corretiva,parada de seguranca (reset),2026-07-21 14:23,2026-07-21 14:59,36
+464,FAL-ER06,T08,corretiva,parada de seguranca (reset),2026-07-21 18:06,2026-07-21 18:42,36
+465,LUZ-ER08,T09,corretiva,parada de seguranca (reset),2026-07-21 18:13,2026-07-21 18:23,10
+466,HIG-ER04,T06,corretiva,parada de seguranca (reset),2026-07-21 18:14,2026-07-21 18:56,42
+467,HIG-ER01,T02,corretiva,parada de seguranca (reset),2026-07-21 18:19,2026-07-21 18:47,28
+468,LUZ-ER19,T07,corretiva,parada de seguranca (reset),2026-07-21 18:20,2026-07-21 19:02,42
+469,LUZ-ER12,T05,corretiva,parada de seguranca (reset),2026-07-21 18:27,2026-07-21 19:10,43
+470,PIN-ER11,T02,corretiva,parada de seguranca (reset),2026-07-21 22:29,2026-07-21 22:41,12
+471,PIN-ER22,T01,preventiva,P1 mensal,2026-07-22 01:38,2026-07-22 04:12,155
+472,BUT-ER05,T02,preventiva,P1 mensal,2026-07-22 01:55,2026-07-22 03:40,105
+473,PTA-ER07,T11,preventiva,P1 mensal,2026-07-22 02:04,2026-07-22 04:20,137
+474,HIG-ER24,T04,preventiva,P1 mensal,2026-07-22 03:00,2026-07-22 05:10,131
+475,LUZ-ER17,T04,preventiva,P1 mensal,2026-07-22 03:10,2026-07-22 04:54,104
+476,FAL-ER09,T04,preventiva,P1 mensal,2026-07-22 03:40,2026-07-22 06:08,149
+477,BUT-ER13,T09,corretiva,parada de seguranca (reset),2026-07-22 06:11,2026-07-22 06:47,36
+478,LUZ-ER03,T05,corretiva,parada de seguranca (reset),2026-07-22 06:14,2026-07-22 06:24,10
+479,FAL-ER04,T05,corretiva,parada de seguranca (reset),2026-07-22 06:23,2026-07-22 06:54,31
+480,FRE-ER09,T12,corretiva,sem resposta do sensor,2026-07-22 10:14,2026-07-22 11:22,68
+481,MBI-ER08,T06,corretiva,parada de seguranca (reset),2026-07-22 10:20,2026-07-22 10:33,13
+482,VSO-ER07,T06,corretiva,parada de seguranca (reset),2026-07-22 10:28,2026-07-22 10:53,25
+483,HIG-ER20,T08,corretiva,sem resposta do sensor,2026-07-22 11:08,2026-07-22 15:26,258
+484,PIN-ER15,T02,corretiva,status critico,2026-07-22 11:49,2026-07-22 22:04,615
+485,VSO-ER20,T07,corretiva,status critico,2026-07-22 11:52,2026-07-22 14:20,149
+486,HIG-ER02,T06,corretiva,parada de seguranca (reset),2026-07-22 14:09,2026-07-22 14:24,15
+487,LUZ-ER02,T04,corretiva,parada de seguranca (reset),2026-07-22 14:13,2026-07-22 14:51,38
+488,HIG-ER15,T09,corretiva,parada de seguranca (reset),2026-07-22 14:16,2026-07-22 14:42,26
+489,LUZ-ER06,T06,corretiva,parada de seguranca (reset),2026-07-22 14:20,2026-07-22 14:31,11
+490,PIN-ER13,T03,corretiva,parada de seguranca (reset),2026-07-22 14:20,2026-07-22 15:04,44
+491,PTA-ER16,T04,corretiva,parada de seguranca (reset),2026-07-22 14:26,2026-07-22 14:52,26
+492,MBI-ER11,T11,corretiva,parada de seguranca (reset),2026-07-22 14:27,2026-07-22 14:45,18
+493,HIG-ER05,T01,corretiva,parada de seguranca (reset),2026-07-22 22:09,2026-07-22 22:51,42
+494,FRA-ER04,T07,corretiva,parada de seguranca (reset),2026-07-22 22:20,2026-07-22 22:41,21
+495,LUZ-ER09,T01,corretiva,parada de seguranca (reset),2026-07-22 22:28,2026-07-22 22:49,21
+496,PIN-ER24,T09,preventiva,P1 mensal,2026-07-23 00:14,2026-07-23 01:59,106
+497,PTA-ER11,T06,preventiva,P1 mensal,2026-07-23 00:35,2026-07-23 02:36,121
+498,FRA-ER10,T09,preventiva,P1 mensal,2026-07-23 00:38,2026-07-23 02:55,137
+499,VSO-ER01,T02,preventiva,P1 mensal,2026-07-23 00:39,2026-07-23 03:08,149
+500,HIG-ER13,T12,preventiva,P1 mensal,2026-07-23 00:46,2026-07-23 03:25,159
+501,HIG-ER07,T11,preventiva,P1 mensal,2026-07-23 01:44,2026-07-23 03:59,135
+502,BUT-ER11,T01,preventiva,P1 mensal,2026-07-23 02:23,2026-07-23 04:51,148
+503,LUZ-ER05,T05,preventiva,P1 mensal,2026-07-23 02:43,2026-07-23 04:13,90
+504,VSO-ER03,T02,preventiva,P1 mensal,2026-07-23 03:26,2026-07-23 05:21,115
+505,PTA-ER14,T10,corretiva,parada de seguranca (reset),2026-07-23 06:27,2026-07-23 06:56,29
+506,FRA-ER03,T05,corretiva,parada de seguranca (reset),2026-07-23 06:29,2026-07-23 07:10,41
+507,REP-ER61,T10,corretiva,parada de seguranca (reset),2026-07-23 10:08,2026-07-23 10:52,44
+508,FRA-ER06,T08,corretiva,status critico,2026-07-23 10:31,2026-07-24 05:43,1152
+509,FRE-ER08,T01,corretiva,parada de seguranca (reset),2026-07-23 14:07,2026-07-23 14:30,23
+510,PTA-ER10,T03,corretiva,parada de seguranca (reset),2026-07-23 14:27,2026-07-23 15:03,36
+511,PIN-ER25,T10,corretiva,parada de seguranca (reset),2026-07-23 18:15,2026-07-23 18:58,43
+512,LUZ-ER17,T01,corretiva,parada de seguranca (reset),2026-07-23 18:16,2026-07-23 18:54,38
+513,HIG-ER05,T05,corretiva,parada de seguranca (reset),2026-07-23 18:27,2026-07-23 19:06,39
+514,VSO-ER19,T04,corretiva,parada de seguranca (reset),2026-07-23 18:27,2026-07-23 18:55,28
+515,REP-ER25,T09,corretiva,status critico,2026-07-23 19:00,2026-07-24 02:00,420
+516,PIN-ER05,T10,corretiva,parada de seguranca (reset),2026-07-23 22:22,2026-07-23 23:01,39
+517,PTA-ER08,T12,corretiva,parada de seguranca (reset),2026-07-23 22:28,2026-07-23 22:41,13
+518,PIN-ER16,T08,preventiva,P1 mensal,2026-07-24 00:07,2026-07-24 02:42,155
+519,HIG-ER22,T02,preventiva,P1 mensal,2026-07-24 00:19,2026-07-24 02:17,119
+520,VSO-ER06,T03,preventiva,P1 mensal,2026-07-24 00:43,2026-07-24 03:13,150
+521,MBI-ER12,T07,preventiva,P1 mensal,2026-07-24 00:50,2026-07-24 02:23,93
+522,FRE-ER10,T02,preventiva,P1 mensal,2026-07-24 01:04,2026-07-24 02:58,114
+523,FRE-ER17,T09,preventiva,P1 mensal,2026-07-24 03:16,2026-07-24 04:47,92
+524,HIG-ER16,T10,preventiva,P1 mensal,2026-07-24 03:43,2026-07-24 05:45,122
+525,FAL-ER10,T04,corretiva,parada de seguranca (reset),2026-07-24 06:22,2026-07-24 07:01,39
+526,BUT-ER11,T11,corretiva,parada de seguranca (reset),2026-07-24 06:29,2026-07-24 07:07,38
+527,PIN-ER06,T10,corretiva,parada de seguranca (reset),2026-07-24 10:07,2026-07-24 10:17,10
+528,BUT-ER09,T11,corretiva,status critico,2026-07-24 10:08,2026-07-24 14:15,248
+529,VSO-ER19,T07,corretiva,parada de seguranca (reset),2026-07-24 10:12,2026-07-24 10:44,32
+530,BUT-ER08,T12,corretiva,parada de seguranca (reset),2026-07-24 10:20,2026-07-24 10:57,37
+531,PTA-ER08,T05,corretiva,parada de seguranca (reset),2026-07-24 10:20,2026-07-24 10:52,32
+532,MBI-ER07,T03,corretiva,parada de seguranca (reset),2026-07-24 10:22,2026-07-24 11:05,43
+533,HIG-ER18,T09,corretiva,status critico,2026-07-24 10:39,2026-07-24 13:18,160
+534,BUT-ER06,T07,corretiva,status critico,2026-07-24 14:13,2026-07-25 12:13,1321
+535,LUZ-ER05,T06,corretiva,parada de seguranca (reset),2026-07-24 14:19,2026-07-24 14:29,10
+536,LUZ-ER07,T05,corretiva,parada de seguranca (reset),2026-07-24 14:21,2026-07-24 14:39,18
+537,LUZ-ER19,T06,corretiva,parada de seguranca (reset),2026-07-24 14:23,2026-07-24 15:04,41
+538,VSO-ER06,T01,corretiva,parada de seguranca (reset),2026-07-24 14:26,2026-07-24 15:10,44
+539,BUT-ER04,T08,corretiva,parada de seguranca (reset),2026-07-24 14:29,2026-07-24 15:03,34
+540,PIN-ER17,T03,corretiva,sem resposta do sensor,2026-07-24 15:27,2026-07-25 05:28,841
+541,FAL-ER08,T12,corretiva,parada de seguranca (reset),2026-07-24 18:14,2026-07-24 18:54,40
+542,PIN-ER05,T06,corretiva,parada de seguranca (reset),2026-07-24 18:20,2026-07-24 18:59,39
+543,REP-ER25,T07,corretiva,parada de seguranca (reset),2026-07-24 18:26,2026-07-24 18:58,32
+544,PIN-ER09,T11,corretiva,parada de seguranca (reset),2026-07-24 18:27,2026-07-24 18:59,32
+545,MBI-ER03,T01,corretiva,parada de seguranca (reset),2026-07-24 18:28,2026-07-24 18:52,24
+546,FRA-ER06,T01,corretiva,parada de seguranca (reset),2026-07-24 22:20,2026-07-24 22:44,24
+547,FRE-ER13,T01,corretiva,parada de seguranca (reset),2026-07-24 22:20,2026-07-24 23:01,41
+548,HIG-ER01,T12,corretiva,parada de seguranca (reset),2026-07-24 22:23,2026-07-24 22:39,16
+549,HIG-ER14,T06,corretiva,parada de seguranca (reset),2026-07-24 22:24,2026-07-24 23:03,39
+550,PIN-ER24,T01,corretiva,status critico,2026-07-24 22:46,2026-07-25 14:15,929
+551,HIG-ER17,T04,preventiva,P1 mensal,2026-07-25 00:50,2026-07-25 03:06,136
+552,FRA-ER08,T08,preventiva,P1 mensal,2026-07-25 01:52,2026-07-25 03:49,118
+553,VSO-ER05,T12,preventiva,P1 mensal,2026-07-25 02:32,2026-07-25 04:55,143
+554,FRA-ER06,T07,preventiva,P1 mensal,2026-07-25 02:57,2026-07-25 05:04,128
+555,TVS-ER03,T04,preventiva,P1 mensal,2026-07-25 03:33,2026-07-25 05:50,137
+556,FAL-ER02,T07,corretiva,sem resposta do sensor,2026-07-25 06:37,2026-07-26 00:39,1082
+557,PIN-ER31,T06,corretiva,parada de seguranca (reset),2026-07-25 10:12,2026-07-25 10:22,10
+558,LUZ-ER14,T02,corretiva,parada de seguranca (reset),2026-07-25 10:16,2026-07-25 10:31,15
+559,BUT-ER11,T04,corretiva,parada de seguranca (reset),2026-07-25 10:18,2026-07-25 10:42,24
+560,FRA-ER06,T10,corretiva,parada de seguranca (reset),2026-07-25 10:25,2026-07-25 11:05,40
+561,LUZ-ER20,T09,corretiva,parada de seguranca (reset),2026-07-25 14:08,2026-07-25 14:36,28
+562,FAL-ER08,T06,corretiva,parada de seguranca (reset),2026-07-25 14:17,2026-07-25 14:36,19
+563,PTA-ER08,T05,corretiva,parada de seguranca (reset),2026-07-25 14:26,2026-07-25 14:50,24
+564,PTA-ER02,T09,corretiva,parada de seguranca (reset),2026-07-25 18:17,2026-07-25 18:53,36
+565,HIG-ER12,T07,corretiva,parada de seguranca (reset),2026-07-25 18:26,2026-07-25 19:01,35
+566,LUZ-ER04,T09,corretiva,parada de seguranca (reset),2026-07-25 22:27,2026-07-25 23:01,34
+567,MBI-ER13,T01,corretiva,parada de seguranca (reset),2026-07-25 22:29,2026-07-25 23:11,42
+568,HIG-ER12,T05,preventiva,P1 mensal,2026-07-26 00:09,2026-07-26 01:52,104
+569,LUZ-ER09,T06,preventiva,P1 mensal,2026-07-26 00:26,2026-07-26 01:57,92
+570,FRE-ER08,T09,preventiva,P1 mensal,2026-07-26 01:45,2026-07-26 03:33,108
+571,FRE-ER16,T10,preventiva,P1 mensal,2026-07-26 02:03,2026-07-26 03:36,93
+572,FRA-ER02,T05,preventiva,P1 mensal,2026-07-26 02:07,2026-07-26 03:40,93
+573,HIG-ER03,T09,preventiva,P1 mensal,2026-07-26 02:51,2026-07-26 04:51,121
+574,PIN-ER25,T08,preventiva,P1 mensal,2026-07-26 02:53,2026-07-26 04:48,116
+575,TVS-ER08,T12,preventiva,P1 mensal,2026-07-26 03:06,2026-07-26 05:03,117
+576,BUT-ER10,T08,preventiva,P1 mensal,2026-07-26 03:21,2026-07-26 05:13,112
+577,LUZ-ER15,T05,corretiva,parada de seguranca (reset),2026-07-26 06:27,2026-07-26 07:05,38
+578,PTA-ER07,T11,corretiva,parada de seguranca (reset),2026-07-26 10:11,2026-07-26 10:42,31
+579,PIN-ER02,T09,corretiva,parada de seguranca (reset),2026-07-26 10:19,2026-07-26 10:54,35
+580,LUZ-ER07,T05,corretiva,parada de seguranca (reset),2026-07-26 10:24,2026-07-26 10:41,17
+581,PIN-ER14,T03,corretiva,parada de seguranca (reset),2026-07-26 10:28,2026-07-26 10:56,28
+582,PIN-ER02,T11,corretiva,parada de seguranca (reset),2026-07-26 14:06,2026-07-26 14:47,41
+583,VSO-ER07,T06,corretiva,parada de seguranca (reset),2026-07-26 14:08,2026-07-26 14:31,23
+584,BUT-ER09,T12,corretiva,parada de seguranca (reset),2026-07-26 14:14,2026-07-26 14:24,10
+585,HIG-ER15,T08,corretiva,parada de seguranca (reset),2026-07-26 14:27,2026-07-26 15:09,42
+586,REP-ER25,T09,corretiva,parada de seguranca (reset),2026-07-26 18:18,2026-07-26 18:28,10
+587,PIN-ER20,T08,corretiva,parada de seguranca (reset),2026-07-26 18:20,2026-07-26 18:50,30
+588,PIN-ER13,T11,corretiva,parada de seguranca (reset),2026-07-26 22:10,2026-07-26 22:38,28
+589,HIG-ER20,T10,corretiva,parada de seguranca (reset),2026-07-26 22:14,2026-07-26 22:53,39
+590,MBI-ER05,T12,corretiva,parada de seguranca (reset),2026-07-26 22:24,2026-07-26 22:49,25
+591,FAL-ER02,T01,preventiva,P1 mensal,2026-07-27 00:14,2026-07-27 02:24,131
+592,PIN-ER28,T09,preventiva,P1 mensal,2026-07-27 00:31,2026-07-27 02:53,142
+593,LUZ-ER01,T07,preventiva,P1 mensal,2026-07-27 00:40,2026-07-27 02:26,107
+594,PIN-ER05,T07,preventiva,P1 mensal,2026-07-27 01:05,2026-07-27 03:11,126
+595,BUT-ER07,T04,preventiva,P1 mensal,2026-07-27 01:24,2026-07-27 02:55,92
+596,TVS-ER01,T05,preventiva,P1 mensal,2026-07-27 01:38,2026-07-27 04:23,165
+597,REP-ER25,T11,preventiva,P1 mensal,2026-07-27 02:38,2026-07-27 04:51,134
+598,LUZ-ER11,T05,corretiva,parada de seguranca (reset),2026-07-27 06:06,2026-07-27 06:46,40
+599,PIN-ER16,T12,corretiva,parada de seguranca (reset),2026-07-27 06:11,2026-07-27 06:50,39
+600,REP-ER60,T02,corretiva,parada de seguranca (reset),2026-07-27 06:16,2026-07-27 06:48,32
+601,FRE-ER09,T06,corretiva,parada de seguranca (reset),2026-07-27 06:24,2026-07-27 06:46,22
+602,PTA-ER05,T01,corretiva,parada de seguranca (reset),2026-07-27 10:24,2026-07-27 10:57,33
+603,LUZ-ER04,T02,corretiva,status critico,2026-07-27 10:53,2026-07-28 06:32,1180
+604,PTA-ER09,T03,corretiva,parada de seguranca (reset),2026-07-27 14:17,2026-07-27 14:55,38
+605,VSO-ER12,T11,corretiva,parada de seguranca (reset),2026-07-27 14:22,2026-07-27 14:40,18
+606,FAL-ER06,T08,corretiva,parada de seguranca (reset),2026-07-27 14:29,2026-07-27 15:05,36
+607,LUZ-ER15,T10,corretiva,status critico,2026-07-27 18:06,2026-07-28 00:19,374
+608,VSO-ER08,T11,corretiva,parada de seguranca (reset),2026-07-27 18:11,2026-07-27 18:55,44
+609,HIG-ER03,T04,corretiva,parada de seguranca (reset),2026-07-27 18:20,2026-07-27 18:51,31
+610,PIN-ER09,T03,corretiva,parada de seguranca (reset),2026-07-27 18:21,2026-07-27 18:38,17
+611,PIN-ER18,T09,corretiva,parada de seguranca (reset),2026-07-27 18:24,2026-07-27 18:53,29
+612,PIN-ER01,T09,corretiva,parada de seguranca (reset),2026-07-27 18:29,2026-07-27 18:59,30
+613,PTA-ER16,T04,corretiva,parada de seguranca (reset),2026-07-27 22:05,2026-07-27 22:20,15
+614,PIN-ER15,T07,corretiva,parada de seguranca (reset),2026-07-27 22:15,2026-07-27 22:54,39
+615,HIG-ER14,T09,corretiva,parada de seguranca (reset),2026-07-27 22:25,2026-07-27 22:41,16
+616,PTA-ER13,T08,preventiva,P1 mensal,2026-07-28 00:13,2026-07-28 02:23,130
+617,PIN-ER07,T01,preventiva,P1 mensal,2026-07-28 00:14,2026-07-28 02:41,147
+618,BUT-ER13,T01,preventiva,P1 mensal,2026-07-28 00:45,2026-07-28 03:06,142
+619,FRE-ER07,T08,preventiva,P1 mensal,2026-07-28 00:45,2026-07-28 02:49,124
+620,PIN-ER21,T07,preventiva,P1 mensal,2026-07-28 00:58,2026-07-28 03:00,122
+621,VSO-ER10,T09,preventiva,P1 mensal,2026-07-28 01:03,2026-07-28 02:52,110
+622,PIN-ER15,T02,preventiva,P1 mensal,2026-07-28 01:07,2026-07-28 03:52,165
+623,HIG-ER18,T04,preventiva,P1 mensal,2026-07-28 02:03,2026-07-28 04:42,159
+624,MBI-ER13,T12,preventiva,P1 mensal,2026-07-28 02:23,2026-07-28 04:05,102
+625,HIG-ER15,T06,preventiva,P1 mensal,2026-07-28 02:24,2026-07-28 04:27,124
+626,FRE-ER15,T08,preventiva,P1 mensal,2026-07-28 03:44,2026-07-28 05:31,107
+627,TVS-ER02,T05,preventiva,P1 mensal,2026-07-28 03:45,2026-07-28 05:43,118
+628,LUZ-ER07,T11,preventiva,P1 mensal,2026-07-28 03:52,2026-07-28 06:22,151
+629,HIG-ER12,T03,corretiva,parada de seguranca (reset),2026-07-28 06:08,2026-07-28 06:45,37
+630,VSO-ER01,T04,corretiva,parada de seguranca (reset),2026-07-28 06:19,2026-07-28 06:44,25
+631,BUT-ER12,T10,corretiva,parada de seguranca (reset),2026-07-28 06:22,2026-07-28 06:42,20
+632,FRA-ER03,T02,corretiva,parada de seguranca (reset),2026-07-28 10:07,2026-07-28 10:31,24
+633,PTA-ER01,T01,corretiva,parada de seguranca (reset),2026-07-28 14:11,2026-07-28 14:45,34
+634,FAL-ER07,T01,corretiva,parada de seguranca (reset),2026-07-28 14:22,2026-07-28 15:04,42
+635,FRA-ER09,T05,corretiva,parada de seguranca (reset),2026-07-28 18:05,2026-07-28 18:20,15
+636,HIG-ER23,T07,corretiva,parada de seguranca (reset),2026-07-28 18:12,2026-07-28 18:38,26
+637,FAL-ER10,T11,corretiva,parada de seguranca (reset),2026-07-28 18:17,2026-07-28 18:42,25
+638,PIN-ER24,T05,corretiva,parada de seguranca (reset),2026-07-29 06:17,2026-07-29 06:50,33
+639,HIG-ER12,T02,corretiva,parada de seguranca (reset),2026-07-29 06:26,2026-07-29 06:52,26
+640,PTA-ER08,T10,corretiva,parada de seguranca (reset),2026-07-29 10:11,2026-07-29 10:28,17
+641,FRA-ER03,T03,corretiva,parada de seguranca (reset),2026-07-29 10:19,2026-07-29 11:02,43
+642,REP-ER59,T01,corretiva,parada de seguranca (reset),2026-07-29 10:19,2026-07-29 10:35,16
+643,PIN-ER21,T04,corretiva,parada de seguranca (reset),2026-07-29 10:27,2026-07-29 10:50,23
+644,LUZ-ER06,T12,corretiva,parada de seguranca (reset),2026-07-29 10:29,2026-07-29 10:39,10
+645,FRE-ER16,T06,corretiva,parada de seguranca (reset),2026-07-29 14:16,2026-07-29 14:50,34
+646,PTA-ER07,T12,corretiva,parada de seguranca (reset),2026-07-29 14:22,2026-07-29 14:49,27
+647,HIG-ER03,T04,corretiva,status critico,2026-07-29 15:55,2026-07-29 22:19,384
+648,PTA-ER15,T11,corretiva,parada de seguranca (reset),2026-07-29 18:05,2026-07-29 18:19,14
+649,PIN-ER20,T08,corretiva,parada de seguranca (reset),2026-07-29 22:06,2026-07-29 22:34,28
+650,PTA-ER03,T03,corretiva,parada de seguranca (reset),2026-07-29 22:14,2026-07-29 22:46,32
+651,PIN-ER05,T01,corretiva,parada de seguranca (reset),2026-07-29 22:26,2026-07-29 22:38,12
+652,BUT-ER01,T02,corretiva,parada de seguranca (reset),2026-07-30 06:06,2026-07-30 06:35,29
+653,MBI-ER10,T07,corretiva,parada de seguranca (reset),2026-07-30 06:19,2026-07-30 06:33,14
+654,PTA-ER14,T11,corretiva,status critico,2026-07-30 06:58,2026-07-30 23:32,995
+655,BUT-ER01,T12,corretiva,parada de seguranca (reset),2026-07-30 10:07,2026-07-30 10:36,29
+656,FRE-ER02,T03,corretiva,parada de seguranca (reset),2026-07-30 10:09,2026-07-30 10:47,38
+657,VSO-ER04,T10,corretiva,parada de seguranca (reset),2026-07-30 10:22,2026-07-30 10:46,24
+658,VSO-ER12,T12,corretiva,parada de seguranca (reset),2026-07-30 14:19,2026-07-30 14:35,16
+659,FRE-ER04,T03,corretiva,status critico,2026-07-30 14:37,2026-07-31 06:22,945
+660,PIN-ER18,T03,corretiva,parada de seguranca (reset),2026-07-30 18:06,2026-07-30 18:45,39
+661,VSO-ER09,T09,corretiva,parada de seguranca (reset),2026-07-30 18:25,2026-07-30 18:49,24
+662,LUZ-ER20,T03,corretiva,parada de seguranca (reset),2026-07-30 22:22,2026-07-30 23:01,39
+663,BUT-ER05,T10,corretiva,parada de seguranca (reset),2026-07-30 22:28,2026-07-30 22:57,29
+664,PIN-ER15,T02,corretiva,sem resposta do sensor,2026-07-30 23:01,2026-07-31 21:11,1331
+665,PIN-ER10,T01,corretiva,parada de seguranca (reset),2026-07-31 06:08,2026-07-31 06:23,15
+666,PTA-ER16,T02,corretiva,parada de seguranca (reset),2026-07-31 06:11,2026-07-31 06:43,32
+667,FRE-ER06,T07,corretiva,parada de seguranca (reset),2026-07-31 06:14,2026-07-31 06:53,39
+668,PIN-ER17,T09,corretiva,parada de seguranca (reset),2026-07-31 06:14,2026-07-31 06:31,17
+669,FRE-ER17,T11,corretiva,parada de seguranca (reset),2026-07-31 06:15,2026-07-31 06:33,18
+670,LUZ-ER19,T05,corretiva,parada de seguranca (reset),2026-07-31 06:17,2026-07-31 06:39,22
+671,LUZ-ER02,T10,corretiva,parada de seguranca (reset),2026-07-31 06:21,2026-07-31 06:41,20
+672,MBI-ER07,T09,corretiva,parada de seguranca (reset),2026-07-31 06:22,2026-07-31 06:54,32
+673,FRE-ER02,T01,corretiva,parada de seguranca (reset),2026-07-31 06:23,2026-07-31 06:56,33
+674,HIG-ER25,T07,corretiva,parada de seguranca (reset),2026-07-31 06:26,2026-07-31 07:06,40
+675,LUZ-ER01,T05,corretiva,alerta prolongado,2026-07-31 06:38,2026-07-31 16:47,609
+676,MBI-ER05,T09,corretiva,parada de seguranca (reset),2026-07-31 10:28,2026-07-31 11:09,41
+677,PTA-ER12,T03,corretiva,parada de seguranca (reset),2026-07-31 10:28,2026-07-31 10:40,12
+678,VSO-ER10,T01,corretiva,parada de seguranca (reset),2026-07-31 14:06,2026-07-31 14:49,43
+679,PIN-ER06,T02,corretiva,parada de seguranca (reset),2026-07-31 14:07,2026-07-31 14:20,13
+680,FRE-ER12,T07,corretiva,parada de seguranca (reset),2026-07-31 14:18,2026-07-31 14:34,16
+681,PIN-ER28,T09,corretiva,parada de seguranca (reset),2026-07-31 14:19,2026-07-31 14:55,36
+682,VSO-ER06,T09,corretiva,parada de seguranca (reset),2026-07-31 18:11,2026-07-31 18:51,40
+683,PIN-ER24,T03,corretiva,parada de seguranca (reset),2026-07-31 18:13,2026-07-31 18:45,32
+684,PTA-ER15,T02,corretiva,parada de seguranca (reset),2026-07-31 18:27,2026-07-31 19:00,33
+685,PIN-ER22,T08,corretiva,parada de seguranca (reset),2026-07-31 22:10,2026-07-31 22:42,32
+686,VSO-ER07,T12,corretiva,parada de seguranca (reset),2026-07-31 22:12,2026-07-31 22:26,14
+687,VSO-ER18,T10,preventiva,P1 mensal,2026-08-01 00:15,2026-08-01 02:00,105
+688,PTA-ER10,T09,preventiva,P1 mensal,2026-08-01 00:45,2026-08-01 03:10,146
+689,MBI-ER02,T08,preventiva,P1 mensal,2026-08-01 01:27,2026-08-01 03:22,116
+690,LUZ-ER13,T01,preventiva,P1 mensal,2026-08-01 02:18,2026-08-01 04:46,149
+691,PIN-ER01,T04,preventiva,P1 mensal,2026-08-01 02:21,2026-08-01 04:15,114
+692,MBI-ER06,T11,preventiva,P1 mensal,2026-08-01 02:22,2026-08-01 04:53,151
+693,PIN-ER10,T09,preventiva,P1 mensal,2026-08-01 02:22,2026-08-01 05:01,159
+694,LUZ-ER16,T07,preventiva,P1 mensal,2026-08-01 02:30,2026-08-01 04:21,112
+695,HIG-ER05,T05,preventiva,P1 mensal,2026-08-01 03:46,2026-08-01 06:26,161
+696,FRE-ER19,T11,preventiva,P1 mensal,2026-08-01 03:52,2026-08-01 06:19,147
+697,BUT-ER04,T03,corretiva,parada de seguranca (reset),2026-08-01 06:13,2026-08-01 06:27,14
+698,PTA-ER09,T06,corretiva,parada de seguranca (reset),2026-08-01 06:14,2026-08-01 06:45,31
+699,LUZ-ER09,T02,corretiva,parada de seguranca (reset),2026-08-01 06:15,2026-08-01 06:47,32
+700,HIG-ER09,T02,corretiva,parada de seguranca (reset),2026-08-01 10:13,2026-08-01 10:52,39
+701,FRE-ER09,T04,corretiva,parada de seguranca (reset),2026-08-01 10:21,2026-08-01 10:47,26
+702,BUT-ER01,T10,corretiva,parada de seguranca (reset),2026-08-01 14:07,2026-08-01 14:23,16
+703,FAL-ER02,T01,corretiva,parada de seguranca (reset),2026-08-01 14:09,2026-08-01 14:36,27
+704,FRE-ER09,T06,corretiva,parada de seguranca (reset),2026-08-01 14:20,2026-08-01 14:32,12
+705,FRE-ER11,T08,corretiva,parada de seguranca (reset),2026-08-01 18:15,2026-08-01 18:52,37
+706,LUZ-ER19,T04,corretiva,parada de seguranca (reset),2026-08-01 18:25,2026-08-01 18:55,30
+707,VSO-ER12,T02,corretiva,status critico,2026-08-01 19:21,2026-08-02 13:24,1084
+708,BUT-ER07,T05,corretiva,parada de seguranca (reset),2026-08-01 22:13,2026-08-01 22:31,18
+709,LUZ-ER07,T06,corretiva,status critico,2026-08-01 23:22,2026-08-02 04:52,331
+710,TVS-ER06,T01,preventiva,P1 mensal,2026-08-02 00:39,2026-08-02 02:28,109
+711,FRE-ER01,T07,preventiva,P1 mensal,2026-08-02 00:49,2026-08-02 03:26,158
+712,PIN-ER08,T07,preventiva,P1 mensal,2026-08-02 01:20,2026-08-02 03:47,148
+713,LUZ-ER18,T03,preventiva,P1 mensal,2026-08-02 01:28,2026-08-02 03:55,148
+714,PIN-ER17,T02,preventiva,P1 mensal,2026-08-02 02:06,2026-08-02 04:36,151
+715,FAL-ER06,T06,preventiva,P1 mensal,2026-08-02 02:12,2026-08-02 04:17,125
+716,FRE-ER09,T04,preventiva,P1 mensal,2026-08-02 02:43,2026-08-02 05:16,154
+717,PIN-ER20,T04,preventiva,P1 mensal,2026-08-02 03:20,2026-08-02 06:00,161
+718,FRA-ER05,T02,preventiva,P1 mensal,2026-08-02 03:45,2026-08-02 06:11,146
+719,TVS-ER01,T12,corretiva,parada de seguranca (reset),2026-08-02 06:11,2026-08-02 06:50,39
+720,HIG-ER03,T06,corretiva,parada de seguranca (reset),2026-08-02 06:22,2026-08-02 06:55,33
+721,LUZ-ER14,T01,corretiva,parada de seguranca (reset),2026-08-02 06:24,2026-08-02 06:57,33
+722,MBI-ER10,T08,corretiva,parada de seguranca (reset),2026-08-02 06:29,2026-08-02 06:52,23
+723,FAL-ER04,T03,corretiva,parada de seguranca (reset),2026-08-02 10:26,2026-08-02 11:09,43
+724,FAL-ER06,T10,corretiva,parada de seguranca (reset),2026-08-02 14:09,2026-08-02 14:20,11
+725,PIN-ER18,T05,corretiva,parada de seguranca (reset),2026-08-02 14:25,2026-08-02 14:58,33
+726,PTA-ER11,T07,corretiva,parada de seguranca (reset),2026-08-02 18:11,2026-08-02 18:28,17
+727,FRA-ER08,T06,corretiva,parada de seguranca (reset),2026-08-02 18:22,2026-08-02 18:57,35
+728,FRE-ER13,T08,corretiva,status critico,2026-08-02 19:47,2026-08-03 04:14,508
+729,HIG-ER06,T06,preventiva,P1 mensal,2026-08-03 01:53,2026-08-03 04:20,147
+730,PTA-ER05,T04,preventiva,P1 mensal,2026-08-03 02:40,2026-08-03 04:58,138
+731,PTA-ER18,T12,preventiva,P1 mensal,2026-08-03 02:52,2026-08-03 05:06,134
+732,PIN-ER12,T05,preventiva,P1 mensal,2026-08-03 03:44,2026-08-03 05:26,103
+733,PTA-ER17,T07,preventiva,P1 mensal,2026-08-03 03:46,2026-08-03 05:39,113
+734,PIN-ER22,T12,corretiva,parada de seguranca (reset),2026-08-03 06:13,2026-08-03 06:43,30
+735,MBI-ER03,T08,corretiva,parada de seguranca (reset),2026-08-03 10:08,2026-08-03 10:22,14
+736,MBI-ER03,T08,corretiva,parada de seguranca (reset),2026-08-03 18:12,2026-08-03 18:35,23
+737,PTA-ER03,T09,corretiva,sem resposta do sensor,2026-08-03 22:07,2026-08-04 00:03,116
+738,REP-ER26,T05,corretiva,parada de seguranca (reset),2026-08-03 22:08,2026-08-03 22:39,31
+739,FRA-ER01,T07,corretiva,parada de seguranca (reset),2026-08-03 22:21,2026-08-03 22:34,13
+740,HIG-ER06,T11,corretiva,parada de seguranca (reset),2026-08-03 22:27,2026-08-03 22:59,32
+741,PIN-ER11,T01,preventiva,P1 mensal,2026-08-04 00:20,2026-08-04 02:20,120
+742,BUT-ER02,T02,preventiva,P1 mensal,2026-08-04 01:02,2026-08-04 03:41,159
+743,PTA-ER09,T08,preventiva,P1 mensal,2026-08-04 02:26,2026-08-04 04:49,143
+744,BUT-ER03,T01,preventiva,P1 mensal,2026-08-04 03:01,2026-08-04 05:25,144
+745,FAL-ER03,T05,preventiva,P1 mensal,2026-08-04 03:51,2026-08-04 05:30,99
+746,TVS-ER07,T05,corretiva,parada de seguranca (reset),2026-08-04 06:08,2026-08-04 06:26,18
+747,BUT-ER04,T02,corretiva,parada de seguranca (reset),2026-08-04 06:23,2026-08-04 06:51,28
+748,LUZ-ER03,T09,corretiva,status critico,2026-08-04 06:39,2026-08-05 09:28,1609
+749,VSO-ER10,T05,corretiva,parada de seguranca (reset),2026-08-04 10:05,2026-08-04 10:35,30
+750,MBI-ER03,T09,corretiva,parada de seguranca (reset),2026-08-04 10:07,2026-08-04 10:20,13
+751,FRA-ER06,T12,corretiva,parada de seguranca (reset),2026-08-04 10:12,2026-08-04 10:32,20
+752,VSO-ER07,T07,corretiva,parada de seguranca (reset),2026-08-04 10:24,2026-08-04 10:45,21
+753,PTA-ER09,T03,corretiva,parada de seguranca (reset),2026-08-04 10:26,2026-08-04 11:07,41
+754,LUZ-ER04,T04,corretiva,parada de seguranca (reset),2026-08-04 14:25,2026-08-04 14:47,22
+755,LUZ-ER01,T03,corretiva,parada de seguranca (reset),2026-08-04 18:22,2026-08-04 19:03,41
+756,LUZ-ER10,T06,corretiva,parada de seguranca (reset),2026-08-04 18:22,2026-08-04 18:48,26
+757,BUT-ER13,T11,corretiva,status critico,2026-08-04 19:41,2026-08-06 01:17,1776
+758,FRA-ER08,T10,corretiva,parada de seguranca (reset),2026-08-04 22:11,2026-08-04 22:29,18
+759,REP-ER25,T01,corretiva,parada de seguranca (reset),2026-08-04 22:13,2026-08-04 22:41,28
+760,REP-ER59,T08,corretiva,parada de seguranca (reset),2026-08-04 22:18,2026-08-04 22:47,29
+761,TVS-ER07,T06,corretiva,parada de seguranca (reset),2026-08-04 22:19,2026-08-04 22:59,40
+762,FRE-ER10,T02,corretiva,status critico,2026-08-04 22:41,2026-08-04 23:41,60
+763,PIN-ER31,T08,preventiva,P1 mensal,2026-08-05 01:39,2026-08-05 03:38,119
+764,BUT-ER14,T02,preventiva,P1 mensal,2026-08-05 01:55,2026-08-05 04:19,144
+765,MBI-ER04,T01,preventiva,P1 mensal,2026-08-05 02:07,2026-08-05 04:29,143
+766,LUZ-ER06,T09,preventiva,P1 mensal,2026-08-05 02:23,2026-08-05 04:57,154
+767,FRA-ER01,T06,preventiva,P1 mensal,2026-08-05 03:40,2026-08-05 05:55,135
+768,FRE-ER15,T12,corretiva,parada de seguranca (reset),2026-08-05 06:14,2026-08-05 06:30,16
+769,FRE-ER13,T09,corretiva,parada de seguranca (reset),2026-08-05 06:22,2026-08-05 07:00,38
+770,MBI-ER08,T09,corretiva,status critico,2026-08-05 06:31,2026-08-05 20:53,862
+771,BUT-ER08,T12,corretiva,parada de seguranca (reset),2026-08-05 10:07,2026-08-05 10:43,36
+772,HIG-ER22,T08,corretiva,parada de seguranca (reset),2026-08-05 10:08,2026-08-05 10:21,13
+773,FRE-ER06,T08,corretiva,parada de seguranca (reset),2026-08-05 10:11,2026-08-05 10:30,19
+774,PIN-ER12,T07,corretiva,parada de seguranca (reset),2026-08-05 10:12,2026-08-05 10:55,43
+775,PTA-ER17,T12,corretiva,parada de seguranca (reset),2026-08-05 10:14,2026-08-05 10:36,22
+776,FRE-ER17,T07,corretiva,parada de seguranca (reset),2026-08-05 10:21,2026-08-05 11:04,43
+777,TVS-ER01,T01,corretiva,parada de seguranca (reset),2026-08-05 10:27,2026-08-05 10:56,29
+778,MBI-ER11,T03,corretiva,parada de seguranca (reset),2026-08-05 14:19,2026-08-05 14:41,22
+779,LUZ-ER09,T02,corretiva,parada de seguranca (reset),2026-08-05 14:21,2026-08-05 14:49,28
+780,FAL-ER06,T08,corretiva,parada de seguranca (reset),2026-08-05 18:07,2026-08-05 18:18,11
+781,PTA-ER12,T05,corretiva,parada de seguranca (reset),2026-08-05 18:08,2026-08-05 18:44,36
+782,VSO-ER08,T06,corretiva,parada de seguranca (reset),2026-08-05 18:08,2026-08-05 18:31,23
+783,LUZ-ER10,T10,corretiva,parada de seguranca (reset),2026-08-05 18:28,2026-08-05 19:06,38
+784,FRA-ER05,T12,corretiva,parada de seguranca (reset),2026-08-05 22:17,2026-08-05 22:59,42
+785,VSO-ER10,T03,corretiva,parada de seguranca (reset),2026-08-05 22:20,2026-08-05 23:04,44
+786,LUZ-ER09,T05,corretiva,parada de seguranca (reset),2026-08-05 22:24,2026-08-05 22:34,10
+787,VSO-ER16,T08,preventiva,P1 mensal,2026-08-06 00:08,2026-08-06 02:38,150
+788,REP-ER26,T01,preventiva,P1 mensal,2026-08-06 00:54,2026-08-06 02:45,112
+789,HIG-ER09,T06,preventiva,P1 mensal,2026-08-06 01:31,2026-08-06 03:41,131
+790,VSO-ER13,T06,preventiva,P1 mensal,2026-08-06 01:34,2026-08-06 04:12,158
+791,FRA-ER03,T03,preventiva,P1 mensal,2026-08-06 01:44,2026-08-06 03:53,129
+792,BUT-ER04,T06,preventiva,P1 mensal,2026-08-06 01:57,2026-08-06 04:01,125
+793,PIN-ER26,T03,preventiva,P1 mensal,2026-08-06 02:07,2026-08-06 04:43,156
+794,PIN-ER06,T05,preventiva,P1 mensal,2026-08-06 03:33,2026-08-06 05:21,108
+795,FAL-ER08,T10,preventiva,P1 mensal,2026-08-06 03:55,2026-08-06 05:32,98
+796,VSO-ER19,T01,preventiva,P1 mensal,2026-08-06 03:55,2026-08-06 05:55,121
+797,BUT-ER04,T07,corretiva,parada de seguranca (reset),2026-08-06 06:11,2026-08-06 06:50,39
+798,VSO-ER18,T06,corretiva,parada de seguranca (reset),2026-08-06 06:16,2026-08-06 06:50,34
+799,PTA-ER09,T01,corretiva,parada de seguranca (reset),2026-08-06 10:07,2026-08-06 10:51,44
+800,FRE-ER05,T06,corretiva,parada de seguranca (reset),2026-08-06 14:12,2026-08-06 14:48,36
+801,LUZ-ER06,T04,corretiva,parada de seguranca (reset),2026-08-06 14:12,2026-08-06 14:33,21
+802,FAL-ER10,T03,corretiva,parada de seguranca (reset),2026-08-06 14:17,2026-08-06 14:43,26
+803,BUT-ER12,T02,corretiva,parada de seguranca (reset),2026-08-06 18:15,2026-08-06 18:42,27
+804,PTA-ER16,T07,corretiva,parada de seguranca (reset),2026-08-06 18:24,2026-08-06 19:07,43
+805,BUT-ER11,T08,corretiva,parada de seguranca (reset),2026-08-06 18:29,2026-08-06 18:51,22
+806,MBI-ER09,T06,corretiva,status critico,2026-08-06 18:58,2026-08-06 20:28,90
+807,HIG-ER24,T10,corretiva,parada de seguranca (reset),2026-08-06 22:06,2026-08-06 22:17,11
+808,PIN-ER19,T04,corretiva,parada de seguranca (reset),2026-08-06 22:12,2026-08-06 22:40,28
+809,HIG-ER04,T06,preventiva,P1 mensal,2026-08-07 00:13,2026-08-07 02:58,166
+810,FRA-ER04,T12,preventiva,P1 mensal,2026-08-07 00:44,2026-08-07 03:21,158
+811,LUZ-ER15,T12,preventiva,P1 mensal,2026-08-07 00:55,2026-08-07 03:28,154
+812,MBI-ER09,T12,preventiva,P1 mensal,2026-08-07 00:57,2026-08-07 03:04,128
+813,MBI-ER11,T09,preventiva,P1 mensal,2026-08-07 01:13,2026-08-07 03:43,150
+814,HIG-ER19,T06,preventiva,P1 mensal,2026-08-07 02:00,2026-08-07 03:54,115
+815,REP-ER59,T12,corretiva,parada de seguranca (reset),2026-08-07 06:20,2026-08-07 06:38,18
+816,LUZ-ER14,T05,corretiva,parada de seguranca (reset),2026-08-07 10:07,2026-08-07 10:40,33
+817,PIN-ER18,T08,corretiva,parada de seguranca (reset),2026-08-07 10:24,2026-08-07 11:04,40
+818,HIG-ER06,T01,corretiva,parada de seguranca (reset),2026-08-07 14:18,2026-08-07 14:34,16
+819,TVS-ER07,T06,corretiva,parada de seguranca (reset),2026-08-07 14:18,2026-08-07 14:39,21
+820,BUT-ER06,T04,corretiva,parada de seguranca (reset),2026-08-07 14:27,2026-08-07 14:44,17
+821,VSO-ER01,T09,corretiva,parada de seguranca (reset),2026-08-07 14:29,2026-08-07 14:39,10
+822,LUZ-ER08,T07,corretiva,parada de seguranca (reset),2026-08-07 18:13,2026-08-07 18:27,14
+823,PIN-ER16,T09,corretiva,parada de seguranca (reset),2026-08-07 22:12,2026-08-07 22:29,17
+824,FRA-ER02,T05,corretiva,parada de seguranca (reset),2026-08-07 22:29,2026-08-07 22:49,20
+825,LUZ-ER02,T01,corretiva,status critico,2026-08-07 22:53,2026-08-09 04:04,1751
+826,HIG-ER11,T07,preventiva,P1 mensal,2026-08-08 00:18,2026-08-08 03:01,163
+827,FRA-ER09,T12,preventiva,P1 mensal,2026-08-08 01:08,2026-08-08 03:44,157
+828,FRE-ER02,T06,preventiva,P1 mensal,2026-08-08 01:38,2026-08-08 04:12,154
+829,HIG-ER25,T11,preventiva,P1 mensal,2026-08-08 01:53,2026-08-08 04:30,158
+830,LUZ-ER03,T09,preventiva,P1 mensal,2026-08-08 01:54,2026-08-08 04:11,137
+831,PIN-ER32,T05,preventiva,P1 mensal,2026-08-08 02:00,2026-08-08 04:41,161
+832,PTA-ER12,T02,preventiva,P1 mensal,2026-08-08 03:25,2026-08-08 06:08,163
+833,HIG-ER02,T07,corretiva,parada de seguranca (reset),2026-08-08 06:11,2026-08-08 06:26,15
+834,PIN-ER10,T04,corretiva,parada de seguranca (reset),2026-08-08 06:15,2026-08-08 06:55,40
+835,PIN-ER10,T03,corretiva,parada de seguranca (reset),2026-08-08 10:23,2026-08-08 10:56,33
+836,BUT-ER10,T08,corretiva,status critico,2026-08-08 11:19,2026-08-08 17:41,382
+837,LUZ-ER05,T08,corretiva,parada de seguranca (reset),2026-08-08 14:06,2026-08-08 14:42,36
+838,BUT-ER03,T08,corretiva,sem resposta do sensor,2026-08-08 14:07,2026-08-08 17:12,185
+839,VSO-ER04,T09,corretiva,parada de seguranca (reset),2026-08-08 14:15,2026-08-08 14:56,41
+840,REP-ER60,T07,corretiva,parada de seguranca (reset),2026-08-08 14:28,2026-08-08 14:53,25
+841,PTA-ER16,T03,corretiva,parada de seguranca (reset),2026-08-08 18:10,2026-08-08 18:51,41
+842,VSO-ER17,T11,corretiva,parada de seguranca (reset),2026-08-08 18:12,2026-08-08 18:52,40
+843,VSO-ER20,T08,corretiva,parada de seguranca (reset),2026-08-08 18:17,2026-08-08 18:39,22
+844,PIN-ER28,T01,corretiva,status critico,2026-08-08 18:33,2026-08-09 13:42,1149
+845,PTA-ER09,T12,corretiva,parada de seguranca (reset),2026-08-08 22:11,2026-08-08 22:37,26
+846,LUZ-ER03,T08,corretiva,parada de seguranca (reset),2026-08-08 22:13,2026-08-08 22:53,40
+847,PIN-ER18,T02,corretiva,alerta prolongado,2026-08-08 23:19,2026-08-09 15:02,943
+848,PIN-ER18,T12,preventiva,P1 mensal,2026-08-09 00:08,2026-08-09 01:41,93
+849,BUT-ER06,T12,preventiva,P1 mensal,2026-08-09 00:48,2026-08-09 02:40,112
+850,TVS-ER05,T12,preventiva,P1 mensal,2026-08-09 00:49,2026-08-09 02:41,113
+851,PIN-ER03,T07,preventiva,P1 mensal,2026-08-09 01:10,2026-08-09 03:34,145
+852,VSO-ER08,T12,preventiva,P1 mensal,2026-08-09 01:40,2026-08-09 03:22,103
+853,PIN-ER29,T10,preventiva,P1 mensal,2026-08-09 01:52,2026-08-09 03:50,119
+854,HIG-ER02,T08,preventiva,P1 mensal,2026-08-09 01:58,2026-08-09 04:04,127
+855,VSO-ER09,T02,preventiva,P1 mensal,2026-08-09 02:55,2026-08-09 05:20,145
+856,FAL-ER07,T03,corretiva,parada de seguranca (reset),2026-08-09 06:10,2026-08-09 06:31,21
+857,HIG-ER21,T01,corretiva,parada de seguranca (reset),2026-08-09 06:13,2026-08-09 06:36,23
+858,PTA-ER08,T08,corretiva,sem resposta do sensor,2026-08-09 06:37,2026-08-09 17:50,673
+859,HIG-ER14,T03,corretiva,parada de seguranca (reset),2026-08-09 10:10,2026-08-09 10:28,18
+860,TVS-ER02,T03,corretiva,parada de seguranca (reset),2026-08-09 10:12,2026-08-09 10:37,25
+861,TVS-ER03,T08,corretiva,parada de seguranca (reset),2026-08-09 10:25,2026-08-09 11:02,37
+862,HIG-ER24,T10,corretiva,status critico,2026-08-09 11:09,2026-08-09 12:04,56
+863,PIN-ER25,T09,corretiva,status critico,2026-08-09 14:07,2026-08-09 16:55,168
+864,LUZ-ER10,T04,corretiva,parada de seguranca (reset),2026-08-09 14:22,2026-08-09 14:43,21
+865,HIG-ER26,T05,corretiva,parada de seguranca (reset),2026-08-09 18:11,2026-08-09 18:50,39
+866,FRA-ER04,T11,corretiva,parada de seguranca (reset),2026-08-09 18:22,2026-08-09 18:56,34
+867,LUZ-ER01,T11,corretiva,parada de seguranca (reset),2026-08-09 18:29,2026-08-09 18:39,10
+868,PIN-ER29,T03,corretiva,parada de seguranca (reset),2026-08-09 22:12,2026-08-09 22:35,23
+869,PIN-ER27,T07,preventiva,P1 mensal,2026-08-10 00:18,2026-08-10 02:54,157
+870,PIN-ER09,T02,preventiva,P1 mensal,2026-08-10 00:51,2026-08-10 02:22,91
+871,BUT-ER01,T06,preventiva,P1 mensal,2026-08-10 01:19,2026-08-10 03:13,115
+872,MBI-ER03,T07,preventiva,P1 mensal,2026-08-10 02:03,2026-08-10 03:33,91
+873,PIN-ER04,T11,corretiva,parada de seguranca (reset),2026-08-10 06:22,2026-08-10 06:59,37
+874,PTA-ER08,T09,corretiva,parada de seguranca (reset),2026-08-10 06:22,2026-08-10 06:36,14
+875,BUT-ER02,T11,corretiva,parada de seguranca (reset),2026-08-10 06:25,2026-08-10 06:40,15
+876,VSO-ER13,T11,corretiva,parada de seguranca (reset),2026-08-10 06:25,2026-08-10 06:40,15
+877,FRA-ER06,T11,corretiva,parada de seguranca (reset),2026-08-10 06:26,2026-08-10 06:43,17
+878,PIN-ER01,T07,corretiva,parada de seguranca (reset),2026-08-10 06:29,2026-08-10 06:45,16
+879,VSO-ER19,T05,corretiva,parada de seguranca (reset),2026-08-10 10:10,2026-08-10 10:45,35
+880,FAL-ER05,T06,corretiva,alerta prolongado,2026-08-10 10:11,2026-08-11 07:03,1253
+881,MBI-ER05,T09,corretiva,parada de seguranca (reset),2026-08-10 10:29,2026-08-10 10:56,27
+882,HIG-ER08,T06,corretiva,status critico,2026-08-10 10:57,2026-08-10 14:19,202
+883,VSO-ER13,T03,corretiva,parada de seguranca (reset),2026-08-10 14:20,2026-08-10 14:30,10
+884,LUZ-ER18,T10,corretiva,parada de seguranca (reset),2026-08-10 14:29,2026-08-10 15:01,32
+885,MBI-ER07,T10,corretiva,parada de seguranca (reset),2026-08-10 18:06,2026-08-10 18:50,44
+886,LUZ-ER09,T01,corretiva,parada de seguranca (reset),2026-08-10 18:07,2026-08-10 18:25,18
+887,PIN-ER09,T05,corretiva,parada de seguranca (reset),2026-08-10 18:08,2026-08-10 18:19,11
+888,LUZ-ER20,T08,corretiva,parada de seguranca (reset),2026-08-10 18:23,2026-08-10 18:45,22
+889,PIN-ER28,T10,corretiva,parada de seguranca (reset),2026-08-10 18:23,2026-08-10 18:54,31
+890,PIN-ER21,T01,corretiva,parada de seguranca (reset),2026-08-10 22:25,2026-08-10 22:46,21
+891,HIG-ER21,T03,corretiva,status critico,2026-08-10 22:33,2026-08-11 22:39,1446
+892,VSO-ER15,T11,preventiva,P1 mensal,2026-08-11 00:15,2026-08-11 02:39,144
+893,FRE-ER04,T09,preventiva,P1 mensal,2026-08-11 00:16,2026-08-11 02:29,133
+894,PTA-ER04,T07,preventiva,P1 mensal,2026-08-11 00:17,2026-08-11 02:05,108
+895,LUZ-ER08,T08,preventiva,P1 mensal,2026-08-11 00:20,2026-08-11 02:32,132
+896,VSO-ER04,T01,preventiva,P1 mensal,2026-08-11 00:43,2026-08-11 02:45,123
+897,VSO-ER02,T01,preventiva,P1 mensal,2026-08-11 00:51,2026-08-11 03:36,166
+898,PTA-ER06,T01,preventiva,P1 mensal,2026-08-11 01:03,2026-08-11 03:15,132
+899,HIG-ER01,T07,preventiva,P1 mensal,2026-08-11 01:17,2026-08-11 03:54,158
+900,VSO-ER07,T12,preventiva,P1 mensal,2026-08-11 01:49,2026-08-11 03:25,97
+901,LUZ-ER14,T08,preventiva,P1 mensal,2026-08-11 02:25,2026-08-11 04:59,154
+902,VSO-ER12,T08,preventiva,P1 mensal,2026-08-11 02:36,2026-08-11 04:35,119
+903,LUZ-ER04,T09,preventiva,P1 mensal,2026-08-11 03:12,2026-08-11 05:41,149
+904,BUT-ER12,T05,preventiva,P1 mensal,2026-08-11 03:29,2026-08-11 05:30,122
+905,MBI-ER07,T07,preventiva,P1 mensal,2026-08-11 03:39,2026-08-11 06:24,166
+906,FRE-ER02,T06,corretiva,parada de seguranca (reset),2026-08-11 10:07,2026-08-11 10:19,12
+907,PIN-ER21,T11,corretiva,parada de seguranca (reset),2026-08-11 10:26,2026-08-11 10:53,27
+908,FRE-ER03,T02,corretiva,alerta prolongado,2026-08-11 11:56,2026-08-11 20:33,518
+909,REP-ER59,T01,corretiva,parada de seguranca (reset),2026-08-11 14:15,2026-08-11 14:25,10
+910,FAL-ER02,T05,corretiva,status critico,2026-08-11 14:22,2026-08-11 16:55,154
+911,FAL-ER01,T06,corretiva,parada de seguranca (reset),2026-08-11 18:08,2026-08-11 18:50,42
+912,FAL-ER08,T08,corretiva,parada de seguranca (reset),2026-08-11 18:22,2026-08-11 18:35,13
+913,REP-ER26,T08,corretiva,parada de seguranca (reset),2026-08-11 18:26,2026-08-11 19:06,40
+914,FAL-ER10,T02,corretiva,parada de seguranca (reset),2026-08-11 22:19,2026-08-11 23:03,44
+915,FAL-ER10,T04,preventiva,P1 mensal,2026-08-12 01:03,2026-08-12 02:34,92
+916,PIN-ER30,T11,preventiva,P1 mensal,2026-08-12 01:04,2026-08-12 03:47,163
+917,FAL-ER07,T08,corretiva,parada de seguranca (reset),2026-08-12 06:05,2026-08-12 06:23,18
+918,PTA-ER12,T01,corretiva,alerta prolongado,2026-08-12 06:05,2026-08-12 10:27,263
+919,LUZ-ER15,T11,corretiva,parada de seguranca (reset),2026-08-12 06:07,2026-08-12 06:18,11
+920,LUZ-ER14,T12,corretiva,parada de seguranca (reset),2026-08-12 06:18,2026-08-12 07:02,44
+921,PIN-ER23,T07,corretiva,status critico,2026-08-12 06:19,2026-08-13 08:53,1594
+922,PIN-ER32,T11,corretiva,parada de seguranca (reset),2026-08-12 06:29,2026-08-12 06:59,30
+923,BUT-ER14,T08,corretiva,parada de seguranca (reset),2026-08-12 10:12,2026-08-12 10:49,37
+924,PIN-ER03,T10,corretiva,parada de seguranca (reset),2026-08-12 10:14,2026-08-12 10:47,33
+925,BUT-ER13,T11,corretiva,parada de seguranca (reset),2026-08-12 10:16,2026-08-12 10:54,38
+926,HIG-ER18,T07,corretiva,parada de seguranca (reset),2026-08-12 10:16,2026-08-12 10:57,41
+927,BUT-ER01,T09,corretiva,parada de seguranca (reset),2026-08-12 10:27,2026-08-12 10:53,26
+928,PTA-ER02,T02,corretiva,parada de seguranca (reset),2026-08-12 14:13,2026-08-12 14:37,24
+929,PIN-ER21,T08,corretiva,parada de seguranca (reset),2026-08-12 14:29,2026-08-12 15:02,33
+930,VSO-ER01,T01,corretiva,parada de seguranca (reset),2026-08-12 18:09,2026-08-12 18:35,26
+931,FAL-ER02,T09,corretiva,parada de seguranca (reset),2026-08-12 18:19,2026-08-12 18:34,15
+932,FAL-ER02,T04,corretiva,parada de seguranca (reset),2026-08-12 22:07,2026-08-12 22:46,39
+933,PIN-ER11,T07,corretiva,parada de seguranca (reset),2026-08-12 22:11,2026-08-12 22:24,13
+934,HIG-ER22,T12,corretiva,parada de seguranca (reset),2026-08-12 22:18,2026-08-12 22:30,12
+935,HIG-ER24,T04,corretiva,parada de seguranca (reset),2026-08-12 22:21,2026-08-12 22:32,11
+936,VSO-ER11,T04,preventiva,P1 mensal,2026-08-13 00:11,2026-08-13 02:56,166
+937,PTA-ER15,T11,preventiva,P1 mensal,2026-08-13 01:11,2026-08-13 03:22,131
+938,VSO-ER20,T02,preventiva,P1 mensal,2026-08-13 01:41,2026-08-13 04:14,154
+939,MBI-ER08,T07,preventiva,P1 mensal,2026-08-13 02:17,2026-08-13 03:48,91
+940,PTA-ER01,T08,preventiva,P1 mensal,2026-08-13 02:19,2026-08-13 04:57,158
+941,LUZ-ER10,T08,preventiva,P1 mensal,2026-08-13 03:12,2026-08-13 05:07,115
+942,HIG-ER14,T01,preventiva,P1 mensal,2026-08-13 03:23,2026-08-13 05:59,156
+943,PTA-ER11,T01,corretiva,parada de seguranca (reset),2026-08-13 06:15,2026-08-13 06:44,29
+944,LUZ-ER03,T08,corretiva,parada de seguranca (reset),2026-08-13 06:16,2026-08-13 06:26,10
+945,FRA-ER03,T12,corretiva,parada de seguranca (reset),2026-08-13 06:24,2026-08-13 06:45,21
+946,FRE-ER04,T03,corretiva,sem resposta do sensor,2026-08-13 10:20,2026-08-14 05:57,1177
+947,PTA-ER12,T06,corretiva,parada de seguranca (reset),2026-08-13 10:21,2026-08-13 10:42,21
+948,FRA-ER06,T09,corretiva,parada de seguranca (reset),2026-08-13 10:23,2026-08-13 10:45,22
+949,HIG-ER20,T03,corretiva,parada de seguranca (reset),2026-08-13 10:23,2026-08-13 10:56,33
+950,LUZ-ER06,T09,corretiva,status critico,2026-08-13 10:47,2026-08-14 07:14,1228
+951,FRE-ER18,T08,corretiva,parada de seguranca (reset),2026-08-13 14:05,2026-08-13 14:22,17
+952,HIG-ER18,T02,corretiva,sem resposta do sensor,2026-08-13 14:06,2026-08-14 00:57,651
+953,HIG-ER21,T11,corretiva,parada de seguranca (reset),2026-08-13 14:06,2026-08-13 14:34,28
+954,BUT-ER05,T07,corretiva,parada de seguranca (reset),2026-08-13 14:08,2026-08-13 14:43,35
+955,FRE-ER09,T06,corretiva,parada de seguranca (reset),2026-08-13 14:10,2026-08-13 14:31,21
+956,TVS-ER05,T11,corretiva,parada de seguranca (reset),2026-08-13 14:19,2026-08-13 14:40,21
+957,PIN-ER10,T03,corretiva,parada de seguranca (reset),2026-08-13 14:26,2026-08-13 14:37,11
+958,REP-ER59,T11,corretiva,parada de seguranca (reset),2026-08-13 18:17,2026-08-13 18:45,28
+959,FRE-ER10,T12,corretiva,parada de seguranca (reset),2026-08-13 22:09,2026-08-13 22:35,26
+960,FAL-ER03,T02,corretiva,parada de seguranca (reset),2026-08-13 22:12,2026-08-13 22:32,20
+961,VSO-ER12,T01,corretiva,status critico,2026-08-13 23:40,2026-08-14 01:55,136
+962,PTA-ER14,T01,preventiva,P1 mensal,2026-08-14 00:50,2026-08-14 03:38,168
+963,BUT-ER09,T07,preventiva,P1 mensal,2026-08-14 01:05,2026-08-14 02:50,106
+964,LUZ-ER19,T04,preventiva,P1 mensal,2026-08-14 01:31,2026-08-14 03:22,111
+965,HIG-ER20,T02,preventiva,P1 mensal,2026-08-14 01:36,2026-08-14 04:21,165
+966,TVS-ER09,T10,preventiva,P1 mensal,2026-08-14 02:14,2026-08-14 04:30,136
+967,FRA-ER07,T03,preventiva,P1 mensal,2026-08-14 03:03,2026-08-14 04:33,91
+968,HIG-ER09,T08,corretiva,parada de seguranca (reset),2026-08-14 06:05,2026-08-14 06:23,18
+969,LUZ-ER04,T10,corretiva,parada de seguranca (reset),2026-08-14 06:07,2026-08-14 06:19,12
+970,BUT-ER12,T06,corretiva,parada de seguranca (reset),2026-08-14 06:09,2026-08-14 06:19,10
+971,LUZ-ER09,T01,corretiva,parada de seguranca (reset),2026-08-14 06:11,2026-08-14 06:37,26
+972,PTA-ER05,T10,corretiva,parada de seguranca (reset),2026-08-14 06:19,2026-08-14 06:47,28
+973,PIN-ER05,T09,corretiva,parada de seguranca (reset),2026-08-14 10:12,2026-08-14 10:28,16
+974,BUT-ER02,T01,corretiva,parada de seguranca (reset),2026-08-14 10:19,2026-08-14 10:31,12
+975,HIG-ER23,T07,corretiva,parada de seguranca (reset),2026-08-14 10:20,2026-08-14 10:42,22
+976,HIG-ER13,T09,corretiva,parada de seguranca (reset),2026-08-14 14:23,2026-08-14 15:05,42
+977,FAL-ER01,T12,corretiva,status critico,2026-08-14 19:28,2026-08-14 23:37,250
+978,VSO-ER05,T12,corretiva,alerta prolongado,2026-08-14 19:45,2026-08-15 10:51,906
+979,PIN-ER02,T08,corretiva,parada de seguranca (reset),2026-08-14 22:13,2026-08-14 22:36,23
+980,PTA-ER11,T02,corretiva,parada de seguranca (reset),2026-08-14 22:19,2026-08-14 22:54,35
+981,HIG-ER08,T06,preventiva,P1 mensal,2026-08-15 02:08,2026-08-15 04:50,163
+982,BUT-ER08,T08,preventiva,P1 mensal,2026-08-15 03:22,2026-08-15 05:30,128
+983,MBI-ER05,T05,preventiva,P1 mensal,2026-08-15 03:56,2026-08-15 06:12,136
+984,LUZ-ER08,T02,corretiva,parada de seguranca (reset),2026-08-15 06:07,2026-08-15 06:47,40
+985,PIN-ER32,T07,corretiva,parada de seguranca (reset),2026-08-15 06:20,2026-08-15 07:00,40
+986,PIN-ER17,T09,corretiva,parada de seguranca (reset),2026-08-15 06:21,2026-08-15 06:51,30
+987,PIN-ER22,T09,corretiva,parada de seguranca (reset),2026-08-15 06:21,2026-08-15 06:35,14
+988,FAL-ER05,T11,corretiva,parada de seguranca (reset),2026-08-15 06:23,2026-08-15 07:06,43
+989,LUZ-ER05,T10,corretiva,status critico,2026-08-15 06:28,2026-08-16 00:10,1062
+990,PIN-ER16,T05,corretiva,parada de seguranca (reset),2026-08-15 10:23,2026-08-15 10:39,16
+991,FAL-ER02,T05,corretiva,parada de seguranca (reset),2026-08-15 10:27,2026-08-15 11:04,37
+992,REP-ER26,T07,corretiva,parada de seguranca (reset),2026-08-15 14:18,2026-08-15 14:32,14
+993,PIN-ER15,T03,corretiva,parada de seguranca (reset),2026-08-15 14:21,2026-08-15 14:58,37
+994,VSO-ER13,T11,corretiva,parada de seguranca (reset),2026-08-15 14:29,2026-08-15 14:47,18
+995,PIN-ER19,T11,corretiva,parada de seguranca (reset),2026-08-15 18:09,2026-08-15 18:21,12
+996,BUT-ER09,T08,corretiva,parada de seguranca (reset),2026-08-15 18:16,2026-08-15 18:26,10
+997,LUZ-ER15,T06,corretiva,parada de seguranca (reset),2026-08-15 18:20,2026-08-15 18:30,10
+998,MBI-ER02,T07,corretiva,parada de seguranca (reset),2026-08-15 18:20,2026-08-15 19:04,44
+999,HIG-ER26,T09,corretiva,parada de seguranca (reset),2026-08-15 18:23,2026-08-15 18:48,25
+1000,PIN-ER05,T08,corretiva,parada de seguranca (reset),2026-08-15 22:20,2026-08-15 22:46,26
+1001,PIN-ER03,T04,corretiva,parada de seguranca (reset),2026-08-15 22:25,2026-08-15 22:35,10
+1002,HIG-ER07,T11,corretiva,parada de seguranca (reset),2026-08-15 22:28,2026-08-15 22:57,29
+1003,HIG-ER21,T01,preventiva,P1 mensal,2026-08-16 00:13,2026-08-16 02:55,163
+1004,PIN-ER23,T11,preventiva,P1 mensal,2026-08-16 00:57,2026-08-16 03:32,155
+1005,LUZ-ER20,T02,preventiva,P1 mensal,2026-08-16 01:01,2026-08-16 02:58,117
+1006,FAL-ER07,T10,preventiva,P1 mensal,2026-08-16 01:44,2026-08-16 03:35,111
+1007,PTA-ER03,T04,preventiva,P1 mensal,2026-08-16 02:03,2026-08-16 03:49,107
+1008,PIN-ER14,T01,preventiva,P1 mensal,2026-08-16 02:29,2026-08-16 04:39,130
+1009,FRE-ER11,T04,preventiva,P1 mensal,2026-08-16 02:58,2026-08-16 05:10,133
+1010,VSO-ER14,T05,preventiva,P1 mensal,2026-08-16 03:00,2026-08-16 05:01,121
+1011,PIN-ER19,T07,preventiva,P1 mensal,2026-08-16 03:12,2026-08-16 04:49,97
+1012,HIG-ER26,T09,preventiva,P1 mensal,2026-08-16 03:55,2026-08-16 06:34,160
+1013,MBI-ER09,T11,corretiva,parada de seguranca (reset),2026-08-16 06:28,2026-08-16 06:41,13
+1014,REP-ER60,T01,corretiva,parada de seguranca (reset),2026-08-16 10:16,2026-08-16 10:58,42
+1015,FRA-ER07,T02,corretiva,parada de seguranca (reset),2026-08-16 10:22,2026-08-16 10:40,18
+1016,FRA-ER04,T03,corretiva,parada de seguranca (reset),2026-08-16 14:11,2026-08-16 14:41,30
+1017,BUT-ER08,T09,corretiva,parada de seguranca (reset),2026-08-16 14:16,2026-08-16 14:49,33
+1018,PIN-ER18,T03,corretiva,parada de seguranca (reset),2026-08-16 14:19,2026-08-16 14:53,34
+1019,PTA-ER12,T06,corretiva,parada de seguranca (reset),2026-08-16 18:09,2026-08-16 18:31,22
+1020,PIN-ER23,T06,corretiva,parada de seguranca (reset),2026-08-16 18:25,2026-08-16 19:03,38
+1021,PIN-ER17,T02,corretiva,parada de seguranca (reset),2026-08-16 22:25,2026-08-16 23:01,36
+1022,PTA-ER16,T01,preventiva,P1 mensal,2026-08-17 00:31,2026-08-17 03:19,168
+1023,PTA-ER08,T06,preventiva,P1 mensal,2026-08-17 00:32,2026-08-17 02:48,137
+1024,HIG-ER10,T07,preventiva,P1 mensal,2026-08-17 00:39,2026-08-17 02:29,110
+1025,REP-ER59,T05,preventiva,P1 mensal,2026-08-17 00:41,2026-08-17 02:16,95
+1026,FAL-ER01,T06,preventiva,P1 mensal,2026-08-17 01:52,2026-08-17 04:32,160
+1027,FRE-ER14,T12,preventiva,P1 mensal,2026-08-17 02:07,2026-08-17 03:49,102
+1028,HIG-ER23,T12,preventiva,P1 mensal,2026-08-17 02:09,2026-08-17 04:51,163
+1029,PIN-ER02,T01,preventiva,P1 mensal,2026-08-17 03:45,2026-08-17 05:19,94
+1030,FRE-ER09,T09,corretiva,parada de seguranca (reset),2026-08-17 06:18,2026-08-17 06:49,31
+1031,FAL-ER06,T01,corretiva,parada de seguranca (reset),2026-08-17 06:20,2026-08-17 06:55,35
+1032,LUZ-ER11,T02,corretiva,parada de seguranca (reset),2026-08-17 06:20,2026-08-17 06:45,25
+1033,MBI-ER10,T04,corretiva,parada de seguranca (reset),2026-08-17 10:26,2026-08-17 10:47,21
+1034,BUT-ER13,T07,corretiva,parada de seguranca (reset),2026-08-17 10:27,2026-08-17 11:08,41
+1035,BUT-ER11,T04,corretiva,parada de seguranca (reset),2026-08-17 10:28,2026-08-17 10:50,22
+1036,TVS-ER06,T09,corretiva,parada de seguranca (reset),2026-08-17 14:11,2026-08-17 14:51,40
+1037,VSO-ER08,T08,corretiva,parada de seguranca (reset),2026-08-17 14:18,2026-08-17 14:43,25
+1038,LUZ-ER17,T05,corretiva,parada de seguranca (reset),2026-08-17 14:23,2026-08-17 14:52,29
+1039,REP-ER61,T07,corretiva,alerta prolongado,2026-08-17 15:36,2026-08-18 12:18,1242
+1040,PIN-ER22,T10,corretiva,sem resposta do sensor,2026-08-17 15:42,2026-08-17 17:38,116
+1041,FRE-ER09,T08,corretiva,parada de seguranca (reset),2026-08-17 18:05,2026-08-17 18:40,35
+1042,MBI-ER09,T02,corretiva,parada de seguranca (reset),2026-08-17 22:08,2026-08-17 22:20,12
+1043,FRE-ER18,T01,preventiva,P1 mensal,2026-08-18 00:47,2026-08-18 02:40,113
+1044,PIN-ER13,T09,preventiva,P1 mensal,2026-08-18 01:02,2026-08-18 03:18,137
+1045,FRE-ER03,T06,preventiva,P1 mensal,2026-08-18 03:57,2026-08-18 06:14,137
+1046,VSO-ER18,T07,corretiva,parada de seguranca (reset),2026-08-18 06:09,2026-08-18 06:45,36
+1047,MBI-ER10,T08,corretiva,parada de seguranca (reset),2026-08-18 06:26,2026-08-18 06:38,12
+1048,PIN-ER07,T01,corretiva,parada de seguranca (reset),2026-08-18 10:05,2026-08-18 10:34,29
+1049,MBI-ER03,T05,corretiva,parada de seguranca (reset),2026-08-18 10:23,2026-08-18 10:48,25
+1050,PIN-ER23,T10,corretiva,parada de seguranca (reset),2026-08-18 10:24,2026-08-18 10:53,29
+1051,BUT-ER03,T09,corretiva,parada de seguranca (reset),2026-08-18 14:10,2026-08-18 14:27,17
+1052,LUZ-ER13,T06,corretiva,parada de seguranca (reset),2026-08-18 14:13,2026-08-18 14:46,33
+1053,PTA-ER03,T12,corretiva,parada de seguranca (reset),2026-08-18 14:21,2026-08-18 14:43,22
+1054,BUT-ER13,T07,corretiva,parada de seguranca (reset),2026-08-18 14:26,2026-08-18 14:54,28
+1055,FAL-ER07,T03,corretiva,parada de seguranca (reset),2026-08-18 18:08,2026-08-18 18:31,23
+1056,LUZ-ER11,T02,corretiva,parada de seguranca (reset),2026-08-18 18:13,2026-08-18 18:28,15
+1057,PIN-ER19,T01,corretiva,parada de seguranca (reset),2026-08-18 18:23,2026-08-18 19:01,38
+1058,PTA-ER01,T04,corretiva,parada de seguranca (reset),2026-08-18 22:22,2026-08-18 22:59,37
+1059,MBI-ER01,T09,corretiva,status critico,2026-08-18 22:51,2026-08-19 01:38,167
+1060,PTA-ER02,T09,preventiva,P1 mensal,2026-08-19 00:30,2026-08-19 02:42,133
+1061,LUZ-ER11,T05,preventiva,P1 mensal,2026-08-19 00:38,2026-08-19 02:19,101
+1062,LUZ-ER12,T03,preventiva,P1 mensal,2026-08-19 01:39,2026-08-19 04:03,144
+1063,LUZ-ER02,T05,preventiva,P1 mensal,2026-08-19 01:55,2026-08-19 04:30,155
+1064,FRE-ER06,T01,preventiva,P1 mensal,2026-08-19 02:34,2026-08-19 05:22,168
+1065,MBI-ER01,T08,preventiva,P1 mensal,2026-08-19 02:41,2026-08-19 04:36,115
+1066,VSO-ER17,T03,preventiva,P1 mensal,2026-08-19 02:45,2026-08-19 05:25,160
+1067,HIG-ER11,T02,corretiva,parada de seguranca (reset),2026-08-19 10:09,2026-08-19 10:48,39
+1068,FRA-ER05,T07,corretiva,parada de seguranca (reset),2026-08-19 10:24,2026-08-19 10:58,34
+1069,FAL-ER01,T05,corretiva,parada de seguranca (reset),2026-08-19 14:10,2026-08-19 14:34,24
+1070,VSO-ER12,T04,corretiva,parada de seguranca (reset),2026-08-19 14:10,2026-08-19 14:40,30
+1071,HIG-ER05,T07,corretiva,parada de seguranca (reset),2026-08-19 14:11,2026-08-19 14:35,24
+1072,MBI-ER05,T05,corretiva,parada de seguranca (reset),2026-08-19 14:11,2026-08-19 14:48,37
+1073,PTA-ER01,T05,corretiva,parada de seguranca (reset),2026-08-19 14:20,2026-08-19 14:39,19
+1074,PTA-ER10,T04,corretiva,parada de seguranca (reset),2026-08-19 14:20,2026-08-19 15:04,44
+1075,FRA-ER04,T07,corretiva,parada de seguranca (reset),2026-08-19 14:25,2026-08-19 14:57,32
+1076,REP-ER60,T08,corretiva,alerta prolongado,2026-08-19 15:24,2026-08-19 22:24,420
+1077,LUZ-ER10,T01,corretiva,parada de seguranca (reset),2026-08-19 18:06,2026-08-19 18:26,20
+1078,LUZ-ER08,T11,corretiva,parada de seguranca (reset),2026-08-19 18:15,2026-08-19 18:34,19
+1079,MBI-ER05,T06,corretiva,parada de seguranca (reset),2026-08-19 18:18,2026-08-19 18:33,15
+1080,PTA-ER07,T03,corretiva,parada de seguranca (reset),2026-08-19 18:22,2026-08-19 19:04,42
+1081,PIN-ER18,T06,corretiva,parada de seguranca (reset),2026-08-19 18:26,2026-08-19 18:57,31
+1082,PTA-ER02,T12,corretiva,parada de seguranca (reset),2026-08-19 18:26,2026-08-19 18:38,12
+1083,REP-ER26,T09,corretiva,parada de seguranca (reset),2026-08-19 22:05,2026-08-19 22:27,22
+1084,MBI-ER05,T01,corretiva,parada de seguranca (reset),2026-08-19 22:06,2026-08-19 22:25,19
+1085,BUT-ER11,T10,corretiva,parada de seguranca (reset),2026-08-19 22:09,2026-08-19 22:49,40
+1086,LUZ-ER03,T04,corretiva,parada de seguranca (reset),2026-08-19 22:10,2026-08-19 22:45,35
+1087,PIN-ER22,T03,corretiva,parada de seguranca (reset),2026-08-19 22:10,2026-08-19 22:22,12
+1088,LUZ-ER06,T08,corretiva,parada de seguranca (reset),2026-08-19 22:11,2026-08-19 22:43,32
+1089,HIG-ER19,T08,corretiva,parada de seguranca (reset),2026-08-19 22:23,2026-08-19 23:00,37
+1090,PTA-ER07,T04,corretiva,parada de seguranca (reset),2026-08-19 22:25,2026-08-19 23:09,44
+1091,TVS-ER04,T11,preventiva,P1 mensal,2026-08-20 00:32,2026-08-20 03:10,158
+1092,TVS-ER07,T04,preventiva,P1 mensal,2026-08-20 00:33,2026-08-20 02:40,127
+1093,MBI-ER10,T02,preventiva,P1 mensal,2026-08-20 01:29,2026-08-20 03:39,130
+1094,FRE-ER05,T03,preventiva,P1 mensal,2026-08-20 02:19,2026-08-20 04:40,142
+1095,FRE-ER12,T09,preventiva,P1 mensal,2026-08-20 02:46,2026-08-20 05:08,143
+1096,FAL-ER05,T09,preventiva,P1 mensal,2026-08-20 02:55,2026-08-20 05:40,166
+1097,FRE-ER20,T10,preventiva,P1 mensal,2026-08-20 03:22,2026-08-20 06:09,167
+1098,VSO-ER08,T12,corretiva,parada de seguranca (reset),2026-08-20 06:17,2026-08-20 06:29,12
+1099,PIN-ER11,T01,corretiva,parada de seguranca (reset),2026-08-20 06:20,2026-08-20 06:57,37
+1100,FRE-ER20,T05,corretiva,parada de seguranca (reset),2026-08-20 06:26,2026-08-20 07:04,38
+1101,VSO-ER09,T08,corretiva,parada de seguranca (reset),2026-08-20 10:05,2026-08-20 10:31,26
+1102,PIN-ER19,T06,corretiva,alerta prolongado,2026-08-20 10:08,2026-08-20 13:33,206
+1103,FAL-ER04,T02,corretiva,parada de seguranca (reset),2026-08-20 10:19,2026-08-20 10:51,32
+1104,FAL-ER05,T11,corretiva,parada de seguranca (reset),2026-08-20 10:26,2026-08-20 10:42,16
+1105,REP-ER61,T02,corretiva,parada de seguranca (reset),2026-08-20 14:06,2026-08-20 14:20,14
+1106,VSO-ER09,T02,corretiva,parada de seguranca (reset),2026-08-20 14:13,2026-08-20 14:27,14
+1107,PTA-ER04,T09,corretiva,parada de seguranca (reset),2026-08-20 14:26,2026-08-20 15:08,42
+1108,BUT-ER07,T04,corretiva,parada de seguranca (reset),2026-08-20 18:06,2026-08-20 18:28,22
+1109,LUZ-ER09,T07,corretiva,parada de seguranca (reset),2026-08-20 18:08,2026-08-20 18:18,10
+1110,VSO-ER10,T09,corretiva,parada de seguranca (reset),2026-08-20 18:08,2026-08-20 18:23,15
+1111,PIN-ER19,T05,corretiva,parada de seguranca (reset),2026-08-20 18:12,2026-08-20 18:46,34
+1112,REP-ER61,T12,corretiva,parada de seguranca (reset),2026-08-20 18:26,2026-08-20 19:08,42
+1113,FAL-ER07,T04,corretiva,parada de seguranca (reset),2026-08-20 18:29,2026-08-20 18:40,11
+1114,PIN-ER05,T07,corretiva,parada de seguranca (reset),2026-08-20 22:07,2026-08-20 22:39,32
+1115,HIG-ER12,T08,corretiva,parada de seguranca (reset),2026-08-20 22:09,2026-08-20 22:39,30
+1116,REP-ER26,T08,corretiva,parada de seguranca (reset),2026-08-20 22:13,2026-08-20 22:24,11
+1117,PIN-ER12,T12,corretiva,parada de seguranca (reset),2026-08-20 22:16,2026-08-20 22:30,14
+1118,FAL-ER04,T04,preventiva,P1 mensal,2026-08-21 00:36,2026-08-21 02:42,127
+1119,REP-ER61,T04,preventiva,P1 mensal,2026-08-21 01:01,2026-08-21 03:10,129
+1120,REP-ER60,T09,preventiva,P1 mensal,2026-08-21 01:23,2026-08-21 03:20,118
+1121,FRE-ER13,T02,preventiva,P1 mensal,2026-08-21 02:03,2026-08-21 04:15,133
+1122,PIN-ER04,T10,preventiva,P1 mensal,2026-08-21 03:30,2026-08-21 05:34,124
+1123,PIN-ER09,T11,corretiva,parada de seguranca (reset),2026-08-21 06:06,2026-08-21 06:46,40
+1124,PIN-ER10,T02,corretiva,parada de seguranca (reset),2026-08-21 06:07,2026-08-21 06:26,19
+1125,BUT-ER05,T05,corretiva,parada de seguranca (reset),2026-08-21 06:09,2026-08-21 06:33,24
+1126,HIG-ER23,T08,corretiva,status critico,2026-08-21 07:52,2026-08-22 13:51,1799
+1127,BUT-ER12,T02,corretiva,alerta prolongado,2026-08-21 10:41,2026-08-22 16:58,1817
+1128,BUT-ER11,T05,corretiva,sem resposta do sensor,2026-08-21 10:44,2026-08-21 22:01,677
+1129,PTA-ER14,T01,corretiva,parada de seguranca (reset),2026-08-21 14:05,2026-08-21 14:47,42
+1130,MBI-ER02,T08,corretiva,parada de seguranca (reset),2026-08-21 18:09,2026-08-21 18:19,10
+1131,PIN-ER21,T02,corretiva,alerta prolongado,2026-08-21 18:11,2026-08-22 22:36,1705
+1132,MBI-ER07,T05,corretiva,status critico,2026-08-21 18:15,2026-08-22 06:36,742
+1133,FAL-ER04,T02,corretiva,parada de seguranca (reset),2026-08-21 18:27,2026-08-21 18:44,17
+1134,FRE-ER01,T10,corretiva,parada de seguranca (reset),2026-08-21 18:28,2026-08-21 18:42,14
+1135,BUT-ER11,T05,corretiva,parada de seguranca (reset),2026-08-21 22:07,2026-08-21 22:31,24
+1136,PTA-ER03,T07,corretiva,parada de seguranca (reset),2026-08-21 22:23,2026-08-21 22:43,20
+1137,LUZ-ER05,T12,corretiva,parada de seguranca (reset),2026-08-21 22:26,2026-08-21 22:56,30
+1138,FRA-ER05,T06,corretiva,status critico,2026-08-21 23:59,2026-08-22 09:45,587
+1139,PTA-ER07,T01,preventiva,P1 mensal,2026-08-22 00:05,2026-08-22 01:56,111
+1140,PIN-ER22,T03,preventiva,P1 mensal,2026-08-22 00:48,2026-08-22 02:20,92
+1141,LUZ-ER17,T05,preventiva,P1 mensal,2026-08-22 01:05,2026-08-22 03:41,157
+1142,BUT-ER05,T10,preventiva,P1 mensal,2026-08-22 02:16,2026-08-22 03:49,94
+1143,HIG-ER24,T12,preventiva,P1 mensal,2026-08-22 02:55,2026-08-22 04:26,92
+1144,FAL-ER09,T07,preventiva,P1 mensal,2026-08-22 03:37,2026-08-22 05:42,125
+1145,BUT-ER05,T12,corretiva,parada de seguranca (reset),2026-08-22 06:06,2026-08-22 06:37,31
+1146,LUZ-ER08,T01,corretiva,parada de seguranca (reset),2026-08-22 06:13,2026-08-22 06:33,20
+1147,FRA-ER06,T08,corretiva,parada de seguranca (reset),2026-08-22 06:20,2026-08-22 06:56,36
+1148,FAL-ER03,T07,corretiva,parada de seguranca (reset),2026-08-22 10:26,2026-08-22 11:03,37
+1149,MBI-ER08,T03,corretiva,parada de seguranca (reset),2026-08-22 10:26,2026-08-22 11:07,41
+1150,PIN-ER09,T03,corretiva,parada de seguranca (reset),2026-08-22 10:27,2026-08-22 11:05,38
+1151,FRA-ER06,T09,corretiva,parada de seguranca (reset),2026-08-22 14:09,2026-08-22 14:31,22
+1152,HIG-ER07,T08,corretiva,parada de seguranca (reset),2026-08-22 14:09,2026-08-22 14:41,32
+1153,PTA-ER02,T11,corretiva,parada de seguranca (reset),2026-08-22 14:12,2026-08-22 14:29,17
+1154,PTA-ER04,T01,corretiva,parada de seguranca (reset),2026-08-22 14:12,2026-08-22 14:39,27
+1155,HIG-ER09,T05,corretiva,parada de seguranca (reset),2026-08-22 18:14,2026-08-22 18:30,16
+1156,PTA-ER16,T08,corretiva,parada de seguranca (reset),2026-08-22 22:11,2026-08-22 22:55,44
+1157,MBI-ER02,T11,corretiva,parada de seguranca (reset),2026-08-22 22:13,2026-08-22 22:40,27
+1158,TVS-ER09,T06,corretiva,parada de seguranca (reset),2026-08-22 22:15,2026-08-22 22:35,20
+1159,FRE-ER16,T06,corretiva,parada de seguranca (reset),2026-08-22 22:23,2026-08-22 22:44,21
+1160,PIN-ER24,T01,preventiva,P1 mensal,2026-08-23 00:22,2026-08-23 02:03,101
+1161,HIG-ER13,T03,preventiva,P1 mensal,2026-08-23 00:27,2026-08-23 02:58,152
+1162,FRA-ER10,T02,preventiva,P1 mensal,2026-08-23 00:34,2026-08-23 03:13,160
+1163,HIG-ER07,T01,preventiva,P1 mensal,2026-08-23 00:57,2026-08-23 03:01,125
+1164,PTA-ER11,T01,preventiva,P1 mensal,2026-08-23 01:53,2026-08-23 03:42,109
+1165,BUT-ER11,T01,preventiva,P1 mensal,2026-08-23 02:01,2026-08-23 03:32,92
+1166,VSO-ER03,T02,preventiva,P1 mensal,2026-08-23 02:24,2026-08-23 04:45,141
+1167,VSO-ER01,T10,preventiva,P1 mensal,2026-08-23 03:13,2026-08-23 04:43,91
+1168,LUZ-ER05,T03,preventiva,P1 mensal,2026-08-23 03:23,2026-08-23 05:41,138
+1169,MBI-ER13,T03,corretiva,parada de seguranca (reset),2026-08-23 06:07,2026-08-23 06:44,37
+1170,PIN-ER28,T03,corretiva,parada de seguranca (reset),2026-08-23 10:07,2026-08-23 10:44,37
+1171,LUZ-ER08,T06,corretiva,parada de seguranca (reset),2026-08-23 10:17,2026-08-23 10:39,22
+1172,PIN-ER12,T05,corretiva,parada de seguranca (reset),2026-08-23 10:21,2026-08-23 10:40,19
+1173,PTA-ER12,T09,corretiva,parada de seguranca (reset),2026-08-23 10:27,2026-08-23 10:57,30
+1174,MBI-ER01,T01,corretiva,parada de seguranca (reset),2026-08-23 10:28,2026-08-23 10:53,25
+1175,FAL-ER02,T09,corretiva,parada de seguranca (reset),2026-08-23 14:06,2026-08-23 14:16,10
+1176,FRA-ER01,T09,corretiva,parada de seguranca (reset),2026-08-23 14:09,2026-08-23 14:38,29
+1177,FAL-ER04,T11,corretiva,parada de seguranca (reset),2026-08-23 14:11,2026-08-23 14:43,32
+1178,BUT-ER02,T09,corretiva,parada de seguranca (reset),2026-08-23 14:16,2026-08-23 14:28,12
+1179,PTA-ER04,T06,corretiva,parada de seguranca (reset),2026-08-23 14:19,2026-08-23 14:53,34
+1180,FRA-ER09,T07,corretiva,parada de seguranca (reset),2026-08-23 18:24,2026-08-23 18:37,13
+1181,HIG-ER01,T08,corretiva,parada de seguranca (reset),2026-08-23 22:08,2026-08-23 22:46,38
+1182,FRE-ER17,T06,preventiva,P1 mensal,2026-08-24 00:31,2026-08-24 02:31,120
+1183,VSO-ER06,T11,preventiva,P1 mensal,2026-08-24 00:50,2026-08-24 02:33,104
+1184,HIG-ER22,T09,preventiva,P1 mensal,2026-08-24 01:47,2026-08-24 03:54,128
+1185,PIN-ER16,T09,preventiva,P1 mensal,2026-08-24 01:53,2026-08-24 03:32,100
+1186,FRE-ER10,T05,preventiva,P1 mensal,2026-08-24 02:11,2026-08-24 04:28,137
+1187,MBI-ER12,T08,preventiva,P1 mensal,2026-08-24 03:11,2026-08-24 05:33,143
+1188,HIG-ER16,T07,preventiva,P1 mensal,2026-08-24 03:41,2026-08-24 05:23,102
+1189,PIN-ER16,T05,corretiva,status critico,2026-08-24 06:24,2026-08-24 21:01,877
+1190,LUZ-ER19,T09,corretiva,parada de seguranca (reset),2026-08-24 06:26,2026-08-24 07:01,35
+1191,BUT-ER09,T06,corretiva,parada de seguranca (reset),2026-08-24 10:14,2026-08-24 10:45,31
+1192,PTA-ER03,T04,corretiva,parada de seguranca (reset),2026-08-24 10:14,2026-08-24 10:53,39
+1193,PTA-ER16,T02,corretiva,parada de seguranca (reset),2026-08-24 10:19,2026-08-24 10:48,29
+1194,FRE-ER12,T09,corretiva,alerta prolongado,2026-08-24 10:26,2026-08-25 11:22,1496
+1195,HIG-ER05,T09,corretiva,parada de seguranca (reset),2026-08-24 10:27,2026-08-24 11:04,37
+1196,LUZ-ER10,T03,corretiva,status critico,2026-08-24 10:34,2026-08-24 20:50,616
+1197,PIN-ER17,T09,corretiva,parada de seguranca (reset),2026-08-24 14:19,2026-08-24 14:37,18
+1198,HIG-ER04,T09,corretiva,parada de seguranca (reset),2026-08-24 14:29,2026-08-24 14:53,24
+1199,FRA-ER02,T05,corretiva,parada de seguranca (reset),2026-08-24 18:15,2026-08-24 18:48,33
+1200,LUZ-ER17,T10,corretiva,parada de seguranca (reset),2026-08-24 18:17,2026-08-24 18:29,12
+1201,FRE-ER01,T10,corretiva,parada de seguranca (reset),2026-08-24 18:26,2026-08-24 19:08,42
+1202,FRA-ER05,T06,corretiva,parada de seguranca (reset),2026-08-24 22:09,2026-08-24 22:41,32
+1203,LUZ-ER14,T02,corretiva,parada de seguranca (reset),2026-08-24 22:22,2026-08-24 22:38,16
+1204,LUZ-ER04,T01,corretiva,parada de seguranca (reset),2026-08-24 22:26,2026-08-24 22:57,31
+1205,VSO-ER05,T08,preventiva,P1 mensal,2026-08-25 02:32,2026-08-25 04:10,98
+1206,FRA-ER08,T06,preventiva,P1 mensal,2026-08-25 03:02,2026-08-25 04:50,109
+1207,FRA-ER06,T09,preventiva,P1 mensal,2026-08-25 03:18,2026-08-25 05:22,124
+1208,HIG-ER17,T01,preventiva,P1 mensal,2026-08-25 03:21,2026-08-25 04:56,95
+1209,TVS-ER03,T07,preventiva,P1 mensal,2026-08-25 03:48,2026-08-25 06:09,141
+1210,MBI-ER05,T11,corretiva,parada de seguranca (reset),2026-08-25 06:05,2026-08-25 06:31,26
+1211,PIN-ER19,T10,corretiva,parada de seguranca (reset),2026-08-25 06:28,2026-08-25 06:38,10
+1212,HIG-ER07,T03,corretiva,parada de seguranca (reset),2026-08-25 06:29,2026-08-25 06:49,20
+1213,PTA-ER04,T02,corretiva,status critico,2026-08-25 07:57,2026-08-25 22:46,890
+1214,PIN-ER09,T08,corretiva,parada de seguranca (reset),2026-08-25 10:08,2026-08-25 10:50,42
+1215,FRE-ER20,T01,corretiva,parada de seguranca (reset),2026-08-25 10:19,2026-08-25 10:59,40
+1216,LUZ-ER13,T12,corretiva,parada de seguranca (reset),2026-08-25 10:19,2026-08-25 10:33,14
+1217,REP-ER61,T03,corretiva,parada de seguranca (reset),2026-08-25 10:27,2026-08-25 11:05,38
+1218,LUZ-ER16,T11,corretiva,parada de seguranca (reset),2026-08-25 14:14,2026-08-25 14:47,33
+1219,PIN-ER01,T06,corretiva,parada de seguranca (reset),2026-08-25 18:05,2026-08-25 18:40,35
+1220,FRA-ER05,T09,corretiva,parada de seguranca (reset),2026-08-25 18:10,2026-08-25 18:43,33
+1221,PIN-ER04,T03,corretiva,parada de seguranca (reset),2026-08-25 18:10,2026-08-25 18:51,41
+1222,VSO-ER12,T10,corretiva,parada de seguranca (reset),2026-08-25 18:12,2026-08-25 18:28,16
+1223,BUT-ER09,T12,corretiva,parada de seguranca (reset),2026-08-25 18:20,2026-08-25 18:53,33
+1224,TVS-ER08,T07,corretiva,parada de seguranca (reset),2026-08-25 22:23,2026-08-25 22:33,10
+1225,FRE-ER11,T06,corretiva,parada de seguranca (reset),2026-08-25 22:24,2026-08-25 22:49,25
+1226,PIN-ER02,T06,corretiva,parada de seguranca (reset),2026-08-25 22:27,2026-08-25 22:42,15
+1227,PIN-ER25,T11,preventiva,P1 mensal,2026-08-26 00:15,2026-08-26 02:37,142
+1228,BUT-ER10,T11,preventiva,P1 mensal,2026-08-26 00:47,2026-08-26 02:32,105
+1229,TVS-ER08,T03,preventiva,P1 mensal,2026-08-26 01:13,2026-08-26 02:47,95
+1230,FRE-ER16,T05,preventiva,P1 mensal,2026-08-26 01:21,2026-08-26 03:59,158
+1231,FRE-ER08,T06,preventiva,P1 mensal,2026-08-26 02:04,2026-08-26 03:38,94
+1232,HIG-ER03,T03,preventiva,P1 mensal,2026-08-26 02:13,2026-08-26 04:43,150
+1233,LUZ-ER09,T12,preventiva,P1 mensal,2026-08-26 02:20,2026-08-26 04:18,119
+1234,HIG-ER12,T12,preventiva,P1 mensal,2026-08-26 02:46,2026-08-26 04:17,91
+1235,FRA-ER02,T06,preventiva,P1 mensal,2026-08-26 02:51,2026-08-26 04:31,100
+1236,LUZ-ER19,T06,corretiva,status critico,2026-08-26 06:21,2026-08-26 06:52,32
+1237,VSO-ER08,T06,corretiva,status critico,2026-08-26 07:16,2026-08-26 11:46,271
+1238,PIN-ER09,T12,corretiva,sem resposta do sensor,2026-08-26 07:51,2026-08-26 21:53,842
+1239,FRE-ER02,T02,corretiva,parada de seguranca (reset),2026-08-26 10:26,2026-08-26 10:46,20
+1240,FAL-ER09,T11,corretiva,status critico,2026-08-26 14:05,2026-08-29 20:37,4712
+1241,PIN-ER12,T04,corretiva,status critico,2026-08-26 15:18,2026-08-27 18:03,1605
+1242,REP-ER59,T10,corretiva,parada de seguranca (reset),2026-08-26 18:08,2026-08-26 18:40,32
+1243,PIN-ER15,T07,corretiva,parada de seguranca (reset),2026-08-26 18:13,2026-08-26 18:53,40
+1244,PIN-ER02,T11,corretiva,parada de seguranca (reset),2026-08-26 18:20,2026-08-26 18:50,30
+1245,FRE-ER04,T10,corretiva,parada de seguranca (reset),2026-08-26 18:23,2026-08-26 19:03,40
+1246,PTA-ER16,T05,corretiva,parada de seguranca (reset),2026-08-26 18:25,2026-08-26 18:53,28
+1247,PIN-ER01,T08,corretiva,parada de seguranca (reset),2026-08-26 22:10,2026-08-26 22:26,16
+1248,TVS-ER01,T12,preventiva,P1 mensal,2026-08-27 00:01,2026-08-27 02:25,144
+1249,FAL-ER02,T01,preventiva,P1 mensal,2026-08-27 00:32,2026-08-27 02:09,98
+1250,BUT-ER07,T01,preventiva,P1 mensal,2026-08-27 00:44,2026-08-27 02:57,133
+1251,REP-ER25,T04,preventiva,P1 mensal,2026-08-27 01:24,2026-08-27 03:00,97
+1252,PIN-ER28,T02,preventiva,P1 mensal,2026-08-27 02:12,2026-08-27 04:39,148
+1253,LUZ-ER01,T12,preventiva,P1 mensal,2026-08-27 02:17,2026-08-27 05:02,166
+1254,PIN-ER05,T12,preventiva,P1 mensal,2026-08-27 02:57,2026-08-27 05:38,161
+1255,PTA-ER02,T07,corretiva,parada de seguranca (reset),2026-08-27 06:06,2026-08-27 06:21,15
+1256,REP-ER59,T01,corretiva,parada de seguranca (reset),2026-08-27 10:05,2026-08-27 10:45,40
+1257,FRE-ER03,T05,corretiva,parada de seguranca (reset),2026-08-27 10:14,2026-08-27 10:37,23
+1258,HIG-ER05,T05,corretiva,parada de seguranca (reset),2026-08-27 10:14,2026-08-27 10:33,19
+1259,FAL-ER08,T06,corretiva,parada de seguranca (reset),2026-08-27 10:15,2026-08-27 10:54,39
+1260,PTA-ER05,T08,corretiva,parada de seguranca (reset),2026-08-27 10:21,2026-08-27 10:58,37
+1261,FRA-ER10,T03,corretiva,parada de seguranca (reset),2026-08-27 10:22,2026-08-27 10:52,30
+1262,PIN-ER22,T11,corretiva,parada de seguranca (reset),2026-08-27 14:16,2026-08-27 14:50,34
+1263,FAL-ER08,T12,corretiva,parada de seguranca (reset),2026-08-27 18:14,2026-08-27 18:46,32
+1264,FRA-ER10,T09,corretiva,parada de seguranca (reset),2026-08-27 18:15,2026-08-27 18:26,11
+1265,MBI-ER01,T08,corretiva,parada de seguranca (reset),2026-08-27 18:20,2026-08-27 18:55,35
+1266,PTA-ER01,T04,corretiva,parada de seguranca (reset),2026-08-27 22:18,2026-08-27 22:32,14
+1267,REP-ER25,T11,corretiva,parada de seguranca (reset),2026-08-27 22:20,2026-08-27 22:54,34
+1268,HIG-ER15,T07,corretiva,alerta prolongado,2026-08-27 23:30,2026-08-28 18:41,1151
+1269,VSO-ER10,T05,preventiva,P1 mensal,2026-08-28 00:27,2026-08-28 02:20,113
+1270,MBI-ER13,T08,preventiva,P1 mensal,2026-08-28 00:38,2026-08-28 02:23,106
+1271,BUT-ER13,T03,preventiva,P1 mensal,2026-08-28 01:27,2026-08-28 03:36,130
+1272,PIN-ER07,T03,preventiva,P1 mensal,2026-08-28 01:38,2026-08-28 03:35,117
+1273,PIN-ER21,T02,preventiva,P1 mensal,2026-08-28 02:04,2026-08-28 04:13,129
+1274,FRE-ER07,T01,preventiva,P1 mensal,2026-08-28 02:10,2026-08-28 04:09,119
+1275,HIG-ER15,T11,preventiva,P1 mensal,2026-08-28 02:13,2026-08-28 04:24,131
+1276,HIG-ER18,T01,preventiva,P1 mensal,2026-08-28 02:31,2026-08-28 04:19,109
+1277,FRE-ER15,T12,preventiva,P1 mensal,2026-08-28 02:45,2026-08-28 04:53,128
+1278,PTA-ER13,T09,preventiva,P1 mensal,2026-08-28 02:50,2026-08-28 05:17,148
+1279,LUZ-ER07,T06,preventiva,P1 mensal,2026-08-28 02:58,2026-08-28 04:59,122
+1280,TVS-ER02,T05,preventiva,P1 mensal,2026-08-28 03:27,2026-08-28 05:16,110
+1281,PIN-ER15,T05,preventiva,P1 mensal,2026-08-28 03:50,2026-08-28 06:31,161
+1282,PTA-ER01,T09,corretiva,parada de seguranca (reset),2026-08-28 06:12,2026-08-28 06:51,39
+1283,REP-ER25,T04,corretiva,parada de seguranca (reset),2026-08-28 06:15,2026-08-28 06:48,33
+1284,PIN-ER31,T03,corretiva,alerta prolongado,2026-08-28 07:21,2026-08-28 15:45,505
+1285,BUT-ER10,T11,corretiva,sem resposta do sensor,2026-08-28 07:24,2026-08-28 14:02,398
+1286,PIN-ER29,T12,corretiva,parada de seguranca (reset),2026-08-28 10:07,2026-08-28 10:46,39
+1287,VSO-ER06,T10,corretiva,parada de seguranca (reset),2026-08-28 10:09,2026-08-28 10:26,17
+1288,PIN-ER13,T06,corretiva,parada de seguranca (reset),2026-08-28 10:22,2026-08-28 11:01,39
+1289,PIN-ER12,T08,corretiva,parada de seguranca (reset),2026-08-28 14:05,2026-08-28 14:18,13
+1290,BUT-ER05,T05,corretiva,parada de seguranca (reset),2026-08-28 14:08,2026-08-28 14:25,17
+1291,HIG-ER22,T01,corretiva,parada de seguranca (reset),2026-08-28 14:09,2026-08-28 14:29,20
+1292,FAL-ER07,T07,corretiva,parada de seguranca (reset),2026-08-28 14:14,2026-08-28 14:46,32
+1293,PIN-ER22,T01,corretiva,parada de seguranca (reset),2026-08-28 18:09,2026-08-28 18:37,28
+1294,PIN-ER05,T08,corretiva,parada de seguranca (reset),2026-08-28 18:14,2026-08-28 18:58,44
+1295,LUZ-ER15,T12,corretiva,status critico,2026-08-28 19:28,2026-08-29 11:34,967
+1296,LUZ-ER13,T08,corretiva,parada de seguranca (reset),2026-08-28 22:24,2026-08-28 22:59,35
+1297,LUZ-ER12,T01,corretiva,parada de seguranca (reset),2026-08-29 10:23,2026-08-29 11:03,40
+1298,BUT-ER13,T01,corretiva,parada de seguranca (reset),2026-08-29 10:26,2026-08-29 10:59,33
+1299,PTA-ER03,T12,corretiva,parada de seguranca (reset),2026-08-29 10:27,2026-08-29 11:01,34
+1300,FRE-ER08,T01,corretiva,parada de seguranca (reset),2026-08-29 14:18,2026-08-29 14:34,16
+1301,HIG-ER09,T10,corretiva,parada de seguranca (reset),2026-08-29 14:23,2026-08-29 14:48,25
+1302,LUZ-ER17,T02,corretiva,parada de seguranca (reset),2026-08-29 14:25,2026-08-29 14:39,14
+1303,LUZ-ER02,T02,corretiva,sem resposta do sensor,2026-08-29 14:44,2026-08-30 04:50,846
+1304,PIN-ER26,T03,corretiva,status critico,2026-08-29 15:02,2026-08-30 13:41,1360
+1305,VSO-ER02,T03,corretiva,parada de seguranca (reset),2026-08-29 18:10,2026-08-29 18:53,43
+1306,LUZ-ER20,T08,corretiva,parada de seguranca (reset),2026-08-29 18:20,2026-08-29 18:51,31
+1307,HIG-ER19,T05,corretiva,parada de seguranca (reset),2026-08-29 22:17,2026-08-29 22:51,34
+1308,FRE-ER03,T08,corretiva,parada de seguranca (reset),2026-08-30 06:06,2026-08-30 06:20,14
+1309,PIN-ER25,T05,corretiva,parada de seguranca (reset),2026-08-30 06:22,2026-08-30 06:51,29
+1310,VSO-ER13,T01,corretiva,status critico,2026-08-30 10:59,2026-08-30 16:36,337
+1311,FRE-ER05,T05,corretiva,alerta prolongado,2026-08-30 11:48,2026-08-30 16:18,271
+1312,PIN-ER27,T12,corretiva,parada de seguranca (reset),2026-08-30 14:19,2026-08-30 14:34,15
+1313,LUZ-ER16,T05,corretiva,status critico,2026-08-30 15:03,2026-08-30 18:19,196
+1314,HIG-ER01,T03,corretiva,parada de seguranca (reset),2026-08-30 18:07,2026-08-30 18:21,14
+1315,PIN-ER02,T08,corretiva,parada de seguranca (reset),2026-08-30 18:10,2026-08-30 18:30,20
+1316,PIN-ER06,T06,corretiva,parada de seguranca (reset),2026-08-30 18:15,2026-08-30 18:56,41
+1317,PTA-ER16,T03,corretiva,parada de seguranca (reset),2026-08-30 18:21,2026-08-30 18:54,33
+1318,VSO-ER07,T06,corretiva,parada de seguranca (reset),2026-08-30 18:25,2026-08-30 18:36,11
+1319,VSO-ER15,T10,corretiva,parada de seguranca (reset),2026-08-30 22:08,2026-08-30 22:40,32
+1320,PTA-ER04,T02,corretiva,parada de seguranca (reset),2026-08-30 22:24,2026-08-30 23:05,41
+1321,FRA-ER07,T01,corretiva,parada de seguranca (reset),2026-08-31 06:07,2026-08-31 06:46,39
+1322,BUT-ER13,T05,corretiva,parada de seguranca (reset),2026-08-31 06:08,2026-08-31 06:44,36
+1323,HIG-ER11,T10,corretiva,parada de seguranca (reset),2026-08-31 06:08,2026-08-31 06:52,44
+1324,VSO-ER19,T04,corretiva,parada de seguranca (reset),2026-08-31 06:18,2026-08-31 06:47,29
+1325,PIN-ER28,T05,corretiva,status critico,2026-08-31 06:53,2026-08-31 07:35,42
+1326,VSO-ER02,T01,corretiva,status critico,2026-08-31 07:47,2026-08-31 10:36,170
+1327,PIN-ER04,T10,corretiva,sem resposta do sensor,2026-08-31 10:08,2026-08-31 10:56,49
+1328,FAL-ER02,T08,corretiva,parada de seguranca (reset),2026-08-31 10:14,2026-08-31 10:51,37
+1329,MBI-ER12,T01,corretiva,parada de seguranca (reset),2026-08-31 10:17,2026-08-31 10:41,24
+1330,PIN-ER25,T04,corretiva,parada de seguranca (reset),2026-08-31 14:12,2026-08-31 14:27,15
+1331,LUZ-ER15,T12,corretiva,parada de seguranca (reset),2026-08-31 14:20,2026-08-31 14:56,36
+1332,FRA-ER06,T09,corretiva,parada de seguranca (reset),2026-08-31 18:06,2026-08-31 18:30,24
+1333,PIN-ER21,T07,corretiva,parada de seguranca (reset),2026-08-31 18:11,2026-08-31 18:55,44
+1334,PIN-ER12,T09,corretiva,parada de seguranca (reset),2026-08-31 18:16,2026-08-31 18:43,27
+1335,BUT-ER13,T04,corretiva,parada de seguranca (reset),2026-08-31 22:07,2026-08-31 22:43,36
+1336,BUT-ER08,T12,corretiva,parada de seguranca (reset),2026-08-31 22:12,2026-08-31 22:34,22
+1337,PIN-ER06,T06,corretiva,parada de seguranca (reset),2026-08-31 22:14,2026-08-31 22:55,41
+1338,PTA-ER09,T08,corretiva,parada de seguranca (reset),2026-08-31 22:17,2026-08-31 23:01,44
+1339,FRE-ER18,T12,corretiva,status critico,2026-08-31 22:22,2026-09-01 08:44,622
+1340,FRE-ER19,T08,preventiva,P1 mensal,2026-09-01 00:18,2026-09-01 02:29,131
+1341,LUZ-ER13,T04,preventiva,P1 mensal,2026-09-01 00:18,2026-09-01 01:59,101
+1342,VSO-ER18,T07,preventiva,P1 mensal,2026-09-01 00:40,2026-09-01 03:21,161
+1343,PIN-ER01,T04,preventiva,P1 mensal,2026-09-01 00:45,2026-09-01 02:24,100
+1344,HIG-ER05,T07,preventiva,P1 mensal,2026-09-01 01:30,2026-09-01 03:42,132
+1345,MBI-ER02,T01,preventiva,P1 mensal,2026-09-01 01:38,2026-09-01 03:09,92
+1346,LUZ-ER16,T08,preventiva,P1 mensal,2026-09-01 01:48,2026-09-01 04:09,141
+1347,PTA-ER10,T07,preventiva,P1 mensal,2026-09-01 02:07,2026-09-01 04:32,146
+1348,PIN-ER10,T09,preventiva,P1 mensal,2026-09-01 02:53,2026-09-01 05:23,150
+1349,MBI-ER06,T04,preventiva,P1 mensal,2026-09-01 03:46,2026-09-01 06:19,154
+1350,PIN-ER32,T02,corretiva,parada de seguranca (reset),2026-09-01 06:14,2026-09-01 06:56,42
+1351,BUT-ER09,T06,corretiva,parada de seguranca (reset),2026-09-01 06:20,2026-09-01 06:42,22
+1352,HIG-ER09,T04,corretiva,parada de seguranca (reset),2026-09-01 06:22,2026-09-01 07:02,40
+1353,HIG-ER18,T01,corretiva,parada de seguranca (reset),2026-09-01 06:24,2026-09-01 06:53,29
+1354,LUZ-ER14,T02,corretiva,status critico,2026-09-01 07:16,2026-09-01 09:17,121
+1355,VSO-ER14,T11,corretiva,parada de seguranca (reset),2026-09-01 10:07,2026-09-01 10:39,32
+1356,HIG-ER18,T10,corretiva,parada de seguranca (reset),2026-09-01 10:16,2026-09-01 10:32,16
+1357,PIN-ER14,T03,corretiva,parada de seguranca (reset),2026-09-01 10:19,2026-09-01 10:46,27
+1358,PTA-ER12,T08,corretiva,parada de seguranca (reset),2026-09-01 10:19,2026-09-01 10:53,34
+1359,HIG-ER03,T01,corretiva,parada de seguranca (reset),2026-09-01 10:21,2026-09-01 10:33,12
+1360,LUZ-ER02,T03,corretiva,status critico,2026-09-01 15:53,2026-09-01 21:38,346
+1361,VSO-ER05,T04,corretiva,parada de seguranca (reset),2026-09-01 18:07,2026-09-01 18:29,22
+1362,LUZ-ER07,T12,corretiva,parada de seguranca (reset),2026-09-01 18:20,2026-09-01 18:48,28
+1363,BUT-ER10,T12,corretiva,parada de seguranca (reset),2026-09-01 18:23,2026-09-01 19:06,43
+1364,VSO-ER06,T10,corretiva,status critico,2026-09-01 18:36,2026-09-01 21:27,172
+1365,LUZ-ER19,T04,corretiva,sem resposta do sensor,2026-09-01 19:56,2026-09-01 22:41,166
+1366,HIG-ER13,T11,corretiva,parada de seguranca (reset),2026-09-01 22:09,2026-09-01 22:53,44
+1367,HIG-ER09,T06,corretiva,parada de seguranca (reset),2026-09-01 22:13,2026-09-01 22:29,16
+1368,PIN-ER31,T01,corretiva,parada de seguranca (reset),2026-09-01 22:15,2026-09-01 22:25,10
+1369,PIN-ER25,T09,corretiva,parada de seguranca (reset),2026-09-01 22:17,2026-09-01 22:35,18
+1370,VSO-ER12,T09,corretiva,parada de seguranca (reset),2026-09-01 22:23,2026-09-01 22:34,11
+1371,PIN-ER20,T02,preventiva,P1 mensal,2026-09-02 00:33,2026-09-02 02:26,113
+1372,LUZ-ER18,T05,preventiva,P1 mensal,2026-09-02 01:18,2026-09-02 03:12,115
+1373,PIN-ER17,T05,preventiva,P1 mensal,2026-09-02 01:29,2026-09-02 03:15,106
+1374,FAL-ER06,T11,preventiva,P1 mensal,2026-09-02 01:51,2026-09-02 04:12,141
+1375,FRE-ER01,T05,preventiva,P1 mensal,2026-09-02 01:54,2026-09-02 03:49,116
+1376,PIN-ER08,T03,preventiva,P1 mensal,2026-09-02 02:18,2026-09-02 04:56,158
+1377,TVS-ER06,T02,preventiva,P1 mensal,2026-09-02 02:32,2026-09-02 04:07,95
+1378,FRE-ER09,T01,preventiva,P1 mensal,2026-09-02 03:06,2026-09-02 05:45,159
+1379,FRA-ER05,T12,preventiva,P1 mensal,2026-09-02 03:55,2026-09-02 06:26,151
+1380,PIN-ER16,T11,corretiva,parada de seguranca (reset),2026-09-02 10:13,2026-09-02 10:47,34
+1381,PTA-ER12,T01,corretiva,parada de seguranca (reset),2026-09-02 10:13,2026-09-02 10:36,23
+1382,REP-ER25,T05,corretiva,parada de seguranca (reset),2026-09-02 18:13,2026-09-02 18:45,32
+1383,PIN-ER28,T12,corretiva,parada de seguranca (reset),2026-09-02 18:15,2026-09-02 18:33,18
+1384,MBI-ER01,T01,corretiva,parada de seguranca (reset),2026-09-02 18:23,2026-09-02 19:00,37
+1385,REP-ER60,T12,corretiva,parada de seguranca (reset),2026-09-02 18:25,2026-09-02 18:47,22
+1386,BUT-ER04,T10,corretiva,parada de seguranca (reset),2026-09-02 18:28,2026-09-02 18:53,25
+1387,BUT-ER05,T02,corretiva,parada de seguranca (reset),2026-09-02 22:05,2026-09-02 22:19,14
+1388,LUZ-ER07,T05,corretiva,parada de seguranca (reset),2026-09-02 22:24,2026-09-02 23:00,36
+1389,LUZ-ER02,T06,corretiva,parada de seguranca (reset),2026-09-02 22:28,2026-09-02 22:48,20
+1390,FRE-ER14,T06,corretiva,status critico,2026-09-02 23:13,2026-09-03 00:35,83
+1391,PTA-ER17,T10,preventiva,P1 mensal,2026-09-03 02:31,2026-09-03 04:55,145
+1392,PTA-ER18,T05,preventiva,P1 mensal,2026-09-03 02:55,2026-09-03 05:08,134
+1393,PTA-ER05,T02,preventiva,P1 mensal,2026-09-03 03:20,2026-09-03 05:15,116
+1394,PIN-ER12,T02,preventiva,P1 mensal,2026-09-03 03:34,2026-09-03 05:55,142
+1395,HIG-ER06,T06,preventiva,P1 mensal,2026-09-03 03:40,2026-09-03 05:49,129
+1396,FRA-ER03,T02,corretiva,parada de seguranca (reset),2026-09-03 06:07,2026-09-03 06:36,29
+1397,TVS-ER08,T06,corretiva,parada de seguranca (reset),2026-09-03 06:09,2026-09-03 06:29,20
+1398,FAL-ER06,T01,corretiva,parada de seguranca (reset),2026-09-03 06:13,2026-09-03 06:23,10
+1399,MBI-ER12,T01,corretiva,parada de seguranca (reset),2026-09-03 06:16,2026-09-03 06:32,16
+1400,LUZ-ER17,T07,corretiva,alerta prolongado,2026-09-03 10:11,2026-09-04 05:32,1162
+1401,PIN-ER17,T10,corretiva,parada de seguranca (reset),2026-09-03 18:18,2026-09-03 18:52,34
+1402,PTA-ER16,T08,corretiva,parada de seguranca (reset),2026-09-03 18:18,2026-09-03 19:01,43
+1403,HIG-ER22,T12,corretiva,parada de seguranca (reset),2026-09-03 18:20,2026-09-03 18:43,23
+1404,FAL-ER04,T07,corretiva,parada de seguranca (reset),2026-09-03 22:21,2026-09-03 22:58,37
+1405,VSO-ER16,T06,corretiva,parada de seguranca (reset),2026-09-03 22:23,2026-09-03 22:34,11
+1406,PIN-ER11,T12,preventiva,P1 mensal,2026-09-04 00:51,2026-09-04 03:03,132
+1407,FAL-ER03,T02,preventiva,P1 mensal,2026-09-04 00:54,2026-09-04 03:17,143
+1408,PTA-ER09,T11,preventiva,P1 mensal,2026-09-04 01:34,2026-09-04 03:40,126
+1409,BUT-ER02,T04,preventiva,P1 mensal,2026-09-04 01:49,2026-09-04 04:30,161
+1410,BUT-ER03,T06,preventiva,P1 mensal,2026-09-04 02:33,2026-09-04 04:28,116
+1411,VSO-ER10,T04,corretiva,parada de seguranca (reset),2026-09-04 06:22,2026-09-04 07:04,42
+1412,PIN-ER14,T04,corretiva,alerta prolongado,2026-09-04 07:06,2026-09-04 17:34,628
+1413,FRE-ER11,T05,corretiva,parada de seguranca (reset),2026-09-04 10:16,2026-09-04 10:28,12
+1414,BUT-ER10,T11,corretiva,parada de seguranca (reset),2026-09-04 14:08,2026-09-04 14:47,39
+1415,FRE-ER06,T01,corretiva,parada de seguranca (reset),2026-09-04 14:08,2026-09-04 14:31,23
+1416,LUZ-ER14,T06,corretiva,parada de seguranca (reset),2026-09-04 14:21,2026-09-04 14:40,19
+1417,LUZ-ER16,T03,corretiva,parada de seguranca (reset),2026-09-04 14:22,2026-09-04 14:40,18
+1418,PTA-ER06,T04,corretiva,parada de seguranca (reset),2026-09-04 14:26,2026-09-04 14:57,31
+1419,BUT-ER12,T10,corretiva,sem resposta do sensor,2026-09-04 14:36,2026-09-04 15:38,62
+1420,PIN-ER21,T11,corretiva,sem resposta do sensor,2026-09-04 15:18,2026-09-04 23:40,502
+1421,FRE-ER20,T02,corretiva,parada de seguranca (reset),2026-09-04 18:08,2026-09-04 18:33,25
+1422,FAL-ER04,T11,corretiva,parada de seguranca (reset),2026-09-04 18:09,2026-09-04 18:41,32
+1423,PIN-ER22,T12,corretiva,parada de seguranca (reset),2026-09-04 18:11,2026-09-04 18:27,16
+1424,LUZ-ER02,T08,corretiva,parada de seguranca (reset),2026-09-04 18:27,2026-09-04 19:06,39
+1425,BUT-ER03,T08,corretiva,parada de seguranca (reset),2026-09-04 22:08,2026-09-04 22:27,19
+1426,REP-ER60,T10,corretiva,parada de seguranca (reset),2026-09-04 22:22,2026-09-04 23:02,40
+1427,PIN-ER31,T02,preventiva,P1 mensal,2026-09-05 00:08,2026-09-05 01:59,111
+1428,MBI-ER04,T07,preventiva,P1 mensal,2026-09-05 00:22,2026-09-05 02:07,106
+1429,LUZ-ER06,T06,preventiva,P1 mensal,2026-09-05 00:41,2026-09-05 03:06,146
+1430,BUT-ER14,T08,preventiva,P1 mensal,2026-09-05 00:45,2026-09-05 03:15,151
+1431,FRA-ER01,T01,preventiva,P1 mensal,2026-09-05 02:19,2026-09-05 04:41,142
+1432,HIG-ER18,T05,corretiva,status critico,2026-09-05 06:09,2026-09-05 15:19,551
+1433,FRE-ER09,T06,corretiva,parada de seguranca (reset),2026-09-05 06:24,2026-09-05 06:37,13
+1434,FRE-ER20,T05,corretiva,parada de seguranca (reset),2026-09-05 06:24,2026-09-05 06:42,18
+1435,VSO-ER10,T09,corretiva,parada de seguranca (reset),2026-09-05 10:13,2026-09-05 10:47,34
+1436,VSO-ER17,T07,corretiva,parada de seguranca (reset),2026-09-05 14:12,2026-09-05 14:52,40
+1437,PIN-ER15,T06,corretiva,alerta prolongado,2026-09-05 15:16,2026-09-08 15:44,4348
+1438,PIN-ER32,T12,corretiva,parada de seguranca (reset),2026-09-05 18:05,2026-09-05 18:27,22
+1439,FAL-ER06,T01,corretiva,parada de seguranca (reset),2026-09-05 18:06,2026-09-05 18:17,11
+1440,PTA-ER17,T05,corretiva,parada de seguranca (reset),2026-09-05 18:09,2026-09-05 18:44,35
+1441,BUT-ER10,T05,corretiva,parada de seguranca (reset),2026-09-05 18:14,2026-09-05 18:26,12
+1442,REP-ER61,T08,corretiva,parada de seguranca (reset),2026-09-05 18:19,2026-09-05 18:30,11
+1443,LUZ-ER04,T09,corretiva,parada de seguranca (reset),2026-09-05 18:23,2026-09-05 18:59,36
+1444,BUT-ER12,T01,corretiva,sem resposta do sensor,2026-09-05 18:39,2026-09-06 00:24,346
+1445,PIN-ER11,T12,corretiva,parada de seguranca (reset),2026-09-05 22:12,2026-09-05 22:23,11
+1446,HIG-ER24,T07,corretiva,parada de seguranca (reset),2026-09-05 22:16,2026-09-05 22:30,14
+1447,LUZ-ER17,T03,corretiva,parada de seguranca (reset),2026-09-05 22:16,2026-09-05 22:36,20
+1448,VSO-ER19,T12,preventiva,P1 mensal,2026-09-06 00:14,2026-09-06 02:36,142
+1449,FRA-ER03,T02,preventiva,P1 mensal,2026-09-06 00:32,2026-09-06 02:34,122
+1450,PIN-ER06,T01,preventiva,P1 mensal,2026-09-06 00:37,2026-09-06 02:14,98
+1451,PIN-ER26,T05,preventiva,P1 mensal,2026-09-06 01:13,2026-09-06 03:35,142
+1452,FAL-ER08,T05,preventiva,P1 mensal,2026-09-06 01:43,2026-09-06 03:25,102
+1453,VSO-ER16,T08,preventiva,P1 mensal,2026-09-06 02:17,2026-09-06 04:31,134
+1454,HIG-ER09,T12,preventiva,P1 mensal,2026-09-06 02:58,2026-09-06 04:41,104
+1455,BUT-ER04,T12,preventiva,P1 mensal,2026-09-06 03:01,2026-09-06 05:28,148
+1456,VSO-ER13,T01,preventiva,P1 mensal,2026-09-06 03:05,2026-09-06 05:18,134
+1457,REP-ER26,T01,preventiva,P1 mensal,2026-09-06 03:48,2026-09-06 05:31,103
+1458,FRE-ER08,T10,corretiva,parada de seguranca (reset),2026-09-06 06:17,2026-09-06 06:27,10
+1459,HIG-ER17,T04,corretiva,parada de seguranca (reset),2026-09-06 10:08,2026-09-06 10:51,43
+1460,LUZ-ER16,T12,corretiva,parada de seguranca (reset),2026-09-06 10:16,2026-09-06 10:52,36
+1461,HIG-ER04,T04,corretiva,parada de seguranca (reset),2026-09-06 10:25,2026-09-06 10:37,12
+1462,PIN-ER13,T04,corretiva,status critico,2026-09-06 10:51,2026-09-07 00:26,815
+1463,PIN-ER14,T02,corretiva,sem resposta do sensor,2026-09-06 11:47,2026-09-07 14:23,1597
+1464,FAL-ER03,T12,corretiva,parada de seguranca (reset),2026-09-06 14:11,2026-09-06 14:38,27
+1465,BUT-ER07,T10,corretiva,parada de seguranca (reset),2026-09-06 14:14,2026-09-06 14:24,10
+1466,PIN-ER17,T03,corretiva,parada de seguranca (reset),2026-09-06 14:21,2026-09-06 14:39,18
+1467,LUZ-ER04,T02,corretiva,parada de seguranca (reset),2026-09-06 14:26,2026-09-06 14:55,29
+1468,HIG-ER08,T06,corretiva,status critico,2026-09-06 15:49,2026-09-06 17:59,131
+1469,PTA-ER01,T04,corretiva,parada de seguranca (reset),2026-09-06 18:13,2026-09-06 18:26,13
+1470,PTA-ER04,T02,corretiva,parada de seguranca (reset),2026-09-06 18:21,2026-09-06 18:53,32
+1471,FRE-ER13,T07,corretiva,parada de seguranca (reset),2026-09-06 18:22,2026-09-06 18:39,17
+1472,BUT-ER13,T08,corretiva,parada de seguranca (reset),2026-09-06 22:07,2026-09-06 22:29,22
+1473,VSO-ER07,T09,corretiva,parada de seguranca (reset),2026-09-06 22:08,2026-09-06 22:45,37
+1474,PIN-ER19,T02,corretiva,parada de seguranca (reset),2026-09-06 22:13,2026-09-06 22:27,14
+1475,PTA-ER14,T05,corretiva,parada de seguranca (reset),2026-09-06 22:13,2026-09-06 22:57,44
+1476,LUZ-ER05,T10,corretiva,parada de seguranca (reset),2026-09-06 22:25,2026-09-06 22:36,11
+1477,PIN-ER16,T10,corretiva,parada de seguranca (reset),2026-09-06 22:27,2026-09-06 22:45,18
+1478,MBI-ER09,T12,preventiva,P1 mensal,2026-09-07 00:29,2026-09-07 02:47,138
+1479,HIG-ER04,T06,preventiva,P1 mensal,2026-09-07 01:31,2026-09-07 03:47,137
+1480,LUZ-ER15,T09,preventiva,P1 mensal,2026-09-07 01:50,2026-09-07 03:45,116
+1481,HIG-ER19,T06,preventiva,P1 mensal,2026-09-07 02:43,2026-09-07 05:22,160
+1482,MBI-ER11,T01,preventiva,P1 mensal,2026-09-07 03:02,2026-09-07 04:46,104
+1483,FRA-ER04,T08,preventiva,P1 mensal,2026-09-07 03:35,2026-09-07 05:14,99
+1484,VSO-ER06,T09,corretiva,parada de seguranca (reset),2026-09-07 10:22,2026-09-07 10:52,30
+1485,LUZ-ER13,T11,corretiva,parada de seguranca (reset),2026-09-07 10:28,2026-09-07 11:10,42
+1486,BUT-ER06,T04,corretiva,parada de seguranca (reset),2026-09-07 14:05,2026-09-07 14:44,39
+1487,BUT-ER14,T02,corretiva,alerta prolongado,2026-09-07 14:05,2026-09-07 16:46,161
+1488,MBI-ER01,T12,corretiva,parada de seguranca (reset),2026-09-07 14:05,2026-09-07 14:20,15
+1489,REP-ER60,T06,corretiva,parada de seguranca (reset),2026-09-07 14:10,2026-09-07 14:53,43
+1490,LUZ-ER03,T03,corretiva,parada de seguranca (reset),2026-09-07 14:16,2026-09-07 14:53,37
+1491,FAL-ER05,T10,corretiva,parada de seguranca (reset),2026-09-07 18:06,2026-09-07 18:32,26
+1492,TVS-ER09,T11,corretiva,parada de seguranca (reset),2026-09-07 18:14,2026-09-07 18:34,20
+1493,LUZ-ER03,T07,corretiva,parada de seguranca (reset),2026-09-07 18:17,2026-09-07 18:40,23
+1494,REP-ER60,T01,corretiva,parada de seguranca (reset),2026-09-07 18:26,2026-09-07 18:37,11
+1495,FRE-ER02,T05,preventiva,P1 mensal,2026-09-08 01:51,2026-09-08 04:16,145
+1496,FRA-ER09,T11,preventiva,P1 mensal,2026-09-08 02:34,2026-09-08 04:22,108
+1497,PIN-ER32,T12,preventiva,P1 mensal,2026-09-08 02:54,2026-09-08 04:40,106
+1498,HIG-ER25,T09,preventiva,P1 mensal,2026-09-08 03:06,2026-09-08 05:03,118
+1499,LUZ-ER03,T05,preventiva,P1 mensal,2026-09-08 03:15,2026-09-08 04:54,100
+1500,HIG-ER11,T09,preventiva,P1 mensal,2026-09-08 03:37,2026-09-08 06:06,149
+1501,PTA-ER12,T08,preventiva,P1 mensal,2026-09-08 03:48,2026-09-08 06:24,157
+1502,PIN-ER14,T11,corretiva,parada de seguranca (reset),2026-09-08 06:27,2026-09-08 07:03,36
+1503,LUZ-ER14,T06,corretiva,parada de seguranca (reset),2026-09-08 10:08,2026-09-08 10:18,10
+1504,VSO-ER13,T04,corretiva,parada de seguranca (reset),2026-09-08 10:08,2026-09-08 10:24,16
+1505,HIG-ER18,T01,corretiva,parada de seguranca (reset),2026-09-08 10:26,2026-09-08 10:43,17
+1506,BUT-ER05,T12,corretiva,parada de seguranca (reset),2026-09-08 14:09,2026-09-08 14:25,16
+1507,PTA-ER16,T03,corretiva,parada de seguranca (reset),2026-09-08 14:11,2026-09-08 14:22,11
+1508,PIN-ER23,T02,corretiva,parada de seguranca (reset),2026-09-08 14:13,2026-09-08 14:24,11
+1509,REP-ER25,T06,corretiva,parada de seguranca (reset),2026-09-08 18:17,2026-09-08 18:34,17
+1510,PIN-ER16,T08,corretiva,parada de seguranca (reset),2026-09-08 22:06,2026-09-08 22:47,41
+1511,VSO-ER08,T09,preventiva,P1 mensal,2026-09-09 00:01,2026-09-09 02:23,143
+1512,PIN-ER18,T08,preventiva,P1 mensal,2026-09-09 00:10,2026-09-09 02:15,125
+1513,BUT-ER06,T08,preventiva,P1 mensal,2026-09-09 00:58,2026-09-09 03:19,142
+1514,HIG-ER02,T12,preventiva,P1 mensal,2026-09-09 01:36,2026-09-09 03:32,116
+1515,PIN-ER29,T09,preventiva,P1 mensal,2026-09-09 01:55,2026-09-09 04:15,140
+1516,TVS-ER05,T11,preventiva,P1 mensal,2026-09-09 02:05,2026-09-09 04:48,164
+1517,PIN-ER03,T04,preventiva,P1 mensal,2026-09-09 03:21,2026-09-09 05:00,99
+1518,VSO-ER09,T04,preventiva,P1 mensal,2026-09-09 03:52,2026-09-09 05:49,118
+1519,LUZ-ER11,T12,corretiva,parada de seguranca (reset),2026-09-09 06:15,2026-09-09 06:52,37
+1520,BUT-ER01,T07,corretiva,parada de seguranca (reset),2026-09-09 06:27,2026-09-09 06:41,14
+1521,PIN-ER09,T09,corretiva,sem resposta do sensor,2026-09-09 07:35,2026-09-09 18:56,682
+1522,FAL-ER04,T03,corretiva,parada de seguranca (reset),2026-09-09 10:13,2026-09-09 10:33,20
+1523,FRE-ER19,T08,corretiva,parada de seguranca (reset),2026-09-09 10:19,2026-09-09 10:58,39
+1524,PIN-ER24,T09,corretiva,parada de seguranca (reset),2026-09-09 10:27,2026-09-09 11:09,42
+1525,REP-ER25,T08,corretiva,parada de seguranca (reset),2026-09-09 14:15,2026-09-09 14:42,27
+1526,LUZ-ER01,T11,corretiva,parada de seguranca (reset),2026-09-09 14:21,2026-09-09 14:59,38
+1527,BUT-ER07,T02,corretiva,parada de seguranca (reset),2026-09-09 14:22,2026-09-09 15:01,39
+1528,PIN-ER32,T10,corretiva,parada de seguranca (reset),2026-09-09 14:29,2026-09-09 14:59,30
+1529,FRA-ER07,T02,corretiva,sem resposta do sensor,2026-09-09 18:05,2026-09-10 05:14,669
+1530,PTA-ER07,T08,corretiva,parada de seguranca (reset),2026-09-09 18:07,2026-09-09 18:40,33
+1531,MBI-ER02,T09,corretiva,parada de seguranca (reset),2026-09-09 18:09,2026-09-09 18:45,36
+1532,FRE-ER10,T10,corretiva,parada de seguranca (reset),2026-09-09 18:10,2026-09-09 18:49,39
+1533,FRE-ER11,T04,corretiva,parada de seguranca (reset),2026-09-09 18:15,2026-09-09 18:59,44
+1534,PTA-ER08,T05,corretiva,parada de seguranca (reset),2026-09-09 18:26,2026-09-09 18:41,15
+1535,FRE-ER15,T09,corretiva,sem resposta do sensor,2026-09-09 18:29,2026-09-10 10:38,970
+1536,PIN-ER06,T01,corretiva,parada de seguranca (reset),2026-09-09 22:18,2026-09-09 22:53,35
+1537,TVS-ER05,T03,corretiva,parada de seguranca (reset),2026-09-09 22:23,2026-09-09 22:51,28
+1538,PIN-ER26,T05,corretiva,status critico,2026-09-09 23:16,2026-09-11 01:27,1571
+1539,BUT-ER01,T01,preventiva,P1 mensal,2026-09-10 00:58,2026-09-10 02:49,112
+1540,PIN-ER27,T07,preventiva,P1 mensal,2026-09-10 02:25,2026-09-10 04:34,130
+1541,PIN-ER09,T08,preventiva,P1 mensal,2026-09-10 03:12,2026-09-10 05:01,109
+1542,MBI-ER03,T05,preventiva,P1 mensal,2026-09-10 03:22,2026-09-10 06:09,167
+1543,HIG-ER15,T09,corretiva,parada de seguranca (reset),2026-09-10 06:24,2026-09-10 07:06,42
+1544,LUZ-ER16,T07,corretiva,parada de seguranca (reset),2026-09-10 10:18,2026-09-10 10:30,12
+1545,LUZ-ER02,T09,corretiva,parada de seguranca (reset),2026-09-10 18:21,2026-09-10 19:04,43
+1546,HIG-ER20,T01,corretiva,parada de seguranca (reset),2026-09-10 18:27,2026-09-10 18:52,25
+1547,BUT-ER05,T08,corretiva,status critico,2026-09-10 18:49,2026-09-11 14:11,1163
+1548,MBI-ER11,T07,corretiva,parada de seguranca (reset),2026-09-10 22:07,2026-09-10 22:45,38
+1549,PTA-ER07,T05,corretiva,parada de seguranca (reset),2026-09-10 22:10,2026-09-10 22:37,27
+1550,BUT-ER09,T07,corretiva,alerta prolongado,2026-09-10 22:23,2026-09-11 04:04,341
+1551,MBI-ER02,T05,corretiva,parada de seguranca (reset),2026-09-10 22:26,2026-09-10 22:51,25
+1552,BUT-ER01,T06,corretiva,parada de seguranca (reset),2026-09-10 22:29,2026-09-10 23:10,41
+1553,TVS-ER07,T10,corretiva,alerta prolongado,2026-09-10 22:42,2026-09-12 02:47,1685
+1554,LUZ-ER08,T08,preventiva,P1 mensal,2026-09-11 00:15,2026-09-11 02:09,115
+1555,MBI-ER07,T02,preventiva,P1 mensal,2026-09-11 00:53,2026-09-11 03:39,167
+1556,LUZ-ER04,T12,preventiva,P1 mensal,2026-09-11 01:40,2026-09-11 03:44,124
+1557,VSO-ER12,T11,preventiva,P1 mensal,2026-09-11 01:43,2026-09-11 04:01,139
+1558,PTA-ER06,T06,preventiva,P1 mensal,2026-09-11 01:56,2026-09-11 04:29,153
+1559,LUZ-ER14,T04,preventiva,P1 mensal,2026-09-11 01:59,2026-09-11 03:59,120
+1560,BUT-ER12,T07,preventiva,P1 mensal,2026-09-11 02:06,2026-09-11 04:31,145
+1561,VSO-ER04,T06,preventiva,P1 mensal,2026-09-11 02:50,2026-09-11 05:32,162
+1562,HIG-ER01,T01,preventiva,P1 mensal,2026-09-11 03:14,2026-09-11 05:56,162
+1563,VSO-ER02,T02,preventiva,P1 mensal,2026-09-11 03:38,2026-09-11 05:32,114
+1564,FRE-ER04,T04,preventiva,P1 mensal,2026-09-11 03:39,2026-09-11 06:03,145
+1565,PTA-ER04,T01,preventiva,P1 mensal,2026-09-11 03:42,2026-09-11 05:55,133
+1566,VSO-ER07,T09,preventiva,P1 mensal,2026-09-11 03:47,2026-09-11 06:01,134
+1567,VSO-ER15,T12,preventiva,P1 mensal,2026-09-11 03:54,2026-09-11 06:18,145
+1568,PIN-ER31,T06,corretiva,parada de seguranca (reset),2026-09-11 06:26,2026-09-11 06:53,27
+1569,BUT-ER06,T06,corretiva,status critico,2026-09-11 07:44,2026-09-11 20:55,791
+1570,HIG-ER02,T07,corretiva,parada de seguranca (reset),2026-09-11 10:21,2026-09-11 11:01,40
+1571,MBI-ER05,T01,corretiva,parada de seguranca (reset),2026-09-11 10:23,2026-09-11 10:57,34
+1572,REP-ER26,T07,corretiva,parada de seguranca (reset),2026-09-11 10:25,2026-09-11 11:01,36
+1573,HIG-ER16,T07,corretiva,parada de seguranca (reset),2026-09-11 14:18,2026-09-11 14:42,24
+1574,MBI-ER08,T01,corretiva,parada de seguranca (reset),2026-09-11 14:25,2026-09-11 14:42,17
+1575,PIN-ER30,T04,corretiva,status critico,2026-09-11 15:18,2026-09-12 20:22,1744
+1576,FRE-ER02,T10,corretiva,parada de seguranca (reset),2026-09-11 18:21,2026-09-11 18:38,17
+1577,FRE-ER20,T05,corretiva,parada de seguranca (reset),2026-09-11 18:24,2026-09-11 18:41,17
+1578,PIN-ER06,T01,corretiva,parada de seguranca (reset),2026-09-11 18:28,2026-09-11 19:04,36
+1579,HIG-ER22,T12,corretiva,parada de seguranca (reset),2026-09-11 22:19,2026-09-11 22:58,39
+1580,PIN-ER07,T05,corretiva,parada de seguranca (reset),2026-09-11 22:22,2026-09-11 22:43,21
+1581,LUZ-ER05,T08,corretiva,parada de seguranca (reset),2026-09-11 22:23,2026-09-11 23:06,43
+1582,PTA-ER15,T09,corretiva,sem resposta do sensor,2026-09-11 23:40,2026-09-12 04:39,299
+1583,FAL-ER10,T04,preventiva,P1 mensal,2026-09-12 00:33,2026-09-12 02:06,94
+1584,PIN-ER30,T11,preventiva,P1 mensal,2026-09-12 01:30,2026-09-12 03:54,144
+1585,BUT-ER05,T08,corretiva,parada de seguranca (reset),2026-09-12 06:14,2026-09-12 06:46,32
+1586,PIN-ER20,T11,corretiva,parada de seguranca (reset),2026-09-12 06:24,2026-09-12 07:03,39
+1587,FRE-ER04,T01,corretiva,parada de seguranca (reset),2026-09-12 10:15,2026-09-12 10:42,27
+1588,PIN-ER22,T12,corretiva,parada de seguranca (reset),2026-09-12 10:15,2026-09-12 10:42,27
+1589,MBI-ER03,T11,corretiva,parada de seguranca (reset),2026-09-12 10:16,2026-09-12 10:53,37
+1590,LUZ-ER15,T12,corretiva,parada de seguranca (reset),2026-09-12 10:20,2026-09-12 10:47,27
+1591,VSO-ER07,T02,corretiva,alerta prolongado,2026-09-12 11:10,2026-09-12 14:27,197
+1592,VSO-ER20,T05,corretiva,status critico,2026-09-12 11:28,2026-09-12 13:41,134
+1593,HIG-ER24,T06,corretiva,parada de seguranca (reset),2026-09-12 14:14,2026-09-12 14:55,41
+1594,PIN-ER05,T08,corretiva,parada de seguranca (reset),2026-09-12 14:24,2026-09-12 14:55,31
+1595,PIN-ER03,T02,corretiva,parada de seguranca (reset),2026-09-12 14:26,2026-09-12 14:55,29
+1596,REP-ER26,T06,corretiva,parada de seguranca (reset),2026-09-12 18:18,2026-09-12 18:47,29
+1597,FAL-ER10,T10,corretiva,parada de seguranca (reset),2026-09-12 18:19,2026-09-12 18:43,24
+1598,LUZ-ER11,T02,corretiva,parada de seguranca (reset),2026-09-12 18:23,2026-09-12 18:44,21
+1599,FRA-ER10,T10,corretiva,sem resposta do sensor,2026-09-12 19:28,2026-09-13 08:22,774
+1600,LUZ-ER09,T04,corretiva,parada de seguranca (reset),2026-09-12 22:23,2026-09-12 22:43,20
+1601,PIN-ER22,T08,corretiva,parada de seguranca (reset),2026-09-12 22:29,2026-09-12 22:53,24
+1602,HIG-ER14,T12,preventiva,P1 mensal,2026-09-13 00:22,2026-09-13 02:16,114
+1603,VSO-ER20,T07,preventiva,P1 mensal,2026-09-13 01:31,2026-09-13 04:13,162
+1604,LUZ-ER10,T04,preventiva,P1 mensal,2026-09-13 01:47,2026-09-13 04:09,142
+1605,MBI-ER08,T12,preventiva,P1 mensal,2026-09-13 01:52,2026-09-13 04:33,161
+1606,VSO-ER11,T05,preventiva,P1 mensal,2026-09-13 02:00,2026-09-13 04:24,144
+1607,PTA-ER15,T01,preventiva,P1 mensal,2026-09-13 02:04,2026-09-13 04:14,131
+1608,PTA-ER01,T03,preventiva,P1 mensal,2026-09-13 03:38,2026-09-13 05:42,124
+1609,PIN-ER28,T03,corretiva,parada de seguranca (reset),2026-09-13 06:27,2026-09-13 06:39,12
+1610,REP-ER59,T06,corretiva,parada de seguranca (reset),2026-09-13 06:27,2026-09-13 06:52,25
+1611,BUT-ER10,T07,corretiva,parada de seguranca (reset),2026-09-13 06:28,2026-09-13 07:10,42
+1612,PIN-ER31,T04,corretiva,status critico,2026-09-13 06:35,2026-09-13 22:05,930
+1613,LUZ-ER12,T02,corretiva,parada de seguranca (reset),2026-09-13 10:14,2026-09-13 10:41,27
+1614,BUT-ER01,T06,corretiva,parada de seguranca (reset),2026-09-13 10:23,2026-09-13 10:35,12
+1615,VSO-ER08,T10,corretiva,parada de seguranca (reset),2026-09-13 10:28,2026-09-13 10:57,29
+1616,HIG-ER03,T01,corretiva,status critico,2026-09-13 10:44,2026-09-14 04:53,1090
+1617,PIN-ER32,T11,corretiva,parada de seguranca (reset),2026-09-13 14:11,2026-09-13 14:33,22
+1618,PIN-ER12,T01,corretiva,parada de seguranca (reset),2026-09-13 14:12,2026-09-13 14:25,13
+1619,FRA-ER01,T03,corretiva,parada de seguranca (reset),2026-09-13 14:14,2026-09-13 14:26,12
+1620,FAL-ER02,T12,corretiva,parada de seguranca (reset),2026-09-13 14:21,2026-09-13 14:38,17
+1621,LUZ-ER12,T02,corretiva,parada de seguranca (reset),2026-09-13 18:10,2026-09-13 18:21,11
+1622,FRE-ER20,T07,corretiva,status critico,2026-09-13 18:13,2026-09-14 17:02,1370
+1623,LUZ-ER05,T07,corretiva,parada de seguranca (reset),2026-09-13 18:16,2026-09-13 18:51,35
+1624,MBI-ER11,T12,corretiva,parada de seguranca (reset),2026-09-13 18:18,2026-09-13 18:32,14
+1625,HIG-ER14,T09,corretiva,parada de seguranca (reset),2026-09-13 18:23,2026-09-13 18:53,30
+1626,VSO-ER06,T04,corretiva,parada de seguranca (reset),2026-09-13 22:06,2026-09-13 22:43,37
+1627,PTA-ER10,T12,corretiva,parada de seguranca (reset),2026-09-13 22:13,2026-09-13 22:53,40
+1628,FRA-ER06,T01,corretiva,parada de seguranca (reset),2026-09-13 22:22,2026-09-13 22:45,23
+1629,PTA-ER05,T10,corretiva,parada de seguranca (reset),2026-09-13 22:24,2026-09-13 22:34,10
+1630,TVS-ER09,T08,preventiva,P1 mensal,2026-09-14 00:26,2026-09-14 02:28,122
+1631,HIG-ER20,T05,preventiva,P1 mensal,2026-09-14 00:50,2026-09-14 03:00,131
+1632,BUT-ER09,T06,preventiva,P1 mensal,2026-09-14 01:02,2026-09-14 02:41,99
+1633,FRA-ER07,T02,preventiva,P1 mensal,2026-09-14 02:46,2026-09-14 04:25,99
+1634,PTA-ER14,T08,preventiva,P1 mensal,2026-09-14 03:08,2026-09-14 05:43,155
+1635,LUZ-ER19,T03,preventiva,P1 mensal,2026-09-14 03:18,2026-09-14 06:03,165
+1636,FAL-ER05,T05,corretiva,parada de seguranca (reset),2026-09-14 06:12,2026-09-14 06:32,20
+1637,REP-ER60,T08,corretiva,parada de seguranca (reset),2026-09-14 06:19,2026-09-14 06:48,29
+1638,LUZ-ER04,T09,corretiva,parada de seguranca (reset),2026-09-14 10:10,2026-09-14 10:35,25
+1639,PTA-ER03,T11,corretiva,parada de seguranca (reset),2026-09-14 10:18,2026-09-14 10:38,20
+1640,HIG-ER24,T01,corretiva,parada de seguranca (reset),2026-09-14 10:25,2026-09-14 10:49,24
+1641,HIG-ER05,T11,corretiva,sem resposta do sensor,2026-09-14 10:27,2026-09-14 22:17,710
+1642,HIG-ER13,T09,corretiva,parada de seguranca (reset),2026-09-14 14:14,2026-09-14 14:53,39
+1643,FAL-ER02,T05,corretiva,parada de seguranca (reset),2026-09-14 18:05,2026-09-14 18:28,23
+1644,PIN-ER20,T11,corretiva,parada de seguranca (reset),2026-09-14 18:08,2026-09-14 18:21,13
+1645,FAL-ER07,T08,corretiva,parada de seguranca (reset),2026-09-14 18:15,2026-09-14 18:28,13
+1646,PIN-ER05,T07,corretiva,parada de seguranca (reset),2026-09-14 18:17,2026-09-14 18:49,32
+1647,LUZ-ER12,T12,corretiva,status critico,2026-09-14 18:20,2026-09-15 10:00,940
+1648,PIN-ER31,T07,corretiva,parada de seguranca (reset),2026-09-14 18:26,2026-09-14 18:41,15
+1649,LUZ-ER18,T09,corretiva,parada de seguranca (reset),2026-09-14 22:06,2026-09-14 22:45,39
+1650,MBI-ER05,T02,preventiva,P1 mensal,2026-09-15 00:45,2026-09-15 02:45,120
+1651,BUT-ER08,T02,preventiva,P1 mensal,2026-09-15 00:54,2026-09-15 03:37,164
+1652,HIG-ER08,T10,preventiva,P1 mensal,2026-09-15 02:42,2026-09-15 04:39,117
+1653,LUZ-ER14,T09,corretiva,parada de seguranca (reset),2026-09-15 06:07,2026-09-15 06:23,16
+1654,BUT-ER01,T03,corretiva,parada de seguranca (reset),2026-09-15 10:12,2026-09-15 10:31,19
+1655,LUZ-ER04,T08,corretiva,parada de seguranca (reset),2026-09-15 10:14,2026-09-15 10:49,35
+1656,FAL-ER01,T01,corretiva,parada de seguranca (reset),2026-09-15 10:27,2026-09-15 10:45,18
+1657,FRE-ER06,T04,corretiva,status critico,2026-09-15 10:28,2026-09-15 13:28,180
+1658,PTA-ER06,T11,corretiva,sem resposta do sensor,2026-09-15 10:54,2026-09-16 01:15,862
+1659,TVS-ER03,T11,corretiva,parada de seguranca (reset),2026-09-15 14:18,2026-09-15 14:53,35
+1660,PIN-ER21,T07,corretiva,parada de seguranca (reset),2026-09-15 14:24,2026-09-15 14:56,32
+1661,REP-ER60,T08,corretiva,status critico,2026-09-15 14:59,2026-09-16 14:05,1386
+1662,LUZ-ER03,T04,corretiva,parada de seguranca (reset),2026-09-15 18:12,2026-09-15 18:29,17
+1663,PIN-ER11,T08,corretiva,parada de seguranca (reset),2026-09-15 18:17,2026-09-15 18:51,34
+1664,PIN-ER28,T08,corretiva,parada de seguranca (reset),2026-09-15 22:26,2026-09-15 22:38,12
+1665,PIN-ER23,T05,preventiva,P1 mensal,2026-09-16 00:19,2026-09-16 01:52,93
+1666,PTA-ER03,T01,preventiva,P1 mensal,2026-09-16 00:24,2026-09-16 02:02,98
+1667,HIG-ER21,T04,preventiva,P1 mensal,2026-09-16 00:44,2026-09-16 02:39,116
+1668,PIN-ER19,T06,preventiva,P1 mensal,2026-09-16 00:46,2026-09-16 02:48,122
+1669,PIN-ER14,T08,preventiva,P1 mensal,2026-09-16 01:01,2026-09-16 02:53,112
+1670,FRE-ER11,T10,preventiva,P1 mensal,2026-09-16 01:57,2026-09-16 04:16,139
+1671,FAL-ER07,T12,preventiva,P1 mensal,2026-09-16 02:04,2026-09-16 04:32,148
+1672,HIG-ER26,T08,preventiva,P1 mensal,2026-09-16 02:41,2026-09-16 05:06,146
+1673,VSO-ER14,T07,preventiva,P1 mensal,2026-09-16 03:36,2026-09-16 06:01,145
+1674,LUZ-ER20,T07,preventiva,P1 mensal,2026-09-16 03:59,2026-09-16 06:44,165
+1675,LUZ-ER07,T09,corretiva,parada de seguranca (reset),2026-09-16 06:10,2026-09-16 06:29,19
+1676,BUT-ER10,T05,corretiva,status critico,2026-09-16 06:15,2026-09-17 02:04,1190
+1677,HIG-ER08,T04,corretiva,parada de seguranca (reset),2026-09-16 06:21,2026-09-16 07:04,43
+1678,MBI-ER09,T02,corretiva,parada de seguranca (reset),2026-09-16 06:28,2026-09-16 06:38,10
+1679,MBI-ER04,T02,corretiva,status critico,2026-09-16 06:43,2026-09-16 16:34,592
+1680,LUZ-ER03,T05,corretiva,status critico,2026-09-16 07:10,2026-09-16 13:38,389
+1681,VSO-ER20,T12,corretiva,parada de seguranca (reset),2026-09-16 10:25,2026-09-16 10:37,12
+1682,TVS-ER03,T08,corretiva,parada de seguranca (reset),2026-09-16 10:28,2026-09-16 11:02,34
+1683,LUZ-ER13,T08,corretiva,status critico,2026-09-16 10:38,2026-09-16 23:38,781
+1684,PIN-ER25,T04,corretiva,status critico,2026-09-16 11:01,2026-09-16 21:02,601
+1685,PIN-ER21,T11,corretiva,parada de seguranca (reset),2026-09-16 14:07,2026-09-16 14:48,41
+1686,HIG-ER09,T10,corretiva,parada de seguranca (reset),2026-09-16 14:10,2026-09-16 14:30,20
+1687,VSO-ER12,T04,corretiva,parada de seguranca (reset),2026-09-16 14:24,2026-09-16 15:02,38
+1688,VSO-ER13,T11,corretiva,parada de seguranca (reset),2026-09-16 14:26,2026-09-16 15:04,38
+1689,FRA-ER06,T07,corretiva,parada de seguranca (reset),2026-09-16 18:20,2026-09-16 18:47,27
+1690,MBI-ER10,T05,corretiva,parada de seguranca (reset),2026-09-16 18:21,2026-09-16 18:33,12
+1691,PTA-ER03,T04,corretiva,parada de seguranca (reset),2026-09-16 18:28,2026-09-16 18:52,24
+1692,HIG-ER02,T08,corretiva,alerta prolongado,2026-09-16 19:39,2026-09-17 06:45,666
+1693,FRA-ER07,T09,corretiva,parada de seguranca (reset),2026-09-16 22:21,2026-09-16 22:40,19
+1694,PIN-ER02,T03,preventiva,P1 mensal,2026-09-17 00:49,2026-09-17 03:14,145
+1695,HIG-ER10,T01,preventiva,P1 mensal,2026-09-17 01:00,2026-09-17 03:02,123
+1696,FAL-ER01,T03,preventiva,P1 mensal,2026-09-17 01:47,2026-09-17 03:51,124
+1697,FRE-ER14,T10,preventiva,P1 mensal,2026-09-17 02:31,2026-09-17 04:46,135
+1698,PTA-ER16,T12,preventiva,P1 mensal,2026-09-17 03:24,2026-09-17 05:55,151
+1699,HIG-ER23,T06,preventiva,P1 mensal,2026-09-17 03:25,2026-09-17 05:26,122
+1700,REP-ER59,T02,preventiva,P1 mensal,2026-09-17 03:35,2026-09-17 05:53,138
+1701,PTA-ER08,T04,preventiva,P1 mensal,2026-09-17 03:41,2026-09-17 06:24,164
+1702,PTA-ER08,T12,corretiva,parada de seguranca (reset),2026-09-17 06:07,2026-09-17 06:38,31
+1703,BUT-ER11,T03,corretiva,parada de seguranca (reset),2026-09-17 06:11,2026-09-17 06:30,19
+1704,PIN-ER14,T10,corretiva,parada de seguranca (reset),2026-09-17 06:18,2026-09-17 06:43,25
+1705,BUT-ER01,T01,corretiva,sem resposta do sensor,2026-09-17 07:23,2026-09-17 12:55,332
+1706,FRE-ER01,T12,corretiva,parada de seguranca (reset),2026-09-17 10:06,2026-09-17 10:43,37
+1707,FRE-ER07,T06,corretiva,status critico,2026-09-17 14:13,2026-09-17 14:56,44
+1708,PIN-ER32,T07,corretiva,parada de seguranca (reset),2026-09-17 14:14,2026-09-17 14:47,33
+1709,BUT-ER12,T11,corretiva,parada de seguranca (reset),2026-09-17 14:16,2026-09-17 14:45,29
+1710,LUZ-ER02,T09,corretiva,parada de seguranca (reset),2026-09-17 14:17,2026-09-17 14:46,29
+1711,MBI-ER08,T12,corretiva,parada de seguranca (reset),2026-09-17 14:19,2026-09-17 14:35,16
+1712,PTA-ER16,T06,corretiva,parada de seguranca (reset),2026-09-17 14:21,2026-09-17 14:42,21
+1713,PTA-ER17,T10,corretiva,status critico,2026-09-17 15:44,2026-09-18 03:59,736
+1714,PIN-ER31,T03,corretiva,parada de seguranca (reset),2026-09-17 18:12,2026-09-17 18:36,24
+1715,TVS-ER02,T08,corretiva,parada de seguranca (reset),2026-09-17 18:14,2026-09-17 18:32,18
+1716,MBI-ER10,T06,corretiva,parada de seguranca (reset),2026-09-17 18:28,2026-09-17 18:50,22
+1717,VSO-ER11,T03,corretiva,parada de seguranca (reset),2026-09-17 22:26,2026-09-17 22:36,10
+1718,FRE-ER18,T02,preventiva,P1 mensal,2026-09-18 00:40,2026-09-18 02:40,121
+1719,PIN-ER13,T08,preventiva,P1 mensal,2026-09-18 01:00,2026-09-18 02:54,115
+1720,FRE-ER03,T10,preventiva,P1 mensal,2026-09-18 02:13,2026-09-18 04:57,164
+1721,VSO-ER07,T01,corretiva,parada de seguranca (reset),2026-09-18 06:10,2026-09-18 06:21,11
+1722,LUZ-ER01,T06,corretiva,parada de seguranca (reset),2026-09-18 06:13,2026-09-18 06:55,42
+1723,PIN-ER14,T01,corretiva,parada de seguranca (reset),2026-09-18 06:19,2026-09-18 06:52,33
+1724,FRA-ER02,T12,corretiva,parada de seguranca (reset),2026-09-18 10:19,2026-09-18 10:48,29
+1725,FRE-ER05,T11,corretiva,parada de seguranca (reset),2026-09-18 18:10,2026-09-18 18:44,34
+1726,PIN-ER30,T06,corretiva,parada de seguranca (reset),2026-09-18 18:12,2026-09-18 18:35,23
+1727,FAL-ER06,T01,corretiva,parada de seguranca (reset),2026-09-18 18:14,2026-09-18 18:40,26
+1728,PTA-ER18,T02,corretiva,parada de seguranca (reset),2026-09-18 18:23,2026-09-18 18:42,19
+1729,PIN-ER06,T06,corretiva,parada de seguranca (reset),2026-09-18 18:29,2026-09-18 19:01,32
+1730,FRE-ER02,T11,corretiva,status critico,2026-09-18 23:35,2026-09-19 00:26,51
+1731,LUZ-ER12,T12,preventiva,P1 mensal,2026-09-19 00:06,2026-09-19 02:36,150
+1732,PTA-ER02,T02,preventiva,P1 mensal,2026-09-19 00:32,2026-09-19 02:15,104
+1733,LUZ-ER11,T09,preventiva,P1 mensal,2026-09-19 00:41,2026-09-19 03:05,145
+1734,VSO-ER17,T09,preventiva,P1 mensal,2026-09-19 00:58,2026-09-19 03:36,158
+1735,FRE-ER06,T02,preventiva,P1 mensal,2026-09-19 01:14,2026-09-19 03:51,157
+1736,MBI-ER01,T12,preventiva,P1 mensal,2026-09-19 03:23,2026-09-19 06:08,166
+1737,LUZ-ER02,T11,preventiva,P1 mensal,2026-09-19 03:39,2026-09-19 05:44,125
+1738,HIG-ER23,T11,corretiva,parada de seguranca (reset),2026-09-19 06:24,2026-09-19 06:50,26
+1739,PTA-ER09,T04,corretiva,parada de seguranca (reset),2026-09-19 06:27,2026-09-19 06:49,22
+1740,VSO-ER14,T08,corretiva,parada de seguranca (reset),2026-09-19 10:05,2026-09-19 10:19,14
+1741,VSO-ER02,T05,corretiva,parada de seguranca (reset),2026-09-19 10:19,2026-09-19 10:56,37
+1742,PIN-ER06,T07,corretiva,parada de seguranca (reset),2026-09-19 10:23,2026-09-19 10:41,18
+1743,VSO-ER12,T10,corretiva,parada de seguranca (reset),2026-09-19 10:26,2026-09-19 11:10,44
+1744,PIN-ER24,T06,corretiva,status critico,2026-09-19 11:48,2026-09-19 17:43,356
+1745,FAL-ER04,T05,corretiva,parada de seguranca (reset),2026-09-19 14:11,2026-09-19 14:47,36
+1746,PIN-ER14,T01,corretiva,parada de seguranca (reset),2026-09-19 14:13,2026-09-19 14:43,30
+1747,MBI-ER11,T09,corretiva,parada de seguranca (reset),2026-09-19 14:22,2026-09-19 14:44,22
+1748,LUZ-ER20,T05,corretiva,parada de seguranca (reset),2026-09-19 14:24,2026-09-19 14:37,13
+1749,FAL-ER07,T07,corretiva,parada de seguranca (reset),2026-09-19 14:29,2026-09-19 14:51,22
+1750,MBI-ER09,T04,corretiva,status critico,2026-09-19 15:33,2026-09-20 08:53,1040
+1751,MBI-ER01,T11,corretiva,parada de seguranca (reset),2026-09-19 22:07,2026-09-19 22:34,27
+1752,LUZ-ER09,T05,corretiva,parada de seguranca (reset),2026-09-19 22:18,2026-09-19 22:43,25
+1753,FRE-ER09,T06,corretiva,parada de seguranca (reset),2026-09-19 22:22,2026-09-19 22:37,15
+1754,VSO-ER13,T09,corretiva,parada de seguranca (reset),2026-09-19 22:26,2026-09-19 22:59,33
+1755,FRE-ER20,T10,preventiva,P1 mensal,2026-09-20 00:06,2026-09-20 02:51,166
+1756,FAL-ER05,T09,preventiva,P1 mensal,2026-09-20 01:31,2026-09-20 03:46,135
+1757,TVS-ER04,T05,preventiva,P1 mensal,2026-09-20 01:44,2026-09-20 03:38,114
+1758,TVS-ER07,T11,preventiva,P1 mensal,2026-09-20 02:29,2026-09-20 05:16,167
+1759,FRE-ER12,T10,preventiva,P1 mensal,2026-09-20 02:30,2026-09-20 04:27,118
+1760,MBI-ER10,T07,preventiva,P1 mensal,2026-09-20 03:18,2026-09-20 05:28,131
+1761,FRE-ER05,T01,preventiva,P1 mensal,2026-09-20 03:44,2026-09-20 05:26,102
+1762,PTA-ER04,T11,corretiva,parada de seguranca (reset),2026-09-20 06:19,2026-09-20 06:48,29
+1763,MBI-ER13,T04,corretiva,status critico,2026-09-20 06:39,2026-09-20 09:54,195
+1764,BUT-ER11,T05,corretiva,parada de seguranca (reset),2026-09-20 10:10,2026-09-20 10:42,32
+1765,VSO-ER19,T11,corretiva,parada de seguranca (reset),2026-09-20 10:10,2026-09-20 10:51,41
+1766,HIG-ER01,T07,corretiva,parada de seguranca (reset),2026-09-20 10:16,2026-09-20 10:48,32
+1767,PTA-ER14,T08,corretiva,parada de seguranca (reset),2026-09-20 14:13,2026-09-20 14:42,29
+1768,LUZ-ER10,T06,corretiva,parada de seguranca (reset),2026-09-20 14:16,2026-09-20 14:46,30
+1769,PTA-ER08,T03,corretiva,parada de seguranca (reset),2026-09-20 18:08,2026-09-20 18:33,25
+1770,FAL-ER06,T07,corretiva,parada de seguranca (reset),2026-09-20 18:10,2026-09-20 18:32,22
+1771,TVS-ER06,T09,corretiva,parada de seguranca (reset),2026-09-20 18:16,2026-09-20 18:27,11
+1772,MBI-ER05,T06,corretiva,parada de seguranca (reset),2026-09-20 22:15,2026-09-20 22:56,41
+1773,PIN-ER08,T06,corretiva,parada de seguranca (reset),2026-09-20 22:17,2026-09-20 22:34,17
+1774,HIG-ER24,T12,corretiva,parada de seguranca (reset),2026-09-20 22:26,2026-09-20 22:39,13
+1775,HIG-ER14,T12,corretiva,parada de seguranca (reset),2026-09-20 22:27,2026-09-20 22:37,10
+1776,FRE-ER18,T05,corretiva,sem resposta do sensor,2026-09-20 22:42,2026-09-21 07:53,551
+1777,FAL-ER04,T12,preventiva,P1 mensal,2026-09-21 00:16,2026-09-21 02:59,164
+1778,FRE-ER13,T10,preventiva,P1 mensal,2026-09-21 01:12,2026-09-21 03:34,143
+1779,PIN-ER04,T09,preventiva,P1 mensal,2026-09-21 01:45,2026-09-21 03:33,109
+1780,REP-ER61,T03,preventiva,P1 mensal,2026-09-21 02:41,2026-09-21 04:35,114
+1781,REP-ER60,T04,preventiva,P1 mensal,2026-09-21 03:56,2026-09-21 06:31,155
+1782,FAL-ER01,T10,corretiva,parada de seguranca (reset),2026-09-21 06:06,2026-09-21 06:23,17
+1783,VSO-ER12,T08,corretiva,parada de seguranca (reset),2026-09-21 06:07,2026-09-21 06:22,15
+1784,LUZ-ER03,T05,corretiva,parada de seguranca (reset),2026-09-21 06:16,2026-09-21 06:39,23
+1785,MBI-ER07,T03,corretiva,parada de seguranca (reset),2026-09-21 10:12,2026-09-21 10:28,16
+1786,PIN-ER19,T01,corretiva,parada de seguranca (reset),2026-09-21 10:15,2026-09-21 10:36,21
+1787,PIN-ER04,T08,corretiva,parada de seguranca (reset),2026-09-21 10:20,2026-09-21 10:56,36
+1788,LUZ-ER05,T01,corretiva,status critico,2026-09-21 11:41,2026-09-21 12:48,68
+1789,HIG-ER11,T06,corretiva,status critico,2026-09-21 11:54,2026-09-21 20:46,533
+1790,FAL-ER10,T07,corretiva,parada de seguranca (reset),2026-09-21 14:11,2026-09-21 14:24,13
+1791,BUT-ER10,T04,corretiva,parada de seguranca (reset),2026-09-21 14:13,2026-09-21 14:26,13
+1792,PIN-ER12,T06,corretiva,parada de seguranca (reset),2026-09-21 14:26,2026-09-21 14:43,17
+1793,MBI-ER02,T04,corretiva,status critico,2026-09-21 15:04,2026-09-21 17:04,120
+1794,PIN-ER14,T03,corretiva,parada de seguranca (reset),2026-09-21 18:11,2026-09-21 18:48,37
+1795,FRE-ER09,T02,corretiva,parada de seguranca (reset),2026-09-21 18:12,2026-09-21 18:32,20
+1796,MBI-ER06,T10,corretiva,parada de seguranca (reset),2026-09-21 18:23,2026-09-21 19:02,39
+1797,VSO-ER07,T06,corretiva,parada de seguranca (reset),2026-09-21 22:10,2026-09-21 22:20,10
+1798,PIN-ER01,T06,corretiva,parada de seguranca (reset),2026-09-21 22:18,2026-09-21 22:42,24
+1799,PIN-ER14,T05,corretiva,parada de seguranca (reset),2026-09-21 22:24,2026-09-21 22:56,32
+1800,HIG-ER24,T08,preventiva,P1 mensal,2026-09-22 00:03,2026-09-22 01:52,109
+1801,LUZ-ER17,T09,preventiva,P1 mensal,2026-09-22 00:30,2026-09-22 02:37,128
+1802,PTA-ER07,T09,preventiva,P1 mensal,2026-09-22 01:06,2026-09-22 02:40,94
+1803,PIN-ER22,T08,preventiva,P1 mensal,2026-09-22 01:56,2026-09-22 03:53,118
+1804,BUT-ER05,T05,preventiva,P1 mensal,2026-09-22 02:57,2026-09-22 04:28,91
+1805,FAL-ER09,T12,preventiva,P1 mensal,2026-09-22 03:54,2026-09-22 06:33,159
+1806,PIN-ER18,T09,corretiva,parada de seguranca (reset),2026-09-22 06:16,2026-09-22 06:33,17
+1807,PIN-ER10,T06,corretiva,parada de seguranca (reset),2026-09-22 06:20,2026-09-22 06:32,12
+1808,LUZ-ER20,T12,corretiva,parada de seguranca (reset),2026-09-22 10:19,2026-09-22 11:03,44
+1809,LUZ-ER04,T04,corretiva,status critico,2026-09-22 11:59,2026-09-22 13:50,112
+1810,PTA-ER06,T09,corretiva,parada de seguranca (reset),2026-09-22 14:06,2026-09-22 14:37,31
+1811,FRE-ER03,T11,corretiva,parada de seguranca (reset),2026-09-22 14:14,2026-09-22 14:51,37
+1812,PIN-ER04,T01,corretiva,parada de seguranca (reset),2026-09-22 14:16,2026-09-22 14:58,42
+1813,PIN-ER28,T04,corretiva,parada de seguranca (reset),2026-09-22 18:06,2026-09-22 18:47,41
+1814,HIG-ER09,T09,corretiva,parada de seguranca (reset),2026-09-22 18:08,2026-09-22 18:41,33
+1815,BUT-ER05,T07,corretiva,parada de seguranca (reset),2026-09-22 18:14,2026-09-22 18:33,19
+1816,FRE-ER17,T02,corretiva,parada de seguranca (reset),2026-09-22 18:15,2026-09-22 18:40,25
+1817,LUZ-ER13,T04,corretiva,parada de seguranca (reset),2026-09-22 18:18,2026-09-22 18:39,21
+1818,LUZ-ER10,T03,corretiva,parada de seguranca (reset),2026-09-22 18:19,2026-09-22 18:36,17
+1819,PIN-ER03,T02,corretiva,parada de seguranca (reset),2026-09-22 18:25,2026-09-22 18:41,16
+1820,FAL-ER08,T09,corretiva,parada de seguranca (reset),2026-09-22 18:29,2026-09-22 19:07,38
+1821,HIG-ER23,T11,corretiva,parada de seguranca (reset),2026-09-22 22:21,2026-09-22 22:48,27
+1822,LUZ-ER05,T11,preventiva,P1 mensal,2026-09-23 00:00,2026-09-23 02:25,146
+1823,FRA-ER10,T01,preventiva,P1 mensal,2026-09-23 00:09,2026-09-23 02:33,144
+1824,HIG-ER13,T06,preventiva,P1 mensal,2026-09-23 00:09,2026-09-23 02:33,144
+1825,VSO-ER03,T03,preventiva,P1 mensal,2026-09-23 00:11,2026-09-23 02:48,158
+1826,VSO-ER01,T08,preventiva,P1 mensal,2026-09-23 01:20,2026-09-23 03:03,104
+1827,PTA-ER11,T03,preventiva,P1 mensal,2026-09-23 01:25,2026-09-23 03:04,99
+1828,BUT-ER11,T03,preventiva,P1 mensal,2026-09-23 01:53,2026-09-23 03:38,106
+1829,PIN-ER24,T01,preventiva,P1 mensal,2026-09-23 02:39,2026-09-23 04:21,102
+1830,HIG-ER07,T04,preventiva,P1 mensal,2026-09-23 02:57,2026-09-23 04:36,99
+1831,LUZ-ER03,T06,corretiva,parada de seguranca (reset),2026-09-23 06:18,2026-09-23 06:44,26
+1832,HIG-ER23,T07,corretiva,parada de seguranca (reset),2026-09-23 06:22,2026-09-23 06:47,25
+1833,FAL-ER02,T03,corretiva,parada de seguranca (reset),2026-09-23 10:07,2026-09-23 10:24,17
+1834,LUZ-ER07,T09,corretiva,parada de seguranca (reset),2026-09-23 10:07,2026-09-23 10:31,24
+1835,MBI-ER07,T07,corretiva,parada de seguranca (reset),2026-09-23 10:07,2026-09-23 10:35,28
+1836,VSO-ER14,T06,corretiva,parada de seguranca (reset),2026-09-23 10:09,2026-09-23 10:52,43
+1837,FAL-ER09,T02,corretiva,parada de seguranca (reset),2026-09-23 10:20,2026-09-23 10:58,38
+1838,PIN-ER19,T09,corretiva,parada de seguranca (reset),2026-09-23 14:12,2026-09-23 14:53,41
+1839,MBI-ER09,T11,corretiva,parada de seguranca (reset),2026-09-23 14:18,2026-09-23 14:53,35
+1840,MBI-ER06,T03,corretiva,parada de seguranca (reset),2026-09-23 14:26,2026-09-23 14:56,30
+1841,PIN-ER22,T04,corretiva,sem resposta do sensor,2026-09-23 15:42,2026-09-24 11:29,1187
+1842,PIN-ER04,T06,corretiva,parada de seguranca (reset),2026-09-23 18:15,2026-09-23 18:26,11
+1843,PIN-ER05,T11,corretiva,parada de seguranca (reset),2026-09-23 18:22,2026-09-23 18:53,31
+1844,FRE-ER13,T01,corretiva,parada de seguranca (reset),2026-09-23 18:26,2026-09-23 18:36,10
+1845,PIN-ER31,T01,corretiva,parada de seguranca (reset),2026-09-23 18:28,2026-09-23 18:41,13
+1846,PIN-ER04,T01,corretiva,parada de seguranca (reset),2026-09-23 22:12,2026-09-23 22:50,38
+1847,LUZ-ER10,T10,corretiva,parada de seguranca (reset),2026-09-23 22:15,2026-09-23 22:39,24
+1848,HIG-ER22,T05,corretiva,parada de seguranca (reset),2026-09-23 22:27,2026-09-23 22:41,14
+1849,FRE-ER10,T12,preventiva,P1 mensal,2026-09-24 00:44,2026-09-24 02:48,125
+1850,VSO-ER06,T05,preventiva,P1 mensal,2026-09-24 01:02,2026-09-24 03:22,140
+1851,HIG-ER16,T06,preventiva,P1 mensal,2026-09-24 01:29,2026-09-24 03:32,124
+1852,HIG-ER22,T03,preventiva,P1 mensal,2026-09-24 02:58,2026-09-24 05:10,133
+1853,FRE-ER17,T09,preventiva,P1 mensal,2026-09-24 03:35,2026-09-24 06:08,153
+1854,MBI-ER12,T04,preventiva,P1 mensal,2026-09-24 03:51,2026-09-24 06:13,142
+1855,PIN-ER16,T05,preventiva,P1 mensal,2026-09-24 03:59,2026-09-24 06:06,127
+1856,LUZ-ER17,T02,corretiva,parada de seguranca (reset),2026-09-24 06:27,2026-09-24 06:50,23
+1857,MBI-ER02,T06,corretiva,parada de seguranca (reset),2026-09-24 10:08,2026-09-24 10:47,39
+1858,REP-ER59,T07,corretiva,parada de seguranca (reset),2026-09-24 10:15,2026-09-24 10:58,43
+1859,VSO-ER07,T05,corretiva,parada de seguranca (reset),2026-09-24 10:23,2026-09-24 10:35,12
+1860,VSO-ER16,T03,corretiva,parada de seguranca (reset),2026-09-24 10:24,2026-09-24 10:39,15
+1861,TVS-ER08,T01,corretiva,alerta prolongado,2026-09-24 11:24,2026-09-24 19:00,456
+1862,PIN-ER05,T05,corretiva,parada de seguranca (reset),2026-09-24 14:21,2026-09-24 14:38,17
+1863,PTA-ER05,T07,corretiva,parada de seguranca (reset),2026-09-24 14:24,2026-09-24 14:54,30
+1864,LUZ-ER07,T03,corretiva,parada de seguranca (reset),2026-09-24 14:29,2026-09-24 15:03,34
+1865,PTA-ER08,T02,corretiva,parada de seguranca (reset),2026-09-24 18:05,2026-09-24 18:18,13
+1866,MBI-ER09,T09,corretiva,parada de seguranca (reset),2026-09-24 18:07,2026-09-24 18:45,38
+1867,FAL-ER03,T01,corretiva,parada de seguranca (reset),2026-09-24 18:25,2026-09-24 18:49,24
+1868,HIG-ER24,T07,corretiva,parada de seguranca (reset),2026-09-24 22:17,2026-09-24 22:41,24
+1869,PIN-ER10,T12,corretiva,status critico,2026-09-24 22:20,2026-09-24 23:03,43
+1870,MBI-ER06,T12,corretiva,parada de seguranca (reset),2026-09-24 22:27,2026-09-24 23:09,42
+1871,TVS-ER03,T08,preventiva,P1 mensal,2026-09-25 01:44,2026-09-25 03:40,116
+1872,FRA-ER06,T04,preventiva,P1 mensal,2026-09-25 02:49,2026-09-25 04:40,112
+1873,FRA-ER08,T07,preventiva,P1 mensal,2026-09-25 02:57,2026-09-25 05:06,130
+1874,VSO-ER05,T09,preventiva,P1 mensal,2026-09-25 02:59,2026-09-25 05:09,130
+1875,HIG-ER17,T09,preventiva,P1 mensal,2026-09-25 03:05,2026-09-25 05:29,145
+1876,FRA-ER06,T01,corretiva,parada de seguranca (reset),2026-09-25 06:13,2026-09-25 06:31,18
+1877,PTA-ER03,T11,corretiva,parada de seguranca (reset),2026-09-25 06:17,2026-09-25 06:57,40
+1878,PIN-ER30,T10,corretiva,parada de seguranca (reset),2026-09-25 06:21,2026-09-25 06:40,19
+1879,LUZ-ER19,T10,corretiva,parada de seguranca (reset),2026-09-25 06:28,2026-09-25 06:48,20
+1880,FRE-ER15,T12,corretiva,parada de seguranca (reset),2026-09-25 10:22,2026-09-25 10:48,26
+1881,PIN-ER29,T05,corretiva,status critico,2026-09-25 10:32,2026-09-25 16:14,342
+1882,PIN-ER04,T08,corretiva,status critico,2026-09-25 11:56,2026-09-25 15:21,205
+1883,HIG-ER14,T10,corretiva,sem resposta do sensor,2026-09-25 11:58,2026-09-25 15:01,183
+1884,PTA-ER04,T07,corretiva,parada de seguranca (reset),2026-09-25 14:17,2026-09-25 15:00,43
+1885,TVS-ER06,T02,corretiva,parada de seguranca (reset),2026-09-25 14:22,2026-09-25 14:43,21
+1886,PIN-ER18,T11,corretiva,parada de seguranca (reset),2026-09-25 14:27,2026-09-25 14:42,15
+1887,LUZ-ER17,T11,corretiva,alerta prolongado,2026-09-25 14:32,2026-09-26 08:21,1069
+1888,LUZ-ER20,T12,corretiva,status critico,2026-09-25 14:45,2026-09-26 09:03,1098
+1889,PTA-ER06,T04,corretiva,parada de seguranca (reset),2026-09-25 18:09,2026-09-25 18:33,24
+1890,PIN-ER18,T08,corretiva,parada de seguranca (reset),2026-09-25 18:10,2026-09-25 18:39,29
+1891,PIN-ER25,T09,corretiva,parada de seguranca (reset),2026-09-25 18:22,2026-09-25 18:39,17
+1892,FAL-ER02,T07,corretiva,parada de seguranca (reset),2026-09-25 18:29,2026-09-25 18:50,21
+1893,BUT-ER11,T03,corretiva,status critico,2026-09-25 19:27,2026-09-26 14:57,1170
+1894,FRE-ER16,T08,preventiva,P1 mensal,2026-09-26 00:38,2026-09-26 02:39,122
+1895,FRA-ER02,T12,preventiva,P1 mensal,2026-09-26 01:15,2026-09-26 03:03,109
+1896,HIG-ER12,T03,preventiva,P1 mensal,2026-09-26 01:16,2026-09-26 02:53,97
+1897,PIN-ER25,T04,preventiva,P1 mensal,2026-09-26 01:18,2026-09-26 03:16,119
+1898,LUZ-ER09,T11,preventiva,P1 mensal,2026-09-26 01:26,2026-09-26 03:08,103
+1899,BUT-ER10,T11,preventiva,P1 mensal,2026-09-26 01:45,2026-09-26 03:19,95
+1900,FRE-ER08,T10,preventiva,P1 mensal,2026-09-26 02:44,2026-09-26 05:12,149
+1901,TVS-ER08,T05,preventiva,P1 mensal,2026-09-26 03:16,2026-09-26 05:16,120
+1902,HIG-ER03,T12,preventiva,P1 mensal,2026-09-26 03:20,2026-09-26 05:38,139
+1903,PIN-ER01,T09,corretiva,parada de seguranca (reset),2026-09-26 06:28,2026-09-26 06:57,29
+1904,HIG-ER06,T02,corretiva,parada de seguranca (reset),2026-09-26 10:13,2026-09-26 10:34,21
+1905,FRE-ER20,T06,corretiva,parada de seguranca (reset),2026-09-26 10:16,2026-09-26 10:31,15
+1906,PIN-ER16,T10,corretiva,parada de seguranca (reset),2026-09-26 10:21,2026-09-26 10:53,32
+1907,PIN-ER12,T06,corretiva,status critico,2026-09-26 11:15,2026-09-26 15:38,263
+1908,PTA-ER15,T05,corretiva,parada de seguranca (reset),2026-09-26 14:12,2026-09-26 14:46,34
+1909,LUZ-ER03,T10,corretiva,parada de seguranca (reset),2026-09-26 14:20,2026-09-26 14:37,17
+1910,PIN-ER19,T05,corretiva,parada de seguranca (reset),2026-09-26 14:29,2026-09-26 15:09,40
+1911,VSO-ER19,T03,corretiva,status critico,2026-09-26 15:20,2026-09-27 08:15,1015
+1912,FRA-ER03,T09,corretiva,status critico,2026-09-26 15:49,2026-09-26 18:43,175
+1913,HIG-ER01,T10,corretiva,parada de seguranca (reset),2026-09-26 18:09,2026-09-26 18:51,42
+1914,PIN-ER10,T07,corretiva,parada de seguranca (reset),2026-09-26 18:26,2026-09-26 18:50,24
+1915,MBI-ER08,T08,corretiva,alerta prolongado,2026-09-26 19:50,2026-09-27 22:18,1588
+1916,PIN-ER17,T02,corretiva,parada de seguranca (reset),2026-09-26 22:07,2026-09-26 22:33,26
+1917,REP-ER60,T05,corretiva,parada de seguranca (reset),2026-09-26 22:27,2026-09-26 22:58,31
+1918,PIN-ER28,T02,preventiva,P1 mensal,2026-09-27 01:26,2026-09-27 03:01,95
+1919,LUZ-ER01,T07,preventiva,P1 mensal,2026-09-27 01:40,2026-09-27 03:27,107
+1920,REP-ER25,T02,preventiva,P1 mensal,2026-09-27 01:54,2026-09-27 03:45,112
+1921,FAL-ER02,T12,preventiva,P1 mensal,2026-09-27 01:58,2026-09-27 03:31,94
+1922,BUT-ER07,T04,preventiva,P1 mensal,2026-09-27 02:05,2026-09-27 04:02,117
+1923,TVS-ER01,T09,preventiva,P1 mensal,2026-09-27 03:31,2026-09-27 06:16,165
+1924,PIN-ER05,T03,preventiva,P1 mensal,2026-09-27 03:49,2026-09-27 05:28,99
+1925,PIN-ER14,T05,corretiva,parada de seguranca (reset),2026-09-27 06:20,2026-09-27 06:51,31
+1926,PTA-ER11,T01,corretiva,parada de seguranca (reset),2026-09-27 06:28,2026-09-27 06:54,26
+1927,BUT-ER06,T12,corretiva,status critico,2026-09-27 06:42,2026-09-27 07:34,52
+1928,PIN-ER13,T09,corretiva,status critico,2026-09-27 06:42,2026-09-27 12:03,321
+1929,VSO-ER05,T08,corretiva,parada de seguranca (reset),2026-09-27 10:08,2026-09-27 10:45,37
+1930,BUT-ER08,T10,corretiva,parada de seguranca (reset),2026-09-27 10:10,2026-09-27 10:42,32
+1931,VSO-ER18,T05,corretiva,parada de seguranca (reset),2026-09-27 10:13,2026-09-27 10:57,44
+1932,TVS-ER07,T06,corretiva,status critico,2026-09-27 10:15,2026-09-27 14:54,280
+1933,PTA-ER17,T09,corretiva,parada de seguranca (reset),2026-09-27 10:16,2026-09-27 10:47,31
+1934,PTA-ER12,T01,corretiva,parada de seguranca (reset),2026-09-27 10:22,2026-09-27 10:57,35
+1935,HIG-ER25,T12,corretiva,parada de seguranca (reset),2026-09-27 10:25,2026-09-27 10:41,16
+1936,LUZ-ER10,T03,corretiva,parada de seguranca (reset),2026-09-27 14:10,2026-09-27 14:40,30
+1937,LUZ-ER09,T11,corretiva,parada de seguranca (reset),2026-09-27 14:12,2026-09-27 14:23,11
+1938,FAL-ER07,T03,corretiva,parada de seguranca (reset),2026-09-27 14:14,2026-09-27 14:38,24
+1939,FRA-ER03,T03,corretiva,parada de seguranca (reset),2026-09-27 14:15,2026-09-27 14:29,14
+1940,FRE-ER13,T09,corretiva,status critico,2026-09-27 15:47,2026-09-28 14:07,1340
+1941,PIN-ER18,T09,corretiva,parada de seguranca (reset),2026-09-27 18:07,2026-09-27 18:44,37
+1942,MBI-ER02,T04,corretiva,parada de seguranca (reset),2026-09-27 18:25,2026-09-27 19:04,39
+1943,FAL-ER03,T11,corretiva,status critico,2026-09-27 19:02,2026-09-27 22:08,187
+1944,PIN-ER21,T11,corretiva,parada de seguranca (reset),2026-09-27 22:08,2026-09-27 22:36,28
+1945,VSO-ER03,T03,corretiva,parada de seguranca (reset),2026-09-27 22:28,2026-09-27 22:48,20
+1946,BUT-ER07,T10,corretiva,alerta prolongado,2026-09-27 23:30,2026-09-28 02:01,152
+1947,PIN-ER15,T01,preventiva,P1 mensal,2026-09-28 00:11,2026-09-28 02:17,127
+1948,FRE-ER15,T10,preventiva,P1 mensal,2026-09-28 00:29,2026-09-28 02:24,116
+1949,HIG-ER15,T01,preventiva,P1 mensal,2026-09-28 01:16,2026-09-28 03:45,149
+1950,BUT-ER13,T02,preventiva,P1 mensal,2026-09-28 01:45,2026-09-28 04:09,144
+1951,FRE-ER07,T08,preventiva,P1 mensal,2026-09-28 02:01,2026-09-28 03:55,115
+1952,MBI-ER13,T10,preventiva,P1 mensal,2026-09-28 02:06,2026-09-28 03:51,106
+1953,PTA-ER13,T02,preventiva,P1 mensal,2026-09-28 02:23,2026-09-28 04:11,109
+1954,PIN-ER21,T05,preventiva,P1 mensal,2026-09-28 02:48,2026-09-28 04:57,130
+1955,HIG-ER18,T04,preventiva,P1 mensal,2026-09-28 03:11,2026-09-28 05:10,119
+1956,PIN-ER07,T11,preventiva,P1 mensal,2026-09-28 03:13,2026-09-28 05:28,136
+1957,LUZ-ER07,T07,preventiva,P1 mensal,2026-09-28 03:16,2026-09-28 05:59,163
+1958,TVS-ER02,T01,preventiva,P1 mensal,2026-09-28 03:34,2026-09-28 06:19,166
+1959,VSO-ER10,T02,preventiva,P1 mensal,2026-09-28 03:54,2026-09-28 05:34,101
+1960,LUZ-ER15,T05,corretiva,parada de seguranca (reset),2026-09-28 06:14,2026-09-28 06:56,42
+1961,HIG-ER20,T10,corretiva,parada de seguranca (reset),2026-09-28 06:19,2026-09-28 06:44,25
+1962,PIN-ER14,T07,corretiva,status critico,2026-09-28 06:37,2026-10-01 21:05,5189
+1963,TVS-ER09,T06,corretiva,parada de seguranca (reset),2026-09-28 10:14,2026-09-28 10:50,36
+1964,HIG-ER06,T01,corretiva,parada de seguranca (reset),2026-09-28 10:29,2026-09-28 10:39,10
+1965,FRE-ER11,T02,corretiva,status critico,2026-09-28 11:09,2026-09-28 17:40,392
+1966,BUT-ER05,T03,corretiva,parada de seguranca (reset),2026-09-28 14:14,2026-09-28 14:30,16
+1967,TVS-ER02,T06,corretiva,parada de seguranca (reset),2026-09-28 14:25,2026-09-28 14:43,18
+1968,VSO-ER20,T11,corretiva,parada de seguranca (reset),2026-09-28 14:25,2026-09-28 14:41,16
+1969,BUT-ER03,T11,corretiva,status critico,2026-09-28 15:14,2026-09-29 10:18,1145
+1970,VSO-ER05,T10,corretiva,status critico,2026-09-28 15:23,2026-09-29 11:02,1180
+1971,FAL-ER07,T02,corretiva,status critico,2026-09-28 18:05,2026-09-29 01:44,459
+1972,PIN-ER21,T05,corretiva,parada de seguranca (reset),2026-09-28 18:09,2026-09-28 18:45,36
+1973,LUZ-ER15,T06,corretiva,parada de seguranca (reset),2026-09-28 18:17,2026-09-28 18:47,30
+1974,TVS-ER02,T08,corretiva,parada de seguranca (reset),2026-09-28 22:05,2026-09-28 22:31,26
+1975,HIG-ER24,T12,corretiva,parada de seguranca (reset),2026-09-28 22:08,2026-09-28 22:20,12
+1976,REP-ER61,T12,corretiva,parada de seguranca (reset),2026-09-28 22:13,2026-09-28 22:49,36
+1977,VSO-ER02,T06,corretiva,parada de seguranca (reset),2026-09-28 22:17,2026-09-28 22:58,41
+1978,VSO-ER03,T05,corretiva,status critico,2026-09-28 22:18,2026-09-29 20:30,1332
+1979,PIN-ER06,T06,corretiva,status critico,2026-09-28 22:23,2026-09-29 15:20,1018
+1980,VSO-ER18,T07,corretiva,status critico,2026-09-28 22:23,2026-09-29 00:27,125
+1981,MBI-ER11,T12,corretiva,status critico,2026-09-28 22:50,2026-09-30 00:53,1563

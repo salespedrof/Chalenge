@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.DS_Store
+codigo-fonte/index.html
+codigo-fonte/artifact.html

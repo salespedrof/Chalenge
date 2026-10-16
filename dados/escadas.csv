@@ -1,0 +1,198 @@
+escada_id,estacao_cod,estacao_nome,fabricante,grupo,fluxo_relativo
+BUT-ER01,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER02,BUT,Butantã,Thyssen,nao_critica,0.8
+BUT-ER03,BUT,Butantã,Thyssen,nao_critica,0.8
+BUT-ER04,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER05,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER06,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER07,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER08,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER09,BUT,Butantã,Thyssen,nao_critica,0.8
+BUT-ER10,BUT,Butantã,Thyssen,nao_critica,0.8
+BUT-ER11,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER12,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER13,BUT,Butantã,Thyssen,critica,0.8
+BUT-ER14,BUT,Butantã,Thyssen,nao_critica,0.8
+FAL-ER01,FAL,Faria Lima,Thyssen,nao_critica,0.8
+FAL-ER02,FAL,Faria Lima,Thyssen,critica,0.8
+FAL-ER03,FAL,Faria Lima,Thyssen,critica,0.8
+FAL-ER04,FAL,Faria Lima,Thyssen,critica,0.8
+FAL-ER05,FAL,Faria Lima,Thyssen,nao_critica,0.8
+FAL-ER06,FAL,Faria Lima,Thyssen,critica,0.8
+FAL-ER07,FAL,Faria Lima,Thyssen,critica,0.8
+FAL-ER08,FAL,Faria Lima,Thyssen,critica,0.8
+FAL-ER09,FAL,Faria Lima,ESCAL,nao_critica,0.8
+FAL-ER10,FAL,Faria Lima,Thyssen,nao_critica,0.8
+FRA-ER01,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER02,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER03,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER04,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER05,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER06,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER07,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER08,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER09,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRA-ER10,FRA,Fradique Coutinho,Thyssen,nao_critica,0.6
+FRE-ER01,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER02,FRE,Oscar Freire,Thyssen,critica,0.6
+FRE-ER03,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER04,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER05,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER06,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER07,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER08,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER09,FRE,Oscar Freire,Thyssen,critica,0.6
+FRE-ER10,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER11,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER12,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER13,FRE,Oscar Freire,Thyssen,critica,0.6
+FRE-ER14,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER15,FRE,Oscar Freire,Thyssen,critica,0.6
+FRE-ER16,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER17,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER18,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER19,FRE,Oscar Freire,Thyssen,nao_critica,0.6
+FRE-ER20,FRE,Oscar Freire,Thyssen,critica,0.6
+HIG-ER01,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER02,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER03,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER04,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER05,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER06,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER07,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER08,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER09,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER10,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER11,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER12,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER13,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER14,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER15,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER16,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER17,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER18,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER19,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER20,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER21,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER22,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER23,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER24,HIG,Higienópolis-Mackenzie,Thyssen,critica,0.7
+HIG-ER25,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+HIG-ER26,HIG,Higienópolis-Mackenzie,Thyssen,nao_critica,0.7
+LUZ-ER01,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER02,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER03,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER04,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER05,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER06,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER07,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER08,LUZ,Luz,Thyssen,nao_critica,1.0
+LUZ-ER09,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER10,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER11,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER12,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER13,LUZ,Luz,Thyssen,nao_critica,1.0
+LUZ-ER14,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER15,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER16,LUZ,Luz,Thyssen,nao_critica,1.0
+LUZ-ER17,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER18,LUZ,Luz,Thyssen,nao_critica,1.0
+LUZ-ER19,LUZ,Luz,Thyssen,critica,1.0
+LUZ-ER20,LUZ,Luz,Thyssen,nao_critica,1.0
+MBI-ER01,MBI,São Paulo-Morumbi,Thyssen,nao_critica,0.6
+MBI-ER02,MBI,São Paulo-Morumbi,Thyssen,critica,0.6
+MBI-ER03,MBI,São Paulo-Morumbi,Thyssen,critica,0.6
+MBI-ER04,MBI,São Paulo-Morumbi,Thyssen,nao_critica,0.6
+MBI-ER05,MBI,São Paulo-Morumbi,Thyssen,critica,0.6
+MBI-ER06,MBI,São Paulo-Morumbi,Thyssen,nao_critica,0.6
+MBI-ER07,MBI,São Paulo-Morumbi,Thyssen,nao_critica,0.6
+MBI-ER08,MBI,São Paulo-Morumbi,Thyssen,critica,0.6
+MBI-ER09,MBI,São Paulo-Morumbi,Thyssen,critica,0.6
+MBI-ER10,MBI,São Paulo-Morumbi,Thyssen,critica,0.6
+MBI-ER11,MBI,São Paulo-Morumbi,Thyssen,nao_critica,0.6
+MBI-ER12,MBI,São Paulo-Morumbi,Thyssen,nao_critica,0.6
+MBI-ER13,MBI,São Paulo-Morumbi,Thyssen,nao_critica,0.6
+PIN-ER01,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER02,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER03,PIN,Pinheiros,Thyssen,nao_critica,0.95
+PIN-ER04,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER05,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER06,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER07,PIN,Pinheiros,Thyssen,nao_critica,0.95
+PIN-ER08,PIN,Pinheiros,Thyssen,nao_critica,0.95
+PIN-ER09,PIN,Pinheiros,ESCAL,nao_critica,0.95
+PIN-ER10,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER11,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER12,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER13,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER14,PIN,Pinheiros,ESCAL,critica,0.95
+PIN-ER15,PIN,Pinheiros,ESCAL,nao_critica,0.95
+PIN-ER16,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER17,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER18,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER19,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER20,PIN,Pinheiros,ESCAL,nao_critica,0.95
+PIN-ER21,PIN,Pinheiros,ESCAL,critica,0.95
+PIN-ER22,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER23,PIN,Pinheiros,Thyssen,nao_critica,0.95
+PIN-ER24,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER25,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER26,PIN,Pinheiros,ESCAL,nao_critica,0.95
+PIN-ER27,PIN,Pinheiros,ESCAL,nao_critica,0.95
+PIN-ER28,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER29,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER30,PIN,Pinheiros,ESCAL,nao_critica,0.95
+PIN-ER31,PIN,Pinheiros,Thyssen,critica,0.95
+PIN-ER32,PIN,Pinheiros,Thyssen,critica,0.95
+PTA-ER01,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER02,PTA,Paulista,Thyssen,nao_critica,1.0
+PTA-ER03,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER04,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER05,PTA,Paulista,Thyssen,nao_critica,1.0
+PTA-ER06,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER07,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER08,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER09,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER10,PTA,Paulista,Thyssen,nao_critica,1.0
+PTA-ER11,PTA,Paulista,Thyssen,nao_critica,1.0
+PTA-ER12,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER13,PTA,Paulista,Thyssen,nao_critica,1.0
+PTA-ER14,PTA,Paulista,Thyssen,nao_critica,1.0
+PTA-ER15,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER16,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER17,PTA,Paulista,Thyssen,critica,1.0
+PTA-ER18,PTA,Paulista,Thyssen,nao_critica,1.0
+REP-ER25,REP,República,Thyssen,nao_critica,0.95
+REP-ER26,REP,República,Thyssen,critica,0.95
+REP-ER59,REP,República,Thyssen,critica,0.95
+REP-ER60,REP,República,Thyssen,critica,0.95
+REP-ER61,REP,República,Thyssen,critica,0.95
+TVS-ER01,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER02,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER03,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER04,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER05,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER06,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER07,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER08,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+TVS-ER09,TVS,Terminal Vila Sônia,Thyssen,nao_critica,0.45
+VSO-ER01,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER02,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER03,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER04,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER05,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER06,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER07,VSO,Vila Sônia,Thyssen,critica,0.65
+VSO-ER08,VSO,Vila Sônia,Thyssen,critica,0.65
+VSO-ER09,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER10,VSO,Vila Sônia,Thyssen,critica,0.65
+VSO-ER11,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER12,VSO,Vila Sônia,Thyssen,critica,0.65
+VSO-ER13,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER14,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER15,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER16,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER17,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER18,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER19,VSO,Vila Sônia,Thyssen,nao_critica,0.65
+VSO-ER20,VSO,Vila Sônia,Thyssen,nao_critica,0.65

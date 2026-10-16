@@ -1,0 +1,1730 @@
+<title>Elevate</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Elevate: tablet de manutenção orientada por condição das escadas rolantes da Linha 4 (protótipo navegável)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: tablet de manutenção em casa de máquinas. Trilho de navegação à esquerda (barra inferior no retrato),
+   barra de controle fixa no topo, conteúdo em grade por estação. Tema escuro único, por escolha (PRD 12.1). */
+:root{
+  --bg:#101317; --surface:#171b21; --surface-2:#1f242c; --surface-3:#272d37; --line:#2d343f; --line-2:#3a4250;
+  --fg:#e8ecf1; --muted:#9aa4b2; --faint:#6c7686;
+  --brand:#ffd23c; --brand-ink:#1b1600;
+  --ok:#38b97c; --warn:#f29a1f; --crit:#f2554f; --maint:#4b92f6;
+  --ok-bg:rgba(56,185,124,.13); --warn-bg:rgba(242,154,31,.15); --crit-bg:rgba(242,85,79,.17); --maint-bg:rgba(75,146,246,.16);
+  --f-display:"Barlow Semi Condensed","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:10px; --gut:max(16px, env(safe-area-inset-left, 0px)); --gutr:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font:16px/1.45 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--bg)}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;text-wrap:balance;letter-spacing:.01em}
+h2{font-size:1.5rem}
+h3{font-size:1.15rem}
+.lbl{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.muted{color:var(--muted)}
+
+/* ---------- casca ---------- */
+.app{display:grid;grid-template-columns:92px minmax(0,1fr);min-height:100%}
+.rail{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:stretch;gap:4px;
+  background:var(--surface);border-right:1px solid var(--line);padding:14px 8px;z-index:30}
+.logo{display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 0 16px;color:var(--brand)}
+.logo b{font-family:var(--f-display);font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg)}
+.nav{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:64px;padding:8px 4px;border:0;
+  background:none;border-radius:var(--r);color:var(--muted);font-size:.78rem;font-weight:600;position:relative;text-align:center;line-height:1.15}
+.nav svg{width:24px;height:24px}
+.nav:hover{background:var(--surface-2);color:var(--fg)}
+.nav[aria-current="page"]{background:var(--surface-3);color:var(--fg)}
+.nav[aria-current="page"] svg{color:var(--brand)}
+.nav .badge{position:absolute;top:6px;right:12px;min-width:20px;height:20px;border-radius:10px;background:var(--crit);color:#fff;font-size:.72rem;
+  display:flex;align-items:center;justify-content:center;padding:0 5px}
+.nav .badge[hidden]{display:none!important}
+main{min-width:0;display:flex;flex-direction:column}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-block:12px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.brand-sm{display:none;align-items:center;gap:8px;color:var(--brand);font-family:var(--f-display);font-weight:700;font-size:1.2rem}
+.brand-sm span{color:var(--fg)}
+.clock{display:flex;flex-direction:column;min-width:190px}
+.clock strong{font-family:var(--f-mono);font-size:1.3rem;font-weight:600;letter-spacing:.01em}
+.clock small{color:var(--muted);font-size:.8rem}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;min-width:0;max-width:100%}
+.ctrls .field,.who .field{min-width:0;max-width:100%}
+.ctrls select,.ctrls input,.who select{max-width:100%}
+.field{display:flex;flex-direction:column;gap:3px}
+.field>span{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+select,input[type="datetime-local"],input[type="search"],input[type="number"],textarea{background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;min-height:44px;padding:8px 10px}
+select{padding-right:28px}
+.icon-btn{width:48px;height:48px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center}
+.icon-btn:hover{background:var(--surface-3)}
+.icon-btn svg{width:22px;height:22px}
+.who{margin-left:auto;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.net{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 14px;border-radius:22px;border:1px solid var(--line-2);background:var(--surface-2);font-weight:600;font-size:.88rem}
+.net .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--ok-bg)}
+.net.off .dot{background:var(--faint);box-shadow:0 0 0 3px rgba(108,118,134,.25)}
+.net .pend{color:var(--warn)}
+.view{padding-block:20px 40px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:18px;min-width:0}
+.view[hidden]{display:none!important}
+.vhead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+.vhead p{margin:2px 0 0;color:var(--muted);max-width:70ch}
+.sim-note{font-size:.8rem;color:var(--faint)}
+
+/* ---------- status ---------- */
+.s0{--c:var(--ok);--cb:var(--ok-bg)} .s1{--c:var(--warn);--cb:var(--warn-bg)} .s2{--c:var(--crit);--cb:var(--crit-bg)} .s3{--c:var(--maint);--cb:var(--maint-bg)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-display);font-weight:700;font-size:.92rem;letter-spacing:.04em;
+  color:var(--c);background:var(--cb);border-radius:6px;padding:3px 9px 3px 7px;white-space:nowrap}
+.pill svg{width:16px;height:16px;flex:none}
+
+/* contadores */
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.counter{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;text-align:left;
+  padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);min-height:88px}
+.counter svg{grid-row:1 / span 2;width:34px;height:34px;color:var(--c)}
+.counter .n{font-family:var(--f-display);font-size:2.3rem;font-weight:700;line-height:1;color:var(--fg)}
+.counter .t{font-family:var(--f-display);font-weight:600;letter-spacing:.05em;color:var(--c);font-size:.95rem}
+.counter[aria-pressed="true"]{border-color:var(--c);background:var(--cb)}
+.counter:hover{border-color:var(--line-2)}
+
+/* banner */
+.banner{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;border-radius:12px;background:var(--crit-bg);border:1px solid var(--crit)}
+.banner svg{width:28px;height:28px;color:var(--crit);flex:none}
+.banner div{flex:1 1 260px;min-width:0}
+.banner strong{display:block;font-family:var(--f-display);font-size:1.1rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 18px;border-radius:10px;border:1px solid var(--line-2);
+  background:var(--surface-2);font-weight:600}
+.btn:hover{background:var(--surface-3)}
+.btn.primary{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.danger{background:var(--crit);border-color:var(--crit);color:#fff}
+.btn.maint{background:var(--maint);border-color:var(--maint);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.btn svg{width:20px;height:20px}
+.btn.sm{min-height:44px;padding:8px 14px;font-size:.92rem}
+
+/* filtros */
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.filters .grow{flex:1 1 200px}
+.filters input[type="search"]{width:100%}
+
+/* grade */
+.station{display:flex;flex-direction:column;gap:10px}
+.station-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:6px}
+.station-h h3 span{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);margin-right:8px}
+.station-h .mini{display:flex;gap:10px;font-size:.85rem;color:var(--muted)}
+.station-h .mini b{font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.card{display:flex;flex-direction:column;gap:8px;text-align:left;padding:12px;border-radius:var(--r);border:1px solid var(--line);
+  background:linear-gradient(var(--cb),var(--cb)) , var(--surface);min-height:132px}
+.card.s0{background:var(--surface)}
+.card:hover{border-color:var(--c)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.code{font-family:var(--f-mono);font-weight:600;font-size:1.02rem;white-space:nowrap}
+#selSpeed{width:180px}#selCen{width:270px}#inpJump{width:210px}
+.card-top .tag{flex:none}
+.dsbadge{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.85rem;padding:4px 10px;border-radius:6px;background:var(--surface-3);color:var(--brand);border:1px solid var(--brand)}
+.cenlist{display:flex;flex-direction:column;gap:6px}
+.cenlist button{display:flex;justify-content:space-between;gap:10px;align-items:center;text-align:left;min-height:48px;padding:8px 12px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface-2)}
+.cenlist button:hover{background:var(--surface-3)}
+.exprow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.exprow .mono{flex:1 1 200px}
+.tag{font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 6px;border-radius:4px;border:1px solid var(--line-2);color:var(--muted)}
+.tag.crit{border-color:var(--brand);color:var(--brand)}
+.why{font-size:.88rem;color:var(--fg);line-height:1.3;min-height:2.6em}
+.card.s0 .why{color:var(--muted)}
+.oil{display:flex;align-items:center;gap:6px;font-size:.7rem;color:var(--muted);margin-top:auto}
+.oil i{flex:1;height:5px;border-radius:3px;background:var(--surface-3);overflow:hidden;display:block}
+.oil i b{display:block;height:100%;background:var(--faint)}
+.oil i b.lo{background:var(--warn)} .oil i b.cr{background:var(--crit)}
+.timer{font-family:var(--f-mono);font-weight:600;color:var(--maint)}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line-2);border-radius:12px}
+
+/* fila */
+.qcount{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.qc{padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.qc .n{font-family:var(--f-display);font-size:1.9rem;font-weight:700;line-height:1}
+.qlist{display:flex;flex-direction:column;gap:8px}
+.qrow{display:grid;grid-template-columns:44px minmax(150px,1.1fr) minmax(170px,1.6fr) 110px 150px auto;gap:12px;align-items:center;
+  padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.qrow .pos{font-family:var(--f-display);font-size:1.5rem;font-weight:700;color:var(--muted);text-align:center}
+.qrow .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.desp{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.85rem;padding:5px 10px;border-radius:20px;white-space:nowrap}
+.desp.d0{background:var(--crit);color:#fff;animation:pulse 1.4s ease-in-out infinite}
+.desp.d1{background:var(--crit-bg);color:var(--crit);border:1px solid var(--crit)}
+.desp.d2{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn)}
+.desp.d3{background:var(--surface-3);color:var(--muted);border:1px solid var(--line-2)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(242,85,79,.55)}50%{box-shadow:0 0 0 7px rgba(242,85,79,0)}}
+@media (prefers-reduced-motion:reduce){.desp.d0{animation:none}}
+
+/* detalhe */
+.back{align-self:flex-start}
+.dhead{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;padding:16px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.dhead .id{font-family:var(--f-mono);font-size:1.8rem;font-weight:600}
+.dhead .meta{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.92rem}
+.dhead .st{display:flex;flex-direction:column;gap:4px}
+.dhead .act{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.dhead .act .btn{min-height:56px;padding:12px 22px;font-size:1.05rem}
+.vars{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.var{padding:12px;border-radius:10px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--c)}
+.var .v{font-family:var(--f-mono);font-size:1.35rem;font-weight:600;margin-top:4px}
+.var .v small{font-size:.8rem;color:var(--muted);font-weight:500;margin-left:3px}
+.var .lim{font-size:.75rem;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:var(--surface-2);min-height:44px;padding:8px 16px;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface-3);color:var(--fg);box-shadow:inset 0 -3px 0 var(--brand)}
+.charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.chart{padding:12px 12px 8px;border-radius:12px;background:var(--surface);border:1px solid var(--line);min-width:0}
+.chart-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.chart canvas{display:block;width:100%;height:190px;touch-action:pan-y}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.8rem;color:var(--muted)}
+.legend i{display:inline-block;width:18px;height:0;border-top:2px dashed;vertical-align:middle;margin-right:5px}
+.legend i.box{height:10px;border:0;background:var(--maint-bg);border-left:2px solid var(--maint);width:14px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:12px}
+.panel{padding:16px;border-radius:12px;background:var(--surface);border:1px solid var(--line);min-width:0;display:flex;flex-direction:column;gap:10px}
+.p1big{font-family:var(--f-display);font-size:2.4rem;font-weight:700;line-height:1}
+.p1big.late{color:var(--crit)}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:left;font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.click{cursor:pointer} tr.click:hover td{background:var(--surface-2)}
+.sync{font-size:.75rem;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.sync.p{background:var(--warn-bg);color:var(--warn)} .sync.ok{background:var(--ok-bg);color:var(--ok)} .sync.ds{color:var(--faint)}
+
+/* atendimentos */
+.open-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.ocard{padding:16px;border-radius:12px;background:var(--surface);border:1px solid var(--maint);display:flex;flex-direction:column;gap:10px}
+.ocard .big{font-family:var(--f-mono);font-size:2.2rem;font-weight:600;color:var(--maint);line-height:1}
+.ocard .row{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+
+/* indicadores */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.kpi{padding:14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.kpi .n{font-family:var(--f-display);font-size:2rem;font-weight:700;line-height:1.05}
+.kpi small{color:var(--muted);font-size:.8rem;line-height:1.3}
+.stack{display:flex;flex-direction:column;gap:7px}
+.srow{display:grid;grid-template-columns:150px minmax(0,1fr) 56px;gap:10px;align-items:center;font-size:.88rem}
+.sbar{display:flex;height:16px;border-radius:4px;overflow:hidden;background:var(--surface-3)}
+.sbar span{display:block;height:100%}
+.sbar .b0{background:var(--ok)} .sbar .b1{background:var(--warn)} .sbar .b2{background:var(--crit)} .sbar .b3{background:var(--maint)}
+.hbar{display:grid;grid-template-columns:200px minmax(0,1fr) 48px;gap:10px;align-items:center;font-size:.88rem}
+.hbar i{display:block;height:14px;border-radius:3px;background:var(--brand);opacity:.85}
+.slegend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.slegend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+
+/* sync */
+.switch{display:flex;align-items:center;gap:14px;cursor:pointer;min-height:48px}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .tr{width:58px;height:32px;border-radius:16px;background:var(--surface-3);border:1px solid var(--line-2);position:relative;flex:none;transition:background .2s}
+.switch .tr::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--fg);transition:transform .2s}
+.switch input:checked + .tr{background:var(--warn)}
+.switch input:checked + .tr::after{transform:translateX(26px)}
+.switch input:focus-visible + .tr{outline:3px solid var(--brand);outline-offset:2px}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(5,7,10,.72);z-index:60;display:flex;align-items:center;justify-content:center;
+  padding-block:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-bottom,0px));padding-left:var(--gut);padding-right:var(--gutr)}
+.overlay[hidden]{display:none!important}
+.modal{width:min(560px,100%);max-height:100%;overflow:auto;background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.modal h2{font-size:1.45rem}
+.modal .field>span{font-size:.75rem}
+.modal select,.modal textarea{width:100%}
+.radios{display:flex;gap:8px;flex-wrap:wrap}
+.radios label{flex:1 1 140px;display:flex;align-items:center;gap:10px;min-height:48px;padding:8px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);cursor:pointer}
+.radios label:has(input:checked){border-color:var(--brand);background:var(--surface-3)}
+.radios input{width:20px;height:20px;accent-color:var(--brand)}
+.mfoot{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.mfoot .btn{flex:0 1 auto}
+.hint{font-size:.85rem;color:var(--muted)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.92rem}
+.facts dt{color:var(--muted)} .facts dd{margin:0}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:70;background:var(--surface-3);
+  border:1px solid var(--line-2);border-left:4px solid var(--brand);padding:12px 18px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.4);max-width:calc(100% - 32px)}
+.toast[hidden]{display:none!important}
+
+
+/* ---------- Elevate v3: gêmeo digital, diagnóstico, OS, apresentação ---------- */
+.counters{grid-template-columns:repeat(5,minmax(0,1fr))}
+.counter{grid-template-rows:auto auto auto;border-top:3px solid var(--c)}
+.counter .sub{grid-column:2;font-size:.78rem;color:var(--muted);line-height:1.25}
+.counter.tr{--c:var(--brand);--cb:rgba(255,210,60,.10)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip-trend{font-size:.72rem;font-weight:700;color:var(--brand);border:1px dashed var(--brand);border-radius:5px;padding:2px 6px}
+.chip-os{font-family:var(--f-mono);font-size:.72rem;font-weight:600;color:var(--fg);background:var(--surface-3);border:1px solid var(--line-2);border-radius:5px;padding:2px 6px}
+.card.trend{border-color:rgba(255,210,60,.45)}
+.met{display:flex;gap:10px;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.met span{white-space:nowrap}
+.sprow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
+.sprow .lbl{font-size:.62rem}
+.spark{display:block;flex:none}
+.hero{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px;align-items:stretch}
+.twin{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface);min-height:440px;display:flex;flex-direction:column}
+.twin-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-bottom:1px solid var(--line);position:relative;z-index:2;background:var(--surface)}
+.twin-bar .grow{flex:1}
+.twin-bar .seg button{min-height:40px;padding:6px 12px;font-size:.88rem}
+#twinBox{position:relative;flex:1;min-height:380px;touch-action:none}
+.twin-cv{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+.twin-cv:active{cursor:grabbing}
+.twin-labels{position:absolute;inset:0;pointer-events:none}
+.tlabel{position:absolute;left:0;top:0;margin:-46px 0 0 -10px;display:flex;flex-direction:column;gap:1px;padding:5px 9px;border-radius:7px;background:rgba(16,19,23,.88);border:1px solid var(--c);font-size:.78rem;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.tlabel b{color:var(--c);font-weight:700}
+.tlabel span{color:var(--fg);font-family:var(--f-mono);font-size:.75rem}
+#twinSvg{position:absolute;inset:0;padding:8px}
+.twin-chip{position:absolute;left:12px;bottom:12px;z-index:2;max-width:calc(100% - 24px);display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:10px;background:rgba(16,19,23,.9);border:1px solid var(--line-2)}
+.twin-chip .hint{margin:0;font-size:.75rem}
+.twin.leve .twin-cv,.twin.leve .twin-labels{display:none}
+.twin:not(.leve) #twinSvg{display:none}
+.twin.leve .only3d{display:none}
+.side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.diag{padding:16px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.diag-h{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.diag-t{font-size:1.25rem;color:var(--c)}
+.diag-t.s0{color:var(--fg)}
+.diag p{margin:0;line-height:1.45}
+.diag-a{border-top:1px solid var(--line);padding-top:8px;display:flex;flex-direction:column;gap:3px}
+.diag-c{display:flex;flex-wrap:wrap;gap:6px}
+.diag .hint{font-size:.75rem}
+.tele{display:flex;flex-direction:column;gap:6px}
+.trow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--c)}
+.trow.s0{border-left-color:var(--line-2)}
+.trow .tname{display:block;font-weight:600;font-size:.9rem}
+.trow .tlim{display:block;font-size:.72rem;color:var(--muted)}
+.trow .tval{font-family:var(--f-mono);font-weight:600;font-size:1.05rem;text-align:right;min-width:92px;color:var(--c)}
+.trow.s0 .tval{color:var(--fg)}
+.trow .tval small{font-size:.72rem;color:var(--muted);margin-left:3px}
+.osline{font-size:.88rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.proc{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;counter-reset:p}
+.proc li{counter-increment:p}
+.proc label{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface-2);cursor:pointer;min-height:48px}
+.proc label::before{content:counter(p);font-family:var(--f-mono);color:var(--muted);min-width:1.2em}
+.proc input{width:20px;height:20px;accent-color:var(--ok);flex:none;margin-top:1px}
+.proc label:has(input:checked) span{color:var(--muted);text-decoration:line-through}
+.techpill{display:none;align-items:center;gap:10px;padding:6px 8px 6px 14px;border-radius:26px;background:var(--surface-2);border:1px solid var(--line-2)}
+.techpill small{display:block;font-size:.72rem;color:var(--muted);line-height:1.1}
+.techpill b{display:block;font-size:.9rem;line-height:1.2}
+.techpill i{width:36px;height:36px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--f-display)}
+body.apres .hide-apres{display:none!important}
+body.apres .techpill{display:flex}
+body.apres .clock strong{font-size:1.15rem}
+body.apres .sim-note{display:none}
+.tend-list{display:flex;flex-direction:column;gap:8px}
+@media (max-width:1180px){ .counters{grid-template-columns:repeat(3,minmax(0,1fr))} .hero{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:640px){ .counters{grid-template-columns:repeat(2,minmax(0,1fr))} .twin{min-height:360px} #twinBox{min-height:300px} .trow{grid-template-columns:minmax(0,1fr) auto} .trow .spark{display:none} }
+
+/* ---------- responsivo ---------- */
+@media (max-width:1180px){
+  .vars{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .qrow{grid-template-columns:40px minmax(0,1fr) minmax(0,1.4fr);}
+  .qrow .c-h,.qrow .c-d{grid-column:2 / span 1}
+  .qrow .acts{grid-column:3;grid-row:2 / span 2;align-self:center}
+}
+@media (max-width:899px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .rail{position:fixed;top:auto;bottom:0;left:0;right:0;height:auto;flex-direction:row;justify-content:space-around;border-right:0;border-top:1px solid var(--line);
+    padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .logo{display:none}
+  .nav{flex:1;min-height:58px;font-size:.7rem}
+  main{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .brand-sm{display:flex}
+  .top,.view{padding-left:var(--gut);padding-right:var(--gutr)}
+  .charts,.two,.cmp,.grid2{grid-template-columns:minmax(0,1fr)}
+  .who{margin-left:0}
+}
+@media (max-width:640px){
+  .counters,.qcount{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vars,.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .qrow{grid-template-columns:32px minmax(0,1fr)}
+  .qrow > *{grid-column:2}
+  .qrow .pos{grid-column:1;grid-row:1}
+  .qrow .acts{grid-column:1 / -1;grid-row:auto;justify-content:stretch}
+  .qrow .acts .btn{flex:1}
+  .srow{grid-template-columns:96px minmax(0,1fr) 44px}
+  .hbar{grid-template-columns:120px minmax(0,1fr) 40px}
+  .clock{min-width:0}
+  .dhead .act{margin-left:0;width:100%}
+  .dhead .act .btn{flex:1}
+}
+</style>
+
+<div class="app">
+  <nav class="rail" aria-label="Seções">
+    <div class="logo" aria-hidden="true">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M5 33h8v-8h8v-8h8V9h6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 5h6v6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <b>Elevate</b>
+    </div>
+    <button class="nav" data-view="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Painel</button>
+    <button class="nav" data-view="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 5l1 1 2-2M4 11l1 1 2-2" stroke-linejoin="round"/><circle cx="5" cy="18" r="1.3" fill="currentColor"/></svg>Fila<span class="badge" id="badgeFila" hidden></span></button>
+    <button class="nav" data-view="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg>Atendi&shy;mentos<span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
+    <button class="nav" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
+    <button class="nav" data-view="sync"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Sincronização<span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span></button>
+    <button class="nav" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
+  </nav>
+
+  <main>
+    <header class="top">
+      <div class="brand-sm"><svg width="26" height="26" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 33h8v-8h8v-8h8V9h6" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Elevate</span></div>
+      <div class="clock">
+        <span class="lbl">Relógio da simulação</span>
+        <strong id="clk">--/--/---- --:--</strong>
+        <small id="clkSlot">Última leitura dos sensores: --</small>
+      </div>
+      <div class="ctrls">
+        <button class="icon-btn" id="btnPlay" aria-label="Pausar"></button>
+        <button class="icon-btn" id="btnNext" aria-label="Avançar para a próxima leitura" title="Avançar para a próxima leitura"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5v13l9-6.5zM16 5h3v14h-3z"/></svg></button>
+        <label class="field hide-apres"><span>Velocidade</span><select id="selSpeed"></select></label>
+        <label class="field hide-apres"><span>Ir para</span><input type="datetime-local" id="inpJump" step="60"></label>
+        <label class="field"><span>Cenário de demonstração</span><select id="selCen"><option value="">Escolher…</option></select></label>
+      </div>
+      <div class="who">
+        <label class="field hide-apres"><span>Técnico no tablet</span><select id="selTec"></select></label>
+        <div class="techpill" id="techPill"><div><small>Técnico responsável</small><b id="techName">—</b></div><i id="techIni">—</i></div>
+        <button class="btn sm" id="btnApres" title="Esconde os controles da simulação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span id="apresTxt">Apresentar</span></button>
+        <button class="net" id="netPill" title="Abrir sincronização"><span class="dot"></span><span id="netTxt">Online</span></button>
+      </div>
+    </header>
+
+    <!-- TELA 1 -->
+    <section class="view" id="v-painel" aria-label="Painel da frota">
+      <div class="vhead">
+        <div><h2>Painel da Frota</h2><p id="painelSub">197 escadas rolantes da Linha 4-Amarela. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o histórico.</p></div>
+        <span class="sim-note">Dados simulados · 01/07 a 28/09/2026 · leituras às 6h, 10h, 14h, 18h e 22h</span>
+      </div>
+      <div class="counters" id="counters"></div>
+      <div id="banner"></div>
+      <div class="filters">
+        <label class="field grow"><span>Buscar escada</span><input type="search" id="fBusca" placeholder="Ex.: PIN-ER25" autocomplete="off"></label>
+        <label class="field"><span>Estação</span><select id="fEst"></select></label>
+        <label class="field"><span>Grupo</span><select id="fGrupo"><option value="">Todos</option><option value="c">Crítica</option><option value="n">Não crítica</option></select></label>
+        <label class="field"><span>Fabricante</span><select id="fFab"><option value="">Todos</option><option>Thyssen</option><option>ESCAL</option></select></label>
+        <button class="btn sm" id="fLimpar">Limpar filtros</button>
+      </div>
+      <div id="frota" class="stack" style="gap:22px"></div>
+    </section>
+
+    <!-- TELA 2 -->
+    <section class="view" id="v-detalhe" hidden aria-label="Detalhe da escada">
+      <button class="btn sm back" id="btnBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>Voltar</button>
+      <div id="dHead"></div>
+      <div class="hero">
+        <div class="twin" id="twin">
+          <div class="twin-bar">
+            <span class="lbl grow">Gêmeo digital · leitura de <span id="twinWhen">--</span></span>
+            <button class="btn sm only3d" id="tvGeral">Vista geral</button>
+            <button class="btn sm only3d" id="tvMaq">Casa de máquinas</button>
+            <div class="seg" role="group" aria-label="Visualização"><button id="tv3d" aria-pressed="true">3D</button><button id="tvLeve" aria-pressed="false">Modo leve</button></div>
+          </div>
+          <div id="twinBox"><div id="twinSvg"></div></div>
+          <div class="twin-chip" id="twinChip"></div>
+        </div>
+        <div class="side">
+          <div class="diag" id="dDiag"></div>
+          <div class="tele" id="dVars"></div>
+        </div>
+      </div>
+      <div class="vhead">
+        <h3>Sensores</h3>
+        <div class="seg" id="dPer" role="group" aria-label="Período">
+          <button data-d="7" aria-pressed="false">7 dias</button><button data-d="30" aria-pressed="true">30 dias</button><button data-d="90" aria-pressed="false">90 dias</button>
+        </div>
+      </div>
+      <div class="legend"><span><i style="border-color:var(--warn)"></i>Limite de ALERTA</span><span><i style="border-color:var(--crit)"></i>Limite CRÍTICO</span><span><i class="box"></i>Em manutenção</span><span><span style="color:var(--faint)">▾</span> Sem sinal</span><span><span style="color:var(--crit)">▴</span> Parada</span></div>
+      <div class="charts" id="dCharts"></div>
+      <div class="two">
+        <div class="panel" id="dP1"></div>
+        <div class="panel"><h3>Histórico de atendimentos</h3><div class="tbl-wrap" id="dHist"></div></div>
+      </div>
+    </section>
+
+    <!-- TELA 3 -->
+    <section class="view" id="v-fila" hidden aria-label="Fila de prioridades">
+      <div class="vhead"><div><h2>Fila de Prioridades</h2><p>Escadas em ALERTA ou CRÍTICO, ordenadas pelo despacho e depois pela pontuação: status + grupo + fluxo + horas no status.</p></div></div>
+      <div class="qcount" id="qCount"></div>
+      <div class="filters">
+        <label class="field"><span>Despacho</span><select id="qDesp"><option value="">Todos</option><option value="0">Imediato</option><option value="1">Prioridade no turno</option><option value="2">Programar em 24 h</option><option value="3">Programar em 48 h</option></select></label>
+        <label class="field"><span>Estação</span><select id="qEst"></select></label>
+        <label class="field"><span>Grupo</span><select id="qGrupo"><option value="">Todos</option><option value="c">Crítica</option><option value="n">Não crítica</option></select></label>
+      </div>
+      <div class="qlist" id="qList"></div>
+      <div id="qTend"></div>
+    </section>
+
+    <!-- TELA 4 -->
+    <section class="view" id="v-atend" hidden aria-label="Atendimentos">
+      <div class="vhead"><div><h2>Atendimentos</h2><p>Entrada e saída do técnico. Enquanto o atendimento está aberto, a escada fica EM MANUTENÇÃO e o cronômetro corre no relógio da simulação.</p></div></div>
+      <h3>Em andamento</h3>
+      <div class="open-list" id="aOpen"></div>
+      <h3>Ordens de serviço</h3>
+      <div class="panel"><div class="tbl-wrap" id="aOS"></div></div>
+      <h3>Registrados neste tablet</h3>
+      <div class="panel"><div class="tbl-wrap" id="aMine"></div></div>
+    </section>
+
+    <!-- TELA 5 -->
+    <section class="view" id="v-ind" hidden aria-label="Indicadores">
+      <div class="vhead"><div><h2>Indicadores</h2><p id="iPer">Período de 01/07/2026 até o relógio da simulação.</p></div>
+        <button class="btn sm" id="btnCsv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>Copiar histórico em CSV</button></div>
+      <div class="kpis" id="iKpis"></div>
+      <div class="grid2">
+        <div class="panel"><h3>Tempo em cada status, por estação</h3>
+          <div class="slegend"><span><i style="background:var(--ok)"></i>BOM</span><span><i style="background:var(--warn)"></i>ALERTA</span><span><i style="background:var(--crit)"></i>CRÍTICO</span><span><i style="background:var(--maint)"></i>EM MANUTENÇÃO</span></div>
+          <div class="stack" id="iEst"></div></div>
+        <div class="stack" style="gap:12px">
+          <div class="panel"><h3>Thyssen × ESCAL</h3><div class="stack" id="iFab"></div></div>
+          <div class="panel"><h3>Crítica × Não crítica</h3><div class="stack" id="iGr"></div></div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><h3>Pareto dos atendimentos corretivos</h3><div class="stack" id="iPar"></div></div>
+        <div class="panel"><h3>Escadas com mais tempo em ALERTA ou CRÍTICO</h3><div class="tbl-wrap" id="iRank"></div></div>
+      </div>
+      <textarea id="csvOut" hidden readonly rows="6" style="width:100%"></textarea>
+    </section>
+
+    <!-- TELA 6 -->
+    <section class="view" id="v-sync" hidden aria-label="Sincronização">
+      <div class="vhead"><div><h2>Sincronização</h2><p>O tablet guarda tudo localmente. Sem Wi-Fi, entradas e saídas ficam pendentes e são enviadas quando a conexão volta.</p></div></div>
+      <div class="panel">
+        <label class="switch" for="swOff"><input type="checkbox" id="swOff"><span class="tr"></span><span><strong>Simular sem conexão</strong><br><span class="muted" id="swTxt">O tablet está online.</span></span></label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" id="btnSync">Sincronizar agora</button></div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><h3>Registros</h3><div class="tbl-wrap" id="sEv"></div></div>
+        <div class="panel"><h3>Últimas sincronizações</h3><div id="sHist"></div>
+          <hr style="border:0;border-top:1px solid var(--line);width:100%">
+          <h3>Demonstração</h3>
+          <p class="hint" style="margin:0">Apaga os atendimentos criados neste tablet e volta o relógio ao início da demonstração. O dataset em uso continua o mesmo.</p>
+          <div id="resetBox"><button class="btn sm" id="btnReset">Reiniciar demonstração</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELA 7 -->
+    <section class="view" id="v-dados" hidden aria-label="Dados da simulação">
+      <div class="vhead"><div><h2>Dados da simulação</h2><p>A Motiva ainda não enviou leituras reais dos sensores. O Elevate gera aqui mesmo, sem internet, um dataset simulado com as 6 variáveis, a partir do cadastro real das 197 escadas da Linha 4.</p></div></div>
+      <div class="grid2">
+        <div class="panel" id="dsAtual"></div>
+        <div class="panel">
+          <h3>Gerar novo dataset</h3>
+          <label class="field" for="gSeed"><span>Semente</span></label>
+          <div style="display:flex;gap:8px;margin-top:-6px"><input type="number" id="gSeed" min="1" max="999999" step="1" value="2027" style="flex:1;min-width:0"><button class="btn sm" id="gRand">Sortear</button></div>
+          <div class="field"><span>Período</span><div class="radios"><label><input type="radio" name="gDias" value="30">30 dias</label><label><input type="radio" name="gDias" value="60">60 dias</label><label><input type="radio" name="gDias" value="90" checked>90 dias</label></div></div>
+          <div class="field"><span>Intensidade de defeitos</span><div class="radios"><label><input type="radio" name="gInt" value="0.5">Baixa</label><label><input type="radio" name="gInt" value="1" checked>Normal</label><label><input type="radio" name="gInt" value="1.8">Alta</label></div></div>
+          <p class="hint" style="margin:0">A mesma semente com as mesmas opções gera sempre os mesmos dados. Gerar um dataset apaga os atendimentos de teste deste tablet e monta novos cenários de demonstração a partir dos defeitos sorteados.</p>
+          <div id="gBox" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" id="gGo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Gerar dataset</button><button class="btn" id="gOficial">Voltar ao dataset oficial</button></div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><h3>O que é real e o que é simulado</h3><div class="tbl-wrap"><table><tbody>
+          <tr><td>197 escadas, 12 estações, fabricante (188 Thyssen, 9 ESCAL)</td><td><b style="color:var(--ok)">Real</b> · histórico SAP da Motiva</td></tr>
+          <tr><td>Risco de cada escada (chance de defeitos e paradas)</td><td><b style="color:var(--ok)">Real</b> · nº de falhas de 2023 a 2026</td></tr>
+          <tr><td>Leituras de vibração, temperatura, corrente, tensão, velocidade e óleo</td><td><b style="color:var(--warn)">Simulado</b></td></tr>
+          <tr><td>Defeitos (rolamento, atrito, vazamento, elétrico, sensor mudo) e paradas de segurança</td><td><b style="color:var(--warn)">Simulado</b></td></tr>
+          <tr><td>Manutenções, técnicos T01 a T12, P1 mensal</td><td><b style="color:var(--warn)">Simulado</b></td></tr>
+          <tr><td>Limites de ALERTA e CRÍTICO, grupo crítica / não crítica, fluxo</td><td><b style="color:var(--muted)">Hipótese do grupo</b></td></tr>
+          <tr><td>Falhas de leitura de propósito (valores vazios e picos espúrios)</td><td><b style="color:var(--warn)">Simulado</b> · testa a RN-02</td></tr>
+        </tbody></table></div></div>
+        <div class="panel"><h3>Exportar CSVs do dataset em uso</h3>
+          <p class="hint" style="margin:0">Mesmo formato dos CSVs do notebook de Data Science. Os atendimentos incluem os registrados neste tablet. No link publicado o navegador pode bloquear downloads: abra o arquivo index.html para baixar, ou use Copiar.</p>
+          <div id="expList"></div>
+          <textarea id="expOut" hidden readonly rows="6" style="width:100%"></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="overlay" id="ovl" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal"></div></div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<!--__THREE__-->
+<script id="elevate-dataset" type="application/json">/*__DATA__*/</script>
+<script>
+'use strict';
+/* ================= CONFIGURAÇÃO (RNF-07: limites, pesos e prazos num só lugar) ================= */
+const CFG = {
+  vars: [
+    {k:'vib',  nome:'Vibração',      un:'mm/s', dec:2, tipo:'acima',  a:4.5, c:7.1, sc:100},
+    {k:'temp', nome:'Temperatura',   un:'°C',   dec:1, tipo:'acima',  a:80,  c:95,  sc:10},
+    {k:'corr', nome:'Corrente',      un:'A',    dec:1, tipo:'acima',  a:30,  c:36,  sc:10},
+    {k:'tens', nome:'Tensão',        un:'V',    dec:1, tipo:'desvio', nom:380, a:7, c:10, sc:10},
+    {k:'vel',  nome:'Velocidade',    un:'m/s',  dec:3, tipo:'desvio', nom:0.5, a:3, c:6,  sc:10000},
+    {k:'oleo', nome:'Nível de óleo', un:'%',    dec:1, tipo:'abaixo', a:35,  c:20,  sc:10},
+  ],
+  prioridade: {CRITICO:100, ALERTA:50, grupoCritica:20, fluxo:10, horasMax:48},
+  despacho: [
+    {l:'Imediato'}, {l:'Prioridade no turno'}, {l:'Programar em 24 h'}, {l:'Programar em 48 h'}
+  ],
+  p1Dias: 30,
+  inicio: '2026-09-05T18:05',
+};
+const RAW0 = JSON.parse(document.getElementById('elevate-dataset').textContent);
+const SLOTS=[6,10,14,18,22], T0=Date.UTC(2026,6,1), START=6*60;
+let RAW=RAW0, NS=450, END=89*1440+1439;
+const V = CFG.vars;
+const STL = ['BOM','ALERTA','CRÍTICO','EM MANUTENÇÃO'];
+const ICON = [
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5" stroke-width="2"/><path d="M7.5 12.3l3 3 6-6.3"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3.2L22 20.5H2z"/><path d="M12 9.5v5" stroke-linecap="round"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M8.3 2.5h7.4l5.8 5.8v7.4l-5.8 5.8H8.3l-5.8-5.8V8.3z"/><path d="M12 7.5v5.5" stroke-linecap="round"/><circle cx="12" cy="16.4" r=".6" fill="currentColor"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg>'
+];
+const PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
+const PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5h4v15H6zM14 4.5h4v15h-4z"/></svg>';
+const MOT_L = {'P1 mensal':'Preventiva P1 mensal','parada de seguranca (reset)':'Parada de segurança (reset)','status critico':'Status crítico','sem resposta do sensor':'Sem resposta do sensor','alerta prolongado':'Alerta prolongado'};
+const MOTIVOS_FORM = ['status critico','parada de seguranca (reset)','sem resposta do sensor','alerta prolongado','P1 mensal'];
+const COMPONENTES = ['Sensor ou dispositivo de segurança','Comando/elétrica','Degraus/roletes/guias','Corrimão','Motor','Redutor','Rolamento do redutor','Freio','Corrente principal','Placa pente/rodapé','Lubrificação','Sensor do Elevate','Outro'];
+const ACOES = ['Resetado e testado','Ajustado','Limpo','Lubrificado/completado óleo','Substituído','Reparado','Inspecionado sem defeito'];
+const TECS = {T01:'Marcos Lima',T02:'Ana Ribeiro',T03:'João Pereira',T04:'Carla Mendes',T05:'Rafael Costa',T06:'Beatriz Nunes',T07:'Diego Martins',T08:'Fernanda Rocha',T09:'Lucas Almeida',T10:'Patrícia Gomes',T11:'Thiago Barbosa',T12:'Camila Freitas'};
+const SPEEDS = [{l:'Tempo real',v:1},{l:'1 min por segundo',v:60},{l:'10 min por segundo',v:600},{l:'1 hora por segundo',v:3600},{l:'6 horas por segundo',v:21600}];
+
+/* ================= utilidades ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pad = n => String(n).padStart(2,'0');
+const dt = m => new Date(T0 + Math.round(m*60000));
+const fD = m => { const d=dt(m); return pad(d.getUTCDate())+'/'+pad(d.getUTCMonth()+1); };
+const fDH = m => { const d=dt(m); return fD(m)+' '+pad(d.getUTCHours())+':'+pad(d.getUTCMinutes()); };
+const fFull = m => { const d=dt(m); return pad(d.getUTCDate())+'/'+pad(d.getUTCMonth()+1)+'/'+d.getUTCFullYear()+' '+pad(d.getUTCHours())+':'+pad(d.getUTCMinutes())+':'+pad(d.getUTCSeconds()); };
+const toInput = m => { const d=dt(m); return d.getUTCFullYear()+'-'+pad(d.getUTCMonth()+1)+'-'+pad(d.getUTCDate())+'T'+pad(d.getUTCHours())+':'+pad(d.getUTCMinutes()); };
+const fromInput = s => (Date.parse(s+':00Z') - T0)/60000;
+const nf = (x,d) => x.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const pct = x => nf(x*100,1)+'%';
+function fDur(min){ min=Math.max(0,min); if(min<60) return Math.round(min)+' min'; const h=Math.floor(min/60), m=Math.round(min-h*60); if(h<48) return h+' h '+pad(m===60?59:m); const d=Math.floor(h/24); return d+' d '+(h%24)+' h'; }
+function fTimer(min){ const s=Math.max(0,Math.floor(min*60)); return pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60); }
+const slotMin = i => Math.floor(i/5)*1440 + SLOTS[i%5]*60;
+function idxAt(m){ let d=Math.floor(m/1440); const h=(m-d*1440)/60; let k=0; while(k<5 && SLOTS[k]<=h) k++; if(k===0){d--;k=5;} return Math.max(0,Math.min(NS-1,d*5+k-1)); }
+function firstSlotFrom(m){ let i=idxAt(m); if(slotMin(i)<m) i++; return i; }
+const median = a => { if(!a.length) return null; const s=[...a].sort((x,y)=>x-y), h=s.length>>1; return s.length%2?s[h]:(s[h-1]+s[h])/2; };
+const mean = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
+
+/* ================= dados ================= */
+const EST = RAW0.est.map(([cod,nome]) => ({cod,nome}));
+const ESTN = Object.fromEntries(EST.map(e=>[e.cod,e.nome]));
+let E=[], BYID={}, DSAT={}, CEN=[];
+function setData(D){
+  RAW=D; NS=D.v[0][0].length; END=(NS/5-1)*1440+1439;
+  E = D.esc.map((r,ix) => ({ix, id:r[0], cod:r[1], fab:r[2], crit:r[3]===1, fluxo:r[4], v:D.v[ix], at:[]}));
+  BYID = Object.fromEntries(E.map(e=>[e.id,e]));
+  DSAT = {};
+  D.at.forEach(r => { const e=E[r[1]]; const a={id:'A'+r[0], esc:e.id, tec:r[2], tipo:r[3]?'corretiva':'preventiva', motivo:D.mot[r[4]], ent:r[5], sai:r[6], src:'ds'}; e.at.push(a); DSAT[a.id]=a; });
+  E.forEach(e => { e.rs = new Int8Array(NS); for(let i=0;i<NS;i++) e.rs[i]=classify(e,i).code; });
+  CEN = D.cen || [];
+}
+const val = (e,k,i) => { const x=e.v[k][i]; return x==null ? null : x/V[k].sc; };
+function lvl(c,x){
+  if(c.tipo==='acima') return x>=c.c?2:x>=c.a?1:0;
+  if(c.tipo==='abaixo') return x<=c.c?2:x<=c.a?1:0;
+  const d=Math.abs(x-c.nom)/c.nom*100; return d>=c.c?2:d>=c.a?1:0;
+}
+function ratio(c,x){ if(c.tipo==='acima') return x/c.a; if(c.tipo==='abaixo') return c.a/Math.max(x,.1); return Math.abs(x-c.nom)/c.nom*100/c.a; }
+function desc(k,x){ const c=V[k]; let s=c.nome+' '+nf(x,c.dec)+' '+c.un; if(c.tipo==='desvio') s+=' (desvio '+nf(Math.abs(x-c.nom)/c.nom*100,1)+'%)'; return s; }
+
+/* RN-01 + RN-02: status pela leitura */
+function classify(e,i){
+  const vals = V.map((_,k)=>val(e,k,i));
+  if(vals.every(x=>x==null)) return {code:2, kind:'sem', txt:'Sem resposta do sensor'};
+  if(vals[4]!=null && vals[4]<0.05) return {code:2, kind:'parada', txt:'Parada (velocidade 0)'};
+  let best=-1, bl=0, br=-1;
+  vals.forEach((x,k)=>{ if(x==null) return; const l=lvl(V[k],x), r=ratio(V[k],x); if(l>bl || (l===bl && l>0 && r>br)){bl=l;best=k;br=r;} });
+  if(bl===2){
+    const p = i>0 ? val(e,best,i-1) : null;
+    if(p!=null && lvl(V[best],p)>=1) return {code:2, kind:'lim', k:best, txt:desc(best,vals[best])};
+    return {code:1, kind:'suspeita', k:best, txt:'Leitura suspeita: '+desc(best,vals[best])};
+  }
+  if(bl===1) return {code:1, kind:'alerta', k:best, txt:desc(best,vals[best])};
+  return {code:0, kind:'ok', txt:'Operando normalmente'};
+}
+function rebuildSS(e){
+  /* um atendimento do histórico que começa enquanto o técnico do tablet já está na escada é absorvido pelo registro do tablet */
+  const mine = e.at.filter(a=>a.src==='tablet');
+  e.atv = mine.length ? e.at.filter(a=>a.src!=='ds' || !mine.some(u=>u.ent<=a.ent && a.ent<(u.sai==null?Infinity:u.sai))).sort((x,y)=>(x.src==='tablet'?0:1)-(y.src==='tablet'?0:1)) : e.at;
+  const ss = Int8Array.from(e.rs);
+  for(const a of e.atv){ let i=firstSlotFrom(a.ent); const end = a.sai==null ? Infinity : a.sai; while(i<NS && slotMin(i)<end){ ss[i]=3; i++; } }
+  e.ss = ss;
+}
+
+/* ================= estado do tablet (RN-08) ================= */
+const LS='elevate-tablet-v1';
+let S = {user:[], ov:{}, ev:[], hist:[], offline:false, tec:'T01', seq:1, now:null, speed:1, paused:false, gen:null, os:[], osSeq:0, leve:false, apres:false};
+let memoryOnly = false;
+function load(){ try{ const t=localStorage.getItem(LS); if(t) Object.assign(S, JSON.parse(t)); }catch(err){ memoryOnly=true; } }
+function save(){ try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(err){ memoryOnly=true; } }
+load();
+function applyState(){
+  for(const [id,o] of Object.entries(S.ov)){ if(DSAT[id]) Object.assign(DSAT[id], o); }
+  for(const a of S.user){ const e=BYID[a.esc]; if(e) e.at.push(a); }
+  E.forEach(rebuildSS);
+}
+setData(S.gen ? gerarDataset(S.gen) : RAW0);
+applyState();
+buildCen();
+
+/* cenários de um dataset gerado: escolhidos com as mesmas regras do painel (RN-01, RN-02 e cobertura de manutenção) */
+function buildCen(){
+  if(!RAW.gen || !RAW.cand) return;
+  const LBL={rolamento:['Rolamento','vibração subindo até passar de 7,1 mm/s'],atrito:['Atrito','temperatura subindo e velocidade caindo'],vazamento_oleo:['Vazamento de óleo','nível de óleo caindo abaixo de 35% e de 20%'],eletrico:['Falha elétrica','picos de corrente e quedas de tensão'],sensor_mudo:['Sensor sem resposta','leituras sem sinal: CRÍTICO "Sem resposta do sensor"']};
+  const MATCH={rolamento:c=>c.k===0&&c.kind!=='suspeita', atrito:c=>c.k===1||c.k===4, vazamento_oleo:c=>c.k===5, eletrico:c=>c.k===2||c.k===3, sensor_mudo:c=>c.kind==='sem'};
+  const cen=[]; let num=1;
+  for(const tipo of Object.keys(LBL)){
+    let best=null;
+    for(const [x,ini] of (RAW.cand[tipo]||[])){
+      const e=E[x];
+      for(let q=ini;q<NS;q++){
+        if(e.ss[q]===3) break; if(e.ss[q]===0) continue;
+        const c=classify(e,q); if(!MATCH[tipo](c)) continue;
+        const sc=(c.code===2?2:0)+(e.crit?1:0);
+        if(!best||sc>best.sc) best={e,q,sc};
+        if(c.code===2) break;
+      }
+      if(best&&best.sc===3) break;
+    }
+    if(best) cen.push({id:'CEN-'+pad(num++), nome:LBL[tipo][0]+' em '+best.e.id, escada:best.e.id, quando:toInput(slotMin(best.q)+5), tela:'detalhe', dica:best.e.id+': '+LBL[tipo][1]+'. Veja os gráficos de 30 dias.'});
+  }
+  outer: for(const e of E){ if(!e.crit) continue; for(let q=Math.floor(NS*0.4);q<NS;q++){ if(e.ss[q]===2 && classify(e,q).kind==='parada'){ cen.push({id:'CEN-'+pad(num++), nome:'Parada de segurança em '+e.id, escada:e.id, quando:toInput(slotMin(q)+2), tela:'detalhe', dica:'CRÍTICO "Parada". Dê entrada, registre "Resetado e testado" e saia.'}); break outer; } } }
+  const st=RAW.gen.start;
+  cen.push({id:'CEN-'+pad(num++), nome:'Fila de prioridades no pico', escada:'', quando:toInput(st), tela:'fila', dica:'a fila ordena por despacho e depois por pontuação.'});
+  cen.push({id:'CEN-'+pad(num++), nome:'Tablet sem conexão', escada:'', quando:toInput(st), tela:'sync', dica:'ligue "Simular sem conexão", registre um atendimento e depois sincronize.'});
+  CEN=cen;
+}
+
+let NOW = S.now!=null ? Math.min(S.now, END) : (S.gen ? S.gen.start : fromInput(CFG.inicio));
+let IDX = idxAt(NOW), CUR = [];
+let view = 'painel', detalheId = null, periodo = 30, prevView='painel';
+const filt = {status:null, busca:'', est:'', grupo:'', fab:''};
+
+const openAt = e => e.atv.find(a => a.ent<=NOW && (a.sai==null || a.sai>NOW));
+function streakStart(e,i){ const c=e.ss[i]; let j=i; while(j>0 && e.ss[j-1]===c) j--; return slotMin(j); }
+function current(e){
+  const op = openAt(e);
+  if(op) return {code:3, kind:'manut', txt:'Em manutenção', since:op.ent, at:op};
+  const sl=slotMin(IDX);
+  if(e.ss[IDX]===3 || e.atv.some(a=>a.sai!=null && a.sai>sl && a.sai<=NOW && a.ent<=NOW)) return {code:0, kind:'liberada', txt:'Liberada após manutenção, aguardando leitura', since:NOW};
+  const c = classify(e,IDX); c.since = streakStart(e,IDX); return c;
+}
+let TEND=[];
+function computeCurrent(){ IDX=idxAt(NOW); CUR = E.map(current); TEND = E.map(e => CUR[e.ix].code===0 && CUR[e.ix].kind==='ok' ? tendenciaPiora(e,IDX) : null); }
+
+/* RN-03 + RN-04 */
+function fila(){
+  const P=CFG.prioridade;
+  return E.filter(e=>CUR[e.ix].code===1||CUR[e.ix].code===2).map(e=>{
+    const c=CUR[e.ix], h=Math.max(0,(NOW-c.since)/60);
+    const score=(c.code===2?P.CRITICO:P.ALERTA)+(e.crit?P.grupoCritica:0)+P.fluxo*e.fluxo+Math.min(h,P.horasMax);
+    const d = c.code===2 ? (e.crit?0:1) : (e.crit?2:3);
+    return {e,c,h,score,d};
+  }).sort((a,b)=>a.d-b.d || b.score-a.score || b.h-a.h);
+}
+const despPill = d => '<span class="desp d'+d+'">'+(d===0?'● ':'')+CFG.despacho[d].l+'</span>';
+const pill = (code,txt) => '<span class="pill s'+code+'">'+ICON[code]+(txt||STL[code])+'</span>';
+const lastP1 = e => { let m=null; for(const a of e.atv){ if(a.motivo==='P1 mensal' && a.ent<=NOW && (m==null||a.ent>m)) m=a.ent; } return m; };
+
+/* ================= relógio ================= */
+const selSpeed=$('#selSpeed');
+SPEEDS.forEach((s,i)=>selSpeed.insertAdjacentHTML('beforeend','<option value="'+s.v+'">'+s.l+'</option>'));
+selSpeed.value = String(S.speed||1);
+const inpJump=$('#inpJump');
+function paintRange(){ inpJump.min=toInput(START); inpJump.max=toInput(END); }
+function fillCen(){ $('#selCen').innerHTML='<option value="">Escolher…</option>'+CEN.map((c,i)=>'<option value="'+i+'">'+esc(c.id+' · '+c.nome)+'</option>').join(''); }
+paintRange(); fillCen();
+const dsLabel = () => RAW.gen ? 'Dataset gerado · semente '+RAW.gen.seed+' · '+RAW.gen.dias+' dias' : 'Dataset oficial · semente 2026 · 90 dias';
+Object.entries(TECS).forEach(([k,n])=>$('#selTec').insertAdjacentHTML('beforeend','<option value="'+k+'">'+k+' · '+n+'</option>'));
+$('#selTec').value=S.tec;
+
+function setNow(m, full){ NOW=Math.max(START,Math.min(END,m)); S.now=NOW; const i=idxAt(NOW); if(i!==IDX||full){ renderAll(); } else { tickLight(); } paintClock(); }
+function paintClock(){
+  $('#clk').textContent = fFull(NOW);
+  $('#clkSlot').textContent = 'Última leitura: '+fDH(slotMin(IDX))+(NOW>=END?' (fim do período)':'')+' · '+dsLabel();
+  if(document.activeElement!==inpJump) inpJump.value = toInput(NOW);
+  $('#btnPlay').innerHTML = S.paused?PLAY:PAUSE; $('#btnPlay').setAttribute('aria-label', S.paused?'Continuar':'Pausar');
+}
+$('#btnPlay').onclick = ()=>{ S.paused=!S.paused; save(); paintClock(); };
+$('#btnNext').onclick = ()=>{ const i=Math.min(NS-1,idxAt(NOW)+1); setNow(slotMin(i)+0.01); save(); };
+selSpeed.onchange = ()=>{ S.speed=+selSpeed.value; save(); };
+inpJump.onchange = ()=>{ const m=fromInput(inpJump.value); if(!isNaN(m)){ setNow(m,true); save(); } };
+$('#selCen').onchange = e=>{
+  const c=CEN[+e.target.value]; e.target.value=''; if(!c) return;
+  S.paused=true; setNow(fromInput(c.quando), true); save();
+  if(c.tela==='sync') show('sync'); else if(c.tela==='fila') show('fila'); else openDetalhe(c.escada);
+  toast(c.id+': '+c.dica, 6000);
+};
+$('#selTec').onchange = e=>{ S.tec=e.target.value; save(); paintTech(); };
+function paintTech(){ const n=TECS[S.tec]||S.tec; $('#techName').textContent=n; $('#techIni').textContent=n.split(' ').map(x=>x[0]).join('').slice(0,2); }
+function paintApres(){ document.body.classList.toggle('apres', !!S.apres); $('#apresTxt').textContent = S.apres ? 'Sair da apresentação' : 'Apresentar'; paintTech(); }
+$('#btnApres').onclick=()=>{ S.apres=!S.apres; save(); paintApres(); };
+let lastFull = Date.now();
+setInterval(()=>{
+  if(!S.paused){
+    const nx = NOW + S.speed*0.25/60;
+    if(nx>=END){ S.paused=true; setNow(END); save(); return; }
+    NOW = nx; S.now=NOW;
+    const i=idxAt(NOW);
+    if(i!==IDX || (S.speed>=60 && Date.now()-lastFull>2000)){ renderAll(); }
+    else if(Date.now()-lastFull>15000){ renderAll(); }
+    else tickLight();
+    paintClock();
+  }
+}, 250);
+setInterval(()=>save(), 5000);
+
+/* ================= render geral ================= */
+function renderAll(){
+  lastFull = Date.now();
+  computeCurrent();
+  paintTop();
+  if(view==='painel') renderPainel();
+  else if(view==='detalhe') renderDetalhe();
+  else if(view==='fila') renderFila();
+  else if(view==='atend') renderAtend();
+  else if(view==='ind') renderInd();
+  else if(view==='sync') renderSync();
+  else if(view==='dados') renderDados();
+}
+function tickLight(){ document.querySelectorAll('[data-since]').forEach(el=>{ const m=+el.dataset.since; el.textContent = el.dataset.fmt==='t' ? fTimer(NOW-m) : fDur(NOW-m); }); }
+function paintTop(){
+  const pend = S.ev.filter(x=>x.status==='pendente').length;
+  const net=$('#netPill'); net.classList.toggle('off', S.offline);
+  $('#netTxt').innerHTML = (S.offline?'Sem conexão':'Online') + (pend?' · <span class="pend">'+pend+' pendente'+(pend>1?'s':'')+'</span>':'') + (S.offline||!S.hist.length?'':' · sinc. '+new Date(S.hist[S.hist.length-1].real).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}));
+  const imed = E.filter(e=>CUR[e.ix].code===2&&e.crit).length;
+  const bf=$('#badgeFila'); bf.hidden=!imed; bf.textContent=imed;
+  const op = E.filter(e=>CUR[e.ix].code===3).length;
+  const ba=$('#badgeAt'); ba.hidden=!op; ba.textContent=op;
+  const bs=$('#badgeSync'); bs.hidden=!pend; bs.textContent=pend;
+}
+function show(v){
+  if(v!=='detalhe'){ prevView = v; Twin.stop(); }
+  view=v;
+  document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-'+v);
+  document.querySelectorAll('.nav').forEach(b=>b.setAttribute('aria-current', (b.dataset.view===v || (v==='detalhe'&&b.dataset.view===prevView))?'page':'false'));
+  window.scrollTo(0,0);
+  renderAll();
+}
+document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>show(b.dataset.view));
+$('#netPill').onclick=()=>show('sync');
+
+/* ================= TELA 1: painel ================= */
+const fEst=$('#fEst'), qEst=$('#qEst');
+[fEst,qEst].forEach(s=>{ s.innerHTML='<option value="">Todas</option>'+EST.map(x=>'<option value="'+x.cod+'">'+x.cod+' · '+esc(x.nome)+'</option>').join(''); });
+$('#fBusca').oninput=e=>{filt.busca=e.target.value.trim().toUpperCase(); renderPainel();};
+fEst.onchange=e=>{filt.est=e.target.value; renderPainel();};
+$('#fGrupo').onchange=e=>{filt.grupo=e.target.value; renderPainel();};
+$('#fFab').onchange=e=>{filt.fab=e.target.value; renderPainel();};
+$('#fLimpar').onclick=()=>{ Object.assign(filt,{status:null,busca:'',est:'',grupo:'',fab:''}); $('#fBusca').value=''; fEst.value=''; $('#fGrupo').value=''; $('#fFab').value=''; renderPainel(); };
+
+function cardHTML(e){
+  const c=CUR[e.ix], tr=c.code===0?TEND[e.ix]:null;
+  let why = esc(c.txt);
+  if(c.code===3) why = 'Em manutenção há <span class="timer" data-since="'+c.since+'">'+fDur(NOW-c.since)+'</span>';
+  else if(c.code===2 || c.code===1) why += ' · há <span data-since="'+c.since+'">'+fDur(NOW-c.since)+'</span>';
+  else if(tr) why = V[tr.k].nome+' piorando: ALERTA em '+fmtPrazo(tr.tA).replace('cerca de ','~');
+  const k = c.k!=null ? c.k : tr ? tr.k : 0;
+  const t=val(e,1,IDX), v=val(e,0,IDX), o=val(e,5,IDX);
+  const met='<div class="met"><span>'+(t==null?'—':nf(t,0)+' °C')+'</span><span>'+(v==null?'—':nf(v,1)+' mm/s')+'</span><span>óleo '+(o==null?'—':Math.round(o)+'%')+'</span></div>';
+  const sp = (c.code===3||c.kind==='sem') ? '' : '<div class="sprow"><span class="lbl">'+V[k].nome+' · 5 dias</span>'+sparkSVG(e,k,IDX,84,24)+'</div>';
+  const os=osAberta(e.id);
+  return '<button class="card s'+c.code+(tr?' trend':'')+'" data-id="'+e.id+'"><div class="card-top"><span class="code">'+e.id+'</span>'+(e.crit?'<span class="tag crit">Crítica</span>':'<span class="tag">'+e.fab+'</span>')+'</div>'+
+    '<div class="pills">'+pill(c.code)+(tr?'<span class="chip-trend">↗ tendência</span>':'')+(os?'<span class="chip-os">'+os.id+'</span>':'')+'</div><div class="why">'+why+'</div>'+met+sp+'</button>';
+}
+function renderPainel(){
+  const n=[0,0,0,0]; CUR.forEach(c=>n[c.code]++);
+  const SUB=['Sem anomalias','Programar inspeção','Intervenção imediata','Técnico em campo'];
+  const nt=TEND.filter(Boolean).length, online=E.filter(e=>!V.every((_,k)=>val(e,k,IDX)==null)).length;
+  $('#painelSub').textContent = E.length+' escadas rolantes da Linha 4-Amarela · '+online+' de '+E.length+' sensores respondendo. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o histórico.';
+  $('#counters').innerHTML = [0,1,2,3].map(k=>'<button class="counter s'+k+'" data-st="'+k+'" aria-pressed="'+(filt.status===k)+'">'+ICON[k]+'<span class="n num">'+n[k]+'</span><span class="t">'+STL[k]+'</span><span class="sub">'+SUB[k]+'</span></button>').join('')+
+    '<button class="counter tr" data-st="t" aria-pressed="'+(filt.status==='t')+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="n num">'+nt+'</span><span class="t">TENDÊNCIA</span><span class="sub">BOM hoje, ALERTA previsto em 48 h</span></button>';
+  document.querySelectorAll('.counter').forEach(b=>b.onclick=()=>{ const k=b.dataset.st==='t'?'t':+b.dataset.st; filt.status = filt.status===k?null:k; renderPainel(); });
+  const imed = E.filter(e=>CUR[e.ix].code===2&&e.crit);
+  $('#banner').innerHTML = imed.length ? '<div class="banner">'+ICON[2]+'<div><strong>'+imed.length+' escada'+(imed.length>1?'s':'')+' do grupo crítica em CRÍTICO: despacho imediato</strong><span class="muted">'+imed.slice(0,6).map(e=>e.id+' ('+esc(CUR[e.ix].txt)+')').join(' · ')+(imed.length>6?' …':'')+'</span></div><button class="btn danger" id="bannerGo">Ver na fila</button></div>' : '';
+  if(imed.length) $('#bannerGo').onclick=()=>show('fila');
+  const list = E.filter(e=>{
+    const c=CUR[e.ix];
+    if(filt.status==='t'){ if(!TEND[e.ix]) return false; } else if(filt.status!==null && c.code!==filt.status) return false;
+    if(filt.busca && !e.id.includes(filt.busca)) return false;
+    if(filt.est && e.cod!==filt.est) return false;
+    if(filt.grupo && (filt.grupo==='c')!==e.crit) return false;
+    if(filt.fab && e.fab!==filt.fab) return false;
+    return true;
+  });
+  let html='';
+  for(const st of EST){
+    const es = list.filter(e=>e.cod===st.cod); if(!es.length) continue;
+    const m=[0,0,0,0]; es.forEach(e=>m[CUR[e.ix].code]++);
+    es.sort((a,b)=>{ const r=[3,1,0,2]; return r[CUR[b.ix].code]-r[CUR[a.ix].code] || a.id.localeCompare(b.id); });
+    html += '<section class="station"><div class="station-h"><h3><span>'+st.cod+'</span>'+esc(st.nome)+'</h3><div class="mini"><span>'+es.length+' escadas</span>'+
+      (m[2]?'<b style="color:var(--crit)">'+m[2]+' crítico</b>':'')+(m[1]?'<b style="color:var(--warn)">'+m[1]+' alerta</b>':'')+(m[3]?'<b style="color:var(--maint)">'+m[3]+' em manutenção</b>':'')+'</div></div><div class="grid">'+es.map(cardHTML).join('')+'</div></section>';
+  }
+  $('#frota').innerHTML = html || '<div class="empty">Nenhuma escada com esses filtros.</div>';
+}
+$('#frota').addEventListener('click', ev=>{ const b=ev.target.closest('.card'); if(b) openDetalhe(b.dataset.id); });
+
+/* ================= TELA 2: detalhe ================= */
+function openDetalhe(id){ detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
+  document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); window.scrollTo(0,0); renderAll(); }
+$('#btnBack').onclick=()=>show(prevView||'painel');
+document.querySelectorAll('#dPer button').forEach(b=>b.onclick=()=>{ periodo=+b.dataset.d; document.querySelectorAll('#dPer button').forEach(x=>x.setAttribute('aria-pressed', x===b)); drawCharts(); });
+
+const ICON_OS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>';
+const ICON_BOOK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg>';
+function renderDetalhe(){
+  const e=BYID[detalheId]; if(!e) return show('painel');
+  const c=CUR[e.ix], d=diagnostico(e), os=osAberta(e.id), dp=despachoDe(e);
+  const sinceTxt = c.code===3 ? 'Em manutenção há <span class="timer" data-since="'+c.since+'">'+fDur(NOW-c.since)+'</span>' : (c.kind==='liberada'?'':'Neste status há <span data-since="'+c.since+'">'+fDur(NOW-c.since)+'</span>');
+  const act = (c.code===3 ? '<button class="btn maint" id="dAct">'+ICON[3]+'Finalizar atendimento</button>' : '<button class="btn primary" id="dAct">'+ICON[3]+'Iniciar atendimento</button>')+
+    ((os||c.code===3) ? '' : '<button class="btn" id="dOS">'+ICON_OS+'Abrir OS</button>')+'<button class="btn" id="dProc">'+ICON_BOOK+'Procedimento</button>';
+  const osl = os ? '<div class="osline"><span class="chip-os">'+os.id+'</span>'+os.status+' · '+os.tec+' '+(TECS[os.tec]||'')+' · prazo '+fDH(os.prazo)+(NOW>os.prazo && os.status==='aberta'?' <b style="color:var(--crit)">atrasada</b>':'')+'</div>' : '';
+  $('#dHead').innerHTML = '<div class="dhead s'+c.code+'"><div><div class="id">'+e.id+'</div><div class="meta"><span>'+esc(ESTN[e.cod])+'</span><span>'+e.fab+'</span><span>'+(e.crit?'Grupo crítica':'Grupo não crítica')+'</span><span>Fluxo relativo '+nf(e.fluxo,1)+'</span></div>'+osl+'</div>'+
+    '<div class="st">'+pill(c.code)+'<span>'+esc(c.txt)+'</span><span class="muted" style="font-size:.88rem">'+sinceTxt+'</span></div><div class="act">'+act+'</div></div>';
+  $('#dAct').onclick = ()=> c.code===3 ? modalSaida(c.at) : modalEntrada(e);
+  if($('#dOS')) $('#dOS').onclick = ()=>modalOS(e);
+  $('#dProc').onclick = ()=>modalProc(e);
+  const dcode = d.modo==='tendencia'||d.modo==='suspeita' ? 1 : c.code;
+  $('#dDiag').innerHTML = '<div class="diag-h"><span class="lbl">Diagnóstico Elevate</span>'+(c.code===1||c.code===2?despPill(dp):'')+'</div>'+
+    '<h3 class="diag-t s'+dcode+'">'+esc(d.titulo)+'</h3>'+d.frases.map(f=>'<p>'+esc(f)+'</p>').join('')+
+    '<div class="diag-a"><span class="lbl">Ação recomendada</span><p>'+esc(d.acao)+'</p></div>'+
+    (d.comps.length?'<div class="diag-c">'+d.comps.map(k=>'<span class="tag">'+COMP[k].nome+'</span>').join('')+'</div>':'')+
+    '<p class="hint">Gerado por regras a partir dos sensores e da tendência das últimas 15 leituras. Não substitui a inspeção.</p>';
+  $('#dVars').innerHTML = V.map((cf,k)=>{ const x=val(e,k,IDX); let l = x==null?0:lvl(cf,x); if(c.kind==='suspeita'&&c.k===k) l=Math.min(l,1);
+    const lim = cf.tipo==='acima' ? 'alerta ≥ '+nf(cf.a,1)+' · crítico ≥ '+nf(cf.c,1) : cf.tipo==='abaixo' ? 'alerta ≤ '+cf.a+' · crítico ≤ '+cf.c : 'desvio: alerta '+cf.a+'% · crítico '+cf.c+'%';
+    return '<div class="trow s'+l+'"><div><span class="tname">'+cf.nome+'</span><span class="tlim">'+lim+'</span></div>'+(c.code===3?'':sparkSVG(e,k,IDX,72,24))+'<span class="tval">'+(x==null?'—':nf(x,cf.dec))+'<small>'+cf.un+'</small></span></div>'; }).join('');
+  const cl=compLevels(e,d);
+  const vel=val(e,4,IDX);
+  twinUpdate({levels:cl.levels, labels:cl.labels, oil:val(e,5,IDX), speed:(c.code===3||c.kind==='sem'||c.kind==='parada')?0:(vel==null?0.5:vel), manut:c.code===3, sem:c.kind==='sem'}, c, d);
+  const p1=lastP1(e); const dias = p1==null ? null : (NOW-p1)/1440; const late = p1==null ? NOW>CFG.p1Dias*1440 : dias>CFG.p1Dias;
+  $('#dP1').innerHTML = '<h3>Preventiva P1 mensal</h3><div class="p1big num'+(late?' late':'')+'">'+(p1==null?'—':Math.floor(dias)+' dias')+'</div><div class="muted">'+(p1==null?'Nenhuma P1 registrada desde 01/07.':'desde a última P1, em '+fDH(p1)+'.')+'</div>'+
+    (late?'<div>'+pill(2,'P1 ATRASADA')+'</div>':'<div>'+pill(0,'EM DIA')+'</div>')+'<p class="hint" style="margin:0">A P1 é exigência legal e continua obrigatória a cada '+CFG.p1Dias+' dias, mesmo com o monitoramento.</p>';
+  const hist = e.atv.filter(a=>a.ent<=NOW).sort((a,b)=>b.ent-a.ent);
+  $('#dHist').innerHTML = hist.length ? '<table><thead><tr><th>Entrada</th><th>Saída</th><th class="n">Duração</th><th>Tipo</th><th>Motivo</th><th>Componente · ação</th><th>Técnico</th><th>Origem</th></tr></thead><tbody>'+
+    hist.slice(0,25).map(a=>{ const open=a.sai==null||a.sai>NOW; return '<tr><td class="num">'+fDH(a.ent)+'</td><td class="num">'+(open?'<b style="color:var(--maint)">em aberto</b>':fDH(a.sai))+'</td><td class="n">'+(open?'<span class="timer" data-since="'+a.ent+'">'+fDur(NOW-a.ent)+'</span>':fDur(a.sai-a.ent))+'</td><td>'+a.tipo+'</td><td>'+esc(MOT_L[a.motivo]||a.motivo)+'</td><td>'+(a.componente?esc(a.componente+' · '+a.acao):'<span class="muted">—</span>')+'</td><td>'+a.tec+'</td><td>'+syncTag(a)+'</td></tr>'; }).join('')+'</tbody></table>'+(hist.length>25?'<p class="hint">Mostrando os 25 mais recentes de '+hist.length+'.</p>':'')
+    : '<div class="empty">Nenhum atendimento até agora.</div>';
+  drawCharts();
+}
+function twinUpdate(tw,c,d){
+  const box=$('#twinBox'), wrap=$('#twin');
+  if(!S.leve && !Twin.ok && !Twin.mount(box)){ S.leve=true; S.no3d=true; }
+  wrap.classList.toggle('leve', !!S.leve);
+  $('#tv3d').setAttribute('aria-pressed', !S.leve); $('#tvLeve').setAttribute('aria-pressed', !!S.leve);
+  $('#twinWhen').textContent = fDH(slotMin(IDX));
+  if(!S.leve){ Twin.set(tw); Twin.start(); } else { Twin.stop(); $('#twinSvg').innerHTML = twinSVG(tw); }
+  $('#twinChip').innerHTML = '<span class="pill s'+(d.modo==='tendencia'?1:c.code)+'">'+ICON[d.modo==='tendencia'?1:c.code]+esc(d.titulo)+'</span>'+
+    (S.leve ? (S.no3d?'<p class="hint">Este navegador não tem WebGL: mostrando o esquema 2D.</p>':'<p class="hint">Modo leve: esquema 2D, ideal para o Raspberry Pi.</p>') : '<p class="hint">Arraste para girar · role ou pince para aproximar</p>');
+}
+$('#tv3d').onclick=()=>{ if(S.no3d){ toast('Este navegador não tem WebGL. O 3D não está disponível aqui.'); return; } S.leve=false; save(); renderDetalhe(); };
+$('#tvLeve').onclick=()=>{ S.leve=true; save(); renderDetalhe(); };
+$('#tvGeral').onclick=()=>Twin.view('geral');
+$('#tvMaq').onclick=()=>Twin.view('maq');
+const syncTag = a => a.src==='ds' ? (S.ov[a.id]?'<span class="sync '+(evPend(a.id)?'p">Pendente':'ok">Sincronizado')+'</span>':'<span class="sync ds">Histórico</span>') : '<span class="sync '+(evPend(a.id)?'p">Pendente':'ok">Sincronizado')+'</span>';
+const evPend = id => S.ev.some(x=>x.at===id && x.status==='pendente');
+
+/* ---------- gráficos em canvas (sem biblioteca externa: RNF-01) ---------- */
+let COL=null;
+function colors(){ const cs=getComputedStyle(document.documentElement); const g=n=>cs.getPropertyValue(n).trim(); COL={fg:g('--fg'),muted:g('--muted'),faint:g('--faint'),line:g('--line'),ok:g('--ok'),warn:g('--warn'),crit:g('--crit'),maint:g('--maint'),maintbg:g('--maint-bg'),brand:g('--brand'),surface:g('--surface')}; }
+function drawCharts(){
+  const e=BYID[detalheId]; if(!e) return;
+  const box=$('#dCharts');
+  if(box.children.length!==V.length){
+    box.innerHTML = V.map((cf,k)=>'<div class="chart"><div class="chart-h"><span class="lbl">'+cf.nome+' ('+cf.un+')</span><span class="muted mono" style="font-size:.8rem" id="cv'+k+'"></span></div><canvas id="cc'+k+'" aria-label="Gráfico de '+cf.nome+'"></canvas></div>').join('');
+    V.forEach((_,k)=>{ const cv=$('#cc'+k); cv.addEventListener('pointermove',ev=>{ const r=cv.getBoundingClientRect(); drawChart(k, ev.clientX-r.left); }); cv.addEventListener('pointerleave',()=>drawChart(k,null)); });
+  }
+  V.forEach((_,k)=>drawChart(k,null));
+}
+function yRange(k,vals){
+  const cf=V[k]; const nn=vals.filter(x=>x!=null);
+  const mx = nn.length?Math.max(...nn):0, mn = nn.length?Math.min(...nn):0;
+  switch(cf.k){
+    case 'vib': return [0, Math.max(8.5, mx*1.08)];
+    case 'temp': return [Math.min(30, Math.floor(mn/10)*10), Math.max(100, mx+5)];
+    case 'corr': return [0, Math.max(40, mx+3)];
+    case 'tens': return [335, 425];
+    case 'vel': return [0.455, 0.545];
+    default: return [0, 100];
+  }
+}
+function drawChart(k, hoverX){
+  const e=BYID[detalheId]; if(!e) return; if(!COL) colors();
+  const cv=$('#cc'+k); if(!cv) return;
+  const W=cv.clientWidth, H=cv.clientHeight, dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)||cv.height!==Math.round(H*dpr)){ cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); }
+  const g=cv.getContext('2d'); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
+  const cf=V[k];
+  const i1=IDX, i0=Math.max(0,i1-periodo*5+1);
+  const m0=slotMin(i0), m1=Math.max(slotMin(i1), NOW);
+  const L=46,R=10,T=10,B=22, pw=W-L-R, ph=H-T-B;
+  const X=m=>L+(m-m0)/Math.max(1,(m1-m0))*pw;
+  const vals=[]; for(let i=i0;i<=i1;i++) vals.push(val(e,k,i));
+  const isStop = i => { const v=val(e,4,i); return v!=null && v<0.05; };
+  const [y0,y1]=yRange(k, vals.filter((x,j)=>!(cf.k!=='vel' && isStop(i0+j)) ));
+  const Y=y=>T+(1-(Math.max(y0,Math.min(y1,y))-y0)/(y1-y0))*ph;
+  g.font='11px "IBM Plex Mono", ui-monospace, monospace'; g.textBaseline='middle';
+  // grade
+  g.strokeStyle=COL.line; g.lineWidth=1; g.fillStyle=COL.muted; g.textAlign='right';
+  for(let t=0;t<=4;t++){ const yv=y0+(y1-y0)*t/4, yy=Math.round(Y(yv))+.5; g.beginPath(); g.moveTo(L,yy); g.lineTo(W-R,yy); g.stroke(); g.fillText(nf(yv, cf.k==='vel'?3:cf.k==='vib'?1:0), L-6, yy); }
+  // eixo x: datas
+  g.textAlign='center'; g.textBaseline='top';
+  const days=(m1-m0)/1440, stepD = days<=8?1:days<=31?5:15;
+  for(let d=Math.ceil(m0/1440); d*1440<=m1; d++){ if(d%stepD) continue; const xx=X(d*1440); if(xx<L+12||xx>W-R-12) continue; g.fillText(fD(d*1440), xx, H-B+6); g.strokeStyle=COL.line; g.beginPath(); g.moveTo(Math.round(xx)+.5,T+ph); g.lineTo(Math.round(xx)+.5,T+ph+4); g.stroke(); }
+  // faixas de manutenção
+  g.fillStyle=COL.maintbg;
+  for(const a of e.atv){ if(a.ent>NOW) continue; const s=Math.max(a.ent,m0), t=Math.min(a.sai==null||a.sai>NOW?NOW:a.sai, m1); if(t>s){ const xs=X(s), xe=Math.max(X(t), xs+2); g.fillRect(xs,T,xe-xs,ph); g.fillStyle=COL.maint; g.fillRect(xs,T,1.5,ph); g.fillStyle=COL.maintbg; } }
+  // limites
+  const lines=[]; if(cf.tipo==='desvio'){ lines.push([cf.nom*(1+cf.a/100),COL.warn],[cf.nom*(1-cf.a/100),COL.warn],[cf.nom*(1+cf.c/100),COL.crit],[cf.nom*(1-cf.c/100),COL.crit]); } else { lines.push([cf.a,COL.warn],[cf.c,COL.crit]); }
+  g.setLineDash([5,4]); g.lineWidth=1.4;
+  for(const [yv,cc] of lines){ if(yv<y0||yv>y1) continue; g.strokeStyle=cc; g.beginPath(); g.moveTo(L,Y(yv)); g.lineTo(W-R,Y(yv)); g.stroke(); }
+  g.setLineDash([]);
+  // série
+  g.strokeStyle=COL.fg; g.lineWidth=1.6; g.lineJoin='round'; g.beginPath(); let pen=false;
+  for(let i=i0;i<=i1;i++){ const x=val(e,k,i); const inM = e.ss[i]===3; if(x==null || (isStop(i) && cf.k!=='oleo' && cf.k!=='tens' && cf.k!=='temp') || inM){ pen=false; continue; } const px=X(slotMin(i)), py=Y(x); if(pen) g.lineTo(px,py); else g.moveTo(px,py); pen=true; }
+  g.stroke();
+  // marcadores
+  for(let i=i0;i<=i1;i++){
+    const x=val(e,k,i), px=X(slotMin(i));
+    if(x==null){ g.fillStyle=COL.faint; g.beginPath(); g.moveTo(px-4,T); g.lineTo(px+4,T); g.lineTo(px,T+7); g.fill(); continue; }
+    if(isStop(i) && e.ss[i]!==3 && cf.k==='vel'){ g.fillStyle=COL.crit; g.beginPath(); g.moveTo(px-4,T+ph); g.lineTo(px+4,T+ph); g.lineTo(px,T+ph-7); g.fill(); continue; }
+    if(e.ss[i]===3) continue;
+    const l=lvl(cf,x); if(l>0 && (x<y0||x>y1 || periodo<=30)){ g.fillStyle=l===2?COL.crit:COL.warn; g.beginPath(); g.arc(px,Y(x),periodo<=7?3:2.2,0,7); g.fill(); }
+  }
+  // ponto atual
+  const xl=val(e,k,i1);
+  if(xl!=null){ const l=lvl(cf,xl); g.fillStyle=[COL.ok,COL.warn,COL.crit][l]; g.strokeStyle=COL.surface; g.lineWidth=2; g.beginPath(); g.arc(X(slotMin(i1)),Y(xl),5,0,7); g.fill(); g.stroke(); }
+  $('#cv'+k).textContent = xl==null?'sem sinal':'agora '+nf(xl,cf.dec)+' '+cf.un;
+  // hover
+  if(hoverX!=null && hoverX>=L && hoverX<=W-R){
+    const m=m0+(hoverX-L)/pw*(m1-m0); let i=Math.max(i0,Math.min(i1,idxAt(m))); if(i<i1 && Math.abs(slotMin(i+1)-m)<Math.abs(slotMin(i)-m)) i++;
+    const px=X(slotMin(i)), x=val(e,k,i);
+    g.strokeStyle=COL.muted; g.lineWidth=1; g.beginPath(); g.moveTo(Math.round(px)+.5,T); g.lineTo(Math.round(px)+.5,T+ph); g.stroke();
+    const txt=fDH(slotMin(i))+'  '+(x==null?'sem sinal':nf(x,cf.dec)+' '+cf.un)+(e.ss[i]===3?'  (manutenção)':'');
+    g.font='600 12px "IBM Plex Mono", ui-monospace, monospace'; const tw=g.measureText(txt).width+14; let bx=px+8; if(bx+tw>W-R) bx=px-8-tw;
+    g.fillStyle=COL.surface; g.strokeStyle=COL.muted; g.fillRect(bx,T+2,tw,22); g.strokeRect(bx+.5,T+2.5,tw-1,21); g.fillStyle=COL.fg; g.textAlign='left'; g.textBaseline='middle'; g.fillText(txt,bx+7,T+13);
+  }
+}
+window.addEventListener('resize', ()=>{ if(view==='detalhe') drawCharts(); });
+
+/* ================= TELA 3: fila ================= */
+['#qDesp','#qEst','#qGrupo'].forEach(s=>$(s).onchange=renderFila);
+function renderFila(){
+  const all=fila(); const n=[0,0,0,0]; all.forEach(x=>n[x.d]++);
+  $('#qCount').innerHTML = [0,1,2,3].map(d=>'<div class="qc"><div class="n num" style="color:'+['var(--crit)','var(--crit)','var(--warn)','var(--muted)'][d]+'">'+n[d]+'</div><div class="muted" style="font-size:.88rem">'+CFG.despacho[d].l+'</div></div>').join('');
+  const fd=$('#qDesp').value, fe=$('#qEst').value, fg=$('#qGrupo').value;
+  const list=all.filter(x=>(fd===''||x.d===+fd)&&(!fe||x.e.cod===fe)&&(!fg||(fg==='c')===x.e.crit));
+  $('#qList').innerHTML = list.length ? list.map((x,i)=>'<div class="qrow"><div class="pos">'+(i+1)+'</div><div><div class="code">'+x.e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[x.e.cod])+' · '+(x.e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+' · '+x.e.fab+'</div></div>'+
+    '<div class="c-h">'+pill(x.c.code)+'<div style="font-size:.9rem;margin-top:4px">'+esc(x.c.txt)+'</div></div><div class="c-d muted" style="font-size:.88rem">há <span data-since="'+x.c.since+'">'+fDur(NOW-x.c.since)+'</span><br>pontos '+nf(x.score,0)+'</div><div class="c-d">'+despPill(x.d)+'</div>'+
+    '<div class="acts"><button class="btn sm" data-ver="'+x.e.id+'">Ver escada</button>'+(osAberta(x.e.id)?'<span class="chip-os" style="align-self:center">'+osAberta(x.e.id).id+'</span>':'<button class="btn sm" data-os="'+x.e.id+'">Abrir OS</button>')+'<button class="btn sm primary" data-ini="'+x.e.id+'">Iniciar atendimento</button></div></div>').join('')
+    : '<div class="empty">Nenhuma escada em ALERTA ou CRÍTICO com esses filtros.</div>';
+  const tl=E.filter(e=>TEND[e.ix]&&(!fe||e.cod===fe)&&(!fg||(fg==='c')===e.crit)).sort((a,b)=>TEND[a.ix].tA-TEND[b.ix].tA);
+  $('#qTend').innerHTML = '<div class="vhead" style="margin-top:8px"><div><h3>Tendência de piora</h3><p>BOM agora, mas com piora consistente: ALERTA previsto em até 48 h. Dá para agir antes do alarme.</p></div></div>'+
+    (tl.length ? '<div class="tend-list">'+tl.map(e=>{ const t=TEND[e.ix], cf=V[t.k]; return '<div class="qrow"><div class="pos" style="color:var(--brand)">↗</div><div><div class="code">'+e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[e.cod])+' · '+(e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+'</div></div><div class="c-h"><b>'+cf.nome+'</b><div style="font-size:.9rem">'+fmtTaxa(t)+'</div></div><div class="c-d muted" style="font-size:.88rem">ALERTA em<br>'+fmtPrazo(t.tA)+'</div><div class="c-d">'+sparkSVG(e,t.k,IDX,90,28)+'</div><div class="acts"><button class="btn sm" data-ver="'+e.id+'">Ver escada</button>'+(osAberta(e.id)?'<span class="chip-os" style="align-self:center">'+osAberta(e.id).id+'</span>':'<button class="btn sm" data-os="'+e.id+'">Abrir OS</button>')+'</div></div>'; }).join('')+'</div>'
+      : '<div class="empty">Nenhuma escada com tendência de piora agora.</div>');
+}
+['#qList','#qTend'].forEach(q=>$(q).addEventListener('click',ev=>{ const v=ev.target.closest('[data-ver]'), s=ev.target.closest('[data-ini]'), o=ev.target.closest('[data-os]'); if(v) openDetalhe(v.dataset.ver); if(s) modalEntrada(BYID[s.dataset.ini]); if(o) modalOS(BYID[o.dataset.os]); }));
+
+/* ================= TELA 4: atendimento ================= */
+function modalOpen(html, onReady){ $('#modal').innerHTML=html; $('#ovl').hidden=false; onReady&&onReady(); const f=$('#modal').querySelector('select,textarea,button.primary,button'); f&&f.focus(); }
+function modalClose(){ $('#ovl').hidden=true; $('#modal').innerHTML=''; }
+$('#ovl').addEventListener('click',ev=>{ if(ev.target.id==='ovl') modalClose(); });
+document.addEventListener('keydown',ev=>{ if(ev.key==='Escape' && !$('#ovl').hidden) modalClose(); });
+
+function modalEntrada(e){
+  computeCurrent();
+  const c=CUR[e.ix];
+  if(c.code===3){ toast(e.id+' já tem um atendimento aberto. Finalize-o antes de abrir outro.'); return; }
+  const mot = c.kind==='parada'?'parada de seguranca (reset)':c.kind==='sem'?'sem resposta do sensor':c.code===2?'status critico':c.code===1?'alerta prolongado':'P1 mensal';
+  const tipo = mot==='P1 mensal'?'preventiva':'corretiva';
+  modalOpen('<h2 id="mTitle">Entrada do técnico · '+e.id+'</h2>'+
+    '<dl class="facts"><dt>Estação</dt><dd>'+esc(ESTN[e.cod])+'</dd><dt>Status agora</dt><dd>'+pill(c.code)+' '+esc(c.txt)+'</dd><dt>Horário</dt><dd class="mono">'+fDH(NOW)+'</dd></dl>'+
+    '<label class="field"><span>Técnico</span><select id="mTec">'+Object.entries(TECS).map(([k,n])=>'<option value="'+k+'"'+(k===S.tec?' selected':'')+'>'+k+' · '+n+'</option>').join('')+'</select></label>'+
+    '<div class="field"><span>Tipo</span><div class="radios"><label><input type="radio" name="mTipo" value="corretiva"'+(tipo==='corretiva'?' checked':'')+'>Corretiva</label><label><input type="radio" name="mTipo" value="preventiva"'+(tipo==='preventiva'?' checked':'')+'>Preventiva P1</label></div></div>'+
+    '<label class="field"><span>Motivo</span><select id="mMot">'+MOTIVOS_FORM.map(m=>'<option value="'+m+'"'+(m===mot?' selected':'')+'>'+MOT_L[m]+'</option>').join('')+'</select></label>'+
+    '<p class="hint" style="margin:0">Ao confirmar, a escada passa para EM MANUTENÇÃO e o cronômetro começa.'+(S.offline?' O tablet está sem conexão: o registro fica pendente até sincronizar.':'')+'</p>'+
+    '<div class="mfoot"><button class="btn" id="mCancel">Cancelar</button><button class="btn primary" id="mOk">'+ICON[3]+'Confirmar entrada</button></div>', ()=>{
+      document.querySelectorAll('input[name="mTipo"]').forEach(r=>r.onchange=()=>{ if(r.checked) $('#mMot').value = r.value==='preventiva'?'P1 mensal':mot==='P1 mensal'?'status critico':mot; });
+      $('#mMot').onchange=()=>{ const p=$('#mMot').value==='P1 mensal'; document.querySelector('input[name="mTipo"][value="'+(p?'preventiva':'corretiva')+'"]').checked=true; };
+      $('#mCancel').onclick=modalClose;
+      $('#mOk').onclick=()=>{
+        const a={id:'S'+(S.seq++), esc:e.id, tec:$('#mTec').value, tipo:document.querySelector('input[name="mTipo"]:checked').value, motivo:$('#mMot').value, ent:NOW, sai:null, src:'tablet'};
+        S.tec=a.tec; $('#selTec').value=a.tec;
+        S.user.push(a); e.at.push(a); logEv('Entrada',a); { const o=osAberta(e.id); if(o && o.status==='aberta'){ o.status='em execução'; o.at=a.id; } } rebuildSS(e); save(); modalClose(); renderAll();
+        toast('Entrada registrada: '+e.id+' está EM MANUTENÇÃO.');
+      };
+    });
+}
+function modalSaida(a){
+  const e=BYID[a.esc];
+  if(NOW<a.ent){ toast('O relógio está antes da entrada deste atendimento. Avance o relógio para registrar a saída.'); return; }
+  modalOpen('<h2 id="mTitle">Saída do técnico · '+e.id+'</h2>'+
+    '<dl class="facts"><dt>Entrada</dt><dd class="mono">'+fDH(a.ent)+' · '+a.tec+' '+(TECS[a.tec]||'')+'</dd><dt>Motivo</dt><dd>'+esc(MOT_L[a.motivo]||a.motivo)+'</dd><dt>Duração</dt><dd class="mono"><span data-since="'+a.ent+'">'+fDur(NOW-a.ent)+'</span></dd></dl>'+
+    '<label class="field"><span>Componente *</span><select id="mComp"><option value="">Selecione…</option>'+COMPONENTES.map(x=>'<option>'+x+'</option>').join('')+'</select></label>'+
+    '<label class="field"><span>Ação *</span><select id="mAcao"><option value="">Selecione…</option>'+ACOES.map(x=>'<option>'+x+'</option>').join('')+'</select></label>'+
+    '<label class="field"><span>Observação</span><textarea id="mObs" rows="3" placeholder="O que foi encontrado e feito"></textarea></label>'+
+    '<div class="field"><span>A escada foi liberada para operação?</span><div class="radios"><label><input type="radio" name="mLib" value="1" checked>Sim</label><label><input type="radio" name="mLib" value="0">Não</label></div></div>'+
+    '<p class="hint" style="margin:0" id="mReq">Escolha o componente e a ação para confirmar.</p>'+
+    '<div class="mfoot"><button class="btn" id="mCancel">Cancelar</button><button class="btn maint" id="mOk" disabled>Confirmar saída</button></div>', ()=>{
+      const chk=()=>{ const ok=$('#mComp').value&&$('#mAcao').value; $('#mOk').disabled=!ok; $('#mReq').hidden=!!ok; };
+      $('#mComp').onchange=chk; $('#mAcao').onchange=chk;
+      if(a.motivo==='parada de seguranca (reset)'){ $('#mAcao').value='Resetado e testado'; }
+      if(a.motivo==='P1 mensal'){ $('#mAcao').value='Inspecionado sem defeito'; }
+      chk();
+      $('#mCancel').onclick=modalClose;
+      $('#mOk').onclick=()=>{
+        if(!$('#mComp').value||!$('#mAcao').value) return;
+        const o={sai:NOW, componente:$('#mComp').value, acao:$('#mAcao').value, obs:$('#mObs').value.trim(), liberada:document.querySelector('input[name="mLib"]:checked').value==='1'};
+        Object.assign(a,o); if(a.src==='ds') S.ov[a.id]=o;
+        logEv('Saída',a); { const o=(S.os||[]).find(x=>x.at===a.id) || osAberta(e.id); if(o){ o.status='concluída'; o.fim=NOW; o.at=o.at||a.id; } } rebuildSS(e); save(); modalClose(); renderAll();
+        toast('Saída registrada: '+e.id+' · '+fDur(a.sai-a.ent)+' de manutenção.');
+      };
+    });
+}
+function renderAtend(){
+  const oss=[...(S.os||[])].reverse();
+  $('#aOS').innerHTML = oss.length ? '<table><thead><tr><th>Número</th><th>Escada</th><th>Prioridade</th><th>Diagnóstico</th><th>Prazo</th><th>Técnico</th><th>Status</th><th>Sincronização</th></tr></thead><tbody>'+
+    oss.map(o=>'<tr class="click" data-row="'+o.esc+'"><td class="mono">'+o.id+'</td><td class="code">'+o.esc+'</td><td>'+despPill(o.desp)+'</td><td>'+esc(o.titulo)+'</td><td class="num">'+fDH(o.prazo)+(o.status==='aberta'&&NOW>o.prazo?' <b style="color:var(--crit)">atrasada</b>':'')+'</td><td>'+o.tec+'</td><td>'+o.status+'</td><td><span class="sync '+(evPend(o.id)?'p">Pendente':'ok">Sincronizado')+'</span></td></tr>').join('')+'</tbody></table>'
+    : '<div class="empty">Nenhuma OS emitida. Abra uma pelo detalhe da escada ou pela Fila.</div>';
+  const open=[]; E.forEach(e=>{ const a=openAt(e); if(a) open.push({e,a}); }); open.sort((x,y)=>x.a.ent-y.a.ent);
+  $('#aOpen').innerHTML = open.length ? open.map(({e,a})=>'<div class="ocard"><div class="row"><span class="code">'+e.id+'</span>'+pill(3)+'</div><div class="big" data-since="'+a.ent+'" data-fmt="t">'+fTimer(NOW-a.ent)+'</div>'+
+    '<div class="muted" style="font-size:.9rem">'+esc(ESTN[e.cod])+' · '+esc(MOT_L[a.motivo]||a.motivo)+'<br>Entrada '+fDH(a.ent)+' · '+a.tec+' '+(TECS[a.tec]||'')+'</div>'+
+    '<div class="row"><button class="btn sm" data-ver="'+e.id+'">Ver escada</button><button class="btn sm maint" data-fim="'+a.id+'|'+e.id+'">Finalizar atendimento</button></div></div>').join('')
+    : '<div class="empty">Nenhum atendimento em andamento neste horário.</div>';
+  const mine=[...S.user.filter(a=>a.ent<=NOW), ...Object.keys(S.ov).map(id=>DSAT[id]).filter(Boolean)].sort((x,y)=>y.ent-x.ent);
+  $('#aMine').innerHTML = mine.length ? '<table><thead><tr><th>Escada</th><th>Entrada</th><th>Saída</th><th class="n">Duração</th><th>Tipo</th><th>Motivo</th><th>Componente · ação</th><th>Técnico</th><th>Sincronização</th></tr></thead><tbody>'+
+    mine.map(a=>{ const open=a.sai==null||a.sai>NOW; return '<tr class="click" data-row="'+a.esc+'"><td class="code">'+a.esc+'</td><td class="num">'+fDH(a.ent)+'</td><td class="num">'+(open?'<b style="color:var(--maint)">em aberto</b>':fDH(a.sai))+'</td><td class="n">'+(open?'<span data-since="'+a.ent+'">'+fDur(NOW-a.ent)+'</span>':fDur(a.sai-a.ent))+'</td><td>'+a.tipo+'</td><td>'+esc(MOT_L[a.motivo]||a.motivo)+'</td><td>'+(a.componente?esc(a.componente+' · '+a.acao):'—')+'</td><td>'+a.tec+'</td><td>'+syncTag(a)+'</td></tr>'; }).join('')+'</tbody></table>'
+    : '<div class="empty">Nenhum registro feito neste tablet ainda. Abra uma escada no Painel ou na Fila e toque em “Iniciar atendimento”.</div>';
+}
+$('#aOpen').addEventListener('click',ev=>{ const v=ev.target.closest('[data-ver]'), f=ev.target.closest('[data-fim]'); if(v) openDetalhe(v.dataset.ver); if(f){ const [id,eid]=f.dataset.fim.split('|'); const a=BYID[eid].atv.find(x=>x.id===id); if(a) modalSaida(a);} });
+$('#aOS').addEventListener('click',ev=>{ const r=ev.target.closest('[data-row]'); if(r) openDetalhe(r.dataset.row); });
+$('#aMine').addEventListener('click',ev=>{ const r=ev.target.closest('[data-row]'); if(r) openDetalhe(r.dataset.row); });
+
+/* ================= TELA 5: indicadores ================= */
+function renderInd(){
+  const I=IDX; const tot=[0,0,0,0], byEst={}, byFab={Thyssen:[0,0,0,0],ESCAL:[0,0,0,0]}, byGr={c:[0,0,0,0],n:[0,0,0,0]}, rank=[], leads=[];
+  for(const e of E){
+    const c=[0,0,0,0]; for(let i=0;i<=I;i++) c[e.ss[i]]++;
+    for(let i=1;i<=I;i++){ if(e.ss[i]===2 && e.ss[i-1]===1 && classify(e,i).kind==='lim'){ let a=i-1; while(a>0&&e.ss[a-1]===1) a--; leads.push((slotMin(i)-slotMin(a))/1440); } }
+    const be = byEst[e.cod] || (byEst[e.cod]=[0,0,0,0]);
+    for(let s=0;s<4;s++){ tot[s]+=c[s]; be[s]+=c[s]; byFab[e.fab][s]+=c[s]; byGr[e.crit?'c':'n'][s]+=c[s]; }
+    rank.push({e,c,p:(c[1]+c[2])/(I+1)});
+  }
+  const sum=a=>a.reduce((x,y)=>x+y,0);
+  const ats=[]; E.forEach(e=>e.atv.forEach(a=>{ if(a.ent<=NOW) ats.push({a,e}); }));
+  const corr=ats.filter(x=>x.a.tipo==='corretiva' && x.a.sai!=null && x.a.sai<=NOW);
+  const reset=corr.filter(x=>x.a.motivo==='parada de seguranca (reset)').map(x=>x.a.sai-x.a.ent);
+  const rep=corr.filter(x=>x.a.motivo!=='parada de seguranca (reset)').map(x=>x.a.sai-x.a.ent);
+  const resp=[];
+  for(const {a,e} of ats){ if(a.tipo!=='corretiva'||a.motivo==='alerta prolongado') continue; const i=idxAt(a.ent); if(slotMin(i)>a.ent||i>I) continue; if(e.rs[i]===2){ let j=i; while(j>0&&e.rs[j-1]===2&&e.ss[j-1]!==3) j--; resp.push(a.ent-slotMin(j)); } }
+  let p1ok=0; E.forEach(e=>{ const p=lastP1(e); if(p==null ? NOW<=CFG.p1Dias*1440 : (NOW-p)/1440<=CFG.p1Dias) p1ok++; });
+  const disp=(tot[0]+tot[1])/sum(tot);
+  const md=median(leads);
+  $('#iPer').textContent='Período de 01/07/2026 até '+fDH(NOW)+' · '+(I+1)+' leituras por escada · '+ats.length+' atendimentos.';
+  $('#iKpis').innerHTML=[
+    ['Disponibilidade da frota', pct(disp), 'Leituras fora de CRÍTICO e de manutenção'],
+    ['Reparo médio (corretivas)', rep.length?fDur(mean(rep)):'—', 'Sem contar resets. Paradas de segurança: mediana '+(reset.length?fDur(median(reset)):'—')+' ('+reset.length+')'],
+    ['Resposta mediana', resp.length?fDur(median(resp)):'—', 'Do início do CRÍTICO até a entrada do técnico ('+resp.length+' casos)'],
+    ['Antecedência ALERTA → CRÍTICO', md==null?'—':nf(md,1)+' dias', 'Mediana de '+leads.length+' sequências; 25% abaixo de '+(leads.length?nf([...leads].sort((a,b)=>a-b)[Math.floor(leads.length*.25)],1):'—')+' dia'],
+    ['Preventiva P1 em dia', pct(p1ok/E.length), p1ok+' de '+E.length+' escadas com P1 nos últimos '+CFG.p1Dias+' dias'],
+  ].map(([t,n,s])=>'<div class="kpi"><span class="lbl">'+t+'</span><span class="n num">'+n+'</span><small>'+esc(s)+'</small></div>').join('');
+  const sbar=(lbl,c)=>{ const t=sum(c)||1; return '<div class="srow"><span>'+lbl+'</span><div class="sbar" role="img" aria-label="'+esc(lbl)+': '+STL.map((s,k)=>s+' '+pct(c[k]/t)).join(', ')+'">'+c.map((x,k)=>'<span class="b'+k+'" style="width:'+(x/t*100)+'%"></span>').join('')+'</div><span class="num muted" style="text-align:right">'+pct((c[1]+c[2])/t)+'</span></div>'; };
+  $('#iEst').innerHTML='<div class="srow muted" style="font-size:.75rem"><span></span><span></span><span style="text-align:right">A+C</span></div>'+EST.map(s=>sbar(s.cod+' · '+s.nome, byEst[s.cod]||[0,0,0,0])).join('');
+  const cmpRow=(lbl,c,flt)=>{ const at=corr.filter(x=>flt(x.e)); const n=E.filter(flt).length; return sbar(lbl+' ('+n+')',c)+'<div class="muted" style="font-size:.82rem;margin:-2px 0 6px">'+nf(at.length/n,1)+' corretivas por escada · tempo em manutenção '+pct(c[3]/(sum(c)||1))+'</div>'; };
+  $('#iFab').innerHTML=cmpRow('Thyssen',byFab.Thyssen,e=>e.fab==='Thyssen')+cmpRow('ESCAL',byFab.ESCAL,e=>e.fab==='ESCAL');
+  $('#iGr').innerHTML=cmpRow('Crítica',byGr.c,e=>e.crit)+cmpRow('Não crítica',byGr.n,e=>!e.crit);
+  const cnt={}; ats.filter(x=>x.a.tipo==='corretiva').forEach(x=>cnt[x.a.motivo]=(cnt[x.a.motivo]||0)+1);
+  const comp={}; ats.filter(x=>x.a.componente&&x.a.tipo==='corretiva').forEach(x=>comp[x.a.componente]=(comp[x.a.componente]||0)+1);
+  const par=Object.entries(cnt).sort((a,b)=>b[1]-a[1]); const pt=sum(par.map(x=>x[1]))||1; let acc=0;
+  $('#iPar').innerHTML='<div class="lbl">Por motivo</div>'+par.map(([m,n])=>{acc+=n; return '<div class="hbar"><span>'+esc(MOT_L[m]||m)+'</span><i style="width:'+(n/par[0][1]*100)+'%"></i><span class="num muted" style="text-align:right">'+n+'</span></div>';}).join('')+
+    '<p class="hint" style="margin:4px 0 0">Paradas de segurança são '+pct((cnt['parada de seguranca (reset)']||0)/pt)+' dos corretivos: separar esse motivo evita mandar a equipe errada.</p>'+
+    '<div class="lbl" style="margin-top:8px">Por componente (registrados no tablet)</div>'+(Object.keys(comp).length?Object.entries(comp).sort((a,b)=>b[1]-a[1]).map(([m,n],_,arr)=>'<div class="hbar"><span>'+esc(m)+'</span><i style="width:'+(n/arr[0][1]*100)+'%;background:var(--maint)"></i><span class="num muted" style="text-align:right">'+n+'</span></div>').join(''):'<p class="hint" style="margin:0">O histórico simulado não tem componente. Ele aparece aqui quando o técnico registra a saída no tablet.</p>');
+  rank.sort((a,b)=>b.p-a.p);
+  $('#iRank').innerHTML='<table><thead><tr><th>#</th><th>Escada</th><th>Grupo</th><th>Fab.</th><th class="n">ALERTA</th><th class="n">CRÍTICO</th><th class="n">A + C</th></tr></thead><tbody>'+
+    rank.slice(0,12).map((r,i)=>'<tr class="click" data-row="'+r.e.id+'"><td class="num">'+(i+1)+'</td><td class="code">'+r.e.id+'</td><td>'+(r.e.crit?'crítica':'não crítica')+'</td><td>'+r.e.fab+'</td><td class="n">'+pct(r.c[1]/(I+1))+'</td><td class="n">'+pct(r.c[2]/(I+1))+'</td><td class="n"><b>'+pct(r.p)+'</b></td></tr>').join('')+'</tbody></table>';
+}
+$('#iRank').addEventListener('click',ev=>{ const r=ev.target.closest('[data-row]'); if(r) openDetalhe(r.dataset.row); });
+$('#btnCsv').onclick=()=>{
+  const rows=[['atendimento_id','escada_id','tecnico_id','tipo','motivo','entrada','saida','duracao_min','componente','acao','observacao','origem']];
+  E.forEach(e=>e.atv.forEach(a=>{ if(a.ent>NOW) return; const closed=a.sai!=null&&a.sai<=NOW; rows.push([a.id,a.esc,a.tec,a.tipo,a.motivo,toInput(a.ent).replace('T',' '),closed?toInput(a.sai).replace('T',' '):'',closed?Math.round(a.sai-a.ent):'',a.componente||'',a.acao||'',a.obs||'',a.src==='ds'?'historico':'tablet']); }));
+  const csv=rows.map(r=>r.map(x=>{ const s=String(x); return /[",;\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; }).join(',')).join('\n');
+  const ta=$('#csvOut');
+  const fallback=()=>{ ta.hidden=false; ta.value=csv; ta.focus(); ta.select(); toast('Não foi possível copiar sozinho. O CSV está selecionado na caixa abaixo: use Copiar.'); };
+  try{ navigator.clipboard.writeText(csv).then(()=>toast('CSV copiado: '+(rows.length-1)+' atendimentos.'), fallback); }catch(err){ fallback(); }
+};
+
+/* ================= TELA 6: sincronização ================= */
+function logEv(tipo,a){ S.ev.push({id:'E'+(S.ev.length+1), tipo, at:a.id, esc:a.esc, quando:NOW, real:Date.now(), status:S.offline?'pendente':'sincronizado'}); if(!S.offline) S.hist.push({real:Date.now(), n:1}); }
+function doSync(){
+  if(S.offline){ toast('Sem conexão. Desligue “Simular sem conexão” para sincronizar.'); return; }
+  const p=S.ev.filter(x=>x.status==='pendente'); if(!p.length){ toast('Nada pendente: tudo já está sincronizado.'); return; }
+  p.forEach(x=>x.status='sincronizado'); S.hist.push({real:Date.now(), n:p.length}); save(); renderAll();
+  toast(p.length+' registro'+(p.length>1?'s':'')+' sincronizado'+(p.length>1?'s':'')+'.');
+}
+$('#btnSync').onclick=doSync;
+$('#swOff').onchange=ev=>{ S.offline=ev.target.checked; save(); renderAll();
+  if(!S.offline && S.ev.some(x=>x.status==='pendente')){ toast('Conexão restabelecida. Sincronizando…'); setTimeout(doSync, 900); }
+  else toast(S.offline?'Tablet sem conexão. Os registros ficam guardados aqui.':'Tablet online.'); };
+function renderSync(){
+  $('#swOff').checked=S.offline;
+  $('#swTxt').textContent = S.offline ? 'Sem conexão: novas entradas e saídas ficam pendentes neste tablet.' : 'O tablet está online e envia cada registro na hora.';
+  $('#btnSync').disabled = S.offline;
+  const ev=[...S.ev].reverse();
+  $('#sEv').innerHTML = ev.length ? '<table><thead><tr><th>Registro</th><th>Escada</th><th>Horário</th><th>Situação</th></tr></thead><tbody>'+ev.map(x=>'<tr><td>'+x.tipo+'</td><td class="code">'+x.esc+'</td><td class="num">'+fDH(x.quando)+'</td><td><span class="sync '+(x.status==='pendente'?'p">Pendente':'ok">Sincronizado')+'</span></td></tr>').join('')+'</tbody></table>'
+    : '<div class="empty">Nenhum registro feito neste tablet ainda.</div>';
+  $('#sHist').innerHTML = S.hist.length ? '<table><tbody>'+[...S.hist].reverse().slice(0,10).map(h=>'<tr><td class="num">'+new Date(h.real).toLocaleString('pt-BR')+'</td><td class="n">'+h.n+' registro'+(h.n>1?'s':'')+'</td></tr>').join('')+'</tbody></table>' : '<p class="hint" style="margin:0">Nenhuma sincronização ainda.</p>';
+  if(memoryOnly) $('#sHist').insertAdjacentHTML('beforeend','<p class="hint">O armazenamento do navegador está bloqueado: os registros valem só até fechar a página.</p>');
+}
+$('#resetBox').addEventListener('click',ev=>{
+  if(ev.target.closest('#btnReset')){ $('#resetBox').innerHTML='<p style="margin:0 0 8px">Apagar '+S.user.length+' atendimento(s) criados aqui e o registro de sincronização?</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" id="rNo">Cancelar</button><button class="btn sm danger" id="rYes">Apagar e reiniciar</button></div>'; }
+  else if(ev.target.closest('#rNo')){ $('#resetBox').innerHTML='<button class="btn sm" id="btnReset">Reiniciar demonstração</button>'; }
+  else if(ev.target.closest('#rYes')){ try{ if(S.gen) localStorage.setItem(LS, JSON.stringify({gen:S.gen, tec:S.tec})); else localStorage.removeItem(LS); }catch(err){} location.reload(); }
+});
+
+
+
+/* ================= GÊMEO DIGITAL (Three.js, construído por código; sem modelos externos) ================= */
+const COMP = {
+  motor:       {nome:'Motor de tração'},
+  redutor:     {nome:'Redutor'},
+  corrente:    {nome:'Corrente de tração'},
+  degraus:     {nome:'Degraus e guias'},
+  reservatorio:{nome:'Reservatório de óleo'},
+  quadro:      {nome:'Quadro elétrico'},
+  sensor:      {nome:'Módulo de sensores Elevate'},
+  seguranca:   {nome:'Pente e dispositivos de segurança'},
+};
+const Twin = (() => {
+  let ok=false, el=null, cv=null, lab=null, R=null, scene=null, cam=null, raf=0, running=false, lastT=0, phase=0;
+  const cam0 = {az:-0.6, el:0.36, dist:19.5, tx:1.6, ty:2.3, tz:0};
+  let C = {...cam0};
+  const mats = {}, anchors = {}, steps = [];
+  let oilFill=null, led=null, barrier=null;
+  let st = {levels:{}, speed:0.5, oil:80, manut:false, sem:false, labels:[]};
+  const H=4.5, ANG=Math.PI/6, RUN=H/Math.tan(ANG), X0=-RUN/2, X1=RUN/2, FLAT=2.2, INC=H/Math.sin(ANG), PATH=FLAT+INC+FLAT, NST=Math.round(PATH/0.4);
+  const col = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const STC = () => ({0:col('--ok'),1:col('--warn'),2:col('--crit'),3:col('--maint')});
+
+  function mat(key, color, o={}){ const m=new THREE.MeshStandardMaterial({color, roughness:o.r??0.55, metalness:o.m??0.35, transparent:!!o.t, opacity:o.t??1, emissive:0x000000}); if(key) mats[key]=m; return m; }
+  function box(w,h,d,m,x,y,z,parent){ const g=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); g.position.set(x,y,z); (parent||scene).add(g); return g; }
+  function cyl(r,h,m,x,y,z,rot,parent,seg){ const g=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg||28),m); g.position.set(x,y,z); if(rot) g.rotation.set(rot[0],rot[1],rot[2]); (parent||scene).add(g); return g; }
+  function pathAt(s){ // posição de um degrau ao longo do percurso visível
+    s=((s%PATH)+PATH)%PATH;
+    if(s<FLAT) return {x:X0-FLAT+s, y:0, f:0};
+    if(s<FLAT+INC){ const u=s-FLAT; const f=Math.min(1,Math.min(u,INC-u)/0.9); return {x:X0+u*Math.cos(ANG), y:u*Math.sin(ANG), f}; }
+    return {x:X1+(s-FLAT-INC), y:H, f:0};
+  }
+  function build(){
+    scene=new THREE.Scene(); scene.background=new THREE.Color(col('--surface')); scene.fog=new THREE.Fog(col('--surface'), 26, 46);
+    scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x1a1d22, 0.75));
+    const dl=new THREE.DirectionalLight(0xffffff, 0.9); dl.position.set(-6,14,9); scene.add(dl);
+    const dl2=new THREE.DirectionalLight(0x8fb4ff, 0.35); dl2.position.set(8,6,-10); scene.add(dl2);
+    const grid=new THREE.GridHelper(40, 40, 0x3a4250, 0x232830); grid.position.y=-0.01; scene.add(grid);
+    const concrete=mat(null,0x2a3039,{r:0.9,m:0.05}), steel=mat(null,0x59616e,{r:0.4,m:0.7}), dark=mat(null,0x15181d,{r:0.6,m:0.3});
+    const glass=mat(null,0x9fc2e6,{t:0.16,r:0.1,m:0.1}), brand=mat(null,0xffd23c,{r:0.5,m:0.2});
+    // pisos: inferior e superior (o superior deixa a casa de máquinas à vista)
+    box(9,0.12,6,concrete, X0-FLAT-2.5, -0.06, 0);
+    box(8,0.12,6,concrete, X1+FLAT+5.6, H-0.06, 0);
+    box(0.12,H,6,concrete, X1+FLAT+1.6, H/2, -0.001).visible=false;
+    // treliça inclinada
+    const tr=box(INC+0.6,1.15,1.5,steel, 0, H/2-0.75, 0); tr.rotation.z=ANG;
+    const tr2=box(INC+0.6,0.06,1.56,brand, 0, H/2-0.17, 0); tr2.rotation.z=ANG;
+    // poço inferior e patamar superior
+    box(FLAT+0.4,0.9,1.5,steel, X0-FLAT/2, -0.5, 0);
+    // casa de máquinas superior (cortada para inspeção)
+    const mx0=X1+0.25, mx1=X1+FLAT+1.5, my0=H-1.9, my1=H-0.12;
+    box(mx1-mx0,0.08,1.9,dark, (mx0+mx1)/2, my0, 0);
+    const room=new THREE.Mesh(new THREE.BoxGeometry(mx1-mx0,my1-my0,1.9), glass); room.position.set((mx0+mx1)/2,(my0+my1)/2,0); scene.add(room);
+    const edges=new THREE.LineSegments(new THREE.EdgesGeometry(room.geometry), new THREE.LineBasicMaterial({color:0x6c7686})); edges.position.copy(room.position); scene.add(edges);
+    box(FLAT+0.3,0.1,1.5,steel, X1+FLAT/2, H-0.05, 0); // tampa do patamar
+    // componentes
+    const mM=mat('motor',0x6b7584,{m:0.6,r:0.35}), mR=mat('redutor',0x4a5563), mC=mat('corrente',0x8a8f98,{m:0.8,r:0.3}), mQ=mat('quadro',0x39424f), mS=mat('sensor',0x20242b), mSeg=mat('seguranca',0xc9ced6,{m:0.8,r:0.25}), mRes=mat('reservatorio',0xb9c6d6,{t:0.35,r:0.1});
+    const cy=my0+0.55;
+    cyl(0.36,1.0,mM, mx1-0.75, cy+0.05, -0.25, [Math.PI/2,0,0]); cyl(0.38,0.12,steel, mx1-0.75, cy+0.05, 0.3, [Math.PI/2,0,0]);
+    anchors.motor=new THREE.Vector3(mx1-0.75, cy+0.55, -0.25);
+    box(0.85,0.75,0.8,mR, mx1-1.75, cy, -0.25); cyl(0.12,0.5,steel, mx1-1.3, cy+0.05,-0.25,[0,0,Math.PI/2]);
+    anchors.redutor=new THREE.Vector3(mx1-1.75, cy+0.45, -0.25);
+    // corrente de tração: roda dentada + corrente até a roda dos degraus
+    cyl(0.42,0.12,mC, X1+0.55, H-0.7, -0.62, [Math.PI/2,0,0], null, 24);
+    cyl(0.22,0.12,mC, mx1-1.75, cy-0.05, -0.72, [Math.PI/2,0,0], null, 20);
+    const dx=(X1+0.55)-(mx1-1.75), dy=(H-0.7)-(cy-0.05), L=Math.hypot(dx,dy), a=Math.atan2(dy,dx);
+    [0.17,-0.17].forEach(o=>{ const c=box(L,0.05,0.08,mC,(X1+0.55+mx1-1.75)/2,(H-0.7+cy-0.05)/2+o,-0.67); c.rotation.z=a; });
+    anchors.corrente=new THREE.Vector3(X1+0.4, H-0.5, -0.62);
+    // reservatório com nível real
+    cyl(0.26,0.9,mRes, mx1-0.55, cy+0.0, 0.55);
+    const oilM=mat('oleo',0xc98b1a,{r:0.3,m:0.1}); oilFill=cyl(0.22,0.84,oilM, mx1-0.55, cy-0.42, 0.55); oilFill.geometry.translate(0,0.42,0); oilFill.position.y=cy-0.45;
+    anchors.reservatorio=new THREE.Vector3(mx1-0.55, cy+0.55, 0.55);
+    // módulo de sensores Elevate no redutor
+    box(0.32,0.2,0.22,mS, mx1-1.75, cy+0.48, 0.12); led=new THREE.Mesh(new THREE.SphereGeometry(0.06,12,12), new THREE.MeshBasicMaterial({color:0x38b97c})); led.position.set(mx1-1.64, cy+0.6, 0.24); scene.add(led);
+    box(0.06,0.04,0.24,brand, mx1-1.9, cy+0.48, 0.24);
+    anchors.sensor=new THREE.Vector3(mx1-1.75, cy+0.75, 0.15);
+    // quadro elétrico no piso superior
+    box(0.9,1.7,0.45,mQ, mx1+1.4, H+0.85, -1.6); box(0.7,0.05,0.02,brand, mx1+1.4, H+1.45, -1.37);
+    anchors.quadro=new THREE.Vector3(mx1+1.4, H+1.8, -1.6);
+    // pentes nas duas extremidades
+    box(0.12,0.04,1.02,mSeg, X0-0.05, 0.03, 0); box(0.12,0.04,1.02,mSeg, X1+0.05, H+0.03, 0);
+    anchors.seguranca=new THREE.Vector3(X0-0.05, 0.35, 0);
+    // balaustrada de vidro e corrimão
+    [0.6,-0.6].forEach(z=>{
+      const g=new THREE.Mesh(new THREE.BoxGeometry(INC,0.9,0.03), glass); g.position.set(0, H/2+0.55, z); g.rotation.z=ANG; scene.add(g);
+      const hr=box(INC+FLAT*1.6,0.07,0.1,dark, 0, H/2+1.02, z); hr.rotation.z=ANG;
+      box(FLAT,0.9,0.03,glass, X0-FLAT/2+0.1, 0.55, z); box(FLAT,0.07,0.1,dark, X0-FLAT/2+0.1, 1.02, z);
+      box(FLAT,0.9,0.03,glass, X1+FLAT/2-0.1, H+0.55, z); box(FLAT,0.07,0.1,dark, X1+FLAT/2-0.1, H+1.02, z);
+    });
+    // degraus
+    const mT=mat('degraus',0x9aa3ad,{m:0.75,r:0.35}), mRi=mat(null,0x6d7581,{m:0.7,r:0.4}), mY=mat(null,0xffd23c,{r:0.5});
+    anchors.degraus=new THREE.Vector3(0, H/2+0.2, 0.45);
+    for(let i=0;i<NST;i++){
+      const g=new THREE.Group();
+      const t=new THREE.Mesh(new THREE.BoxGeometry(0.36,0.05,1.0), mT); g.add(t);
+      const y=new THREE.Mesh(new THREE.BoxGeometry(0.04,0.052,1.0), mY); y.position.x=0.16; g.add(y);
+      const r=new THREE.Mesh(new THREE.BoxGeometry(0.03,0.2,0.98), mRi); r.position.set(-0.17,-0.1,0); g.add(r);
+      scene.add(g); steps.push({g,r});
+    }
+    // barreira de manutenção
+    barrier=new THREE.Group();
+    const bm=new THREE.MeshStandardMaterial({color:0xffd23c, emissive:0x2a2000});
+    [[X0-FLAT-0.2,0],[X1+FLAT+0.2,H]].forEach(([x,y])=>{ const b=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.12,1.6),bm); b.position.set(x,y+0.9,0); barrier.add(b); [-0.75,0.75].forEach(z=>{ const p=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,0.9,8),bm); p.position.set(x,y+0.45,z); barrier.add(p); }); });
+    barrier.visible=false; scene.add(barrier);
+    for(const k of Object.keys(COMP)) if(mats[k]) mats[k].userData.base=mats[k].color.getHex();
+  }
+  function placeSteps(){
+    for(let i=0;i<NST;i++){ const p=pathAt(phase + i*PATH/NST); steps[i].g.position.set(p.x+0.18, p.y+0.02, 0); steps[i].r.scale.y=Math.max(0.02,p.f); steps[i].r.position.y=-0.1*Math.max(0.02,p.f); }
+  }
+  function camApply(){ const ce=Math.cos(C.el); cam.position.set(C.tx+C.dist*ce*Math.sin(C.az), C.ty+C.dist*Math.sin(C.el), C.tz+C.dist*ce*Math.cos(C.az)); cam.lookAt(C.tx,C.ty,C.tz); }
+  function resize(){ if(!R) return; const w=el.clientWidth, h=el.clientHeight; if(!w||!h) return; R.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
+  function frame(t){
+    if(!running) return; raf=requestAnimationFrame(frame);
+    const dt=Math.min(0.1,(t-(lastT||t))/1000); lastT=t;
+    phase += dt*st.speed*1.2; placeSteps();
+    const pul=0.5+0.5*Math.sin(t/260), SC=STC();
+    for(const k of Object.keys(COMP)){ const m=mats[k]; if(!m) continue; const lv=st.levels[k]?.lvl;
+      if(lv==null||lv===0){ m.color.setHex(m.userData.base); m.emissive.setHex(0); }
+      else { const c=new THREE.Color(SC[lv]); m.color.copy(c); m.emissive.copy(c); m.emissiveIntensity = lv===2 ? 0.25+0.55*pul : 0.25+0.2*pul; } }
+    if(led){ const lv = st.sem ? 2 : Math.max(0,...Object.values(st.levels).map(x=>x.lvl||0)); led.material.color.set(st.sem ? (pul>0.5?SC[2]:'#333') : SC[lv===3?0:lv]); }
+    camApply(); R.render(scene,cam); labels();
+  }
+  function labels(){
+    if(!lab) return; const w=el.clientWidth, h=el.clientHeight; let html='';
+    for(const L of st.labels){ const a=anchors[L.k]; if(!a) continue; const v=a.clone().project(cam); if(v.z>1) continue;
+      let x=(v.x*0.5+0.5)*w, y=(-v.y*0.5+0.5)*h; if(x<0||y<0||x>w||y>h) continue; x=Math.min(x, w-200); y=Math.max(y, 56);
+      html+='<div class="tlabel s'+L.lvl+'" style="transform:translate('+Math.round(x)+'px,'+Math.round(y)+'px)"><b>'+L.nome+'</b>'+(L.txt?'<span>'+L.txt+'</span>':'')+'</div>'; }
+    lab.innerHTML=html;
+  }
+  function bind(){
+    const ptr=new Map(); let pd=0;
+    cv.addEventListener('pointerdown',e=>{ cv.setPointerCapture(e.pointerId); ptr.set(e.pointerId,{x:e.clientX,y:e.clientY}); });
+    cv.addEventListener('pointermove',e=>{ if(!ptr.has(e.pointerId)) return; const p=ptr.get(e.pointerId);
+      if(ptr.size===1){ C.az-=(e.clientX-p.x)*0.008; C.el=Math.max(0.05,Math.min(1.35,C.el+(e.clientY-p.y)*0.006)); }
+      else { const ps=[...ptr.values()]; const d=Math.hypot(ps[0].x-ps[1].x,ps[0].y-ps[1].y); if(pd) C.dist=Math.max(6,Math.min(32,C.dist*pd/d)); pd=d; }
+      ptr.set(e.pointerId,{x:e.clientX,y:e.clientY}); });
+    const up=e=>{ ptr.delete(e.pointerId); pd=0; }; cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+    cv.addEventListener('wheel',e=>{ e.preventDefault(); C.dist=Math.max(6,Math.min(32,C.dist*(e.deltaY>0?1.1:0.9))); },{passive:false});
+  }
+  return {
+    mount(box){
+      el=box; if(ok) { el.prepend(cv); el.appendChild(lab); resize(); return true; }
+      if(!window.THREE) return false;
+      try{ const t=document.createElement('canvas'); if(!(t.getContext('webgl2')||t.getContext('webgl'))) return false;
+        cv=document.createElement('canvas'); cv.className='twin-cv'; cv.setAttribute('aria-label','Gêmeo digital 3D da escada: arraste para girar, role para aproximar');
+        R=new THREE.WebGLRenderer({canvas:cv, antialias:true}); R.setPixelRatio(Math.min(2,window.devicePixelRatio||1));
+      }catch(err){ return false; }
+      cam=new THREE.PerspectiveCamera(38,1,0.1,120); build(); placeSteps();
+      lab=document.createElement('div'); lab.className='twin-labels';
+      el.prepend(cv); el.appendChild(lab); bind();
+      if(window.ResizeObserver) new ResizeObserver(resize).observe(el); else window.addEventListener('resize',resize);
+      ok=true; resize(); return true;
+    },
+    set(s){ st=s; if(!ok) return; oilFill.scale.y=Math.max(0.02,Math.min(1,(s.oil??0)/100)); oilFill.visible=s.oil!=null; barrier.visible=!!s.manut; if(!running){ camApply(); R.render(scene,cam); labels(); } },
+    start(){ if(!ok||running) return; running=true; lastT=0; resize(); raf=requestAnimationFrame(frame); },
+    stop(){ running=false; cancelAnimationFrame(raf); },
+    view(v){ C = v==='maq' ? {az:-0.25, el:0.32, dist:7.5, tx:X1+1.6, ty:H-1.2, tz:0} : {...cam0}; },
+    get ok(){ return ok; },
+  };
+})();
+
+/* ---------- modo leve: esquema 2D em SVG, mesmo significado de cores ---------- */
+function twinSVG(s){
+  const c = k => { const l=s.levels[k]?.lvl; return l==null||l===0 ? 'var(--line-2)' : ['var(--ok)','var(--warn)','var(--crit)','var(--maint)'][l]; };
+  const f = k => { const l=s.levels[k]?.lvl; return l==null||l===0 ? 'var(--surface-3)' : ['var(--ok-bg)','var(--warn-bg)','var(--crit-bg)','var(--maint-bg)'][l]; };
+  const oil = Math.max(0,Math.min(100,s.oil??0));
+  let stepsSvg=''; for(let i=0;i<14;i++){ const x=170+i*24, y=300-i*14; stepsSvg+='<path d="M'+x+' '+y+'h24v-14" fill="none" stroke="'+c('degraus')+'" stroke-width="2"/>'; }
+  const lbl=(x,y,k,txt,ax,ay)=>{ const l=s.levels[k]?.lvl||0, w=Math.max((txt||'').length*7.1, COMP[k].nome.length*7.3)+18, h=txt?38:24;
+    const cx=Math.max(x,Math.min(ax,x+w)), cy=ay<y-15?y-15:y-15+h;
+    return '<g><line x1="'+ax+'" y1="'+ay+'" x2="'+cx+'" y2="'+cy+'" stroke="'+(l?c(k):'var(--line-2)')+'" stroke-width="1.5"/><circle cx="'+ax+'" cy="'+ay+'" r="3" fill="'+(l?c(k):'var(--faint)')+'"/>'+
+      '<rect x="'+x+'" y="'+(y-15)+'" rx="6" width="'+w+'" height="'+h+'" fill="var(--bg)" stroke="'+(l?c(k):'var(--line-2)')+'"/><text x="'+(x+9)+'" y="'+(y+1)+'" font-size="12.5" font-weight="700" fill="'+(l?['','var(--warn)','var(--crit)','var(--maint)'][l]:'var(--muted)')+'">'+COMP[k].nome+'</text>'+(txt?'<text x="'+(x+9)+'" y="'+(y+17)+'" font-size="12" fill="var(--fg)" font-family="IBM Plex Mono, monospace">'+txt+'</text>':'')+'</g>'; };
+  const T=Object.fromEntries((s.labels||[]).map(l=>[l.k,l.txt]));
+  return '<svg viewBox="0 -10 900 410" role="img" aria-label="Esquema da escada com os componentes coloridos pelo status" style="width:100%;height:100%">'+
+    '<rect x="0" y="0" width="900" height="400" fill="var(--surface)"/>'+
+    '<path d="M20 310H170L506 114H880" fill="none" stroke="var(--line-2)" stroke-width="3"/>'+
+    '<path d="M60 330H190L520 138" fill="none" stroke="var(--line)" stroke-width="20" stroke-linejoin="round" opacity=".6"/>'+
+    stepsSvg+
+    '<path d="M150 260H170L506 64H540" fill="none" stroke="var(--faint)" stroke-width="5" stroke-linecap="round"/>'+
+    '<rect x="160" y="304" width="18" height="6" fill="'+c('seguranca')+'"/><rect x="498" y="108" width="18" height="6" fill="'+c('seguranca')+'"/>'+
+    '<rect x="520" y="124" width="300" height="150" rx="6" fill="none" stroke="var(--line-2)" stroke-dasharray="6 5"/>'+
+    '<text x="532" y="292" font-size="12" fill="var(--faint)">Casa de máquinas</text>'+
+    '<circle cx="548" cy="160" r="26" fill="'+f('corrente')+'" stroke="'+c('corrente')+'" stroke-width="3"/><path d="M548 134L640 196M548 186L640 216" stroke="'+c('corrente')+'" stroke-width="3"/>'+
+    '<rect x="620" y="182" width="70" height="56" rx="6" fill="'+f('redutor')+'" stroke="'+c('redutor')+'" stroke-width="3"/>'+
+    '<rect x="636" y="166" width="30" height="16" rx="3" fill="'+f('sensor')+'" stroke="'+c('sensor')+'" stroke-width="2"/><circle cx="660" cy="174" r="4" fill="'+(s.sem?'var(--crit)':'var(--ok)')+'"/>'+
+    '<rect x="704" y="186" width="70" height="48" rx="22" fill="'+f('motor')+'" stroke="'+c('motor')+'" stroke-width="3"/>'+
+    '<rect x="786" y="168" width="24" height="80" rx="5" fill="none" stroke="'+c('reservatorio')+'" stroke-width="3"/><rect x="790" y="'+(244-72*oil/100)+'" width="16" height="'+(72*oil/100)+'" fill="'+(oil<=20?'var(--crit)':oil<=35?'var(--warn)':'#c98b1a')+'"/>'+
+    '<rect x="834" y="46" width="40" height="64" rx="4" fill="'+f('quadro')+'" stroke="'+c('quadro')+'" stroke-width="3"/>'+
+    (s.manut?'<g><rect x="20" y="250" width="12" height="60" fill="var(--brand)"/><rect x="860" y="54" width="12" height="60" fill="var(--brand)"/></g>':'')+
+    lbl(150,150,'degraus',T.degraus||'',330,206)+lbl(330,40,'corrente',T.corrente||'',548,140)+lbl(560,318,'redutor',T.redutor||'',655,238)+lbl(700,300,'motor',T.motor||'',739,234)+
+    lbl(720,358,'reservatorio',T.reservatorio||'',798,248)+lbl(620,10,'quadro',T.quadro||'',834,70)+
+    ((s.levels.sensor?.lvl)?lbl(520,80,'sensor',T.sensor||'',651,166):'')+((s.levels.seguranca?.lvl)?lbl(20,360,'seguranca',T.seguranca||'',169,306):'')+
+    '</svg>';
+}
+
+
+/* ================= DIAGNÓSTICO ELEVATE (regras + tendência, sem caixa-preta) ================= */
+// série recente de uma variável: ignora vazios, paradas e leituras suspeitas; para na última manutenção
+function serieRecente(e,k,i,n){
+  const pts=[];
+  for(let j=i;j>=0 && pts.length<n;j--){
+    if(e.ss[j]===3) break;
+    const x=val(e,k,i===j?i:j); if(x==null) continue;
+    const vel=val(e,4,j); if(vel!=null && vel<0.05) continue;
+    const cf=V[k]; if(lvl(cf,x)===2 && (j===0 || val(e,k,j-1)==null || lvl(cf,val(e,k,j-1))===0)) continue; // pico isolado
+    pts.push([slotMin(j)/1440, cf.tipo==='desvio' ? Math.abs(x-cf.nom)/cf.nom*100 : cf.tipo==='abaixo' ? -x : x]);
+  }
+  return pts.reverse();
+}
+// regressão linear: inclinação por dia e R²
+function tendencia(e,k,i){
+  const p=serieRecente(e,k,i,15); if(p.length<9) return null;
+  const n=p.length, mx=p.reduce((s,q)=>s+q[0],0)/n, my=p.reduce((s,q)=>s+q[1],0)/n;
+  let sxx=0,sxy=0,syy=0; for(const [x,y] of p){ sxx+=(x-mx)**2; sxy+=(x-mx)*(y-my); syy+=(y-my)**2; }
+  if(!sxx||!syy) return null;
+  const b=sxy/sxx, r2=(sxy*sxy)/(sxx*syy), xl=p[n-1][0], yh=my+b*(xl-mx);
+  const cf=V[k], A = cf.tipo==='abaixo' ? -cf.a : cf.a, Cc = cf.tipo==='abaixo' ? -cf.c : cf.c;
+  const tA = b>0 && yh<A ? (A-yh)/b : (yh>=A?0:null), tC = b>0 && yh<Cc ? (Cc-yh)/b : (yh>=Cc?0:null);
+  return {k, b: cf.tipo==='abaixo' ? -b : b, r2, tA, tC, desvio: cf.tipo==='desvio'};
+}
+// escada BOM agora, mas com piora consistente: ALERTA previsto em até 48 h
+function tendenciaPiora(e,i){
+  let best=null;
+  for(let k=0;k<6;k++){ const t=tendencia(e,k,i); if(t && t.r2>=0.6 && t.tA!=null && t.tA>0 && t.tA<=2 && (!best||t.tA<best.tA)) best=t; }
+  return best;
+}
+const fmtTaxa = t => { const cf=V[t.k]; const v=t.desvio ? nf(Math.abs(t.b),1)+' ponto(s) de desvio' : (t.b>0?'+':'−')+nf(Math.abs(t.b), cf.dec===3?3:cf.k==='vib'?2:1)+' '+cf.un; return v+' por dia'; };
+const fmtPrazo = d => d<1 ? 'cerca de '+Math.max(1,Math.round(d*24))+' h' : 'cerca de '+nf(d,1)+' dia'+(d>=2?'s':'');
+const confi = r2 => r2>=0.7 ? 'alta' : r2>=0.4 ? 'média' : 'baixa';
+
+const MODOS = {
+  sensor:   {t:'Sensor sem resposta', comps:['sensor'], acao:'Verificar a alimentação e o cabo do módulo de sensores. Até voltar, a escada opera sem monitoramento.'},
+  parada:   {t:'Parada por dispositivo de segurança', comps:['seguranca'], acao:'Verificar o dispositivo que atuou (pente, rodapé, entrada do corrimão), resetar e testar nos dois sentidos.'},
+  rolamento:{t:'Desgaste de rolamento no redutor', comps:['redutor','motor'], acao:'Inspecionar rolamentos do redutor e do motor, folgas e alinhamento. Programar a troca antes de 7,1 mm/s.'},
+  atrito:   {t:'Atrito mecânico nos degraus ou na corrente', comps:['degraus','corrente','motor'], acao:'Inspecionar guias e roletes dos degraus, tensão da corrente de tração e lubrificação.'},
+  aquec:    {t:'Superaquecimento do motor', comps:['motor','redutor'], acao:'Verificar ventilação da casa de máquinas, lubrificação e carga do motor.'},
+  eletrico: {t:'Instabilidade elétrica', comps:['quadro','motor'], acao:'Medir a tensão nas fases, inspecionar contatores e conexões do quadro e o isolamento do motor.'},
+  veloc:    {t:'Velocidade fora do nominal', comps:['corrente','degraus'], acao:'Verificar a tensão da corrente de tração, o freio e possíveis pontos de atrito.'},
+  oleo:     {t:'Vazamento ou consumo anormal de óleo', comps:['reservatorio','redutor'], acao:'Localizar o vazamento no redutor e no reservatório e completar o óleo.'},
+  ok:       {t:'Operando normalmente', comps:[], acao:'Nenhuma ação além do plano preventivo.'},
+  manut:    {t:'Em manutenção', comps:[], acao:'Finalizar o atendimento no tablet ao liberar a escada.'},
+};
+function modoDaVar(e,k,i){
+  if(k===0) return 'rolamento';
+  if(k===1){ const v=val(e,4,i), tv=tendencia(e,4,i); return (v!=null && lvl(V[4],v)>=1) || (tv && tv.b>0.3 && tv.r2>=0.4) ? 'atrito' : 'aquec'; }
+  if(k===2||k===3) return 'eletrico';
+  if(k===4){ const t=val(e,1,i), tt=tendencia(e,1,i); return (t!=null && lvl(V[1],t)>=1) || (tt && tt.b>2 && tt.r2>=0.4) ? 'atrito' : 'veloc'; }
+  return 'oleo';
+}
+function diagnostico(e){
+  const c=CUR[e.ix], i=IDX; const d={code:c.code, modo:'ok', frases:[], tend:null};
+  if(c.code===3){ const a=c.at; d.modo='manut'; d.frases.push('Atendimento aberto em '+fDH(a.ent)+' por '+a.tec+' '+(TECS[a.tec]||'')+'. Motivo: '+(MOT_L[a.motivo]||a.motivo)+'.'); d.frases.push('Os sensores voltam a valer depois da saída do técnico.'); }
+  else if(c.kind==='sem'){ let n=0, j=i; while(j>=0 && V.every((_,k)=>val(e,k,j)==null)){ n++; j--; } d.modo='sensor';
+    d.frases.push('Nenhuma das 6 variáveis chegou nas últimas '+n+' leitura'+(n>1?'s':'')+' (desde '+fDH(slotMin(j+1))+').'); d.frases.push('Causa provável: falha de alimentação ou de comunicação do módulo de sensores.'); }
+  else if(c.kind==='parada'){ let n=0; for(let j=Math.max(0,i-150);j<=i;j++){ const v=val(e,4,j); if(v!=null&&v<0.05&&e.ss[j]!==3) n++; } d.modo='parada';
+    d.frases.push('A escada parou: velocidade 0 fora de manutenção. Foram '+n+' parada'+(n>1?'s':'')+' nos últimos 30 dias.');
+    d.frases.push(n>=4 ? 'A repetição indica um dispositivo de segurança sensível demais ou com defeito: vale investigar além do reset.' : 'Em geral resolve-se com reset no local.'); }
+  else if(c.kind==='liberada'){ d.modo='ok'; d.frases.push('Atendimento encerrado. A próxima leitura dos sensores confirma se a escada voltou ao normal.'); }
+  else if(c.code===1||c.code===2){
+    const k=c.k; d.modo=modoDaVar(e,k,i); const x=val(e,k,i), cf=V[k];
+    if(c.kind==='suspeita'){ d.modo='suspeita'; d.frases.push(cf.nome+' em '+nf(x,cf.dec)+' '+cf.un+' numa leitura isolada: a leitura anterior estava normal.'); d.frases.push('Pela regra de confirmação, a escada só vai para CRÍTICO se a próxima leitura também vier alterada. Se voltar ao normal, foi ruído do sensor.'); }
+    else {
+      d.frases.push(cf.nome+' em '+nf(x,cf.dec)+' '+cf.un+(cf.tipo==='desvio'?' (desvio de '+nf(Math.abs(x-cf.nom)/cf.nom*100,1)+'%)':'')+'. Limite de ALERTA: '+(cf.tipo==='desvio'?cf.a+'% de desvio':nf(cf.a,1)+' '+cf.un)+'; CRÍTICO: '+(cf.tipo==='desvio'?cf.c+'%':nf(cf.c,1)+' '+cf.un)+'.');
+      if(d.modo==='atrito') d.frases.push('Temperatura subindo junto com a velocidade abaixo do nominal: o conjunto está fazendo força extra.');
+      const t=tendencia(e,k,i);
+      if(t && t.r2>=0.35 && Math.abs(t.b)>0){ d.tend=t; let s='Tendência: '+fmtTaxa(t)+' (confiança '+confi(t.r2)+').'; if(c.code===1 && t.tC!=null && t.tC>0 && t.tC<20) s+=' Mantido o ritmo, chega a CRÍTICO em '+fmtPrazo(t.tC)+' ('+fDH(NOW+t.tC*1440)+').'; d.frases.push(s); }
+    }
+  } else {
+    const t=tendenciaPiora(e,i);
+    if(t){ d.modo='tendencia'; d.tend=t; d.base=modoDaVar(e,t.k,i); const cf=V[t.k];
+      d.frases.push('Todas as variáveis estão dentro do limite, mas '+cf.nome.toLowerCase()+' piora de forma consistente: '+fmtTaxa(t)+' (confiança '+confi(t.r2)+').');
+      d.frases.push('Mantido o ritmo, entra em ALERTA em '+fmtPrazo(t.tA)+'. Padrão compatível com: '+MODOS[d.base].t.toLowerCase()+'.'); }
+    else d.frases.push('Todas as variáveis dentro dos limites e sem tendência de piora nos últimos 3 dias.');
+  }
+  const M = d.modo==='suspeita' ? {t:'Leitura suspeita, aguardando confirmação', comps:MODOS[modoDaVar(e,c.k,i)].comps.slice(0,1), acao:'Acompanhar a próxima leitura. Não é preciso deslocar a equipe agora.'}
+          : d.modo==='tendencia' ? {t:'Tendência de piora: '+MODOS[d.base].t.toLowerCase(), comps:MODOS[d.base].comps, acao:'Programar inspeção preventiva antes de entrar em ALERTA. '+MODOS[d.base].acao}
+          : MODOS[d.modo];
+  d.titulo=M.t; d.comps=M.comps; d.acao=M.acao;
+  if(d.modo==='rolamento' && c.code===2) d.acao='Trocar o rolamento do redutor: a vibração já passou do limite crítico. Conferir também o alinhamento com o motor.';
+  return d;
+}
+// nível de cada componente do gêmeo digital, a partir das leituras atuais
+function compLevels(e,d){
+  const c=CUR[e.ix], i=IDX, L={}, txt={};
+  const lv=k=>{ const x=val(e,k,i); if(x==null) return 0; let l=lvl(V[k],x); if(c.kind==='suspeita' && c.k===k) l=Math.min(l,1); return l; };
+  const vt=k=>{ const x=val(e,k,i); return x==null?'—':nf(x,V[k].dec)+' '+V[k].un; };
+  if(c.code===3) return {levels:{}, labels:[{k:'degraus',lvl:3,nome:'Em manutenção',txt:'desde '+fDH(c.since)}]};
+  const set=(k,l,t)=>{ if(L[k]==null||l>L[k]){ L[k]=l; txt[k]=t; } };
+  set('redutor',lv(0),'Vibração '+vt(0)); set('motor',lv(1),'Temperatura '+vt(1)); set('motor',lv(2),'Corrente '+vt(2));
+  set('quadro',lv(3),'Tensão '+vt(3)); set('quadro',lv(2),'Corrente '+vt(2)); set('corrente',lv(4),'Velocidade '+vt(4)); set('degraus',lv(4),'Velocidade '+vt(4));
+  set('reservatorio',lv(5),'Óleo '+vt(5));
+  if(d.modo==='atrito'){ set('degraus',Math.max(lv(1),1),'Temperatura '+vt(1)); set('corrente',Math.max(lv(4),1),'Velocidade '+vt(4)); }
+  set('sensor', c.kind==='sem'?2:0, 'sem resposta'); set('seguranca', c.kind==='parada'?2:0, 'parada atuou');
+  if(d.modo==='tendencia') for(const k of d.comps.slice(0,2)) set(k,1,'tendência de piora');
+  const levels={}; for(const k in L) levels[k]={lvl:L[k]};
+  const labels=Object.keys(L).filter(k=>L[k]>0).map(k=>({k,lvl:L[k],nome:COMP[k].nome,txt:txt[k]}));
+  return {levels, labels};
+}
+
+/* ================= ORDENS DE SERVIÇO E PROCEDIMENTOS ================= */
+const PRAZO_H=[1,8,24,48];
+const osAberta = id => (S.os||[]).find(o=>o.esc===id && o.status!=='concluída');
+function despachoDe(e){ const c=CUR[e.ix]; if(c.code===2) return e.crit?0:1; if(c.code===1) return e.crit?2:3; return 3; }
+function modalOS(e){
+  computeCurrent(); const d=diagnostico(e), dp=despachoDe(e), prazo=NOW+PRAZO_H[dp]*60;
+  const ex=osAberta(e.id); if(ex){ toast(ex.id+' já está aberta para '+e.id+'.'); return; }
+  const num='OS-'+String(26)+'-'+String((S.osSeq||0)+1).padStart(4,'0');
+  modalOpen('<h2 id="mTitle">Abrir ordem de serviço</h2>'+
+    '<dl class="facts"><dt>Número</dt><dd class="mono">'+num+'</dd><dt>Escada</dt><dd>'+e.id+' · '+esc(ESTN[e.cod])+' · '+(e.crit?'grupo crítica':'grupo não crítica')+'</dd>'+
+    '<dt>Prioridade</dt><dd>'+despPill(dp)+'</dd><dt>Prazo</dt><dd class="mono">'+fDH(prazo)+' ('+PRAZO_H[dp]+' h)</dd>'+
+    '<dt>Diagnóstico</dt><dd><b>'+esc(d.titulo)+'</b><br><span class="muted">'+esc(d.frases.join(' '))+'</span></dd>'+
+    '<dt>Componentes</dt><dd>'+(d.comps.length?d.comps.map(k=>COMP[k].nome).join(', '):'—')+'</dd><dt>Ação</dt><dd>'+esc(d.acao)+'</dd></dl>'+
+    '<label class="field"><span>Técnico designado</span><select id="oTec">'+Object.entries(TECS).map(([k,n])=>'<option value="'+k+'"'+(k===S.tec?' selected':'')+'>'+k+' · '+n+'</option>').join('')+'</select></label>'+
+    '<label class="field"><span>Observação</span><textarea id="oObs" rows="2" placeholder="Opcional"></textarea></label>'+
+    '<div class="mfoot"><button class="btn" id="mCancel">Cancelar</button><button class="btn primary" id="mOk">Emitir '+num+'</button></div>', ()=>{
+      $('#mCancel').onclick=modalClose;
+      $('#mOk').onclick=()=>{
+        S.osSeq=(S.osSeq||0)+1; S.os=S.os||[];
+        const o={id:num, esc:e.id, criada:NOW, prazo, desp:dp, titulo:d.titulo, comps:d.comps, acao:d.acao, tec:$('#oTec').value, obs:$('#oObs').value.trim(), status:'aberta', at:null};
+        S.os.push(o); logEv('OS aberta',{id:o.id, esc:e.id}); save(); modalClose(); renderAll();
+        toast(num+' emitida para '+o.tec+' '+(TECS[o.tec]||'')+'. Prazo '+fDH(prazo)+'.');
+      };
+    });
+}
+const PROC = {
+  base0:['Isolar e sinalizar os acessos nas duas extremidades','Desligar a escada e aplicar bloqueio e etiquetagem no quadro'],
+  base1:['Retirar o bloqueio e testar em vazio nos dois sentidos','Liberar os acessos','Registrar a saída no Elevate com componente e ação'],
+  sensor:['Conferir o LED e a alimentação do módulo de sensores','Verificar cabo e conector do módulo no redutor','Reiniciar o módulo e confirmar a chegada da próxima leitura'],
+  parada:['Identificar o dispositivo que atuou (pente, rodapé, entrada do corrimão, botão de emergência)','Remover a causa (objeto preso, pente danificado)','Resetar o comando'],
+  rolamento:['Medir vibração no redutor e no motor com o coletor portátil','Verificar folga e ruído dos rolamentos','Conferir alinhamento entre motor e redutor','Programar a troca do rolamento se a vibração passar de 4,5 mm/s'],
+  atrito:['Inspecionar guias e roletes dos degraus','Verificar a tensão da corrente de tração','Conferir a lubrificação da corrente e dos mancais'],
+  aquec:['Verificar ventilação e temperatura da casa de máquinas','Conferir nível e estado do óleo do redutor','Medir corrente do motor em carga'],
+  eletrico:['Medir tensão entre fases na entrada do quadro','Inspecionar contatores, bornes e aperto das conexões','Medir isolamento do motor'],
+  veloc:['Verificar tensão e desgaste da corrente de tração','Testar o freio','Procurar pontos de atrito nos degraus'],
+  oleo:['Localizar vazamento em retentores do redutor e no reservatório','Corrigir o vazamento','Completar o óleo até o nível e registrar a quantidade'],
+};
+function modalProc(e){
+  computeCurrent(); const d=diagnostico(e); const m = d.modo==='tendencia' ? d.base : d.modo==='suspeita' ? modoDaVar(e,CUR[e.ix].k,IDX) : d.modo;
+  const passos = PROC[m] ? [...PROC.base0, ...PROC[m], ...PROC.base1] : ['Seguir o roteiro de inspeção preventiva P1','Registrar a saída no Elevate'];
+  modalOpen('<h2 id="mTitle">Procedimento sugerido</h2><p class="muted" style="margin:0">'+e.id+' · '+esc(d.titulo)+'</p>'+
+    '<ol class="proc">'+passos.map((p,i)=>'<li><label><input type="checkbox" id="pp'+i+'"><span>'+esc(p)+'</span></label></li>').join('')+'</ol>'+
+    '<p class="hint" style="margin:0">Resumo para o protótipo. O procedimento oficial é o roteiro de manutenção RMP-6ECR da ViaQuatro.</p>'+
+    '<div class="mfoot"><button class="btn" id="mCancel">Fechar</button></div>', ()=>{ $('#mCancel').onclick=modalClose; });
+}
+function sparkSVG(e,k,i,w,h){
+  const n=Math.min(i+1,25), pts=[]; for(let j=i-n+1;j<=i;j++){ const x=val(e,k,j); if(x!=null && e.ss[j]!==3) pts.push([j,x]); }
+  if(pts.length<2) return '';
+  const cf=V[k]; let lo=Math.min(...pts.map(p=>p[1])), hi=Math.max(...pts.map(p=>p[1]));
+  const lim = cf.tipo==='desvio' ? null : cf.a; if(lim!=null){ lo=Math.min(lo,lim); hi=Math.max(hi,lim); }
+  if(hi-lo<1e-6){ hi+=1; lo-=1; }
+  const X=j=>((j-(i-n+1))/(n-1))*(w-4)+2, Y=v=>h-2-((v-lo)/(hi-lo))*(h-4);
+  const d=pts.map((p,q)=>(q?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)).join('');
+  const last=pts[pts.length-1], l=lvl(cf,last[1]);
+  return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" aria-hidden="true">'+(lim!=null?'<line x1="0" x2="'+w+'" y1="'+Y(lim).toFixed(1)+'" y2="'+Y(lim).toFixed(1)+'" stroke="var(--warn)" stroke-dasharray="3 3" stroke-width="1"/>':'')+
+    '<path d="'+d+'" fill="none" stroke="var(--fg)" stroke-opacity=".75" stroke-width="1.5"/><circle cx="'+X(last[0]).toFixed(1)+'" cy="'+Y(last[1]).toFixed(1)+'" r="2.6" fill="'+['var(--ok)','var(--warn)','var(--crit)'][l]+'"/></svg>';
+}
+
+/* ================= GERADOR DO DATASET (porte do gerar_dataset.py para o navegador) ================= */
+function rngFrom(seed){
+  let a = seed>>>0, spare=null;
+  const r=()=>{ a=(a+0x6D2B79F5)|0; let t=Math.imul(a^(a>>>15),1|a); t=(t+Math.imul(t^(t>>>7),61|t))^t; return ((t^(t>>>14))>>>0)/4294967296; };
+  const normal=(m,s)=>{ if(spare!==null){ const z=spare; spare=null; return m+s*z; } let u=0; while(u===0) u=r(); const v=r(), q=Math.sqrt(-2*Math.log(u)); spare=q*Math.sin(2*Math.PI*v); return m+s*q*Math.cos(2*Math.PI*v); };
+  const uni=(x,y)=>x+(y-x)*r();
+  const int=(x,y)=>x+Math.floor(r()*(y-x));
+  const poisson=l=>{ const L=Math.exp(-l); let k=0,pp=1; do{ k++; pp*=r(); }while(pp>L); return k-1; };
+  const choice=(arr,pr)=>{ if(!pr) return arr[Math.floor(r()*arr.length)]; const x=r(); let c=0; for(let i=0;i<arr.length;i++){ c+=pr[i]; if(x<c) return arr[i]; } return arr[arr.length-1]; };
+  return {r,normal,uni,int,poisson,choice};
+}
+function gerarDataset(p){
+  const t0 = performance.now();
+  const Rg = rngFrom((p.seed>>>0) + p.dias*7919 + Math.round(p.intens*100)*104729);
+  const n=p.dias*5, H=[6,10,14,18,22], VN=0.5, TEC=Object.keys(TECS), PICO=[0.85,0.55,0.6,1.0,0.35];
+  const esc=RAW0.esc, N=esc.length;
+  const fal=esc.map(r=>r[5]);
+  const risco=fal.map(x=>{ let lt=0,eq=0; for(const y of fal){ if(y<x) lt++; else if(y===x) eq++; } return (lt+(eq+1)/2)/N; });
+  const TIPOS=['rolamento','atrito','vazamento_oleo','eletrico','sensor_mudo'], PT=[.3,.15,.2,.2,.15];
+  const DUR={rolamento:[60,180],atrito:[40,120],vazamento_oleo:[60,200],eletrico:[30,120],sensor_mudo:[2,10]};
+  const tm=i=>Math.floor(i/5)*1440+H[i%5]*60;
+  const dom=d=>new Date(T0+d*864e5).getUTCDate();
+  const fds=d=>{ const w=new Date(T0+d*864e5).getUTCDay(); return w===0||w===6; };
+  const stS=(vb,te,co,tn,ve,ol)=>{
+    if(vb==null&&te==null&&co==null&&tn==null&&ve==null&&ol==null) return 2;
+    const dv=tn==null?0:Math.abs(tn-380)/380*100, dl=ve==null?0:Math.abs(ve-VN)/VN*100;
+    if(ve===0||(vb!=null&&vb>=7.1)||(te!=null&&te>=95)||(co!=null&&co>=36)||dv>=10||(ol!=null&&ol<=20)||dl>=6) return 2;
+    if((vb!=null&&vb>=4.5)||(te!=null&&te>=80)||(co!=null&&co>=30)||dv>=7||(ol!=null&&ol<=35)||dl>=3) return 1;
+    return 0;
+  };
+  const V6=[], ATS=[], INFO=[], defCount={};
+  for(let x=0;x<N;x++){
+    const id=esc[x][0], fab=esc[x][2], crit=esc[x][3]===1, fluxo=esc[x][4], escal=fab==='ESCAL', rk=risco[x];
+    // comportamento normal: carga por horário (picos 6h e 18h) e fim de semana mais leve
+    const ld=new Float64Array(n);
+    for(let i=0;i<n;i++){ let pk=PICO[i%5]; if(fds(Math.floor(i/5))) pk*=0.6; ld[i]=Math.min(1.1,Math.max(0.05,pk*fluxo+Rg.normal(0,0.05))); }
+    const vb0=Rg.uni(1.2,2.2)*(escal?1.15:1);
+    const base=[[],[],[],[],[]];
+    for(let i=0;i<n;i++){
+      const td=(tm(i)-tm(0))/1440;
+      base[0][i]=vb0*(1+0.25*ld[i])+Rg.normal(0,0.15);
+      base[1][i]=34+20*ld[i]+3*(td/p.dias)+Rg.normal(0,1.5);
+      base[2][i]=11+12*ld[i]+Rg.normal(0,0.8);
+      base[3][i]=380+Rg.normal(0,4);
+      base[4][i]=VN*(1-0.012*ld[i])+Rg.normal(0,0.002);
+    }
+    // óleo: consumo contínuo, reposto na P1 e após cada corretiva
+    const consumo=Rg.uni(0.35,0.75)*(1+0.3*fluxo)/5, diaP1=Rg.int(1,29);
+    const repos=new Uint8Array(n); for(let i=0;i<n;i+=5) if(dom(i/5)===diaP1) repos[i]=1;
+    const nivelIni=Rg.uni(70,100);
+    // defeitos: de 0 a 3, mais prováveis nas escadas com mais falhas reais
+    const evs=[];
+    const k=Math.min(3,Rg.poisson((0.5+1.6*rk+(escal?0.6:0))*p.intens));
+    for(let q=0;q<k;q++){
+      const tipo=Rg.choice(TIPOS,PT), ini=Rg.int(0,n-20), dur=Rg.int(DUR[tipo][0],DUR[tipo][1]), fim=Math.min(n,ini+dur), len=fim-ini;
+      const c=[0,1,2,3,4,5].map(()=>new Float64Array(n)), mudo=new Uint8Array(n);
+      const ramp=i=> i>=fim?1:(len>1?(i-ini)/(len-1):0);
+      if(tipo==='rolamento'){ const a1=Rg.uni(5,9), a2=Rg.uni(4,12); for(let i=ini;i<n;i++){ c[0][i]=Math.pow(ramp(i),1.6)*a1; c[1][i]=ramp(i)*a2; } }
+      else if(tipo==='atrito'){ const a1=Rg.uni(30,55), a2=Rg.uni(0.03,0.08), a3=Rg.uni(4,10); for(let i=ini;i<n;i++){ c[1][i]=Math.pow(ramp(i),1.3)*a1; c[4][i]=-ramp(i)*VN*a2; c[2][i]=ramp(i)*a3; } }
+      else if(tipo==='vazamento_oleo'){ const rate=Rg.uni(1,2.5)/5; for(let i=ini;i<n;i++) c[5][i]=-(i-ini+1)*rate; }
+      else if(tipo==='eletrico'){ for(let i=ini;i<n;i++){ if(Rg.r()<0.12){ c[2][i]=Rg.uni(10,18); c[3][i]=-Rg.uni(15,45); } } }
+      else { for(let i=ini;i<fim;i++) mudo[i]=1; }
+      evs.push({tipo,ini,dur,c,mudo}); defCount[tipo]=(defCount[tipo]||0)+1;
+    }
+    // paradas curtas por dispositivo de segurança (resolvidas com reset)
+    const parada=new Uint8Array(n);
+    { const kp=Math.min(n,Rg.poisson((2+8*rk)*p.intens)); let got=0; while(got<kp){ const i=Rg.int(0,n); if(!parada[i]){ parada[i]=1; got++; } } }
+    const rO=new Float64Array(n), cP=new Float64Array(n), vP=new Float64Array(n);
+    for(let i=0;i<n;i++){ rO[i]=Rg.normal(0,0.4); cP[i]=Rg.uni(0,1.5); vP[i]=Rg.uni(0.1,0.4); }
+    let vals, mudoAll, st;
+    const montar=()=>{
+      vals=[0,1,2,3,4,5].map(()=>new Array(n)); mudoAll=new Uint8Array(n); st=new Int8Array(n);
+      let nivel=nivelIni;
+      for(let i=0;i<n;i++){
+        for(let j=0;j<5;j++){ let s=base[j][i]; for(const e of evs) s+=e.c[j][i]; vals[j][i]=s; }
+        if(repos[i]) nivel=100; nivel-=consumo;
+        let o=nivel+rO[i]; for(const e of evs) o+=e.c[5][i]; vals[5][i]=Math.min(100,Math.max(0,o));
+        if(parada[i]){ vals[4][i]=0; vals[2][i]=cP[i]; vals[0][i]=vP[i]; }
+        for(const e of evs) if(e.mudo[i]) mudoAll[i]=1;
+        if(mudoAll[i]) for(let j=0;j<6;j++) vals[j][i]=null;
+        st[i]=stS(vals[0][i],vals[1][i],vals[2][i],vals[3][i],vals[4][i],vals[5][i]);
+      }
+    };
+    montar();
+    // a equipe reage: reset nas paradas, corretiva no CRÍTICO ou em ALERTA prolongado
+    const emM=new Uint8Array(n), limAl=Rg.int(20,50); let i=0, als=0;
+    while(i<n){
+      if(parada[i]){ const ent=tm(i)+Rg.int(5,30); ATS.push([x,Rg.choice(TEC),1,'parada de seguranca (reset)',ent,ent+Rg.int(10,45)]); i++; continue; }
+      als = st[i]===1 ? als+1 : 0;
+      if(st[i]===2 || als>=limAl){
+        const motivo = mudoAll[i]?'sem resposta do sensor':st[i]===2?'status critico':'alerta prolongado';
+        const atraso = st[i]===2?Rg.int(1,6):0, dur=Rg.int(1,4)*(escal?3:1);
+        const a0=Math.min(n-1,i+atraso), f0=Math.min(n,i+atraso+dur);
+        for(let j=a0;j<f0;j++) emM[j]=1;
+        const ent=tm(a0)+Rg.int(5,120);
+        ATS.push([x,Rg.choice(TEC),1,motivo,ent,ent+Math.round(Rg.uni(0.5,3.5)*dur*(dur===1?1:3)*60)]);
+        for(const e of evs){ if(e.ini<=i){ for(const arr of e.c) arr.fill(0,f0); e.mudo.fill(0,f0); } }
+        if(f0<n) repos[f0]=1;
+        montar(); i=f0; als=0; continue;
+      }
+      i++;
+    }
+    for(let d=0;d<p.dias;d++) if(dom(d)===diaP1){ const ent=d*1440+Rg.int(0,4)*60+Rg.int(0,60); ATS.push([x,Rg.choice(TEC),0,'P1 mensal',ent,ent+Math.round(Rg.uni(1.5,2.8)*60)]); }
+    for(let j=0;j<n;j++) if(emM[j]){ vals[4][j]=0; vals[2][j]=0; vals[0][j]=Rg.uni(0.1,0.3); }
+    V6.push(vals);
+    INFO.push({x,id,crit,evs:evs.map(e=>({tipo:e.tipo,ini:e.ini,dur:e.dur})),st,emM,parada});
+  }
+  // falhas de leitura de propósito: valores vazios isolados e picos espúrios de vibração
+  const tot=N*n;
+  for(const j of [0,1,2,5]) for(let q=0;q<Math.floor(tot*0.0015);q++){ const g=Rg.int(0,tot); V6[Math.floor(g/n)][j][g%n]=null; }
+  for(let q=0;q<Math.floor(tot*0.0005);q++){ const g=Rg.int(0,tot); V6[Math.floor(g/n)][0][g%n]=Rg.uni(18,30); }
+  const SC=V.map(c=>c.sc);
+  const v=V6.map(vals=>vals.map((arr,j)=>arr.map(z=>z==null?null:Math.round(z*SC[j]))));
+  ATS.sort((a,b)=>a[4]-b[4]||a[0]-b[0]);
+  const at=ATS.map((r,k)=>[k+1,r[0],r[1],r[2],RAW0.mot.indexOf(r[3]),r[4],r[5]]);
+  const cand={}; for(const inf of INFO) for(const ev of inf.evs) (cand[ev.tipo]=cand[ev.tipo]||[]).push([inf.x,ev.ini]);
+  return {est:RAW0.est, esc:RAW0.esc, v, mot:RAW0.mot, at, cand, gen:{seed:p.seed, dias:p.dias, intens:p.intens, start:p.start, def:defCount, ms:Math.round(performance.now()-t0)}};
+}
+
+/* ================= TELA 7: dados ================= */
+const INT_L={'0.5':'baixa','1':'normal','1.8':'alta'};
+const DEF_L={rolamento:'Rolamento',atrito:'Atrito',vazamento_oleo:'Vazamento de óleo',eletrico:'Elétrico',sensor_mudo:'Sensor sem resposta'};
+function renderDados(){
+  const c=[0,0,0,0]; E.forEach(e=>{ for(let i=0;i<NS;i++) c[e.ss[i]]++; });
+  const t=c[0]+c[1]+c[2]+c[3], g=RAW.gen;
+  $('#dsAtual').innerHTML='<h3>Dataset em uso</h3><div><span class="dsbadge">'+(g?'Gerado no tablet':'Oficial do projeto')+'</span></div>'+
+    '<dl class="facts"><dt>Semente</dt><dd class="mono">'+(g?g.seed:2026)+(g?'':' (a mesma do notebook de Data Science e do PRD)')+'</dd>'+
+    '<dt>Período</dt><dd>01/07/2026 a '+fD(END)+'/2026 · '+(NS/5)+' dias · 5 leituras por dia</dd>'+
+    '<dt>Leituras</dt><dd class="num">'+(E.length*NS).toLocaleString('pt-BR')+' ('+E.length+' escadas)</dd>'+
+    '<dt>Atendimentos</dt><dd class="num">'+RAW.at.length.toLocaleString('pt-BR')+' no histórico</dd>'+
+    (g?'<dt>Intensidade</dt><dd>'+INT_L[String(g.intens)]+' · gerado em '+g.ms+' ms</dd><dt>Defeitos sorteados</dt><dd>'+Object.entries(g.def).map(([k,n])=>DEF_L[k]+' '+n).join(' · ')+'</dd>':'')+'</dl>'+
+    '<div class="srow" style="grid-template-columns:70px minmax(0,1fr) 56px"><span>Status</span><div class="sbar">'+c.map((x,k)=>'<span class="b'+k+'" style="width:'+(x/t*100)+'%"></span>').join('')+'</div><span class="num muted" style="text-align:right">'+pct((c[1]+c[2])/t)+'</span></div>'+
+    '<div class="slegend">'+STL.map((s,k)=>'<span><i style="background:var(--'+['ok','warn','crit','maint'][k]+')"></i>'+s+' '+pct(c[k]/t)+'</span>').join('')+'</div>'+
+    '<h3 style="margin-top:6px">Cenários de demonstração</h3><div class="cenlist">'+CEN.map((x,i)=>'<button data-cen="'+i+'"><span><b class="mono">'+x.id+'</b> · '+esc(x.nome)+'</span><span class="muted mono" style="font-size:.85rem">'+fDH(fromInput(x.quando))+'</span></button>').join('')+'</div>';
+  $('#expList').innerHTML=['escadas.csv','leituras_sensores.csv','atendimentos.csv','limites_status.csv'].map(f=>'<div class="exprow"><span class="mono">'+f+'</span><button class="btn sm" data-dl="'+f+'">Baixar</button><button class="btn sm" data-cp="'+f+'">Copiar</button></div>').join('');
+}
+$('#dsAtual').addEventListener('click',ev=>{ const b=ev.target.closest('[data-cen]'); if(b){ const s=$('#selCen'); s.value=b.dataset.cen; s.dispatchEvent(new Event('change')); } });
+$('#gRand').onclick=()=>{ $('#gSeed').value=1+Math.floor(Math.random()*999999); };
+function gParams(){ const seed=Math.max(1,Math.min(999999,parseInt($('#gSeed').value,10)||1)); const dias=+document.querySelector('input[name="gDias"]:checked').value; const intens=+document.querySelector('input[name="gInt"]:checked').value; return {seed,dias,intens,start:Math.floor(dias*0.66)*1440+18*60+5}; }
+const GBOX = '<button class="btn primary" id="gGo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Gerar dataset</button><button class="btn" id="gOficial">Voltar ao dataset oficial</button>';
+let pendingGen = undefined;
+function trocarDataset(p){
+  $('#gBox').innerHTML='<span class="muted" style="align-self:center">Gerando dados das 197 escadas…</span>';
+  setTimeout(()=>{
+    const D = p ? gerarDataset(p) : RAW0;
+    S.user=[]; S.ov={}; S.ev=[]; S.os=[]; S.osSeq=0; S.gen = p || null; S.seq=1;
+    setData(D); applyState(); buildCen(); paintRange(); fillCen();
+    NOW = p ? p.start : fromInput(CFG.inicio); S.now=NOW; S.paused=true; save();
+    $('#gBox').innerHTML=GBOX; renderAll(); paintClock();
+    toast(p ? 'Dataset gerado em '+D.gen.ms+' ms: '+(E.length*NS).toLocaleString('pt-BR')+' leituras e '+D.at.length.toLocaleString('pt-BR')+' atendimentos.' : 'Dataset oficial restaurado (semente 2026).', 5000);
+  }, 40);
+}
+$('#gBox').addEventListener('click',ev=>{
+  const go=ev.target.closest('#gGo'), of=ev.target.closest('#gOficial'), yes=ev.target.closest('#gYes'), no=ev.target.closest('#gNo');
+  if(go||of){
+    const p = go ? gParams() : null;
+    if(of && !S.gen){ toast('O dataset oficial já está em uso.'); return; }
+    const n=S.user.length+Object.keys(S.ov).length;
+    if(n){ pendingGen=p; $('#gBox').innerHTML='<p style="margin:0;flex-basis:100%">Isso apaga '+n+' registro(s) feitos neste tablet. Continuar?</p><button class="btn" id="gNo">Cancelar</button><button class="btn primary" id="gYes">'+(p?'Gerar mesmo assim':'Voltar ao oficial')+'</button>'; return; }
+    trocarDataset(p);
+  } else if(no){ $('#gBox').innerHTML=GBOX; }
+  else if(yes){ trocarDataset(pendingGen); }
+});
+function csvFile(f){
+  const q=x=>{ const s=x==null?'':String(x); return /[",;\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
+  const rows=[], dh=m=>toInput(m).replace('T',' ');
+  if(f==='escadas.csv'){ rows.push(['escada_id','estacao_cod','estacao_nome','fabricante','grupo','fluxo_relativo']); E.forEach(e=>rows.push([e.id,e.cod,ESTN[e.cod],e.fab,e.crit?'critica':'nao_critica',e.fluxo])); }
+  else if(f==='limites_status.csv'){ rows.push(['variavel','unidade','limite_alerta','limite_critico','regra']); const K=['vibracao_mm_s','temperatura_c','corrente_a','tensao_v','velocidade_m_s','nivel_oleo_pct']; V.forEach((c,k)=>rows.push([K[k],c.un,c.a,c.c,c.tipo==='desvio'?'desvio % de '+String(c.nom).replace('.',',')+' '+c.un:c.tipo])); }
+  else if(f==='atendimentos.csv'){ rows.push(['atendimento_id','escada_id','tecnico_id','tipo','motivo','entrada','saida','duracao_min','componente','acao','observacao','origem']); const all=[]; E.forEach(e=>e.atv.forEach(a=>all.push(a))); all.sort((a,b)=>a.ent-b.ent); all.forEach(a=>{ const ok=a.sai!=null; rows.push([a.id,a.esc,a.tec,a.tipo,a.motivo,dh(a.ent),ok?dh(a.sai):'',ok?Math.round(a.sai-a.ent):'',a.componente||'',a.acao||'',a.obs||'',a.src==='ds'?'historico':'tablet']); }); }
+  else { rows.push(['leitura_id','escada_id','data_hora','vibracao_mm_s','temperatura_c','corrente_a','tensao_v','velocidade_m_s','nivel_oleo_pct','status']); const SN=['BOM','ALERTA','CRITICO','EM_MANUTENCAO']; let id=1;
+    [...E].sort((a,b)=>a.id<b.id?-1:1).forEach(e=>{ for(let i=0;i<NS;i++){ const r=[id++,e.id,dh(slotMin(i))]; for(let k=0;k<6;k++){ const x=val(e,k,i); r.push(x==null?'':+x.toFixed(V[k].dec===3?4:2)); } r.push(SN[e.ss[i]]); rows.push(r); } }); }
+  return rows.map(r=>r.map(q).join(',')).join('\n')+'\n';
+}
+$('#expList').addEventListener('click',ev=>{
+  const dl=ev.target.closest('[data-dl]'), cp=ev.target.closest('[data-cp]');
+  if(dl){ const f=dl.dataset.dl; try{ const url=URL.createObjectURL(new Blob(['﻿'+csvFile(f)],{type:'text/csv;charset=utf-8'})); const a=document.createElement('a'); a.href=url; a.download=f; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),4000); toast('Baixando '+f+'.'); }catch(err){ toast('O navegador bloqueou o download. Use Copiar.'); } }
+  if(cp){ const f=cp.dataset.cp, txt=csvFile(f), ta=$('#expOut');
+    const fb=()=>{ ta.hidden=false; ta.value=txt; ta.focus(); ta.select(); toast('O CSV está selecionado na caixa abaixo: use Copiar.'); };
+    try{ navigator.clipboard.writeText(txt).then(()=>toast(f+' copiado ('+(txt.split('\n').length-2).toLocaleString('pt-BR')+' linhas).'), fb); }catch(err){ fb(); } }
+});
+
+/* ================= toast + início ================= */
+let tT=null;
+function toast(msg,ms){ const t=$('#toast'); t.textContent=msg; t.hidden=false; clearTimeout(tT); tT=setTimeout(()=>t.hidden=true, ms||3500); }
+computeCurrent(); paintClock(); paintApres(); show('painel');
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{ COL=null; if(view==='detalhe') drawCharts(); });
+</script>

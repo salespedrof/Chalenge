@@ -1,0 +1,7 @@
+variavel,unidade,limite_alerta,limite_critico,regra
+vibracao_mm_s,mm/s,4.5,7.1,acima
+temperatura_c,°C,80.0,95.0,acima
+corrente_a,A,30.0,36.0,acima
+tensao_v,V,7.0,10.0,desvio % de 380 V
+nivel_oleo_pct,%,35.0,20.0,abaixo
+velocidade_m_s,m/s,3.0,6.0,"desvio % de 0,50 m/s"
