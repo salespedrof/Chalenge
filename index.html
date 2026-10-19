@@ -328,6 +328,31 @@ body.apres .techpill{display:flex}
 body.apres .clock strong{font-size:1.15rem}
 body.apres .sim-note{display:none}
 .tend-list{display:flex;flex-direction:column;gap:8px}
+/* ---------- escada ao vivo (maquete com ESP32) ---------- */
+.soff{--c:var(--line-2);--cb:transparent}
+.pill.soff{color:var(--muted);border-color:var(--line-2);background:var(--surface-2)}
+.live-tag{border-color:var(--crit)!important;color:var(--crit)!important;display:inline-flex;align-items:center;gap:5px;font-weight:700;letter-spacing:.06em}
+.live-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--crit);animation:lvp 1.4s ease-in-out infinite}
+.dhead .id .live-tag{font-family:var(--f-body,inherit);font-size:.72rem;vertical-align:middle;margin-left:6px}
+@keyframes lvp{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.live-tag::before,.live-dot{animation:none}}
+.live-card{border-style:solid;border-width:1px 1px 1px 3px;border-left-color:var(--c)}
+.live-dot{position:absolute;top:8px;right:16px;width:11px;height:11px;border-radius:50%;background:var(--muted);box-shadow:0 0 0 3px var(--surface);animation:lvp 1.4s ease-in-out infinite}
+.live-dot.s0{background:var(--ok)}.live-dot.s1{background:var(--warn)}.live-dot.s2{background:var(--crit)}
+.live-dot[hidden]{display:none!important}
+.live-conn{gap:12px}
+.lc-row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.lc-row .grow{flex:1 1 240px}
+.lc-row .seg button{min-height:48px}
+.simbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.simbtns .btn[aria-pressed="true"]{border-color:var(--brand);box-shadow:inset 0 -3px 0 var(--brand)}
+#lSim[hidden],#lMqtt[hidden],#lUsbHint[hidden]{display:none!important}
+.conn{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.conn.on{background:var(--ok)}.conn.err{background:var(--crit)}
+#lTwinBox{position:relative;flex:1;min-height:380px;touch-action:none}
+#lTwinSvg{position:absolute;inset:0;padding:8px}
+.twin:not(.leve) #lTwinSvg{display:none}
+@media (max-width:640px){ #lTwinBox{min-height:300px} }
 @media (max-width:1180px){ .counters{grid-template-columns:repeat(3,minmax(0,1fr))} .hero{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:640px){ .counters{grid-template-columns:repeat(2,minmax(0,1fr))} .twin{min-height:360px} #twinBox{min-height:300px} .trow{grid-template-columns:minmax(0,1fr) auto} .trow .spark{display:none} }
 
@@ -380,6 +405,7 @@ body.apres .sim-note{display:none}
     <button class="nav" data-view="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg>Atendi&shy;mentos<span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
     <button class="nav" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
     <button class="nav" data-view="sync"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Sincronização<span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span></button>
+    <button class="nav" data-view="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Ao vivo<span class="live-dot" id="badgeLive" hidden></span></button>
     <button class="nav" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
   </nav>
 
@@ -457,6 +483,48 @@ body.apres .sim-note{display:none}
         <div class="panel" id="dP1"></div>
         <div class="panel"><h3>Histórico de atendimentos</h3><div class="tbl-wrap" id="dHist"></div></div>
       </div>
+    </section>
+
+    <!-- TELA AO VIVO: maquete com ESP32 -->
+    <section class="view" id="v-live" hidden aria-label="Escada ao vivo">
+      <div class="vhead"><div><h2>Escada ao vivo</h2><p>Maquete com ESP32 enviando os 6 sensores a cada segundo. As mesmas regras das 197 escadas definem o status, o diagnóstico e a fila.</p></div></div>
+      <div class="panel live-conn">
+        <div class="lc-row">
+          <div class="field"><span>Fonte dos dados</span><div class="seg" id="lFonte" role="group" aria-label="Fonte dos dados"><button data-f="sim">Simulador</button><button data-f="mqtt">Wi-Fi (MQTT)</button><button data-f="serial">Cabo USB</button></div></div>
+          <button class="btn primary" id="lConn">Conectar</button>
+          <span class="muted" id="lConnTxt">Desconectada</span>
+        </div>
+        <div class="lc-row" id="lMqtt" hidden>
+          <label class="field grow"><span>Broker (WebSocket)</span><input id="lBroker" autocomplete="off" spellcheck="false"></label>
+          <label class="field grow"><span>Tópico</span><input id="lTopic" autocomplete="off" spellcheck="false"></label>
+        </div>
+        <p class="hint" id="lUsbHint" hidden style="margin:0">Ligue o ESP32 no computador pelo cabo USB e toque em Conectar para escolher a porta. Funciona no Chrome ou no Edge do computador.</p>
+        <div id="lSim" hidden></div>
+      </div>
+      <div id="lHead"></div>
+      <div class="hero">
+        <div class="twin" id="lTwin">
+          <div class="twin-bar">
+            <span class="lbl grow">Gêmeo digital · leitura das <span id="lTwinWhen">--</span></span>
+            <button class="btn sm only3d" id="lvGeral">Vista geral</button>
+            <button class="btn sm only3d" id="lvMaq">Casa de máquinas</button>
+            <div class="seg" role="group" aria-label="Visualização"><button id="lv3d" aria-pressed="true">3D</button><button id="lvLeve" aria-pressed="false">Modo leve</button></div>
+          </div>
+          <div id="lTwinBox"><div id="lTwinSvg"></div></div>
+          <div class="twin-chip" id="lTwinChip"></div>
+        </div>
+        <div class="side">
+          <div class="diag" id="lDiag"></div>
+          <div class="tele" id="lVars"></div>
+        </div>
+      </div>
+      <div class="vhead">
+        <h3>Sensores ao vivo</h3>
+        <div class="seg" id="lJan" role="group" aria-label="Janela do gráfico"><button data-s="60">1 min</button><button data-s="120">2 min</button><button data-s="300">5 min</button><button data-s="900">15 min</button></div>
+      </div>
+      <div class="legend"><span><i style="border-color:var(--warn)"></i>Limite de ALERTA</span><span><i style="border-color:var(--crit)"></i>Limite CRÍTICO</span><span>Uma leitura por segundo</span></div>
+      <div class="charts" id="lCharts"></div>
+      <div class="panel"><h3>Mudanças de status</h3><div class="tbl-wrap" id="lLog"></div></div>
     </section>
 
     <!-- TELA 3 -->
@@ -759,7 +827,7 @@ function fila(){
     const score=(c.code===2?P.CRITICO:P.ALERTA)+(e.crit?P.grupoCritica:0)+P.fluxo*e.fluxo+Math.min(h,P.horasMax);
     const d = c.code===2 ? (e.crit?0:1) : (e.crit?2:3);
     return {e,c,h,score,d};
-  }).sort((a,b)=>a.d-b.d || b.score-a.score || b.h-a.h);
+  }).concat(typeof LV!=='undefined' && liveFilaItem() || []).sort((a,b)=>a.d-b.d || b.score-a.score || b.h-a.h);
 }
 const despPill = d => '<span class="desp d'+d+'">'+(d===0?'● ':'')+CFG.despacho[d].l+'</span>';
 const pill = (code,txt) => '<span class="pill s'+code+'">'+ICON[code]+(txt||STL[code])+'</span>';
@@ -849,13 +917,14 @@ function renderAll(){
   else if(view==='ind') renderInd();
   else if(view==='sync') renderSync();
   else if(view==='dados') renderDados();
+  else if(view==='live') renderLive();
 }
 function tickLight(){ document.querySelectorAll('[data-since]').forEach(el=>{ const m=+el.dataset.since; el.textContent = el.dataset.fmt==='t' ? fTimer(NOW-m) : fDur(NOW-m); }); }
 function paintTop(){
   const pend = S.ev.filter(x=>x.status==='pendente').length;
   const net=$('#netPill'); net.classList.toggle('off', S.offline);
   $('#netTxt').innerHTML = (S.offline?'Sem conexão':'Online') + (pend?' · <span class="pend">'+pend+' pendente'+(pend>1?'s':'')+'</span>':'') + (S.offline||!S.hist.length?'':' · sinc. '+new Date(S.hist[S.hist.length-1].real).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}));
-  const imed = E.filter(e=>CUR[e.ix].code===2&&e.crit).length;
+  const imed = E.filter(e=>CUR[e.ix].code===2&&e.crit).length + (typeof LV!=='undefined' && LV.cur && LV.cur.code===2 ? 1 : 0);
   const bf=$('#badgeFila'); bf.hidden=!imed; bf.textContent=imed;
   const op = E.filter(e=>CUR[e.ix].code===3).length;
   const ba=$('#badgeAt'); ba.hidden=!op; ba.textContent=op;
@@ -923,12 +992,12 @@ function renderPainel(){
     html += '<section class="station"><div class="station-h"><h3><span>'+st.cod+'</span>'+esc(st.nome)+'</h3><div class="mini"><span>'+es.length+' escadas</span>'+
       (m[2]?'<b style="color:var(--crit)">'+m[2]+' crítico</b>':'')+(m[1]?'<b style="color:var(--warn)">'+m[1]+' alerta</b>':'')+(m[3]?'<b style="color:var(--maint)">'+m[3]+' em manutenção</b>':'')+'</div></div><div class="grid">'+es.map(cardHTML).join('')+'</div></section>';
   }
-  $('#frota').innerHTML = html || '<div class="empty">Nenhuma escada com esses filtros.</div>';
+  $('#frota').innerHTML = livePainelHTML() + (html || '<div class="empty">Nenhuma escada com esses filtros.</div>');
 }
 $('#frota').addEventListener('click', ev=>{ const b=ev.target.closest('.card'); if(b) openDetalhe(b.dataset.id); });
 
 /* ================= TELA 2: detalhe ================= */
-function openDetalhe(id){ detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
+function openDetalhe(id){ if(id===LV.id) return show('live'); detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
   document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); window.scrollTo(0,0); renderAll(); }
 $('#btnBack').onclick=()=>show(prevView||'painel');
 document.querySelectorAll('#dPer button').forEach(b=>b.onclick=()=>{ periodo=+b.dataset.d; document.querySelectorAll('#dPer button').forEach(x=>x.setAttribute('aria-pressed', x===b)); drawCharts(); });
@@ -970,7 +1039,7 @@ function renderDetalhe(){
 }
 function twinUpdate(tw,c,d){
   const box=$('#twinBox'), wrap=$('#twin');
-  if(!S.leve && !Twin.ok && !Twin.mount(box)){ S.leve=true; S.no3d=true; }
+  if(!S.leve && !Twin.mount(box)){ S.leve=true; S.no3d=true; }
   wrap.classList.toggle('leve', !!S.leve);
   $('#tv3d').setAttribute('aria-pressed', !S.leve); $('#tvLeve').setAttribute('aria-pressed', !!S.leve);
   $('#twinWhen').textContent = fDH(slotMin(IDX));
@@ -1079,6 +1148,7 @@ function renderFila(){
     '<div class="c-h">'+pill(x.c.code)+'<div style="font-size:.9rem;margin-top:4px">'+esc(x.c.txt)+'</div></div><div class="c-d muted" style="font-size:.88rem">há <span data-since="'+x.c.since+'">'+fDur(NOW-x.c.since)+'</span><br>pontos '+nf(x.score,0)+'</div><div class="c-d">'+despPill(x.d)+'</div>'+
     '<div class="acts"><button class="btn sm" data-ver="'+x.e.id+'">Ver escada</button>'+(osAberta(x.e.id)?'<span class="chip-os" style="align-self:center">'+osAberta(x.e.id).id+'</span>':'<button class="btn sm" data-os="'+x.e.id+'">Abrir OS</button>')+'<button class="btn sm primary" data-ini="'+x.e.id+'">Iniciar atendimento</button></div></div>').join('')
     : '<div class="empty">Nenhuma escada em ALERTA ou CRÍTICO com esses filtros.</div>';
+  liveFilaFix();
   const tl=E.filter(e=>TEND[e.ix]&&(!fe||e.cod===fe)&&(!fg||(fg==='c')===e.crit)).sort((a,b)=>TEND[a.ix].tA-TEND[b.ix].tA);
   $('#qTend').innerHTML = '<div class="vhead" style="margin-top:8px"><div><h3>Tendência de piora</h3><p>BOM agora, mas com piora consistente: ALERTA previsto em até 48 h. Dá para agir antes do alarme.</p></div></div>'+
     (tl.length ? '<div class="tend-list">'+tl.map(e=>{ const t=TEND[e.ix], cf=V[t.k]; return '<div class="qrow"><div class="pos" style="color:var(--brand)">↗</div><div><div class="code">'+e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[e.cod])+' · '+(e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+'</div></div><div class="c-h"><b>'+cf.nome+'</b><div style="font-size:.9rem">'+fmtTaxa(t)+'</div></div><div class="c-d muted" style="font-size:.88rem">ALERTA em<br>'+fmtPrazo(t.tA)+'</div><div class="c-d">'+sparkSVG(e,t.k,IDX,90,28)+'</div><div class="acts"><button class="btn sm" data-ver="'+e.id+'">Ver escada</button>'+(osAberta(e.id)?'<span class="chip-os" style="align-self:center">'+osAberta(e.id).id+'</span>':'<button class="btn sm" data-os="'+e.id+'">Abrir OS</button>')+'</div></div>'; }).join('')+'</div>'
@@ -1256,7 +1326,7 @@ const COMP = {
   seguranca:   {nome:'Pente e dispositivos de segurança'},
 };
 const Twin = (() => {
-  let ok=false, el=null, cv=null, lab=null, R=null, scene=null, cam=null, raf=0, running=false, lastT=0, phase=0;
+  let ro=null, ok=false, el=null, cv=null, lab=null, R=null, scene=null, cam=null, raf=0, running=false, lastT=0, phase=0;
   const cam0 = {az:-0.6, el:0.36, dist:19.5, tx:1.6, ty:2.3, tz:0};
   let C = {...cam0};
   const mats = {}, anchors = {}, steps = [];
@@ -1384,7 +1454,7 @@ const Twin = (() => {
   }
   return {
     mount(box){
-      el=box; if(ok) { el.prepend(cv); el.appendChild(lab); resize(); return true; }
+      el=box; if(ok) { if(cv.parentNode!==box){ el.prepend(cv); el.appendChild(lab); if(ro) ro.observe(box); } resize(); return true; }
       if(!window.THREE) return false;
       try{ const t=document.createElement('canvas'); if(!(t.getContext('webgl2')||t.getContext('webgl'))) return false;
         cv=document.createElement('canvas'); cv.className='twin-cv'; cv.setAttribute('aria-label','Gêmeo digital 3D da escada: arraste para girar, role para aproximar');
@@ -1393,7 +1463,7 @@ const Twin = (() => {
       cam=new THREE.PerspectiveCamera(38,1,0.1,120); build(); placeSteps();
       lab=document.createElement('div'); lab.className='twin-labels';
       el.prepend(cv); el.appendChild(lab); bind();
-      if(window.ResizeObserver) new ResizeObserver(resize).observe(el); else window.addEventListener('resize',resize);
+      if(window.ResizeObserver){ ro=new ResizeObserver(resize); ro.observe(el); } else window.addEventListener('resize',resize);
       ok=true; resize(); return true;
     },
     set(s){ st=s; if(!ok) return; oilFill.scale.y=Math.max(0.02,Math.min(1,(s.oil??0)/100)); oilFill.visible=s.oil!=null; barrier.visible=!!s.manut; if(!running){ camApply(); R.render(scene,cam); labels(); } },
@@ -1780,6 +1850,371 @@ $('#expList').addEventListener('click',ev=>{
     const fb=()=>{ ta.hidden=false; ta.value=txt; ta.focus(); ta.select(); toast('O CSV está selecionado na caixa abaixo: use Copiar.'); };
     try{ navigator.clipboard.writeText(txt).then(()=>toast(f+' copiado ('+(txt.split('\n').length-2).toLocaleString('pt-BR')+' linhas).'), fb); }catch(err){ fb(); } }
 });
+
+/* ================= ESCADA AO VIVO: maquete com ESP32 (MAQ-01) =================
+   Fontes: simulador no navegador, Wi-Fi (MQTT por WebSocket) ou cabo USB (Web Serial).
+   Formato de cada leitura (JSON, 1 por segundo):
+   {"id":"MAQ-01","vib":1.8,"temp":48.2,"corr":21.3,"tens":379.5,"vel":0.5,"oleo":78}
+   O painel só lê: nenhum comando é enviado à maquete (RN-07). */
+const LV = {
+  id:'MAQ-01', cod:'MAQ', crit:true, fluxo:1, fab:'Maquete', live:true,
+  src:null, conn:'off', err:'', buf:[], max:900, since:Date.now(), key:'', log:[], cur:null,
+  cfg: Object.assign({fonte:'sim', broker:'wss://broker.hivemq.com:8884/mqtt', topic:'fiap/elevate/566910/maq01', on:false, janela:120}, S.live||{}),
+  sim:{falha:'normal', t:0, timer:null, mudo:false, pico:false},
+  ws:null, ping:null, retry:null, port:null, reader:null, uiQ:false,
+};
+ESTN[LV.cod] = 'Maquete Elevate (ao vivo)';
+const VK = ['vib','temp','corr','tens','vel','oleo'];
+const saveLive = () => { S.live = LV.cfg; save(); };
+
+/* ---------- entrada de leituras (mesmo formato para as 3 fontes) ---------- */
+function liveIngest(o){
+  if(!o || typeof o!=='object') return;
+  const v = VK.map(k => (o[k]==null || o[k]==='' || isNaN(+o[k])) ? null : +o[k]);
+  if(v.every(x=>x==null)) return;
+  LV.buf.push({t:Date.now(), v});
+  if(LV.buf.length>LV.max) LV.buf.splice(0, LV.buf.length-LV.max);
+  if(LV.conn!=='on'){ LV.conn='on'; LV.err=''; }
+  liveTick();
+}
+
+/* ---------- RN-01 e RN-02 aplicadas às leituras de 1 segundo ---------- */
+function liveEval(){
+  const b=LV.buf, last=b[b.length-1];
+  if(!LV.src) return {code:-1, kind:'off', txt:'Maquete desconectada'};
+  if(!last) return {code:-1, kind:'aguarda', txt: LV.conn==='erro' ? 'Falha na conexão' : 'Aguardando a primeira leitura'};
+  const idade=(Date.now()-last.t)/1000;
+  if(idade>5) return {code:2, kind:'sem', txt:'Sem resposta do sensor', idade};
+  const vals=last.v;
+  if(vals[4]!=null && vals[4]<0.05) return {code:2, kind:'parada', txt:'Parada (velocidade 0)'};
+  let best=-1, bl=0, br=-1;
+  vals.forEach((x,k)=>{ if(x==null) return; const l=lvl(V[k],x), r=ratio(V[k],x); if(l>bl || (l===bl && l>0 && r>br)){bl=l;best=k;br=r;} });
+  if(bl===2){
+    /* confirmação: as 3 leituras anteriores (3 s) também precisam estar alteradas */
+    const prev=b.slice(-4,-1);
+    const conf = prev.length===3 && prev.every(p=>p.v[best]!=null && lvl(V[best],p.v[best])>=1);
+    return conf ? {code:2, kind:'lim', k:best, txt:desc(best,vals[best])} : {code:1, kind:'suspeita', k:best, txt:'Leitura suspeita: '+desc(best,vals[best])};
+  }
+  if(bl===1) return {code:1, kind:'alerta', k:best, txt:desc(best,vals[best])};
+  return {code:0, kind:'ok', txt:'Operando normalmente'};
+}
+/* tendência das últimas 20 leituras (20 s): segundos até o limite de ALERTA */
+function liveTrend(k, n){
+  const pts=LV.buf.slice(-(n||20)).filter(p=>p.v[k]!=null && !(p.v[4]!=null && p.v[4]<0.05)); if(pts.length<10) return null;
+  const cf=V[k], t0=pts[0].t, P=pts.map(p=>[(p.t-t0)/1000, cf.tipo==='desvio'?Math.abs(p.v[k]-cf.nom)/cf.nom*100 : cf.tipo==='abaixo' ? -p.v[k] : p.v[k]]);
+  const m=P.length, mx=P.reduce((s,q)=>s+q[0],0)/m, my=P.reduce((s,q)=>s+q[1],0)/m;
+  let sxx=0,sxy=0,syy=0; for(const [x,y] of P){ sxx+=(x-mx)**2; sxy+=(x-mx)*(y-my); syy+=(y-my)**2; }
+  if(!sxx||!syy) return null;
+  const b=sxy/sxx, r2=sxy*sxy/(sxx*syy), yh=my+b*(P[m-1][0]-mx);
+  const A=cf.tipo==='abaixo'?-cf.a:cf.a, Cc=cf.tipo==='abaixo'?-cf.c:cf.c;
+  return {k, b:(cf.tipo==='abaixo'?-b:b)*60, r2, tA: b>0&&yh<A ? (A-yh)/b : null, tC: b>0&&yh<Cc ? (Cc-yh)/b : null, desvio:cf.tipo==='desvio'};
+}
+const fSeg = s => s<90 ? 'cerca de '+Math.max(1,Math.round(s))+' s' : 'cerca de '+nf(s/60,1)+' min';
+const fTaxaMin = t => { const cf=V[t.k]; return (t.desvio ? nf(Math.abs(t.b),1)+' ponto(s) de desvio' : (t.b>0?'+':'−')+nf(Math.abs(t.b), cf.k==='vel'?3:cf.k==='vib'?2:1)+' '+cf.un)+' por minuto'; };
+function liveModo(k, vals){
+  if(k===0) return 'rolamento';
+  if(k===1) return vals[4]!=null && lvl(V[4],vals[4])>=1 ? 'atrito' : 'aquec';
+  if(k===2 && vals[4]!=null && vals[4]<V[4].nom*0.985) return 'atrito';  /* corrente alta com a esteira mais lenta: força extra */
+  if(k===2||k===3) return 'eletrico';
+  if(k===4) return vals[1]!=null && lvl(V[1],vals[1])>=1 ? 'atrito' : 'veloc';
+  return 'oleo';
+}
+function liveDiag(c){
+  const last=LV.buf[LV.buf.length-1], vals=last?last.v:[], d={modo:'ok', frases:[], comps:[]};
+  if(c.kind==='off'||c.kind==='aguarda'){
+    const M={off:['Maquete desconectada','Escolha a fonte dos dados e toque em Conectar.'], aguarda:[c.txt, LV.src==='mqtt' ? 'Conectando ao broker '+LV.cfg.broker+', tópico '+LV.cfg.topic+'.' : 'Esperando o ESP32 enviar a primeira leitura.']}[c.kind];
+    d.titulo=M[0]; d.frases=[M[1]].concat(LV.err?[LV.err]:[]); d.acao='Ligar a maquete e conferir a conexão.'; return d;
+  }
+  if(c.kind==='sem'){ d.modo='sensor'; d.frases.push('Nenhuma leitura há '+Math.round(c.idade)+' s.'); d.frases.push('Causa provável: ESP32 desligado, sem Wi-Fi ou cabo solto.'); }
+  else if(c.kind==='parada'){ d.modo='parada'; d.frases.push('A esteira parou: velocidade 0 fora de manutenção.'); d.frases.push('Na maquete, a parada vem do botão de parada ou de algo travando os degraus.'); }
+  else if(c.code===1||c.code===2){
+    const k=c.k, cf=V[k], x=vals[k]; d.modo=liveModo(k,vals);
+    if(c.kind==='suspeita'){ d.modo='suspeita'; d.frases.push(cf.nome+' em '+nf(x,cf.dec)+' '+cf.un+' acabou de passar do limite crítico.'); d.frases.push('Pela regra de confirmação, a escada só vai para CRÍTICO se continuar alterada por 3 leituras seguidas (3 s). Se voltar, foi ruído do sensor.'); }
+    else {
+      d.frases.push(cf.nome+' em '+nf(x,cf.dec)+' '+cf.un+(cf.tipo==='desvio'?' (desvio de '+nf(Math.abs(x-cf.nom)/cf.nom*100,1)+'%)':'')+'. Limite de ALERTA: '+(cf.tipo==='desvio'?cf.a+'% de desvio':nf(cf.a,1)+' '+cf.un)+'; CRÍTICO: '+(cf.tipo==='desvio'?cf.c+'%':nf(cf.c,1)+' '+cf.un)+'.');
+      if(d.modo==='atrito') d.frases.push(k===2 ? 'Corrente subindo com a velocidade abaixo do nominal: o motor está fazendo força extra, como se algo freasse os degraus.' : 'Temperatura subindo junto com a velocidade abaixo do nominal: o conjunto está fazendo força extra.');
+      const t=liveTrend(k); if(t && t.r2>=0.5 && Math.abs(t.b)>0){ let s='Nos últimos 20 s: '+fTaxaMin(t)+'.'; if(c.code===1 && t.tC!=null && t.tC<600) s+=' Mantido o ritmo, chega a CRÍTICO em '+fSeg(t.tC)+'.'; d.frases.push(s); }
+    }
+  } else {
+    let best=null; for(let k=0;k<6;k++){ const t=liveTrend(k); if(t && t.r2>=0.6 && t.tA!=null && t.tA<=120 && (!best||t.tA<best.tA)) best=t; }
+    if(best){ d.modo='tendencia'; d.base=liveModo(best.k,vals); d.tend=best; const cf=V[best.k];
+      d.frases.push('Todas as variáveis dentro do limite, mas '+cf.nome.toLowerCase()+' piora de forma consistente: '+fTaxaMin(best)+'.');
+      d.frases.push('Mantido o ritmo, entra em ALERTA em '+fSeg(best.tA)+'. Padrão compatível com: '+MODOS[d.base].t.toLowerCase()+'.'); }
+    else d.frases.push('Todas as variáveis dentro dos limites e estáveis nos últimos 20 s.');
+  }
+  const M = d.modo==='suspeita' ? {t:'Leitura suspeita, aguardando confirmação', comps:MODOS[liveModo(c.k,vals)].comps.slice(0,1), acao:'Acompanhar as próximas leituras. Não é preciso deslocar a equipe agora.'}
+          : d.modo==='tendencia' ? {t:'Tendência de piora: '+MODOS[d.base].t.toLowerCase(), comps:MODOS[d.base].comps, acao:'Programar inspeção antes de entrar em ALERTA. '+MODOS[d.base].acao}
+          : MODOS[d.modo];
+  d.titulo=M.t; d.comps=M.comps; d.acao=M.acao;
+  return d;
+}
+function liveComp(c,d){
+  const last=LV.buf[LV.buf.length-1]; if(!last || c.code<0) return {levels:{}, labels:[]};
+  const L={}, txt={}, vals=last.v;
+  const lv=k=>{ const x=vals[k]; if(x==null) return 0; let l=lvl(V[k],x); if(c.kind==='suspeita' && c.k===k) l=Math.min(l,1); return l; };
+  const vt=k=>vals[k]==null?'—':nf(vals[k],V[k].dec)+' '+V[k].un;
+  const set=(k,l,t)=>{ if(L[k]==null||l>L[k]){ L[k]=l; txt[k]=t; } };
+  if(c.kind!=='sem'){
+    set('redutor',lv(0),'Vibração '+vt(0)); set('motor',lv(1),'Temperatura '+vt(1)); set('motor',lv(2),'Corrente '+vt(2));
+    set('quadro',lv(3),'Tensão '+vt(3)); set('quadro',lv(2),'Corrente '+vt(2)); set('corrente',lv(4),'Velocidade '+vt(4)); set('degraus',lv(4),'Velocidade '+vt(4));
+    set('reservatorio',lv(5),'Óleo '+vt(5));
+    if(d.modo==='atrito'){ set('degraus',Math.max(lv(1),1),'Temperatura '+vt(1)); set('corrente',Math.max(lv(4),1),'Velocidade '+vt(4)); }
+  }
+  set('sensor', c.kind==='sem'?2:0, 'sem resposta'); set('seguranca', c.kind==='parada'?2:0, 'parada atuou');
+  if(d.modo==='tendencia') for(const k of d.comps.slice(0,2)) set(k,1,'tendência de piora');
+  const levels={}; for(const k in L) levels[k]={lvl:L[k]};
+  return {levels, labels:Object.keys(L).filter(k=>L[k]>0).map(k=>({k,lvl:L[k],nome:COMP[k].nome,txt:txt[k]}))};
+}
+
+/* ---------- a cada leitura (e a cada segundo, para detectar silêncio) ---------- */
+function liveTick(){
+  const c=liveEval(), key=c.code+'|'+c.kind+'|'+(c.k??'');
+  if(key!==LV.key){
+    const ant=LV.cur;
+    if(LV.key && c.code!==-1 && (!ant || ant.code!==c.code)){
+      LV.log.unshift({t:Date.now(), de:ant?ant.code:-1, para:c.code, txt:c.txt});
+      if(LV.log.length>40) LV.log.length=40;
+      if(c.code>=1 && (!ant || c.code>ant.code || ant.code<0)) toast('MAQ-01 (maquete): '+STL[c.code]+' · '+c.txt, 5000);
+    }
+    LV.key=key; LV.since=Date.now();
+    const statusMudou = !ant || ant.code!==c.code;
+    LV.cur=c;
+    if(statusMudou){ paintTop(); if(view==='fila') renderFila(); }
+  }
+  LV.cur=c;
+  if(!LV.uiQ){ LV.uiQ=true; requestAnimationFrame(()=>{ LV.uiQ=false; liveUI(); }); }
+}
+setInterval(()=>{ if(LV.src) liveTick(); }, 1000);
+function liveUI(){
+  paintLiveNav();
+  if(view==='live') renderLive(true);
+  else if(view==='painel'){ const el=$('#liveCard'); if(el) el.outerHTML=liveCardHTML(); }
+}
+function paintLiveNav(){ const b=$('#badgeLive'); if(!b) return; const c=LV.cur; b.hidden=!LV.src; b.className='live-dot'+(c&&c.code>=0?' s'+c.code:''); }
+
+/* ---------- card no painel ---------- */
+function liveSpark(k,w,h){
+  const pts=LV.buf.slice(-60).filter(p=>p.v[k]!=null); if(pts.length<2) return '';
+  const cf=V[k], t1=pts[pts.length-1].t, t0=t1-60000; let lo=Math.min(...pts.map(p=>p.v[k])), hi=Math.max(...pts.map(p=>p.v[k]));
+  const lim=cf.tipo==='desvio'?null:cf.a; if(lim!=null){ lo=Math.min(lo,lim); hi=Math.max(hi,lim); } if(hi-lo<1e-6){ hi+=1; lo-=1; }
+  const X=t=>((t-t0)/60000)*(w-4)+2, Y=v=>h-2-((v-lo)/(hi-lo))*(h-4);
+  const dd=pts.map((p,q)=>(q?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.v[k]).toFixed(1)).join(''); const l=lvl(cf,pts[pts.length-1].v[k]);
+  return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" aria-hidden="true">'+(lim!=null?'<line x1="0" x2="'+w+'" y1="'+Y(lim).toFixed(1)+'" y2="'+Y(lim).toFixed(1)+'" stroke="var(--warn)" stroke-dasharray="3 3" stroke-width="1"/>':'')+
+    '<path d="'+dd+'" fill="none" stroke="var(--fg)" stroke-opacity=".75" stroke-width="1.5"/><circle cx="'+X(pts[pts.length-1].t).toFixed(1)+'" cy="'+Y(pts[pts.length-1].v[k]).toFixed(1)+'" r="2.6" fill="'+['var(--ok)','var(--warn)','var(--crit)'][l]+'"/></svg>';
+}
+const livePill = c => c.code<0 ? '<span class="pill soff">'+(c.kind==='off'?'DESCONECTADA':'CONECTANDO')+'</span>' : pill(c.code);
+function liveCardHTML(){
+  const c=LV.cur||liveEval(), last=LV.buf[LV.buf.length-1], vals=last?last.v:[];
+  const k=c.k!=null?c.k:0;
+  let why=esc(c.txt); if(c.code===1||c.code===2) why+=' · há '+fSegCurto((Date.now()-LV.since)/1000);
+  const f=(x,d,u)=>x==null?'—':nf(x,d)+u;
+  const met = last && c.code>=0 ? '<div class="met"><span>'+f(vals[1],0,' °C')+'</span><span>'+f(vals[0],1,' mm/s')+'</span><span>óleo '+(vals[5]==null?'—':Math.round(vals[5])+'%')+'</span></div>' : '<div class="met"><span>'+(LV.src?'Fonte: '+FONTES[LV.src]:'Toque para conectar a maquete')+'</span></div>';
+  const sp = c.code>=0 && c.kind!=='sem' ? '<div class="sprow"><span class="lbl">'+V[k].nome+' · 60 s</span>'+liveSpark(k,84,24)+'</div>' : '';
+  return '<button class="card live-card '+(c.code<0?'soff':'s'+c.code)+'" id="liveCard" data-id="'+LV.id+'"><div class="card-top"><span class="code">'+LV.id+'</span><span class="tag live-tag">AO VIVO</span></div>'+
+    '<div class="pills">'+livePill(c)+'</div><div class="why">'+why+'</div>'+met+sp+'</button>';
+}
+const fSegCurto = s => s<60 ? Math.round(s)+' s' : s<3600 ? Math.floor(s/60)+' min '+pad(Math.round(s%60))+' s' : fDur(s/60);
+function livePainelHTML(){
+  if(filt.est || (filt.busca && !LV.id.includes(filt.busca)) || filt.grupo==='n' || filt.fab) return '';
+  const c=LV.cur||liveEval();
+  if(filt.status==='t' || (filt.status!==null && c.code!==filt.status)) return '';
+  return '<section class="station"><div class="station-h"><h3><span>MAQ</span>Maquete Elevate · ao vivo</h3><div class="mini"><span>ESP32 · 1 leitura por segundo</span><span>não entra nos totais das 197 escadas</span></div></div><div class="grid">'+liveCardHTML()+'</div></section>';
+}
+
+/* ---------- fila: a maquete entra com as mesmas regras (RN-03, RN-04) ---------- */
+function liveFilaItem(){
+  const c=LV.cur; if(!c || (c.code!==1 && c.code!==2)) return null;
+  const P=CFG.prioridade, h=(Date.now()-LV.since)/3600000;
+  const score=(c.code===2?P.CRITICO:P.ALERTA)+P.grupoCritica+P.fluxo*LV.fluxo+Math.min(h,P.horasMax);
+  return {e:LV, c:{...c, since:NOW-(Date.now()-LV.since)/60000}, h, score, d:c.code===2?0:2};
+}
+function liveFilaFix(){
+  document.querySelectorAll('#qList [data-os="'+LV.id+'"],#qList [data-ini="'+LV.id+'"]').forEach(b=>b.remove());
+  const v=document.querySelector('#qList [data-ver="'+LV.id+'"]'); if(v){ v.textContent='Ver ao vivo'; v.classList.add('primary'); }
+}
+
+/* ---------- tela "Ao vivo" ---------- */
+const FONTES = {sim:'Simulador no navegador', mqtt:'Wi-Fi (MQTT)', serial:'Cabo USB'};
+let liveBuilt=false;
+function renderLive(light){
+  const c=LV.cur||liveEval(), d=liveDiag(c), last=LV.buf[LV.buf.length-1], vals=last?last.v:[];
+  const conTxt = !LV.src ? 'Desconectada' : LV.conn==='on' ? 'Conectada · '+FONTES[LV.src]+(last?' · última leitura há '+nf((Date.now()-last.t)/1000,1)+' s':'') : LV.conn==='erro' ? 'Falha: '+LV.err : LV.conn==='broker' ? 'Conectada ao broker · aguardando o ESP32 publicar' : 'Conectando · '+FONTES[LV.src];
+  const sinceTxt = c.code<0 ? '' : 'Neste status há '+fSegCurto((Date.now()-LV.since)/1000);
+  $('#lHead').innerHTML = '<div class="dhead '+(c.code<0?'soff':'s'+c.code)+'"><div><div class="id">'+LV.id+' <span class="tag live-tag">AO VIVO</span></div><div class="meta"><span>Maquete Elevate</span><span>ESP32 com 6 sensores</span><span>Grupo crítica</span><span>1 leitura por segundo</span></div>'+
+    '<div class="osline"><span class="conn '+(LV.conn==='on'?'on':LV.conn==='erro'?'err':'')+'"></span>'+esc(conTxt)+'</div></div>'+
+    '<div class="st">'+livePill(c)+'<span>'+esc(c.txt)+'</span><span class="muted" style="font-size:.88rem">'+sinceTxt+'</span></div></div>';
+  const dcode = d.modo==='tendencia'||d.modo==='suspeita' ? 1 : Math.max(0,c.code);
+  $('#lDiag').innerHTML = '<div class="diag-h"><span class="lbl">Diagnóstico Elevate · ao vivo</span>'+(c.code===1||c.code===2?despPill(c.code===2?0:2):'')+'</div>'+
+    '<h3 class="diag-t s'+dcode+'">'+esc(d.titulo)+'</h3>'+d.frases.map(f=>'<p>'+esc(f)+'</p>').join('')+
+    '<div class="diag-a"><span class="lbl">Ação recomendada</span><p>'+esc(d.acao)+'</p></div>'+
+    (d.comps&&d.comps.length?'<div class="diag-c">'+d.comps.map(k=>'<span class="tag">'+COMP[k].nome+'</span>').join('')+'</div>':'')+
+    '<p class="hint">Mesmas regras das 197 escadas, aplicadas a cada segundo. A confirmação do CRÍTICO exige 3 leituras seguidas.</p>';
+  $('#lVars').innerHTML = V.map((cf,k)=>{ const x=vals[k]; let l = x==null||c.code<0||c.kind==='sem'?0:lvl(cf,x); if(c.kind==='suspeita'&&c.k===k) l=Math.min(l,1);
+    const lim = cf.tipo==='acima' ? 'alerta ≥ '+nf(cf.a,1)+' · crítico ≥ '+nf(cf.c,1) : cf.tipo==='abaixo' ? 'alerta ≤ '+cf.a+' · crítico ≤ '+cf.c : 'desvio: alerta '+cf.a+'% · crítico '+cf.c+'%';
+    return '<div class="trow s'+l+'"><div><span class="tname">'+cf.nome+'</span><span class="tlim">'+lim+'</span></div>'+(c.code>=0?liveSpark(k,72,24):'')+'<span class="tval">'+(x==null||c.code<0?'—':nf(x,cf.dec))+'<small>'+cf.un+'</small></span></div>'; }).join('');
+  /* gêmeo digital: gira na velocidade medida; parado quando a esteira para ou o sensor cala */
+  const cl=liveComp(c,d), vel=vals[4];
+  const tw={levels:cl.levels, labels:cl.labels, oil:c.code<0?null:vals[5], speed:(c.code<0||c.kind==='sem'||c.kind==='parada'||vel==null)?0:vel, manut:false, sem:c.kind==='sem'};
+  const box=$('#lTwinBox'), wrap=$('#lTwin');
+  if(!S.leve && !Twin.mount(box)){ S.leve=true; S.no3d=true; }
+  wrap.classList.toggle('leve', !!S.leve);
+  $('#lv3d').setAttribute('aria-pressed', !S.leve); $('#lvLeve').setAttribute('aria-pressed', !!S.leve);
+  $('#lTwinWhen').textContent = last ? new Date(last.t).toLocaleTimeString('pt-BR') : '--';
+  if(!S.leve){ Twin.set(tw); Twin.start(); } else { Twin.stop(); $('#lTwinSvg').innerHTML = twinSVG(tw); }
+  const pc = d.modo==='tendencia'?1:Math.max(0,c.code);
+  $('#lTwinChip').innerHTML = (c.code<0?livePill(c):'<span class="pill s'+pc+'">'+ICON[pc]+esc(d.titulo)+'</span>')+
+    '<p class="hint">'+(tw.speed>0?'Degraus girando a '+nf(tw.speed,2)+' m/s, como na maquete':'Degraus parados, como na maquete')+(S.leve?' · esquema 2D':' · arraste para girar')+'</p>';
+  liveCharts();
+  $('#lLog').innerHTML = LV.log.length ? '<table><thead><tr><th>Hora</th><th>Mudança</th><th>Motivo</th></tr></thead><tbody>'+LV.log.slice(0,15).map(x=>'<tr><td class="num">'+new Date(x.t).toLocaleTimeString('pt-BR')+'</td><td>'+(x.de>=0?STL[x.de]+' → ':'')+'<b style="color:'+['var(--ok)','var(--warn)','var(--crit)','var(--maint)'][x.para]+'">'+STL[x.para]+'</b></td><td>'+esc(x.txt)+'</td></tr>').join('')+'</tbody></table>' : '<div class="empty">Nenhuma mudança de status ainda.</div>';
+  if(!light) paintLiveCtrls();
+  else { const s=$('#lConnTxt'); if(s) s.textContent=conTxt; }
+  $('#lSim').hidden = LV.src!=='sim';
+  document.querySelectorAll('#lSim [data-f]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.f===LV.sim.falha));
+}
+function paintLiveCtrls(){
+  const f=LV.cfg.fonte;
+  document.querySelectorAll('#lFonte button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.f===f));
+  $('#lMqtt').hidden = f!=='mqtt';
+  $('#lUsbHint').hidden = f!=='serial';
+  $('#lBroker').value=LV.cfg.broker; $('#lTopic').value=LV.cfg.topic;
+  const on=!!LV.src;
+  $('#lConn').innerHTML = on ? 'Desconectar' : 'Conectar';
+  $('#lConn').className = 'btn '+(on?'':'primary');
+  $('#lConnTxt').textContent = !LV.src ? 'Desconectada' : LV.conn==='on' ? 'Conectada · '+FONTES[LV.src] : LV.conn==='erro' ? 'Falha: '+LV.err : LV.conn==='broker' ? 'Conectada ao broker · aguardando o ESP32 publicar' : 'Conectando · '+FONTES[LV.src];
+  document.querySelectorAll('#lJan button').forEach(b=>b.setAttribute('aria-pressed', +b.dataset.s===LV.cfg.janela));
+}
+/* gráficos dos últimos minutos, com os mesmos limites dos gráficos de 90 dias */
+function liveCharts(){
+  const box=$('#lCharts');
+  if(box.children.length!==V.length) box.innerHTML = V.map((cf,k)=>'<div class="chart"><div class="chart-h"><span class="lbl">'+cf.nome+' ('+cf.un+')</span><span class="muted mono" style="font-size:.8rem" id="lcv'+k+'"></span></div><canvas id="lcc'+k+'" aria-label="Gráfico ao vivo de '+cf.nome+'"></canvas></div>').join('');
+  V.forEach((_,k)=>liveChart(k));
+}
+function liveChart(k){
+  if(!COL) colors(); const cv=$('#lcc'+k); if(!cv) return;
+  const W=cv.clientWidth, H=cv.clientHeight, dpr=window.devicePixelRatio||1; if(!W||!H) return;
+  if(cv.width!==Math.round(W*dpr)||cv.height!==Math.round(H*dpr)){ cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); }
+  const g=cv.getContext('2d'); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
+  const cf=V[k], jan=LV.cfg.janela*1000, t1=Date.now(), t0=t1-jan;
+  const pts=LV.buf.filter(p=>p.t>=t0-1000);
+  const L=46,R=10,T=10,B=22, pw=W-L-R, ph=H-T-B, X=t=>L+(t-t0)/jan*pw;
+  const isStop=p=>p.v[4]!=null && p.v[4]<0.05;
+  const [y0,y1]=yRange(k, pts.filter(p=>!(cf.k!=='vel'&&isStop(p))).map(p=>p.v[k]));
+  const Y=y=>T+(1-(Math.max(y0,Math.min(y1,y))-y0)/(y1-y0))*ph;
+  g.font='11px "IBM Plex Mono", ui-monospace, monospace'; g.textBaseline='middle';
+  g.strokeStyle=COL.line; g.lineWidth=1; g.fillStyle=COL.muted; g.textAlign='right';
+  for(let t=0;t<=4;t++){ const yv=y0+(y1-y0)*t/4, yy=Math.round(Y(yv))+.5; g.beginPath(); g.moveTo(L,yy); g.lineTo(W-R,yy); g.stroke(); g.fillText(nf(yv, cf.k==='vel'?3:cf.k==='vib'?1:0), L-6, yy); }
+  g.textAlign='center'; g.textBaseline='top';
+  const passo = jan<=60000?15:jan<=120000?30:jan<=300000?60:180;
+  for(let s=0; s<=jan/1000; s+=passo){ const xx=X(t1-s*1000); if(xx<L+10) continue; g.fillText(s===0?'agora':'−'+(s>=60?(s/60)+' min':s+' s'), Math.min(xx,W-R-18), H-B+6); }
+  const lines=[]; if(cf.tipo==='desvio'){ lines.push([cf.nom*(1+cf.a/100),COL.warn],[cf.nom*(1-cf.a/100),COL.warn],[cf.nom*(1+cf.c/100),COL.crit],[cf.nom*(1-cf.c/100),COL.crit]); } else { lines.push([cf.a,COL.warn],[cf.c,COL.crit]); }
+  g.setLineDash([5,4]); g.lineWidth=1.4;
+  for(const [yv,cc] of lines){ if(yv<y0||yv>y1) continue; g.strokeStyle=cc; g.beginPath(); g.moveTo(L,Y(yv)); g.lineTo(W-R,Y(yv)); g.stroke(); }
+  g.setLineDash([]);
+  g.strokeStyle=COL.fg; g.lineWidth=1.8; g.lineJoin='round'; g.beginPath(); let pen=false, prevT=0;
+  for(const p of pts){ const x=p.v[k]; if(x==null || (isStop(p)&&cf.k!=='oleo'&&cf.k!=='tens'&&cf.k!=='temp') || (pen && p.t-prevT>3500)){ pen=false; if(x==null) continue; if(isStop(p)&&cf.k!=='oleo'&&cf.k!=='tens'&&cf.k!=='temp') continue; }
+    const px=Math.max(L,X(p.t)), py=Y(x); if(pen) g.lineTo(px,py); else g.moveTo(px,py); pen=true; prevT=p.t; }
+  g.stroke();
+  for(const p of pts){ const x=p.v[k]; if(x==null) continue; const l=lvl(cf,x); if(l>0 && !(isStop(p)&&cf.k!=='vel')){ g.fillStyle=l===2?COL.crit:COL.warn; g.beginPath(); g.arc(Math.max(L,X(p.t)),Y(x),2.4,0,7); g.fill(); } }
+  const last=pts[pts.length-1], xl=last?last.v[k]:null, velho=!last||t1-last.t>5000;
+  if(xl!=null && !velho){ const l=lvl(cf,xl); g.fillStyle=[COL.ok,COL.warn,COL.crit][l]; g.strokeStyle=COL.surface; g.lineWidth=2; g.beginPath(); g.arc(X(last.t),Y(xl),5,0,7); g.fill(); g.stroke(); }
+  $('#lcv'+k).textContent = (xl==null||velho) ? 'sem sinal' : 'agora '+nf(xl,cf.dec)+' '+cf.un;
+}
+
+/* ---------- fonte 1: simulador (para testar sem a maquete e como plano B) ---------- */
+const SIMF = {
+  normal:'Normal', rolamento:'Rolamento gastando', aquec:'Motor aquecendo', freio:'Esteira freada', oleo:'Vazamento de óleo', eletrico:'Queda de tensão', pico:'Pico isolado', parada:'Parar a esteira', mudo:'Desligar o ESP32',
+};
+const gauss = () => { let u=0,v=0; while(!u) u=Math.random(); while(!v) v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); };
+function simSample(){
+  const f=LV.sim.falha, s=++LV.sim.t, n=a=>gauss()*a;
+  let vib=1.8+n(.12), temp=48+n(.3), corr=21+n(.4), tens=380+n(1.5), vel=0.5+n(.002), oleo=78+n(.2);
+  if(f==='rolamento') vib = Math.min(9.5, 1.8+0.12*s)+n(.15);
+  if(f==='aquec') temp = Math.min(104, 48+1.2*s)+n(.4);
+  if(f==='freio'){ corr=Math.min(41, 21+0.55*s)+n(.4); vel=Math.max(0.462, 0.5-0.0005*s)+n(.0015); temp=Math.min(88, 48+0.7*s)+n(.4); }
+  if(f==='oleo') oleo = Math.max(8, 78-1.3*s)+n(.2);
+  if(f==='eletrico') tens = 380-Math.min(48, 1.1*s)+n(2);
+  if(f==='pico' && s===1) vib = 8.6;
+  if(f==='parada'){ vel=0; corr=0.4+n(.05); vib=0.1+n(.02); }
+  return {id:LV.id, vib:+vib.toFixed(2), temp:+temp.toFixed(1), corr:+corr.toFixed(1), tens:+tens.toFixed(1), vel:+vel.toFixed(3), oleo:+Math.max(0,oleo).toFixed(1)};
+}
+function simStart(){ clearInterval(LV.sim.timer); LV.conn='on'; LV.sim.timer=setInterval(()=>{ if(LV.sim.falha!=='mudo') liveIngest(simSample()); else liveTick(); }, 1000); liveIngest(simSample()); }
+function simFalha(f){ LV.sim.falha=f; LV.sim.t=0; if(f==='pico') setTimeout(()=>{ if(LV.sim.falha==='pico'){ LV.sim.falha='normal'; renderLive(true); } }, 1200); renderLive(true); }
+
+/* ---------- fonte 2: Wi-Fi, MQTT 3.1.1 por WebSocket (cliente mínimo, sem biblioteca) ---------- */
+function mqttStart(){
+  const url=LV.cfg.broker.trim(), topic=LV.cfg.topic.trim();
+  if(location.protocol==='https:' && url.startsWith('ws:')){ liveErro('Num site https, o broker precisa ser wss:// (com TLS).'); return; }
+  let ws; try{ ws=new WebSocket(url, ['mqtt']); }catch(err){ liveErro('Endereço do broker inválido.'); return; }
+  LV.ws=ws; ws.binaryType='arraybuffer'; LV.conn='conectando';
+  const enc=new TextEncoder(), dec=new TextDecoder();
+  const str=s=>{ const b=enc.encode(s); return [b.length>>8, b.length&255, ...b]; };
+  const rem=n=>{ const o=[]; do{ let d=n%128; n=Math.floor(n/128); if(n>0) d|=128; o.push(d); }while(n>0); return o; };
+  const pkt=(h,body)=>new Uint8Array([h, ...rem(body.length), ...body]);
+  let rx=new Uint8Array(0);
+  ws.onopen=()=>{ ws.send(pkt(0x10, [...str('MQTT'), 4, 0x02, 0, 30, ...str('elevate-'+Math.random().toString(16).slice(2,10))])); };
+  ws.onmessage=ev=>{
+    const chunk=new Uint8Array(ev.data), m=new Uint8Array(rx.length+chunk.length); m.set(rx); m.set(chunk, rx.length); rx=m;
+    for(;;){
+      if(rx.length<2) break;
+      let len=0, mul=1, i=1, b; do{ if(i>=rx.length) return; b=rx[i++]; len+=(b&127)*mul; mul*=128; }while(b&128);
+      if(rx.length<i+len) break;
+      const type=rx[0]>>4, flags=rx[0]&15, body=rx.slice(i, i+len); rx=rx.slice(i+len);
+      if(type===2){ if(body[1]!==0){ liveErro('O broker recusou a conexão (código '+body[1]+').'); ws.close(); return; }
+        ws.send(pkt(0x82, [0,1, ...str(topic), 0])); clearInterval(LV.ping); LV.ping=setInterval(()=>{ if(ws.readyState===1) ws.send(new Uint8Array([0xC0,0])); }, 20000); }
+      else if(type===9){ if(body[2]===0x80) liveErro('O broker recusou a assinatura do tópico.'); else { LV.err=''; if(LV.conn!=='on') LV.conn='broker'; liveTick(); renderLiveIf(); } }
+      else if(type===3){ const tl=(body[0]<<8)|body[1], qos=(flags>>1)&3, st=2+tl+(qos?2:0);
+        try{ liveIngest(JSON.parse(dec.decode(body.slice(st)))); }catch(err){} }
+    }
+  };
+  ws.onerror=()=>{ LV.err='Não foi possível falar com o broker.'; };
+  ws.onclose=()=>{ clearInterval(LV.ping); if(LV.src==='mqtt' && LV.ws===ws){ LV.conn='erro'; LV.err=LV.err||'Conexão encerrada.'; liveTick(); renderLiveIf(); clearTimeout(LV.retry); LV.retry=setTimeout(()=>{ if(LV.src==='mqtt') mqttStart(); }, 3000); } };
+}
+
+/* ---------- fonte 3: cabo USB (Web Serial, Chrome ou Edge no computador) ---------- */
+async function serialStart(auto){
+  if(!('serial' in navigator)){ liveErro('Este navegador não tem Web Serial. Use Chrome ou Edge no computador.'); return; }
+  try{
+    let port=null;
+    if(auto){ const ps=await navigator.serial.getPorts(); port=ps[0]||null; if(!port){ liveParar(); return; } }
+    else port=await navigator.serial.requestPort();
+    await port.open({baudRate:115200}); LV.port=port; LV.conn='conectando'; renderLiveIf();
+    const td=new TextDecoderStream(); port.readable.pipeTo(td.writable).catch(()=>{}); const rd=td.readable.getReader(); LV.reader=rd;
+    let acc='';
+    for(;;){ const {value,done}=await rd.read(); if(done) break; acc+=value; let p; while((p=acc.indexOf('\n'))>=0){ const ln=acc.slice(0,p).trim(); acc=acc.slice(p+1); if(ln.startsWith('{')){ try{ liveIngest(JSON.parse(ln)); }catch(err){} } } }
+  }catch(err){ if(LV.src==='serial') liveErro(err && err.name==='NotFoundError' ? 'Nenhuma porta escolhida.' : 'Não foi possível abrir a porta USB: '+(err.message||err)); }
+}
+
+/* ---------- conectar e desconectar ---------- */
+function liveErro(msg){ LV.conn='erro'; LV.err=msg; liveTick(); renderLiveIf(); }
+const renderLiveIf = () => { if(view==='live') renderLive(); };
+function liveConectar(auto){
+  liveParar(true);
+  const f=LV.cfg.fonte; LV.src=f; LV.conn='conectando'; LV.err=''; LV.buf=[]; LV.key=''; LV.cur=null; LV.since=Date.now();
+  LV.cfg.on=true; saveLive();
+  if(f==='sim') simStart(); else if(f==='mqtt') mqttStart(); else serialStart(auto);
+  liveTick(); renderLiveIf(); paintLiveNav();
+}
+function liveParar(silencioso){
+  clearInterval(LV.sim.timer); clearInterval(LV.ping); clearTimeout(LV.retry);
+  const ws=LV.ws; LV.ws=null; if(ws){ try{ ws.close(); }catch(err){} }
+  const rd=LV.reader, pt=LV.port; LV.reader=null; LV.port=null; if(rd){ rd.cancel().catch(()=>{}).then(()=>pt&&pt.close().catch(()=>{})); } else if(pt) pt.close().catch(()=>{});
+  LV.src=null; LV.conn='off';
+  if(!silencioso){ LV.cfg.on=false; saveLive(); LV.key=''; LV.cur=liveEval(); paintTop(); renderLiveIf(); paintLiveNav(); if(view==='painel') renderPainel(); if(view==='fila') renderFila(); }
+}
+document.querySelectorAll('#lFonte button').forEach(b=>b.onclick=()=>{ if(LV.cfg.fonte===b.dataset.f) return; const era=!!LV.src; LV.cfg.fonte=b.dataset.f; saveLive(); if(era) liveParar(); renderLive(); });
+$('#lConn').onclick=()=>{ if(LV.src) liveParar(); else { LV.cfg.broker=$('#lBroker').value.trim()||LV.cfg.broker; LV.cfg.topic=$('#lTopic').value.trim()||LV.cfg.topic; liveConectar(false); } };
+['#lBroker','#lTopic'].forEach(s=>$(s).onchange=()=>{ LV.cfg.broker=$('#lBroker').value.trim(); LV.cfg.topic=$('#lTopic').value.trim(); saveLive(); });
+$('#lSim').addEventListener('click',ev=>{ const b=ev.target.closest('[data-f]'); if(b) simFalha(b.dataset.f); });
+document.querySelectorAll('#lJan button').forEach(b=>b.onclick=()=>{ LV.cfg.janela=+b.dataset.s; saveLive(); paintLiveCtrls(); liveCharts(); });
+$('#lv3d').onclick=()=>{ if(S.no3d){ toast('Este navegador não tem WebGL. O 3D não está disponível aqui.'); return; } S.leve=false; save(); renderLive(); };
+$('#lvLeve').onclick=()=>{ S.leve=true; save(); renderLive(); };
+$('#lvGeral').onclick=()=>Twin.view('geral');
+$('#lvMaq').onclick=()=>Twin.view('maq');
+$('#lSim').innerHTML='<span class="lbl">Provocar uma falha (simulador)</span><div class="simbtns">'+Object.entries(SIMF).map(([k,n])=>'<button class="btn sm" data-f="'+k+'" aria-pressed="false">'+n+'</button>').join('')+'</div>';
+window.addEventListener('resize', ()=>{ if(view==='live') liveCharts(); });
+LV.cur=liveEval();
+setTimeout(()=>{ if(LV.cfg.on) liveConectar(true); }, 0);  /* reconecta a fonte usada por último */
+
 
 /* ================= toast + início ================= */
 let tT=null;

@@ -29,6 +29,7 @@ O Elevate é um tablet com Raspberry Pi para a equipe de manutenção. Ele mostr
 | Atendimentos | Ordens de serviço e entrada e saída do técnico, com cronômetro |
 | Indicadores | Disponibilidade, tempo de reparo e de resposta, antecedência ALERTA → CRÍTICO, comparativos e ranking |
 | Sincronização | Simulação do tablet sem conexão e fila de envio |
+| Ao vivo | Escada MAQ-01 da maquete com ESP32: 1 leitura por segundo por Wi-Fi (MQTT) ou cabo USB, gêmeo digital girando ou parado conforme a esteira, diagnóstico e gráficos ao vivo. Tem simulador embutido para testar sem a maquete |
 | Dados | Gera um dataset novo no próprio navegador e exporta os CSVs |
 
 O painel abre em **tempo real**: segue a hora do próprio aparelho, sem nenhum ajuste. Os 90 dias de dados simulados terminam hoje, e as leituras de 6h, 10h, 14h, 18h e 22h entram quando o horário chega.
@@ -48,6 +49,7 @@ Para apresentar, o botão **Modo demonstração** libera o relógio controlável
 | `dados/` | Dataset oficial em CSV (semente 2026), o gerador `gerar_dataset.py` e o dicionário de dados |
 | `codigo-fonte/` | `template.html` (código do app), `build.py` (gera o `index.html` a partir dos CSVs) e `three.min.js` |
 | `docs/` | PRD do MVP e guia de apresentação |
+| `maquete/` | Firmware do ESP32, projeto Wokwi, lista de materiais, ligações e roteiro da demonstração ao vivo |
 
 Para gerar o `index.html` de novo a partir dos CSVs (Python 3 e pandas):
 
@@ -64,4 +66,4 @@ HTML, CSS e JavaScript puro num arquivo só; gráficos em canvas próprio; gême
 
 ## Limitações
 
-Limites de ALERTA e CRÍTICO, grupo crítica / não crítica e prazos de despacho são hipóteses do grupo, a validar com a engenharia da Motiva. Não há integração com sensores reais, SAP ou servidor: a sincronização é simulada. O sistema é só consultivo e não comanda as escadas.
+Limites de ALERTA e CRÍTICO, grupo crítica / não crítica e prazos de despacho são hipóteses do grupo, a validar com a engenharia da Motiva. Fora a maquete MAQ-01, não há integração com sensores reais, SAP ou servidor: a sincronização é simulada. Os valores da maquete são convertidos para a escala de uma escada real (veja `maquete/README.md`). O sistema é só consultivo e não comanda as escadas.
