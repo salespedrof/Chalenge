@@ -320,6 +320,28 @@ body.modo-real .demo-only{display:none!important}
 .live{display:inline-flex;align-items:center;gap:6px}
 .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--ok-bg)}
 body.apres .techpill{display:flex}
+/* ---------- login e perfis ---------- */
+.techpill{display:flex}
+.techpill .sair{min-height:36px;padding:4px 12px;font-size:.85rem;margin-left:4px}
+body.papel-tec .sup-only{display:none!important}
+.login{position:fixed;inset:0;z-index:80;background:var(--bg);overflow:auto;display:flex;justify-content:center;padding:48px var(--gut,24px)}
+.login[hidden]{display:none!important}
+.login-box{width:100%;max-width:980px;display:flex;flex-direction:column;gap:22px}
+.login-brand{display:flex;align-items:center;gap:12px;color:var(--brand)}
+.login-brand b{font-family:var(--f-display);font-size:1.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
+.login h1{font-size:2rem}
+.login .lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.ucard{display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px 16px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);color:var(--fg);min-height:92px}
+.ucard:hover{border-color:var(--brand)}
+.ucard[aria-pressed="true"]{border-color:var(--brand);box-shadow:inset 0 0 0 2px var(--brand)}
+.ucard b{font-size:1.02rem}
+.ucard small{color:var(--muted);font-size:.82rem;line-height:1.3}
+.ucard .papel{font-family:var(--f-display);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.ucard.sup{border-color:var(--brand);background:linear-gradient(rgba(255,210,60,.08),rgba(255,210,60,.08)),var(--surface)}
+.lpin{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.lpin input{width:160px;font-size:1.3rem;letter-spacing:.4em;text-align:center}
+.resp{font-size:.88rem;color:var(--muted)}
+.resp b{color:var(--fg)}
 body.apres .clock strong{font-size:1.15rem}
 body.apres .sim-note{display:none}
 .tend-list{display:flex;flex-direction:column;gap:8px}
@@ -396,10 +418,10 @@ body.apres .sim-note{display:none}
     <button class="nav" data-view="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Painel</button>
     <button class="nav" data-view="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 5l1 1 2-2M4 11l1 1 2-2" stroke-linejoin="round"/><circle cx="5" cy="18" r="1.3" fill="currentColor"/></svg>Fila<span class="badge" id="badgeFila" hidden></span></button>
     <button class="nav" data-view="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg>Atendi&shy;mentos<span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
-    <button class="nav" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
+    <button class="nav sup-only" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
     <button class="nav" data-view="sync"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Sincronização<span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span></button>
-    <button class="nav" data-view="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Ao vivo<span class="live-dot" id="badgeLive" hidden></span></button>
-    <button class="nav" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
+    <button class="nav sup-only" data-view="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Ao vivo<span class="live-dot" id="badgeLive" hidden></span></button>
+    <button class="nav sup-only" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
   </nav>
 
   <main>
@@ -418,8 +440,8 @@ body.apres .sim-note{display:none}
         <label class="field demo-only"><span>Cenário de demonstração</span><select id="selCen"><option value="">Escolher…</option></select></label>
       </div>
       <div class="who">
-        <label class="field hide-apres"><span>Técnico no tablet</span><select id="selTec"></select></label>
-        <div class="techpill" id="techPill"><div><small>Técnico responsável</small><b id="techName">—</b></div><i id="techIni">—</i></div>
+        <label class="field" style="display:none"><span>Técnico no tablet</span><select id="selTec"></select></label>
+        <div class="techpill" id="techPill"><i id="techIni">—</i><div><small id="techPapel">Usuário</small><b id="techName">—</b></div><button class="btn sm sair" id="btnSair" title="Trocar de usuário">Sair</button></div>
         <button class="btn sm" id="btnModo" title="Alterna entre a hora do aparelho e o relógio de demonstração"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="modoTxt">Modo demonstração</span></button>
         <button class="btn sm" id="btnApres" title="Esconde os controles da simulação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span id="apresTxt">Apresentar</span></button>
         <button class="net" id="netPill" title="Abrir sincronização"><span class="dot"></span><span id="netTxt">Online</span></button>
@@ -429,7 +451,7 @@ body.apres .sim-note{display:none}
     <!-- TELA 1 -->
     <section class="view" id="v-painel" aria-label="Painel da frota">
       <div class="vhead">
-        <div><h2>Painel da Frota</h2><p id="painelSub">197 escadas rolantes da Linha 4-Amarela. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o histórico.</p></div>
+        <div><h2 id="painelTit">Painel da Frota</h2><p id="painelSub">197 escadas rolantes da Linha 4-Amarela. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o histórico.</p></div>
         <span class="sim-note" id="simNote">Dados simulados · leituras às 6h, 10h, 14h, 18h e 22h</span>
       </div>
       <div class="counters" id="counters"></div>
@@ -620,6 +642,19 @@ body.apres .sim-note{display:none}
 
 <div class="overlay" id="ovl" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal"></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
+<div class="login" id="login" hidden>
+  <div class="login-box">
+    <div class="login-brand"><svg width="44" height="44" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 33h8v-8h8v-8h8V9h6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 5h6v6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Elevate</b></div>
+    <div><h1>Entrar</h1><p class="muted" style="margin:6px 0 0">Escolha o seu usuário. O supervisor vê todas as escadas; cada técnico vê as escadas sob a responsabilidade dele.</p></div>
+    <div><span class="lbl">Supervisão</span><div class="lgrid" id="lSup" style="margin-top:8px"></div></div>
+    <div><span class="lbl">Técnicos de manutenção</span><div class="lgrid" id="lTec" style="margin-top:8px"></div></div>
+    <div class="lpin">
+      <label class="field"><span>PIN</span><input id="lPin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="····"></label>
+      <button class="btn primary" id="lEntrar" disabled>Entrar</button>
+      <span class="hint" id="lHint">Protótipo: o PIN de todos os usuários é 1234.</span>
+    </div>
+  </div>
+</div>
 
 <!--__THREE__-->
 <script id="elevate-dataset" type="application/json">/*__DATA__*/</script>
@@ -731,7 +766,7 @@ function rebuildSS(e){
 
 /* ================= estado do tablet (RN-08) ================= */
 const LS='elevate-tablet-v1';
-let S = {user:[], ov:{}, ev:[], hist:[], offline:false, tec:'T01', seq:1, now:null, speed:1, paused:false, gen:null, os:[], osSeq:0, leve:false, apres:false, modo:'real', anchor:null, demoNow:null};
+let S = {user:[], ov:{}, ev:[], hist:[], offline:false, tec:'T01', seq:1, now:null, speed:1, paused:false, gen:null, os:[], osSeq:0, leve:false, apres:false, modo:'real', anchor:null, demoNow:null, login:null, resp:null};
 let memoryOnly = false;
 function load(){ try{ const t=localStorage.getItem(LS); if(t) Object.assign(S, JSON.parse(t)); }catch(err){ memoryOnly=true; } }
 function save(){ try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(err){ memoryOnly=true; } }
@@ -804,15 +839,41 @@ function current(e){
 let TEND=[];
 function computeCurrent(){ IDX=idxAt(NOW); CUR = E.map(current); TEND = E.map(e => CUR[e.ix].code===0 && CUR[e.ix].kind==='ok' ? tendenciaPiora(e,IDX) : null); }
 
+/* ================= perfis: supervisor e técnico ================= */
+const SUP = {id:'S01', nome:'Ricardo Souza', cargo:'Supervisor do CCO'};
+const PIN_DEMO = '1234';
+const isTec = () => !!(S.login && S.login.papel==='tec');
+const isSup = () => !!(S.login && S.login.papel==='sup');
+const respDe = e => S.resp && S.resp[e.id];
+const meu = e => !isTec() || respDe(e)===S.login.id;
+/* toda escada tem um técnico: distribuição inicial em trechos seguidos da linha, equilibrando a quantidade */
+function distribuicaoPadrao(){
+  const ids=Object.keys(TECS), n=E.length, out={};
+  E.forEach((e,i)=>{ out[e.id]=ids[Math.min(ids.length-1, Math.floor(i*ids.length/n))]; });
+  return out;
+}
+function garantirResp(){
+  const pad=distribuicaoPadrao(); S.resp=S.resp||{}; let mudou=false;
+  E.forEach(e=>{ if(!S.resp[e.id] || !TECS[S.resp[e.id]]){ S.resp[e.id]=pad[e.id]; mudou=true; } });
+  if(mudou) save();
+}
+const escadasDe = tec => E.filter(e=>S.resp[e.id]===tec);
+function trechoDe(tec){
+  const cods=[...new Set(escadasDe(tec).map(e=>e.cod))];
+  if(!cods.length) return 'nenhuma escada';
+  const nomes=cods.map(c=>ESTN[c]);
+  return nomes.length===1 ? nomes[0] : nomes[0]+' a '+nomes[nomes.length-1];
+}
+
 /* RN-03 + RN-04 */
 function fila(){
   const P=CFG.prioridade;
-  return E.filter(e=>CUR[e.ix].code===1||CUR[e.ix].code===2).map(e=>{
+  return E.filter(e=>meu(e)&&(CUR[e.ix].code===1||CUR[e.ix].code===2)).map(e=>{
     const c=CUR[e.ix], h=Math.max(0,(NOW-c.since)/60);
     const score=(c.code===2?P.CRITICO:P.ALERTA)+(e.crit?P.grupoCritica:0)+P.fluxo*e.fluxo+Math.min(h,P.horasMax);
     const d = c.code===2 ? (e.crit?0:1) : (e.crit?2:3);
     return {e,c,h,score,d};
-  }).concat(typeof LV!=='undefined' && liveFilaItem() || []).sort((a,b)=>a.d-b.d || b.score-a.score || b.h-a.h);
+  }).concat(!isTec() && typeof LV!=='undefined' && liveFilaItem() || []).sort((a,b)=>a.d-b.d || b.score-a.score || b.h-a.h);
 }
 const despPill = d => '<span class="desp d'+d+'">'+(d===0?'● ':'')+CFG.despacho[d].l+'</span>';
 const pill = (code,txt) => '<span class="pill s'+code+'">'+ICON[code]+(txt||STL[code])+'</span>';
@@ -853,7 +914,12 @@ $('#selCen').onchange = e=>{
   toast(c.id+': '+c.dica, 6000);
 };
 $('#selTec').onchange = e=>{ S.tec=e.target.value; save(); paintTech(); };
-function paintTech(){ const n=TECS[S.tec]||S.tec; $('#techName').textContent=n; $('#techIni').textContent=n.split(' ').map(x=>x[0]).join('').slice(0,2); }
+function paintTech(){
+  const L=S.login, n = !L ? '—' : L.papel==='sup' ? SUP.nome : (TECS[L.id]||L.id);
+  $('#techName').textContent=n; $('#techIni').textContent=n.split(' ').map(x=>x[0]).join('').slice(0,2);
+  $('#techPapel').textContent = !L ? 'Usuário' : L.papel==='sup' ? SUP.cargo : 'Técnico · '+escadasDe(L.id).length+' escadas';
+  document.body.classList.toggle('papel-tec', isTec());
+}
 function paintApres(){ document.body.classList.toggle('apres', !!S.apres); $('#apresTxt').textContent = S.apres ? 'Sair da apresentação' : 'Apresentar'; paintTech(); }
 $('#btnApres').onclick=()=>{ S.apres=!S.apres; save(); paintApres(); };
 function paintModo(){ document.body.classList.toggle('modo-real', isReal()); $('#modoTxt').textContent = isReal() ? 'Modo demonstração' : 'Voltar ao tempo real'; }
@@ -909,13 +975,14 @@ function paintTop(){
   const pend = S.ev.filter(x=>x.status==='pendente').length;
   const net=$('#netPill'); net.classList.toggle('off', S.offline);
   $('#netTxt').innerHTML = (S.offline?'Sem conexão':'Online') + (pend?' · <span class="pend">'+pend+' pendente'+(pend>1?'s':'')+'</span>':'') + (S.offline||!S.hist.length?'':' · sinc. '+new Date(S.hist[S.hist.length-1].real).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}));
-  const imed = E.filter(e=>CUR[e.ix].code===2&&e.crit).length + (typeof LV!=='undefined' && LV.cur && LV.cur.code===2 ? 1 : 0);
+  const imed = E.filter(e=>meu(e)&&CUR[e.ix].code===2&&e.crit).length + (!isTec() && typeof LV!=='undefined' && LV.cur && LV.cur.code===2 ? 1 : 0);
   const bf=$('#badgeFila'); bf.hidden=!imed; bf.textContent=imed;
-  const op = E.filter(e=>CUR[e.ix].code===3).length;
+  const op = E.filter(e=>meu(e)&&CUR[e.ix].code===3).length;
   const ba=$('#badgeAt'); ba.hidden=!op; ba.textContent=op;
   const bs=$('#badgeSync'); bs.hidden=!pend; bs.textContent=pend;
 }
 function show(v){
+  if(isTec() && ['ind','dados','live'].includes(v)) v='painel';
   if(v!=='detalhe'){ prevView = v; Twin.stop(); }
   view=v;
   document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-'+v);
@@ -950,17 +1017,21 @@ function cardHTML(e){
     '<div class="pills">'+pill(c.code)+(tr?'<span class="chip-trend">↗ tendência</span>':'')+(os?'<span class="chip-os">'+os.id+'</span>':'')+'</div><div class="why">'+why+'</div>'+met+sp+'</button>';
 }
 function renderPainel(){
-  const n=[0,0,0,0]; CUR.forEach(c=>n[c.code]++);
+  const VE=E.filter(meu);
+  const n=[0,0,0,0]; VE.forEach(e=>n[CUR[e.ix].code]++);
   const SUB=['Sem anomalias','Programar inspeção','Intervenção imediata','Técnico em campo'];
-  const nt=TEND.filter(Boolean).length, online=E.filter(e=>!V.every((_,k)=>val(e,k,IDX)==null)).length;
-  $('#painelSub').textContent = E.length+' escadas rolantes da Linha 4-Amarela · '+online+' de '+E.length+' sensores respondendo. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o histórico.';
+  const nt=VE.filter(e=>TEND[e.ix]).length, online=VE.filter(e=>!V.every((_,k)=>val(e,k,IDX)==null)).length;
+  $('#painelSub').textContent = isTec()
+    ? 'Suas '+VE.length+' escadas, de '+trechoDe(S.login.id)+' · '+online+' de '+VE.length+' sensores respondendo. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o procedimento.'
+    : E.length+' escadas rolantes da Linha 4-Amarela · '+online+' de '+E.length+' sensores respondendo. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o histórico.';
+  $('#painelTit').textContent = isTec() ? 'Minhas escadas' : 'Painel da Frota';
   $('#counters').innerHTML = [0,1,2,3].map(k=>'<button class="counter s'+k+'" data-st="'+k+'" aria-pressed="'+(filt.status===k)+'">'+ICON[k]+'<span class="n num">'+n[k]+'</span><span class="t">'+STL[k]+'</span><span class="sub">'+SUB[k]+'</span></button>').join('')+
     '<button class="counter tr" data-st="t" aria-pressed="'+(filt.status==='t')+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="n num">'+nt+'</span><span class="t">TENDÊNCIA</span><span class="sub">BOM hoje, ALERTA previsto em 48 h</span></button>';
   document.querySelectorAll('.counter').forEach(b=>b.onclick=()=>{ const k=b.dataset.st==='t'?'t':+b.dataset.st; filt.status = filt.status===k?null:k; renderPainel(); });
-  const imed = E.filter(e=>CUR[e.ix].code===2&&e.crit);
+  const imed = VE.filter(e=>CUR[e.ix].code===2&&e.crit);
   $('#banner').innerHTML = imed.length ? '<div class="banner">'+ICON[2]+'<div><strong>'+imed.length+' escada'+(imed.length>1?'s':'')+' do grupo crítica em CRÍTICO: despacho imediato</strong><span class="muted">'+imed.slice(0,6).map(e=>e.id+' ('+esc(CUR[e.ix].txt)+')').join(' · ')+(imed.length>6?' …':'')+'</span></div><button class="btn danger" id="bannerGo">Ver na fila</button></div>' : '';
   if(imed.length) $('#bannerGo').onclick=()=>show('fila');
-  const list = E.filter(e=>{
+  const list = VE.filter(e=>{
     const c=CUR[e.ix];
     if(filt.status==='t'){ if(!TEND[e.ix]) return false; } else if(filt.status!==null && c.code!==filt.status) return false;
     if(filt.busca && !e.id.includes(filt.busca)) return false;
@@ -977,12 +1048,12 @@ function renderPainel(){
     html += '<section class="station"><div class="station-h"><h3><span>'+st.cod+'</span>'+esc(st.nome)+'</h3><div class="mini"><span>'+es.length+' escadas</span>'+
       (m[2]?'<b style="color:var(--crit)">'+m[2]+' crítico</b>':'')+(m[1]?'<b style="color:var(--warn)">'+m[1]+' alerta</b>':'')+(m[3]?'<b style="color:var(--maint)">'+m[3]+' em manutenção</b>':'')+'</div></div><div class="grid">'+es.map(cardHTML).join('')+'</div></section>';
   }
-  $('#frota').innerHTML = livePainelHTML() + (html || '<div class="empty">Nenhuma escada com esses filtros.</div>');
+  $('#frota').innerHTML = (isTec() ? '' : livePainelHTML()) + (html || '<div class="empty">Nenhuma escada com esses filtros.</div>');
 }
 $('#frota').addEventListener('click', ev=>{ const b=ev.target.closest('.card'); if(b) openDetalhe(b.dataset.id); });
 
 /* ================= TELA 2: detalhe ================= */
-function openDetalhe(id){ if(id===LV.id) return show('live'); detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
+function openDetalhe(id){ if(id===LV.id) return isTec() ? null : show('live'); if(isTec() && BYID[id] && !meu(BYID[id])){ toast(id+' está com '+(TECS[respDe(BYID[id])]||'outro técnico')+'. Fale com o supervisor.'); return; } detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
   document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); window.scrollTo(0,0); renderAll(); }
 $('#btnBack').onclick=()=>show(prevView||'painel');
 document.querySelectorAll('#dPer button').forEach(b=>b.onclick=()=>{ periodo=+b.dataset.d; document.querySelectorAll('#dPer button').forEach(x=>x.setAttribute('aria-pressed', x===b)); drawCharts(); });
@@ -996,7 +1067,7 @@ function renderDetalhe(){
   const act = (c.code===3 ? '<button class="btn maint" id="dAct">'+ICON[3]+'Finalizar atendimento</button>' : '<button class="btn primary" id="dAct">'+ICON[3]+'Iniciar atendimento</button>')+
     ((os||c.code===3) ? '' : '<button class="btn" id="dOS">'+ICON_OS+'Abrir OS</button>')+'<button class="btn" id="dProc">'+ICON_BOOK+'Procedimento</button>';
   const osl = os ? '<div class="osline"><span class="chip-os">'+os.id+'</span>'+os.status+' · '+os.tec+' '+(TECS[os.tec]||'')+' · prazo '+fDH(os.prazo)+(NOW>os.prazo && os.status==='aberta'?' <b style="color:var(--crit)">atrasada</b>':'')+'</div>' : '';
-  $('#dHead').innerHTML = '<div class="dhead s'+c.code+'"><div><div class="id">'+e.id+'</div><div class="meta"><span>'+esc(ESTN[e.cod])+'</span><span>'+e.fab+'</span><span>'+(e.crit?'Grupo crítica':'Grupo não crítica')+'</span><span>Fluxo relativo '+nf(e.fluxo,1)+'</span></div>'+osl+'</div>'+
+  $('#dHead').innerHTML = '<div class="dhead s'+c.code+'"><div><div class="id">'+e.id+'</div><div class="meta"><span>'+esc(ESTN[e.cod])+'</span><span>'+e.fab+'</span><span>'+(e.crit?'Grupo crítica':'Grupo não crítica')+'</span><span>Fluxo relativo '+nf(e.fluxo,1)+'</span></div><div class="resp">Responsável: <b>'+(TECS[respDe(e)]||'—')+'</b>'+(isTec()?'':' · '+(respDe(e)||''))+'</div>'+osl+'</div>'+
     '<div class="st">'+pill(c.code)+'<span>'+esc(c.txt)+'</span><span class="muted" style="font-size:.88rem">'+sinceTxt+'</span></div><div class="act">'+act+'</div></div>';
   $('#dAct').onclick = ()=> c.code===3 ? modalSaida(c.at) : modalEntrada(e);
   if($('#dOS')) $('#dOS').onclick = ()=>modalOS(e);
@@ -1134,7 +1205,7 @@ function renderFila(){
     '<div class="acts"><button class="btn sm" data-ver="'+x.e.id+'">Ver escada</button>'+(osAberta(x.e.id)?'<span class="chip-os" style="align-self:center">'+osAberta(x.e.id).id+'</span>':'<button class="btn sm" data-os="'+x.e.id+'">Abrir OS</button>')+'<button class="btn sm primary" data-ini="'+x.e.id+'">Iniciar atendimento</button></div></div>').join('')
     : '<div class="empty">Nenhuma escada em ALERTA ou CRÍTICO com esses filtros.</div>';
   liveFilaFix();
-  const tl=E.filter(e=>TEND[e.ix]&&(!fe||e.cod===fe)&&(!fg||(fg==='c')===e.crit)).sort((a,b)=>TEND[a.ix].tA-TEND[b.ix].tA);
+  const tl=E.filter(e=>meu(e)&&TEND[e.ix]&&(!fe||e.cod===fe)&&(!fg||(fg==='c')===e.crit)).sort((a,b)=>TEND[a.ix].tA-TEND[b.ix].tA);
   $('#qTend').innerHTML = '<div class="vhead" style="margin-top:8px"><div><h3>Tendência de piora</h3><p>BOM agora, mas com piora consistente: ALERTA previsto em até 48 h. Dá para agir antes do alarme.</p></div></div>'+
     (tl.length ? '<div class="tend-list">'+tl.map(e=>{ const t=TEND[e.ix], cf=V[t.k]; return '<div class="qrow"><div class="pos" style="color:var(--brand)">↗</div><div><div class="code">'+e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[e.cod])+' · '+(e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+'</div></div><div class="c-h"><b>'+cf.nome+'</b><div style="font-size:.9rem">'+fmtTaxa(t)+'</div></div><div class="c-d muted" style="font-size:.88rem">ALERTA em<br>'+fmtPrazo(t.tA)+'</div><div class="c-d">'+sparkSVG(e,t.k,IDX,90,28)+'</div><div class="acts"><button class="btn sm" data-ver="'+e.id+'">Ver escada</button>'+(osAberta(e.id)?'<span class="chip-os" style="align-self:center">'+osAberta(e.id).id+'</span>':'<button class="btn sm" data-os="'+e.id+'">Abrir OS</button>')+'</div></div>'; }).join('')+'</div>'
       : '<div class="empty">Nenhuma escada com tendência de piora agora.</div>');
@@ -1155,7 +1226,7 @@ function modalEntrada(e){
   const tipo = mot==='P1 mensal'?'preventiva':'corretiva';
   modalOpen('<h2 id="mTitle">Entrada do técnico · '+e.id+'</h2>'+
     '<dl class="facts"><dt>Estação</dt><dd>'+esc(ESTN[e.cod])+'</dd><dt>Status agora</dt><dd>'+pill(c.code)+' '+esc(c.txt)+'</dd><dt>Horário</dt><dd class="mono">'+fDH(NOW)+'</dd></dl>'+
-    '<label class="field"><span>Técnico</span><select id="mTec">'+Object.entries(TECS).map(([k,n])=>'<option value="'+k+'"'+(k===S.tec?' selected':'')+'>'+k+' · '+n+'</option>').join('')+'</select></label>'+
+    '<label class="field"><span>Técnico</span><select id="mTec"'+(isTec()?' disabled':'')+'>'+Object.entries(TECS).map(([k,n])=>'<option value="'+k+'"'+(k===(isTec()?S.login.id:(respDe(e)||S.tec))?' selected':'')+'>'+k+' · '+n+'</option>').join('')+'</select></label>'+
     '<div class="field"><span>Tipo</span><div class="radios"><label><input type="radio" name="mTipo" value="corretiva"'+(tipo==='corretiva'?' checked':'')+'>Corretiva</label><label><input type="radio" name="mTipo" value="preventiva"'+(tipo==='preventiva'?' checked':'')+'>Preventiva P1</label></div></div>'+
     '<label class="field"><span>Motivo</span><select id="mMot">'+MOTIVOS_FORM.map(m=>'<option value="'+m+'"'+(m===mot?' selected':'')+'>'+MOT_L[m]+'</option>').join('')+'</select></label>'+
     '<p class="hint" style="margin:0">Ao confirmar, a escada passa para EM MANUTENÇÃO e o cronômetro começa.'+(S.offline?' O tablet está sem conexão: o registro fica pendente até sincronizar.':'')+'</p>'+
@@ -1198,16 +1269,16 @@ function modalSaida(a){
     });
 }
 function renderAtend(){
-  const oss=[...(S.os||[])].reverse();
+  const oss=[...(S.os||[])].filter(o=>!isTec()||o.tec===S.login.id).reverse();
   $('#aOS').innerHTML = oss.length ? '<table><thead><tr><th>Número</th><th>Escada</th><th>Prioridade</th><th>Diagnóstico</th><th>Prazo</th><th>Técnico</th><th>Status</th><th>Sincronização</th></tr></thead><tbody>'+
     oss.map(o=>'<tr class="click" data-row="'+o.esc+'"><td class="mono">'+o.id+'</td><td class="code">'+o.esc+'</td><td>'+despPill(o.desp)+'</td><td>'+esc(o.titulo)+'</td><td class="num">'+fDH(o.prazo)+(o.status==='aberta'&&NOW>o.prazo?' <b style="color:var(--crit)">atrasada</b>':'')+'</td><td>'+o.tec+'</td><td>'+o.status+'</td><td><span class="sync '+(evPend(o.id)?'p">Pendente':'ok">Sincronizado')+'</span></td></tr>').join('')+'</tbody></table>'
     : '<div class="empty">Nenhuma OS emitida. Abra uma pelo detalhe da escada ou pela Fila.</div>';
-  const open=[]; E.forEach(e=>{ const a=openAt(e); if(a) open.push({e,a}); }); open.sort((x,y)=>x.a.ent-y.a.ent);
+  const open=[]; E.forEach(e=>{ const a=openAt(e); if(a && (!isTec()||a.tec===S.login.id)) open.push({e,a}); }); open.sort((x,y)=>x.a.ent-y.a.ent);
   $('#aOpen').innerHTML = open.length ? open.map(({e,a})=>'<div class="ocard"><div class="row"><span class="code">'+e.id+'</span>'+pill(3)+'</div><div class="big" data-since="'+a.ent+'" data-fmt="t">'+fTimer(NOW-a.ent)+'</div>'+
     '<div class="muted" style="font-size:.9rem">'+esc(ESTN[e.cod])+' · '+esc(MOT_L[a.motivo]||a.motivo)+'<br>Entrada '+fDH(a.ent)+' · '+a.tec+' '+(TECS[a.tec]||'')+'</div>'+
     '<div class="row"><button class="btn sm" data-ver="'+e.id+'">Ver escada</button><button class="btn sm maint" data-fim="'+a.id+'|'+e.id+'">Finalizar atendimento</button></div></div>').join('')
     : '<div class="empty">Nenhum atendimento em andamento neste horário.</div>';
-  const mine=[...S.user.filter(a=>a.ent<=NOW), ...Object.keys(S.ov).map(id=>DSAT[id]).filter(Boolean)].sort((x,y)=>y.ent-x.ent);
+  const mine=[...S.user.filter(a=>a.ent<=NOW), ...Object.keys(S.ov).map(id=>DSAT[id]).filter(Boolean)].filter(a=>!isTec()||a.tec===S.login.id).sort((x,y)=>y.ent-x.ent);
   $('#aMine').innerHTML = mine.length ? '<table><thead><tr><th>Escada</th><th>Entrada</th><th>Saída</th><th class="n">Duração</th><th>Tipo</th><th>Motivo</th><th>Componente · ação</th><th>Técnico</th><th>Sincronização</th></tr></thead><tbody>'+
     mine.map(a=>{ const open=a.sai==null||a.sai>NOW; return '<tr class="click" data-row="'+a.esc+'"><td class="code">'+a.esc+'</td><td class="num">'+fDH(a.ent)+'</td><td class="num">'+(open?'<b style="color:var(--maint)">em aberto</b>':fDH(a.sai))+'</td><td class="n">'+(open?'<span data-since="'+a.ent+'">'+fDur(NOW-a.ent)+'</span>':fDur(a.sai-a.ent))+'</td><td>'+a.tipo+'</td><td>'+esc(MOT_L[a.motivo]||a.motivo)+'</td><td>'+(a.componente?esc(a.componente+' · '+a.acao):'—')+'</td><td>'+a.tec+'</td><td>'+syncTag(a)+'</td></tr>'; }).join('')+'</tbody></table>'
     : '<div class="empty">Nenhum registro feito neste tablet ainda. Abra uma escada no Painel ou na Fila e toque em “Iniciar atendimento”.</div>';
@@ -2204,6 +2275,30 @@ setTimeout(()=>{ if(LV.cfg.on) liveConectar(true); }, 0);  /* reconecta a fonte 
 /* ================= toast + início ================= */
 let tT=null;
 function toast(msg,ms){ const t=$('#toast'); t.textContent=msg; t.hidden=false; clearTimeout(tT); tT=setTimeout(()=>t.hidden=true, ms||3500); }
+/* ================= tela de login ================= */
+let loginSel=null;
+function renderLogin(){
+  garantirResp();
+  $('#lSup').innerHTML='<button class="ucard sup" data-u="sup|'+SUP.id+'" aria-pressed="'+(loginSel==='sup|'+SUP.id)+'"><span class="papel">Supervisor</span><b>'+SUP.nome+'</b><small>'+SUP.cargo+' · todas as '+E.length+' escadas</small></button>';
+  $('#lTec').innerHTML=Object.entries(TECS).map(([k,n])=>'<button class="ucard" data-u="tec|'+k+'" aria-pressed="'+(loginSel==='tec|'+k)+'"><span class="papel">Técnico · '+k+'</span><b>'+n+'</b><small>'+escadasDe(k).length+' escadas · '+esc(trechoDe(k))+'</small></button>').join('');
+  $('#lEntrar').disabled=!loginSel;
+}
+function abrirLogin(){ loginSel=null; $('#lPin').value=''; $('#lHint').textContent='Protótipo: o PIN de todos os usuários é 1234.'; $('#lHint').style.color=''; renderLogin(); $('#login').hidden=false; }
+function entrar(){
+  if(!loginSel) return;
+  if($('#lPin').value!==PIN_DEMO){ $('#lHint').textContent='PIN incorreto. No protótipo, o PIN é 1234.'; $('#lHint').style.color='var(--crit)'; $('#lPin').focus(); return; }
+  const [papel,id]=loginSel.split('|'); S.login={papel,id,em:Date.now()}; if(papel==='tec') S.tec=id; save();
+  $('#login').hidden=true; Object.assign(filt,{status:null,busca:'',est:'',grupo:'',fab:''});
+  paintTech(); show('painel'); toast(papel==='sup' ? 'Bem-vindo, '+SUP.nome+'. Você vê todas as escadas.' : 'Bem-vindo, '+TECS[id]+'. Você vê as suas '+escadasDe(id).length+' escadas.');
+}
+['#lSup','#lTec'].forEach(q=>$(q).addEventListener('click',ev=>{ const b=ev.target.closest('[data-u]'); if(!b) return; loginSel=b.dataset.u; renderLogin(); $('#lPin').focus(); }));
+$('#lEntrar').onclick=entrar;
+$('#lPin').addEventListener('keydown',ev=>{ if(ev.key==='Enter') entrar(); });
+$('#lPin').addEventListener('input',()=>{ if($('#lPin').value.length===4 && loginSel) entrar(); });
+$('#btnSair').onclick=()=>{ S.login=null; save(); document.body.classList.remove('papel-tec'); abrirLogin(); };
+garantirResp();
+
 computeCurrent(); paintModo(); paintClock(); paintApres(); show('painel');
+if(!S.login) abrirLogin();
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{ COL=null; if(view==='detalhe') drawCharts(); });
 </script>
