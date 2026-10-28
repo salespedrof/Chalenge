@@ -648,7 +648,7 @@ body.apres .sim-note{display:none}
       <div class="vhead"><div><h2>Onde focar</h2><p id="fcSub">Escadas e estações que mais pedem atenção, com o motivo de cada uma.</p></div>
         <label class="field"><span>Período</span><select id="fcPer"><option value="7">Últimos 7 dias</option><option value="30" selected>Últimos 30 dias</option><option value="90">Últimos 90 dias</option></select></label></div>
       <div class="fc-recs" id="fcRecs"></div>
-      <div class="vhead"><div><h3>Escadas que mais pedem atenção</h3><p>Pontuação de foco: status agora, tendência, falhas que se repetem, paradas, P1 atrasada e tempo de reparo, com peso maior para o grupo crítica.</p></div></div>
+      <div class="vhead"><div><h3>Escadas por ordem de foco</h3><p>Primeiro o status: CRÍTICO, ALERTA, BOM perto de virar ALERTA (grupo crítica antes) e BOM. Dentro de cada grupo, desempata o histórico: falhas que se repetem, paradas com reset, P1 atrasada e reparo demorado.</p></div></div>
       <div class="stack" style="gap:8px" id="fcRank"></div>
       <div class="fc-two">
         <div class="panel"><h3>Estações</h3><div class="tbl-wrap" id="fcEst"></div></div>
@@ -2529,10 +2529,17 @@ function focoEscada(e, dias){
   pt *= (e.crit?FOCO.multCritica:1) * (0.8+0.2*e.fluxo);
   return {e, c, pt, m, corr:corr.length, par:par.length, mttr, p1Atr};
 }
+/* BOM, mas perto do ALERTA: tendência de piora em até 48 h ou alguma variável acima de 85% do limite */
+function pertoDoAlerta(e){
+  const tr=TEND[e.ix]; if(tr) return {txt:V[tr.k].nome+' piorando: ALERTA em '+fmtPrazo(tr.tA).replace('cerca de ','~'), k:tr.k};
+  let best=null; V.forEach((cf,k)=>{ const x=val(e,k,IDX); if(x==null) return; const r=ratio(cf,x); if(r>=0.85 && r<1 && (!best||r>best.r)) best={r,k}; });
+  return best ? {txt:V[best.k].nome+' a '+Math.round(best.r*100)+'% do limite de ALERTA', k:best.k} : null;
+}
 function recomendacao(f){
   const modos=f.m.map(x=>x.modo);
   if(modos.includes('agora') && f.c.code===2) return 'Atender agora: '+f.e.id+' está crítica'+(f.e.crit?' e é do grupo crítica':'')+'. Confirme se o técnico responsável ('+(TECS[respDe(f.e)]||'—')+') já está a caminho.';
   if(modos.includes('parada')) return f.e.id+' parou '+f.par+' vezes com reset. Em vez de só resetar, programe uma inspeção do dispositivo de segurança para achar a causa.';
+  if(modos.includes('perto')) return 'Inspecionar '+f.e.id+' antes do ALERTA: '+f.perto.txt.toLowerCase()+'.';
   if(modos.includes('tend')) return 'Programar inspeção em '+f.e.id+' antes do ALERTA: a tendência indica '+MODOS[modoDaVar(f.e,TEND[f.e.ix].k,IDX)].t.toLowerCase()+'.';
   if(modos.includes('agora')) return 'Programar o atendimento de '+f.e.id+' dentro do prazo de despacho.';
   if(modos.includes('p1')) return 'Encaixar a P1 de '+f.e.id+' na próxima rota do técnico: a revisão mensal está atrasada.';
@@ -2542,18 +2549,27 @@ function recomendacao(f){
 function renderFoco(){
   if(!isSup()) return show('painel');
   computeCurrent();
-  const dias=+$('#fcPer').value, all=E.map(e=>focoEscada(e,dias)).filter(f=>f.pt>0).sort((a,b)=>b.pt-a.pt);
-  const top=all.slice(0,12), max=top.length?top[0].pt:1;
-  $('#fcSub').textContent='Escadas e estações que mais pedem atenção nos últimos '+dias+' dias, com o motivo de cada uma. '+all.length+' das '+E.length+' escadas têm algum ponto de atenção.';
-  /* recomendações: as três primeiras com motivos diferentes */
-  const recs=[], usados=new Set();
-  for(const f of all){ const tipo=f.m[0].modo; if(usados.has(tipo)) continue; usados.add(tipo); recs.push({f,r:recomendacao(f)}); if(recs.length===3) break; }
-  for(const f of all){ if(recs.length>=3) break; if(!recs.some(x=>x.f===f)) recs.push({f,r:recomendacao(f)}); }
+  const dias=+$('#fcPer').value;
+  /* ordem de foco: CRÍTICO → ALERTA → BOM do grupo crítica perto do ALERTA → BOM não crítica perto do ALERTA → BOM crítica → BOM não crítica.
+     Dentro de cada grupo, a pontuação desempata. Escadas em manutenção já estão com o técnico e ficam de fora. */
+  const all=E.map(e=>{ const f=focoEscada(e,dias), c=f.c; if(c.code===3) return null;
+    if(c.code===0){ const pr=pertoDoAlerta(e); if(pr){ f.perto=pr; if(!f.m.some(x=>x.modo==='tend')) f.m.unshift({t:pr.txt, k:'cb', modo:'perto'}); } }
+    f.tier = c.code===2 ? 1 : c.code===1 ? 2 : f.perto ? (e.crit?3:4) : (e.crit?5:6);
+    return f; }).filter(Boolean).sort((a,b)=>a.tier-b.tier || b.pt-a.pt);
+  const max=Math.max(1,...all.map(f=>f.pt));
+  const nAtencao=all.filter(f=>f.tier<=4).length;
+  $('#fcSub').textContent='Ordem de foco: CRÍTICO, ALERTA, BOM perto de virar ALERTA (grupo crítica primeiro) e, por último, BOM. '+nAtencao+' escadas pedem atenção agora; dados de atendimentos dos últimos '+dias+' dias.';
+  const recs=all.slice(0,3).map(f=>({f,r:recomendacao(f)}));
   $('#fcRecs').innerHTML = recs.map((x,i)=>'<div class="fc-rec"><span class="n">Recomendação '+(i+1)+'</span><b>'+x.f.e.id+' · '+esc(ESTN[x.f.e.cod])+'</b><p>'+esc(x.r)+'</p><div><button class="btn sm" data-ver="'+x.f.e.id+'">Ver escada</button></div></div>').join('') || '<div class="empty">Nenhum ponto de atenção no período.</div>';
-  $('#fcRank').innerHTML = top.map((f,i)=>'<div class="fc-row"><div class="fc-pos">'+(i+1)+'</div><div><div class="code">'+f.e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[f.e.cod])+' · '+(f.e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+' · '+esc(TECS[respDe(f.e)]||'—')+'</div></div>'+
+  const GRUPO={1:['CRÍTICO','var(--crit)'],2:['ALERTA','var(--warn)'],3:['BOM, grupo crítica, perto de virar ALERTA','var(--brand)'],4:['BOM, não crítica, perto de virar ALERTA','var(--brand)'],5:['BOM, grupo crítica','var(--ok)'],6:['BOM, não crítica','var(--ok)']};
+  let pos=0, html='';
+  for(const t of [1,2,3,4,5,6]){ const fs=all.filter(f=>f.tier===t); if(!fs.length) continue; const lim=t>=5?5:fs.length, mostra=fs.slice(0,lim);
+    html+='<div class="vhead" style="margin-top:6px"><h3 style="color:'+GRUPO[t][1]+'">'+t+' · '+GRUPO[t][0]+' <span class="muted" style="font-family:var(--f-body);font-size:.9rem;font-weight:400">'+fs.length+' escada'+(fs.length>1?'s':'')+(lim<fs.length?' · mostrando as '+lim+' com mais histórico de falhas':'')+'</span></h3></div>'+mostra.map(f=>linhaFoco(f,++pos,max)).join(''); }
+  $('#fcRank').innerHTML = html || '<div class="empty">Nenhuma escada no período.</div>';
+  function linhaFoco(f,i,max){ return '<div class="fc-row"><div class="fc-pos">'+i+'</div><div><div class="code">'+f.e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[f.e.cod])+' · '+(f.e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+' · '+esc(TECS[respDe(f.e)]||'—')+'</div></div>'+
     '<div class="fc-chips">'+f.m.map(x=>'<span class="fc-chip '+x.k+'">'+esc(x.t)+'</span>').join('')+'</div>'+
     '<div><div class="fc-score num">'+nf(f.pt,0)+'</div><div class="fc-bar"><i style="width:'+Math.round(f.pt/max*100)+'%"></i></div></div>'+
-    '<div class="acts"><button class="btn sm" data-ver="'+f.e.id+'">Ver escada</button></div></div>').join('');
+    '<div class="acts"><button class="btn sm" data-ver="'+f.e.id+'">Ver escada</button></div></div>'; }
   /* estações */
   const est=EST.map(st=>{ const fs=E.filter(e=>e.cod===st.cod).map(e=>all.find(f=>f.e===e)).filter(Boolean); const es=E.filter(e=>e.cod===st.cod);
     const prob=es.filter(e=>CUR[e.ix].code===1||CUR[e.ix].code===2).length, corr=fs.reduce((s,f)=>s+f.corr,0), par=fs.reduce((s,f)=>s+f.par,0);
