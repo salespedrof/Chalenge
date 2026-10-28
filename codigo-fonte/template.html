@@ -357,7 +357,7 @@ body.papel-tec .sup-only{display:none!important}
 .eq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
 .eq-row{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);border-left:3px solid var(--c);background:var(--surface)}
 .eq-row.s0{border-left-color:var(--line-2)}
-.eq-row .top{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.eq-row .eq-top{display:flex;justify-content:space-between;align-items:center;gap:6px}
 .eq-row select{min-height:40px;font-size:.9rem}
 .eq-row.mudou{box-shadow:0 0 0 2px var(--brand)}
 .resp b{color:var(--fg)}
@@ -2346,7 +2346,7 @@ function renderEquipe(){
     html += '<section class="eq-st"><div class="eq-st-h"><h3><span>'+st.cod+'</span>'+esc(st.nome)+' <span class="muted" style="font-family:var(--f-body);font-size:.9rem;font-weight:400">'+es.length+' escadas</span></h3>'+
       '<div class="eq-tools"><label class="field"><span>Toda a estação para</span><select data-estsel="'+st.cod+'">'+tecOpts(donos.length===1?donos[0]:'')+'</select></label><button class="btn sm" data-estok="'+st.cod+'">Aplicar</button></div></div>'+
       '<div class="eq-grid">'+es.map(e=>{ const c=CUR[e.ix];
-        return '<div class="eq-row s'+c.code+(eqMudou&&eqMudou.has(e.id)?' mudou':'')+'"><div class="top"><span class="code">'+e.id+'</span>'+(e.crit?'<span class="tag crit">Crítica</span>':'<span class="tag">'+e.fab+'</span>')+'</div>'+
+        return '<div class="eq-row s'+c.code+(eqMudou&&eqMudou.has(e.id)?' mudou':'')+'"><div class="eq-top"><span class="code">'+e.id+'</span>'+(e.crit?'<span class="tag crit">Crítica</span>':'<span class="tag">'+e.fab+'</span>')+'</div>'+
           '<div>'+pill(c.code)+'</div><select data-esc="'+e.id+'" aria-label="Responsável por '+e.id+'">'+tecOpts(respDe(e))+'</select></div>'; }).join('')+'</div></section>';
   }
   $('#eqLista').innerHTML = html || '<div class="empty">Nenhuma escada com esses filtros.</div>';
