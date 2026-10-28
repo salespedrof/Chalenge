@@ -380,6 +380,8 @@ body.papel-tec .sup-only{display:none!important}
 .rt-e{display:flex;flex-wrap:wrap;max-width:100%;text-align:left;gap:8px;align-items:center;padding:6px 10px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--fg);font-size:.88rem}
 .rt-e .code{font-size:.92rem}
 .rt-note{font-size:.82rem;color:var(--muted)}
+.p1chip{font-size:.78rem;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid var(--warn);color:var(--warn)}
+.p1chip.atrasada{border-color:var(--crit);color:var(--crit)}
 @media (max-width:640px){ .rt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))} }
 /* ---------- foco do supervisor ---------- */
 .fc-recs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -607,7 +609,7 @@ body.apres .sim-note{display:none}
 
     <!-- TELA: rota do turno -->
     <section class="view" id="v-rota" hidden aria-label="Rota do turno">
-      <div class="vhead"><div><h2 id="rtTit">Rota do turno</h2><p id="rtSub">Ordem das escadas a atender, pelo caminho da Linha 4, a partir da base de manutenção.</p></div></div>
+      <div class="vhead"><div><h2 id="rtTit">Rota do turno</h2><p id="rtSub">Ordem das escadas a atender, pelo caminho da Linha 4, a partir da base de manutenção. A P1 atrasada ou perto de vencer entra sozinha.</p></div></div>
       <div class="rt-tools">
         <label class="field sup-only" id="rtTecF"><span>Técnico</span><select id="rtTec"></select></label>
         <label class="field"><span>Horas no turno</span><select id="rtHoras"><option value="4">4 horas</option><option value="6">6 horas</option><option value="8" selected>8 horas</option></select></label>
@@ -777,6 +779,7 @@ const CFG = {
     {l:'Imediato'}, {l:'Prioridade no turno'}, {l:'Programar em 24 h'}, {l:'Programar em 48 h'}
   ],
   p1Dias: 30,
+  p1AvisoDias: 3,   /* a P1 entra na rota quando faltam 3 dias ou menos para vencer */
   inicio: '2026-09-05T18:05',
 };
 const RAW0 = JSON.parse(document.getElementById('elevate-dataset').textContent);
@@ -2398,7 +2401,7 @@ const REDE = {
   trechos: [['LUZ','REP',2],['REP','HIG',2],['HIG','PTA',2],['PTA','FRE',2],['FRE','FRA',2],['FRA','FAL',2],['FAL','PIN',2],['PIN','BUT',3],['BUT','MBI',3],['MBI','VSO',3],['VSO','TVS',2],['BASE','VSO',5]],
   minPorEscadaNaEstacao: 0.25,   /* deslocamento dentro da estação cresce com o número de escadas */
   minBaseEstacao: 1,
-  atendimento: {imediato:60, critico:60, alerta:45, tendencia:20},
+  atendimento: {imediato:60, critico:60, alerta:45, tendencia:20, p1:120},
 };
 const GRAFO = (()=>{ const g={}; const add=(a,b,w)=>{ (g[a]=g[a]||[]).push([b,w]); (g[b]=g[b]||[]).push([a,w]); }; REDE.trechos.forEach(([a,b,w])=>add(a,b,w)); return g; })();
 const NOME_NO = c => c==='BASE' ? 'Base' : ESTN[c];
@@ -2418,14 +2421,28 @@ const tempoInterno = cod => REDE.minBaseEstacao + REDE.minPorEscadaNaEstacao * E
 const POS = cod => cod==='BASE' ? EST.length : EST.findIndex(x=>x.cod===cod);
 
 /* o que o técnico tem a atender: a fila dele (RN-03/RN-04) e, se pedido, as escadas BOM com tendência de piora */
+/* situação da P1 (RN-06): dias desde a última, atrasada (> p1Dias) ou vencendo (faltam p1AvisoDias ou menos) */
+function p1Status(e){
+  const p=lastP1(e); if(p==null) return NOW>CFG.p1Dias*1440 ? {st:'atrasada', dias:null, txt:'P1 sem registro no período'} : null;
+  const dias=(NOW-p)/1440, falta=CFG.p1Dias-dias;
+  if(falta<0) return {st:'atrasada', dias, txt:'P1 atrasada · '+Math.floor(dias)+' dias'};
+  if(falta<=CFG.p1AvisoDias) return {st:'vence', dias, txt:'P1 vence '+(falta<1?'hoje':'em '+Math.ceil(falta)+' dia'+(Math.ceil(falta)>1?'s':''))};
+  return null;
+}
 function pendenciasDe(tec, incluirTend){
   const P=CFG.prioridade, out=[];
   for(const e of E){ if(respDe(e)!==tec) continue; const c=CUR[e.ix];
+    if(c.code===3) continue;   /* já está em manutenção */
+    const p1=p1Status(e); let it=null;
     if(c.code===1||c.code===2){ const h=Math.max(0,(NOW-c.since)/60); const d=c.code===2?(e.crit?0:1):(e.crit?2:3);
-      out.push({e, c, d, score:(c.code===2?P.CRITICO:P.ALERTA)+(e.crit?P.grupoCritica:0)+P.fluxo*e.fluxo+Math.min(h,P.horasMax), tipo: d===0?'imediato':c.code===2?'critico':'alerta'}); }
-    else if(incluirTend && TEND[e.ix]) out.push({e, c, d:4, score:0, tipo:'tendencia'}); }
+      it={e, c, d, score:(c.code===2?P.CRITICO:P.ALERTA)+(e.crit?P.grupoCritica:0)+P.fluxo*e.fluxo+Math.min(h,P.horasMax), tipo: d===0?'imediato':c.code===2?'critico':'alerta'}; }
+    else if(incluirTend && TEND[e.ix]) it={e, c, d:4, score:0, tipo:'tendencia'};
+    /* P1 é obrigatória por lei: entra sempre, sozinha ou junto com o atendimento da mesma escada */
+    if(p1){ if(it) it.p1=p1; else it={e, c, d: p1.st==='atrasada'?1.5:3.5, score:p1.dias||99, tipo:'p1', p1}; }
+    if(it) out.push(it); }
   return out.sort((a,b)=>a.d-b.d || b.score-a.score);
 }
+const attMin = x => REDE.atendimento[x.tipo] + (x.p1 && x.tipo!=='p1' ? REDE.atendimento.p1 : 0);
 /* planejarTurno(base, horas): quais escadas atender, em que ordem e por qual caminho.
    1) despacho imediato primeiro, pelo menor caminho;  2) o resto agrupado por estação e percorrido num sentido só
    (primeiro até a ponta mais próxima do que falta, depois varrendo a linha);  3) só entra o que cabe com a volta à base. */
@@ -2448,10 +2465,14 @@ function planejarTurno(base, horas, tec, incluirTend){
   /* tempos e corte pelo turno */
   let t=0, ultimo=base; const dentro=[], fora=[];
   for(const pz of paradas){
-    const r=rotaEntre(ultimo,pz.cod), att=pz.itens.reduce((s,x)=>s+REDE.atendimento[x.tipo],0), interno=tempoInterno(pz.cod);
+    const r=rotaEntre(ultimo,pz.cod), att=pz.itens.reduce((s,x)=>s+attMin(x),0), interno=tempoInterno(pz.cod);
     const volta=rotaEntre(pz.cod,base).min, fim=t+r.min+interno+att;
-    if(fim+volta<=limite || (!dentro.length && pz.itens.some(x=>x.d===0))){ dentro.push({...pz, r, chegada:t+r.min, att, interno, saida:fim}); t=fim; ultimo=pz.cod; }
-    else fora.push({...pz, att});
+    if(fim+volta<=limite || (!dentro.length && pz.itens.some(x=>x.d===0))){ dentro.push({...pz, r, chegada:t+r.min, att, interno, saida:fim}); t=fim; ultimo=pz.cod; continue; }
+    /* a parada inteira não cabe: entra o que couber, na ordem de prioridade; o resto fica para o próximo turno */
+    const ord=[...pz.itens].sort((a,b)=>a.d-b.d || b.score-a.score), cabe=[], sobra=[]; let soma=0;
+    for(const x of ord){ if(t+r.min+interno+soma+attMin(x)+volta<=limite){ cabe.push(x); soma+=attMin(x); } else sobra.push(x); }
+    if(cabe.length){ const f2=t+r.min+interno+soma; dentro.push({...pz, itens:cabe, r, chegada:t+r.min, att:soma, interno, saida:f2}); t=f2; ultimo=pz.cod; }
+    if(sobra.length) fora.push({...pz, itens:sobra, att:sobra.reduce((s,x)=>s+attMin(x),0)});
   }
   const volta = rotaEntre(ultimo, base);
   return {base, horas, dentro, fora, volta, total:t+volta.min, viagem: dentro.reduce((s,x)=>s+x.r.min,0)+volta.min, pend};
@@ -2491,17 +2512,21 @@ function renderRota(){
   const pl=planejarTurno('BASE', horas, rtTec, tend);
   const nEsc=pl.dentro.reduce((s,p)=>s+p.itens.length,0), nFora=pl.fora.reduce((s,p)=>s+p.itens.length,0);
   $('#rtTit').textContent = isTec() ? 'Minha rota do turno' : 'Rota do turno · '+TECS[rtTec];
-  $('#rtSub').textContent = 'Sai da base de manutenção às '+hhmm(0)+', '+(isTec()?'pelas suas escadas':'pelas escadas de '+TECS[rtTec])+' ('+trechoDe(rtTec)+'), e volta à base. Despacho imediato primeiro; depois a linha num sentido só.';
-  $('#rtKpis').innerHTML = [[pl.dentro.length,'paradas no turno'],[nEsc,'escadas atendidas'],[fDur(pl.total),'tempo total, com a volta'],[pl.viagem+' min','em deslocamento']].map(([n,t])=>'<div class="rt-kpi"><div class="n num">'+n+'</div><div class="t">'+t+'</div></div>').join('');
+  $('#rtSub').textContent = 'Sai da base de manutenção às '+hhmm(0)+', '+(isTec()?'pelas suas escadas':'pelas escadas de '+TECS[rtTec])+' ('+trechoDe(rtTec)+'), e volta à base. Despacho imediato primeiro; depois a linha num sentido só. A P1 atrasada ou que vence em até '+CFG.p1AvisoDias+' dias entra sozinha na rota.';
+  const nP1=pl.dentro.reduce((s,p)=>s+p.itens.filter(x=>x.p1).length,0);
+  $('#rtKpis').innerHTML = [[pl.dentro.length,'paradas no turno'],[nEsc,'escadas atendidas'],[nP1,'P1 incluídas (lei)'],[fDur(pl.total),'tempo total, com a volta']].map(([n,t])=>'<div class="rt-kpi"><div class="n num">'+n+'</div><div class="t">'+t+'</div></div>').join('');
   $('#rtMapa').innerHTML = mapaSVG(pl);
-  if(!pl.pend.length){ $('#rtLista').innerHTML='<div class="empty">Nenhuma escada '+(isTec()?'sua':'de '+esc(TECS[rtTec]))+' precisa de atendimento agora'+(tend?'':' na fila')+'. A P1 mensal segue o plano preventivo.</div>'; $('#rtNota').textContent=''; return; }
-  const itemHTML = x => '<button class="rt-e" data-ver="'+x.e.id+'"><span class="code">'+x.e.id+'</span>'+(x.tipo==='tendencia'?'<span class="chip-trend">↗ tendência</span>':pill(x.c.code))+(x.d<=3?despPill(x.d):'')+'</button>';
+  if(!pl.pend.length){ $('#rtLista').innerHTML='<div class="empty">Nenhuma escada '+(isTec()?'sua':'de '+esc(TECS[rtTec]))+' precisa de atendimento agora'+(tend?'':' na fila')+', e nenhuma P1 está atrasada ou vencendo nos próximos '+CFG.p1AvisoDias+' dias.</div>'; $('#rtNota').textContent=''; return; }
+  const p1Chip = x => x.p1 ? '<span class="p1chip '+x.p1.st+'">'+esc(x.p1.txt)+'</span>' : '';
+  const itemHTML = x => '<button class="rt-e" data-ver="'+x.e.id+'"><span class="code">'+x.e.id+'</span>'+(x.tipo==='p1'?'':x.tipo==='tendencia'?'<span class="chip-trend">↗ tendência</span>':pill(x.c.code))+(x.tipo!=='p1'&&x.d<=3?despPill(x.d):'')+p1Chip(x)+'</button>';
+  const p1Fora=pl.fora.flatMap(p=>p.itens).filter(x=>x.p1&&x.p1.st==='atrasada');
   let html = pl.dentro.map((p,i)=>'<div class="rt-stop"><div class="rt-num">'+(i+1)+'</div><div><div class="rt-h"><b>'+esc(ESTN[p.cod])+'</b><span class="mono">chegada '+hhmm(p.chegada)+' · saída '+hhmm(p.saida)+'</span><span class="muted">'+p.itens.length+' escada'+(p.itens.length>1?'s':'')+' · '+p.att+' min de atendimento</span></div>'+
     '<div class="rt-via">Caminho: '+p.r.via.map(NOME_NO).join(' → ')+' · '+p.r.min+' min de viagem + '+nf(p.interno,1)+' min dentro da estação</div><div class="rt-esc">'+p.itens.map(itemHTML).join('')+'</div></div></div>').join('');
-  html += '<div class="rt-stop"><div class="rt-num" style="background:var(--surface-3);color:var(--fg)">B</div><div><div class="rt-h"><b>Volta à base</b><span class="mono">chegada '+hhmm(pl.total)+'</span></div><div class="rt-via">Caminho: '+pl.volta.via.map(NOME_NO).join(' → ')+' · '+pl.volta.min+' min</div></div></div>';
+  if(pl.dentro.length) html += '<div class="rt-stop"><div class="rt-num" style="background:var(--surface-3);color:var(--fg)">B</div><div><div class="rt-h"><b>Volta à base</b><span class="mono">chegada '+hhmm(pl.total)+'</span></div><div class="rt-via">Caminho: '+pl.volta.via.map(NOME_NO).join(' → ')+' · '+pl.volta.min+' min</div></div></div>';
   if(pl.fora.length) html += '<div class="vhead" style="margin-top:6px"><h3>Fica para o próximo turno</h3></div>'+pl.fora.map(p=>'<div class="rt-stop fora"><div class="rt-num">–</div><div><div class="rt-h"><b>'+esc(ESTN[p.cod])+'</b><span class="muted">'+p.itens.length+' escada'+(p.itens.length>1?'s':'')+' · '+p.att+' min de atendimento</span></div><div class="rt-esc">'+p.itens.map(itemHTML).join('')+'</div></div></div>').join('');
+  if(p1Fora.length) html = '<div class="banner" style="--c:var(--crit)">'+ICON[2]+'<div><strong>'+p1Fora.length+' P1 atrasada'+(p1Fora.length>1?'s':'')+' não coube'+(p1Fora.length>1?'ram':'')+' neste turno</strong><span class="muted">'+p1Fora.map(x=>x.e.id).join(' · ')+'. A P1 é obrigatória por lei: aumente o turno ou passe para outro técnico.</span></div></div>' + html;
   $('#rtLista').innerHTML = html;
-  $('#rtNota').textContent = 'Menor caminho pelo algoritmo de Dijkstra no grafo das 12 estações + base. Tempos estimados pelo grupo, a confirmar com a Motiva: '+REDE.trechos.filter(t=>t[0]!=='BASE').map(t=>t[2]).join('/')+' min entre estações, '+REDE.trechos.find(t=>t[0]==='BASE')[2]+' min da base a Vila Sônia, '+REDE.minBaseEstacao+' min + '+REDE.minPorEscadaNaEstacao*60+' s por escada dentro da estação, e atendimento de '+REDE.atendimento.critico+' min (crítico), '+REDE.atendimento.alerta+' min (alerta) e '+REDE.atendimento.tendencia+' min (inspeção de tendência).';
+  $('#rtNota').textContent = 'Menor caminho pelo algoritmo de Dijkstra no grafo das 12 estações + base. Tempos estimados pelo grupo, a confirmar com a Motiva: '+REDE.trechos.filter(t=>t[0]!=='BASE').map(t=>t[2]).join('/')+' min entre estações, '+REDE.trechos.find(t=>t[0]==='BASE')[2]+' min da base a Vila Sônia, '+REDE.minBaseEstacao+' min + '+REDE.minPorEscadaNaEstacao*60+' s por escada dentro da estação, e atendimento de '+REDE.atendimento.critico+' min (crítico), '+REDE.atendimento.alerta+' min (alerta), '+REDE.atendimento.tendencia+' min (inspeção de tendência) e '+REDE.atendimento.p1+' min (P1).';
 }
 $('#rtTec').onchange=e=>{ rtTec=e.target.value; renderRota(); };
 ['#rtHoras','#rtIncl'].forEach(q=>$(q).onchange=renderRota);
