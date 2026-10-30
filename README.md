@@ -21,6 +21,8 @@ O Elevate é um tablet com Raspberry Pi para a equipe de manutenção. Ele mostr
 
 ## O que o protótipo faz
 
+A barra lateral tem 7 grupos: Painel, Fila (Fila · Foco), Atendimentos, Equipe (Equipe · Emergência), Preventivas, Relatórios (Boletim · Indicadores) e Dados (Sincronização · Dataset · Maquete ao vivo). Cada perfil vê só as abas que pode usar.
+
 | Tela | Conteúdo |
 | --- | --- |
 | Login | Gestão da engenharia (linha toda), supervisor de estação ou técnico (só a estação dele). Protótipo: PIN 1234 |
@@ -30,10 +32,10 @@ O Elevate é um tablet com Raspberry Pi para a equipe de manutenção. Ele mostr
 | Preventivas | Preventiva por condição: P1 obrigatória, antecipar, manter ou dispensar, e plano da noite por estação (regras a validar) |
 | Equipe | Equipe dedicada por estação (supervisor + 2 técnicos), livre ou em atendimento; a gestão pode mover técnicos |
 | Painel | Status das 197 escadas por estação, mini gráfico de cada uma e contador de tendência de piora |
-| Detalhe da escada | Gêmeo digital 3D ligado aos sensores (ou modo leve 2D), diagnóstico com previsão, ordem de serviço, procedimento, gráficos de 90 dias, P1 e histórico |
+| Detalhe da escada | Gêmeo digital 3D ligado aos sensores (ou modo leve 2D), diagnóstico com previsão, ordem de serviço, procedimento, gráficos de 90 dias com previsão tracejada até o ALERTA/CRÍTICO, P1 e histórico |
 | Fila | Ordem de atendimento com prazo de despacho e escadas que vão entrar em ALERTA nas próximas 48 h |
 | Atendimentos | Ordens de serviço e entrada e saída do técnico, com cronômetro |
-| Indicadores | Disponibilidade, tempo de reparo e de resposta, antecedência ALERTA → CRÍTICO, comparativos e ranking |
+| Indicadores | Critérios de sucesso da Motiva (tempo de escada parada, preventivas eliminadas, previsões que acertaram, homem-hora, P1 em dia), horas paradas por semana, previsões dos próximos 7 dias e indicadores de operação |
 | Sincronização | Simulação do tablet sem conexão e fila de envio |
 | Ao vivo | Escada MAQ-01 da maquete com ESP32: 1 leitura por segundo por Wi-Fi (MQTT) ou cabo USB, gêmeo digital girando ou parado conforme a esteira, diagnóstico e gráficos ao vivo. Tem simulador embutido para testar sem a maquete |
 | Dados | Gera um dataset novo no próprio navegador e exporta os CSVs |

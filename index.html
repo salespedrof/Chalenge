@@ -54,6 +54,16 @@ h3{font-size:1.15rem}
 .nav .badge{position:absolute;top:6px;right:12px;min-width:20px;height:20px;border-radius:10px;background:var(--crit);color:#fff;font-size:.72rem;
   display:flex;align-items:center;justify-content:center;padding:0 5px}
 .nav .badge[hidden]{display:none!important}
+.rail{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+.nav{flex:0 0 auto}
+.nav.one .ic-multi,.nav:not(.one) .ic-one{display:none}
+#badgeLive{right:auto;left:14px}
+.subtabs{padding:14px max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px))}
+.subtabs[hidden]{display:none}
+.subtabs .seg{max-width:100%;overflow-x:auto}
+.subtabs .seg button{white-space:nowrap}
+.subtabs+.view{padding-top:14px}
+@media (min-width:900px) and (max-height:720px){ .logo{padding-bottom:6px} .logo b{display:none} .nav{min-height:52px;padding:5px 4px;gap:2px} }
 main{min-width:0;display:flex;flex-direction:column}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
   display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-block:12px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
@@ -213,6 +223,7 @@ tr.click{cursor:pointer} tr.click:hover td{background:var(--surface-2)}
 
 /* indicadores */
 .kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+#iSuc .kpi{border-top:3px solid var(--brand)}
 .kpi{padding:14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
 .kpi .n{font-family:var(--f-display);font-size:2rem;font-weight:700;line-height:1.05}
 .kpi small{color:var(--muted);font-size:.8rem;line-height:1.3}
@@ -467,7 +478,8 @@ body.apres .sim-note{display:none}
   .nav{flex:1;min-height:58px;font-size:.7rem}
   main{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
   .brand-sm{display:flex}
-  .top,.view{padding-left:var(--gut);padding-right:var(--gutr)}
+  .top,.view,.subtabs{padding-left:var(--gut);padding-right:var(--gutr)}
+  .rail{overflow-y:hidden;overflow-x:auto} .nav{flex:1 0 auto}
   .charts,.two,.cmp,.grid2{grid-template-columns:minmax(0,1fr)}
   .who{margin-left:0}
 }
@@ -495,18 +507,13 @@ body.apres .sim-note{display:none}
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M5 33h8v-8h8v-8h8V9h6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 5h6v6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <b>Elevate</b>
     </div>
-    <button class="nav" data-view="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Painel</button>
-    <button class="nav" data-view="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 5l1 1 2-2M4 11l1 1 2-2" stroke-linejoin="round"/><circle cx="5" cy="18" r="1.3" fill="currentColor"/></svg>Fila<span class="badge" id="badgeFila" hidden></span></button>
-    <button class="nav sup-only" data-view="rota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="6" r="2.2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></svg>Emergência</button>
-    <button class="nav" data-view="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg>Atendi&shy;mentos<span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
-    <button class="nav sup-only" data-view="foco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>Foco</button>
-    <button class="nav sup-only" data-view="boletim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg>Boletim</button>
-    <button class="nav sup-only" data-view="prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/><path d="M15 3v4M13 5h4"/></svg>Preventivas</button>
-    <button class="nav sup-only" data-view="equipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg>Equipe</button>
-    <button class="nav ges-only" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
-    <button class="nav" data-view="sync"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Sincronização<span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span></button>
-    <button class="nav ges-only" data-view="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Ao vivo<span class="live-dot" id="badgeLive" hidden></span></button>
-    <button class="nav ges-only" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
+    <button class="nav" data-g="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg><span class="nl">Painel</span></button>
+    <button class="nav" data-g="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 5l1 1 2-2M4 11l1 1 2-2" stroke-linejoin="round"/><circle cx="5" cy="18" r="1.3" fill="currentColor"/></svg><span class="nl">Fila</span><span class="badge" id="badgeFila" hidden></span></button>
+    <button class="nav" data-g="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><span class="nl">Atendi&shy;mentos</span><span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
+    <button class="nav sup-only" data-g="equipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg><span class="nl">Equipe</span></button>
+    <button class="nav sup-only" data-g="prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/><path d="M15 3v4M13 5h4"/></svg><span class="nl">Preventivas</span></button>
+    <button class="nav sup-only" data-g="rel"><svg class="ic-multi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg><svg class="ic-one" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg><span class="nl">Relatórios</span></button>
+    <button class="nav" data-g="dados"><svg class="ic-multi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg><svg class="ic-one" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><span class="nl">Dados</span><span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span><span class="live-dot" id="badgeLive" hidden></span></button>
   </nav>
 
   <main>
@@ -532,6 +539,7 @@ body.apres .sim-note{display:none}
         <button class="net" id="netPill" title="Abrir sincronização"><span class="dot"></span><span id="netTxt">Online</span></button>
       </div>
     </header>
+    <div class="subtabs" id="subtabs" hidden><div class="seg" role="tablist" id="subSeg"></div></div>
 
     <!-- TELA 1 -->
     <section class="view" id="v-painel" aria-label="Painel da frota">
@@ -577,7 +585,7 @@ body.apres .sim-note{display:none}
           <button data-d="7" aria-pressed="false">7 dias</button><button data-d="30" aria-pressed="true">30 dias</button><button data-d="90" aria-pressed="false">90 dias</button>
         </div>
       </div>
-      <div class="legend"><span><i style="border-color:var(--warn)"></i>Limite de ALERTA</span><span><i style="border-color:var(--crit)"></i>Limite CRÍTICO</span><span><i class="box"></i>Em manutenção</span><span><span style="color:var(--faint)">▾</span> Sem sinal</span><span><span style="color:var(--crit)">▴</span> Parada</span></div>
+      <div class="legend"><span><i style="border-color:var(--warn)"></i>Limite de ALERTA</span><span><i style="border-color:var(--crit)"></i>Limite CRÍTICO</span><span><i class="box"></i>Em manutenção</span><span><i style="border-color:var(--brand);border-top-style:dashed"></i>Previsão</span><span><span style="color:var(--faint)">▾</span> Sem sinal</span><span><span style="color:var(--crit)">▴</span> Parada</span></div>
       <div class="charts" id="dCharts"></div>
       <div class="two">
         <div class="panel" id="dP1"></div>
@@ -707,6 +715,13 @@ body.apres .sim-note{display:none}
     <section class="view" id="v-ind" hidden aria-label="Indicadores">
       <div class="vhead"><div><h2>Indicadores</h2><p id="iPer">Período dos dados até agora.</p></div>
         <button class="btn sm" id="btnCsv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>Copiar histórico em CSV</button></div>
+      <div class="vhead"><div><h3>Critérios de sucesso combinados com a Motiva</h3><p>Tempo de escada parada, preventivas eliminadas, previsões que acertaram e homem-hora.</p></div></div>
+      <div class="kpis" id="iSuc"></div>
+      <div class="grid2">
+        <div class="panel"><h3>Horas de escada parada por semana (corretivas)</h3><div id="iSem"></div></div>
+        <div class="panel"><h3>Previsões para os próximos 7 dias</h3><div class="tbl-wrap" id="iPrev"></div></div>
+      </div>
+      <div class="vhead"><div><h3>Operação</h3></div></div>
       <div class="kpis" id="iKpis"></div>
       <div class="grid2">
         <div class="panel"><h3>Tempo em cada status, por estação</h3>
@@ -1080,6 +1095,7 @@ function paintTech(){
   $('#techName').textContent=n; $('#techIni').textContent=String(n).split(' ').map(x=>x[0]).join('').slice(0,2);
   $('#techPapel').textContent = !L ? 'Usuário' : L.papel==='ges' ? GES.cargo : L.papel==='sup' ? 'Supervisor · '+ESTN[(SUPS[L.id]||[])[0]] : 'Técnico · '+(ESTN[estDoTec(L.id)]||'');
   document.body.classList.toggle('papel-tec', isTec()); document.body.classList.toggle('papel-ges', isGes());
+  if(document.querySelector('.nav[data-g]')) atualizarNav();
   if(typeof fEst!=='undefined') fillEstFiltro();
 }
 function paintApres(){ document.body.classList.toggle('apres', !!S.apres); $('#apresTxt').textContent = S.apres ? 'Sair da apresentação' : 'Apresentar'; paintTech(); }
@@ -1148,17 +1164,44 @@ function paintTop(){
   const ba=$('#badgeAt'); ba.hidden=!op; ba.textContent=op;
   const bs=$('#badgeSync'); bs.hidden=!pend; bs.textContent=pend;
 }
+/* grupos da barra lateral: cada grupo abre a última aba usada; com uma aba só, o botão leva o nome dela */
+function GRUPOS(){ return {
+  painel:{t:'Painel', tabs:[['painel','Painel']]},
+  fila:{t:'Fila', tabs:[['fila','Fila'],['foco','Foco']]},
+  atend:{t:'Atendi&shy;mentos', tabs:[['atend','Atendimentos']]},
+  equipe:{t:'Equipe', tabs:[['equipe','Equipe'],['rota','Emergência']]},
+  prev:{t:'Preventivas', tabs:[['prev','Preventivas']]},
+  rel:{t:'Relatórios', tabs:[['boletim','Boletim'],['ind','Indicadores']]},
+  dados:{t:'Dados', tabs:[['sync','Sincronização'],['dados','Dataset'],['live','Maquete ao vivo']]},
+}; }
+function permitido(v){ return !(isTec() && ['ind','dados','live','equipe','foco','rota','boletim','prev'].includes(v)) && !(!isGes() && ['ind','dados','live'].includes(v)); }
+function grupoDe(v){ return Object.keys(GRUPOS()).find(g=>GRUPOS()[g].tabs.some(t=>t[0]===v)); }
+function abasDe(g){ return GRUPOS()[g].tabs.filter(t=>permitido(t[0])); }
+const ULT = {};
+function atualizarNav(){
+  const G=GRUPOS();
+  document.querySelectorAll('.nav[data-g]').forEach(b=>{ const ab=abasDe(b.dataset.g), um=ab.length===1;
+    b.classList.toggle('one', um); b.querySelector('.nl').innerHTML = um ? ab[0][1] : G[b.dataset.g].t; });
+}
+function renderSubtabs(v){
+  const g=grupoDe(v), ab=g?abasDe(g):[], box=$('#subtabs');
+  if(v==='detalhe' || ab.length<2){ box.hidden=true; return; }
+  box.hidden=false;
+  $('#subSeg').innerHTML=ab.map(([id,t])=>'<button role="tab" data-sub="'+id+'" aria-pressed="'+(id===v)+'" aria-selected="'+(id===v)+'">'+t+'</button>').join('');
+}
+$('#subSeg').addEventListener('click',ev=>{ const b=ev.target.closest('[data-sub]'); if(b) show(b.dataset.sub); });
 function show(v){
-  if(isTec() && ['ind','dados','live','equipe','foco','rota','boletim','prev'].includes(v)) v='painel';
-  if(!isGes() && ['ind','dados','live'].includes(v)) v='painel';
+  if(!permitido(v)) v='painel';
   if(v!=='detalhe'){ prevView = v; Twin.stop(); }
   view=v;
   document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-'+v);
-  document.querySelectorAll('.nav').forEach(b=>b.setAttribute('aria-current', (b.dataset.view===v || (v==='detalhe'&&b.dataset.view===prevView))?'page':'false'));
+  const gAtual = grupoDe(v==='detalhe' ? prevView : v); if(v!=='detalhe' && gAtual) ULT[gAtual]=v;
+  document.querySelectorAll('.nav[data-g]').forEach(b=>b.setAttribute('aria-current', b.dataset.g===gAtual?'page':'false'));
+  atualizarNav(); renderSubtabs(v);
   window.scrollTo(0,0);
   renderAll();
 }
-document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>show(b.dataset.view));
+document.querySelectorAll('.nav[data-g]').forEach(b=>b.onclick=()=>{ const g=b.dataset.g, u=ULT[g]; show(u && permitido(u) ? u : abasDe(g)[0][0]); });
 $('#netPill').onclick=()=>show('sync');
 
 /* ================= TELA 1: painel ================= */
@@ -1223,7 +1266,7 @@ $('#frota').addEventListener('click', ev=>{ const b=ev.target.closest('.card'); 
 
 /* ================= TELA 2: detalhe ================= */
 function openDetalhe(id){ if(id===LV.id) return isGes() ? show('live') : null; if(BYID[id] && !meu(BYID[id])){ toast(id+' é da estação '+ESTN[BYID[id].cod]+' (equipe: '+nomeEquipe(BYID[id].cod)+').'); return; } detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
-  document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); window.scrollTo(0,0); renderAll(); }
+  document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); $('#subtabs').hidden=true; window.scrollTo(0,0); renderAll(); }
 $('#btnBack').onclick=()=>show(prevView||'painel');
 document.querySelectorAll('#dPer button').forEach(b=>b.onclick=()=>{ periodo=+b.dataset.d; document.querySelectorAll('#dPer button').forEach(x=>x.setAttribute('aria-pressed', x===b)); drawCharts(); });
 
@@ -1312,12 +1355,13 @@ function drawChart(k, hoverX){
   const g=cv.getContext('2d'); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
   const cf=V[k];
   const i1=IDX, i0=Math.max(0,i1-periodo*5+1);
-  const m0=slotMin(i0), m1=Math.max(slotMin(i1), NOW);
+  const PJ = e.ss[i1]===3 ? null : projecao(e,k,i1);
+  const m0=slotMin(i0), m1=Math.max(slotMin(i1), NOW) + (PJ ? PJ.dias*1440 : 0);
   const L=46,R=10,T=10,B=22, pw=W-L-R, ph=H-T-B;
   const X=m=>L+(m-m0)/Math.max(1,(m1-m0))*pw;
   const vals=[]; for(let i=i0;i<=i1;i++) vals.push(val(e,k,i));
   const isStop = i => { const v=val(e,4,i); return v!=null && v<0.05; };
-  const [y0,y1]=yRange(k, vals.filter((x,j)=>!(cf.k!=='vel' && isStop(i0+j)) ));
+  const [y0,y1]=yRange(k, vals.filter((x,j)=>!(cf.k!=='vel' && isStop(i0+j)) ).concat(PJ?[PJ.fim]:[]));
   const Y=y=>T+(1-(Math.max(y0,Math.min(y1,y))-y0)/(y1-y0))*ph;
   g.font='11px "IBM Plex Mono", ui-monospace, monospace'; g.textBaseline='middle';
   // grade
@@ -1347,10 +1391,22 @@ function drawChart(k, hoverX){
     if(e.ss[i]===3) continue;
     const l=lvl(cf,x); if(l>0 && (x<y0||x>y1 || periodo<=30)){ g.fillStyle=l===2?COL.crit:COL.warn; g.beginPath(); g.arc(px,Y(x),periodo<=7?3:2.2,0,7); g.fill(); }
   }
+  // previsão: tendência das últimas 15 leituras projetada para frente (linha tracejada)
+  if(PJ){ const t0=slotMin(i1), t1=NOW+PJ.dias*1440;
+    g.save(); g.fillStyle='rgba(255,210,60,.07)'; g.fillRect(X(Math.max(t0,NOW)),T,X(t1)-X(Math.max(t0,NOW)),ph);
+    g.setLineDash([6,4]); g.strokeStyle=COL.brand; g.lineWidth=2; g.beginPath(); g.moveTo(X(t0),Y(PJ.x0)); g.lineTo(X(t1),Y(PJ.fim)); g.stroke(); g.setLineDash([]);
+    g.font='600 11px "IBM Plex Mono", ui-monospace, monospace';
+    for(const c of PJ.cruz){ const tx=t0+c.d*1440; if(tx>t1) continue; const px=X(tx), py=Y(c.y); g.fillStyle=c.n===2?COL.crit:COL.warn; g.beginPath(); g.moveTo(px,py-6); g.lineTo(px+6,py); g.lineTo(px,py+6); g.lineTo(px-6,py); g.fill();
+    }
+    /* legenda da previsão no canto superior direito, fora da linha */
+    const lbs=[['previsão',COL.muted]].concat(PJ.cruz.filter(c=>t0+c.d*1440<=t1).map(c=>[(c.n===2?'CRÍTICO ':'ALERTA ')+fD(t0+c.d*1440), c.n===2?COL.crit:COL.warn]));
+    g.textAlign='right'; g.textBaseline='top'; const tw=Math.max(...lbs.map(l=>g.measureText(l[0]).width));
+    g.fillStyle=COL.surface; g.globalAlpha=.85; g.fillRect(W-R-tw-10, T+1, tw+8, lbs.length*15+4); g.globalAlpha=1;
+    lbs.forEach(([t,c],j)=>{ g.fillStyle=c; g.fillText(t, W-R-4, T+3+j*15); }); g.restore(); }
   // ponto atual
   const xl=val(e,k,i1);
   if(xl!=null){ const l=lvl(cf,xl); g.fillStyle=[COL.ok,COL.warn,COL.crit][l]; g.strokeStyle=COL.surface; g.lineWidth=2; g.beginPath(); g.arc(X(slotMin(i1)),Y(xl),5,0,7); g.fill(); g.stroke(); }
-  $('#cv'+k).textContent = xl==null?'sem sinal':'agora '+nf(xl,cf.dec)+' '+cf.un;
+  $('#cv'+k).textContent = (xl==null?'sem sinal':'agora '+nf(xl,cf.dec)+' '+cf.un) + (PJ&&PJ.cruz.length ? ' · '+(PJ.cruz[0].n===2?'CRÍTICO':'ALERTA')+' previsto em '+fD(slotMin(i1)+PJ.cruz[0].d*1440) : '');
   // hover
   if(hoverX!=null && hoverX>=L && hoverX<=W-R){
     const m=m0+(hoverX-L)/pw*(m1-m0); let i=Math.max(i0,Math.min(i1,idxAt(m))); if(i<i1 && Math.abs(slotMin(i+1)-m)<Math.abs(slotMin(i)-m)) i++;
@@ -1458,6 +1514,49 @@ $('#aOS').addEventListener('click',ev=>{ const r=ev.target.closest('[data-row]')
 $('#aMine').addEventListener('click',ev=>{ const r=ev.target.closest('[data-row]'); if(r) openDetalhe(r.dataset.row); });
 
 /* ================= TELA 5: indicadores ================= */
+/* retroteste da previsão: em cada dia do histórico, as escadas BOM com "tendência de piora" (ALERTA previsto em até 48 h)
+   realmente entraram em ALERTA ou CRÍTICO nos 3 dias seguintes? */
+let BT=null;
+function backtest(){
+  if(BT && BT.raw===RAW && BT.idx===IDX) return BT;
+  let pred=0, hit=0; const ant=[];
+  for(const e of E){ for(let i=20;i<=IDX-15;i+=5){ if(e.ss[i]!==0 || e.rs[i]!==0) continue; const t=tendenciaPiora(e,i); if(!t) continue; pred++;
+    for(let j=i+1;j<=i+15;j++){ if(e.ss[j]===3) break; if(e.rs[j]>=1){ hit++; ant.push((slotMin(j)-slotMin(i))/60); break; } } } }
+  BT={raw:RAW, idx:IDX, pred, hit, ant:median(ant)}; return BT;
+}
+function renderSucesso(){
+  const sum=a=>a.reduce((x,y)=>x+y,0), de30=NOW-30*1440;
+  let parado30=0, hhPrev=0, hhCorr=0, hhReset=0;
+  const SEM=8, sem=Array(SEM).fill(0);
+  for(const e of E){ for(const a of e.atv){ if(a.ent>NOW) continue; const fim=a.sai==null||a.sai>NOW?NOW:a.sai, dur=fim-a.ent;
+      if(a.tipo==='corretiva'){ parado30+=minOverlap(a.ent,fim,de30,NOW); for(let w=0;w<SEM;w++){ const w1=NOW-w*7*1440, w0=w1-7*1440; sem[SEM-1-w]+=minOverlap(a.ent,fim,w0,w1); } }
+      if(a.ent>=de30){ if(a.tipo==='preventiva') hhPrev+=dur; else if(a.motivo==='parada de seguranca (reset)') hhReset+=dur; else hhCorr+=dur; } } }
+  const dec=E.map(decisaoPrev).filter(Boolean), disp=dec.filter(x=>x.dec==='Dispensar').length, bt=backtest();
+  let p1ok=0; E.forEach(e=>{ const p=lastP1(e); if(p!=null && (NOW-p)/1440<=CFG.p1Dias) p1ok++; });
+  $('#iSuc').innerHTML=[
+    ['Tempo de escada parada', nf(parado30/60,0)+' h', 'Corretivas nos últimos 30 dias · '+nf(parado30/60/E.length,1)+' h por escada'],
+    ['Preventivas eliminadas', disp+' de '+dec.length, 'Dispensáveis neste ciclo pela condição · ~'+nf(disp*PREV.duracaoMin/60,0)+' h de homem-hora'],
+    ['Previsões que acertaram', bt.pred?pct(bt.hit/bt.pred):'—', bt.pred?bt.hit+' de '+bt.pred+' avisos de tendência viraram ALERTA em até 3 dias (antecedência mediana de '+(bt.ant==null?'—':nf(bt.ant,0)+' h')+')':'Sem avisos de tendência no período'],
+    ['Homem-hora em 30 dias', nf((hhPrev+hhCorr+hhReset)/60,0)+' h', 'Preventiva '+nf(hhPrev/60,0)+' h · corretiva '+nf(hhCorr/60,0)+' h · resets '+nf(hhReset/60,0)+' h'],
+    ['P1 anual em dia', pct(p1ok/E.length), p1ok+' de '+E.length+' escadas · obrigatória, nunca eliminada'],
+  ].map(([t,n,s2])=>'<div class="kpi"><span class="lbl">'+t+'</span><span class="n num">'+n+'</span><small>'+esc(s2)+'</small></div>').join('');
+  /* barras semanais de horas paradas */
+  const mx=Math.max(1,...sem), W=560, H=170, bw=(W-40)/SEM;
+  $('#iSem').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto" role="img" aria-label="Horas de escada parada por semana nas últimas 8 semanas">'+
+    sem.map((v,i)=>{ const h=(H-46)*v/mx, x=20+i*bw+6, y=H-26-h; const d=dt(NOW-(SEM-1-i)*7*1440-7*1440); return '<rect x="'+x+'" y="'+y+'" width="'+(bw-12)+'" height="'+h+'" rx="4" fill="'+(i===SEM-1?'#FFD23C':'var(--line-2)')+'"/><text x="'+(x+(bw-12)/2)+'" y="'+(y-6)+'" text-anchor="middle" font-size="12" fill="var(--fg)" font-family="IBM Plex Mono, monospace">'+nf(v/60,0)+'</text><text x="'+(x+(bw-12)/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="11" fill="var(--muted)">'+pad(d.getUTCDate())+'/'+pad(d.getUTCMonth()+1)+'</text>'; }).join('')+'</svg>'+
+    '<p class="hint" style="margin:0">Semana que começa no dia indicado. A barra amarela é a semana atual. Meta proposta: cair semana a semana com as preventivas por condição.</p>';
+  /* previsões dos próximos 7 dias */
+  const prev=[];
+  for(const e of E){ const c=CUR[e.ix]; if(c.code>=2) continue;
+    for(let k=0;k<V.length;k++){ const pj=projecao(e,k,IDX); if(!pj) continue; const alvo=pj.cruz.find(x=>x.n>c.code); if(!alvo) continue; const quando=slotMin(IDX)+alvo.d*1440; if(quando-NOW>7*1440) continue;
+      prev.push({e, k, alvo, quando, r2:pj.r2}); } }
+  prev.sort((a,b)=>a.quando-b.quando);
+  $('#iPrev').innerHTML = prev.length ? '<table><thead><tr><th>Escada</th><th>Variável</th><th>Previsão</th><th>Quando</th><th>Confiança</th></tr></thead><tbody>'+
+    prev.slice(0,15).map(x=>'<tr class="click" data-row="'+x.e.id+'"><td class="code">'+x.e.id+'</td><td>'+V[x.k].nome+'</td><td>'+(x.alvo.n===2?pill(2):pill(1))+'</td><td class="num">'+fD(x.quando)+' <span class="muted">(em '+fmtPrazo((x.quando-NOW)/1440).replace('cerca de ','~')+')</span></td><td>'+confi(x.r2)+'</td></tr>').join('')+'</tbody></table>'+(prev.length>15?'<p class="hint">Mostrando 15 de '+prev.length+'.</p>':'')
+    : '<div class="empty">Nenhuma escada com piora prevista para os próximos 7 dias.</div>';
+}
+$('#iPrev') && document.addEventListener('click',ev=>{ const r=ev.target.closest('#iPrev [data-row]'); if(r) openDetalhe(r.dataset.row); });
+
 function renderInd(){
   const I=IDX; const tot=[0,0,0,0], byEst={}, byFab={Thyssen:[0,0,0,0],ESCAL:[0,0,0,0]}, byGr={c:[0,0,0,0],n:[0,0,0,0]}, rank=[], leads=[];
   for(const e of E){
@@ -1477,6 +1576,7 @@ function renderInd(){
   let p1ok=0; E.forEach(e=>{ const p=lastP1(e); if(p==null ? NOW<=CFG.p1Dias*1440 : (NOW-p)/1440<=CFG.p1Dias) p1ok++; });
   const disp=(tot[0]+tot[1])/sum(tot);
   const md=median(leads);
+  renderSucesso();
   $('#iPer').textContent='Período de '+fD(0)+' até '+fDH(NOW)+' · '+(I+1)+' leituras por escada · '+ats.length+' atendimentos.';
   $('#iKpis').innerHTML=[
     ['Disponibilidade da frota', pct(disp), 'Leituras fora de CRÍTICO e de manutenção'],
@@ -1733,6 +1833,18 @@ function twinSVG(s){
     '</svg>';
 }
 
+
+/* previsão de uma variável: só quando a tendência é consistente (R² ≥ 0,5) e piorando; horizonte de 3 a 14 dias */
+function projecao(e,k,i){
+  const cf=V[k]; if(cf.tipo==='desvio') return null;
+  const t=tendencia(e,k,i), x0=val(e,k,i); if(!t || x0==null || t.r2<0.5) return null;
+  const b=t.b; if((cf.tipo==='acima' && b<=0) || (cf.tipo==='abaixo' && b>=0)) return null;
+  const dLim = lim => (lim-x0)/b, cruz=[];
+  [[cf.a,1],[cf.c,2]].forEach(([lim,n])=>{ const d=dLim(lim); if(d>0 && lvl(cf,x0)<n) cruz.push({n, d, y:lim}); });
+  const dias=Math.min(14, Math.max(3, cruz.length ? cruz[cruz.length-1].d+1 : 7));
+  const lag=(NOW-slotMin(i))/1440, fim=x0+b*(dias+lag);
+  return {b, x0, dias, fim, cruz, r2:t.r2};
+}
 
 /* ================= DIAGNÓSTICO ELEVATE (regras + tendência, sem caixa-preta) ================= */
 // série recente de uma variável: ignora vazios, paradas e leituras suspeitas; para na última manutenção
