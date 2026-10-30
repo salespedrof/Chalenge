@@ -49,6 +49,16 @@ h3{font-size:1.15rem}
 .nav .badge{position:absolute;top:6px;right:12px;min-width:20px;height:20px;border-radius:10px;background:var(--crit);color:#fff;font-size:.72rem;
   display:flex;align-items:center;justify-content:center;padding:0 5px}
 .nav .badge[hidden]{display:none!important}
+.rail{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+.nav{flex:0 0 auto}
+.nav.one .ic-multi,.nav:not(.one) .ic-one{display:none}
+#badgeLive{right:auto;left:14px}
+.subtabs{padding:14px max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px))}
+.subtabs[hidden]{display:none}
+.subtabs .seg{max-width:100%;overflow-x:auto}
+.subtabs .seg button{white-space:nowrap}
+.subtabs+.view{padding-top:14px}
+@media (min-width:900px) and (max-height:720px){ .logo{padding-bottom:6px} .logo b{display:none} .nav{min-height:52px;padding:5px 4px;gap:2px} }
 main{min-width:0;display:flex;flex-direction:column}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
   display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-block:12px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
@@ -463,7 +473,8 @@ body.apres .sim-note{display:none}
   .nav{flex:1;min-height:58px;font-size:.7rem}
   main{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
   .brand-sm{display:flex}
-  .top,.view{padding-left:var(--gut);padding-right:var(--gutr)}
+  .top,.view,.subtabs{padding-left:var(--gut);padding-right:var(--gutr)}
+  .rail{overflow-y:hidden;overflow-x:auto} .nav{flex:1 0 auto}
   .charts,.two,.cmp,.grid2{grid-template-columns:minmax(0,1fr)}
   .who{margin-left:0}
 }
@@ -489,18 +500,13 @@ body.apres .sim-note{display:none}
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M5 33h8v-8h8v-8h8V9h6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 5h6v6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <b>Elevate</b>
     </div>
-    <button class="nav" data-view="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Painel</button>
-    <button class="nav" data-view="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 5l1 1 2-2M4 11l1 1 2-2" stroke-linejoin="round"/><circle cx="5" cy="18" r="1.3" fill="currentColor"/></svg>Fila<span class="badge" id="badgeFila" hidden></span></button>
-    <button class="nav sup-only" data-view="rota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="6" r="2.2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></svg>Emergência</button>
-    <button class="nav" data-view="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg>Atendi&shy;mentos<span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
-    <button class="nav sup-only" data-view="foco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>Foco</button>
-    <button class="nav sup-only" data-view="boletim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg>Boletim</button>
-    <button class="nav sup-only" data-view="prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/><path d="M15 3v4M13 5h4"/></svg>Preventivas</button>
-    <button class="nav sup-only" data-view="equipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg>Equipe</button>
-    <button class="nav ges-only" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
-    <button class="nav" data-view="sync"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Sincronização<span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span></button>
-    <button class="nav ges-only" data-view="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Ao vivo<span class="live-dot" id="badgeLive" hidden></span></button>
-    <button class="nav ges-only" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
+    <button class="nav" data-g="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg><span class="nl">Painel</span></button>
+    <button class="nav" data-g="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 5l1 1 2-2M4 11l1 1 2-2" stroke-linejoin="round"/><circle cx="5" cy="18" r="1.3" fill="currentColor"/></svg><span class="nl">Fila</span><span class="badge" id="badgeFila" hidden></span></button>
+    <button class="nav" data-g="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><span class="nl">Atendi&shy;mentos</span><span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
+    <button class="nav sup-only" data-g="equipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg><span class="nl">Equipe</span></button>
+    <button class="nav sup-only" data-g="prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/><path d="M15 3v4M13 5h4"/></svg><span class="nl">Preventivas</span></button>
+    <button class="nav sup-only" data-g="rel"><svg class="ic-multi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg><svg class="ic-one" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg><span class="nl">Relatórios</span></button>
+    <button class="nav" data-g="dados"><svg class="ic-multi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg><svg class="ic-one" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><span class="nl">Dados</span><span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span><span class="live-dot" id="badgeLive" hidden></span></button>
   </nav>
 
   <main>
@@ -526,6 +532,7 @@ body.apres .sim-note{display:none}
         <button class="net" id="netPill" title="Abrir sincronização"><span class="dot"></span><span id="netTxt">Online</span></button>
       </div>
     </header>
+    <div class="subtabs" id="subtabs" hidden><div class="seg" role="tablist" id="subSeg"></div></div>
 
     <!-- TELA 1 -->
     <section class="view" id="v-painel" aria-label="Painel da frota">
@@ -1073,6 +1080,7 @@ function paintTech(){
   $('#techName').textContent=n; $('#techIni').textContent=String(n).split(' ').map(x=>x[0]).join('').slice(0,2);
   $('#techPapel').textContent = !L ? 'Usuário' : L.papel==='ges' ? GES.cargo : L.papel==='sup' ? 'Supervisor · '+ESTN[(SUPS[L.id]||[])[0]] : 'Técnico · '+(ESTN[estDoTec(L.id)]||'');
   document.body.classList.toggle('papel-tec', isTec()); document.body.classList.toggle('papel-ges', isGes());
+  if(document.querySelector('.nav[data-g]')) atualizarNav();
   if(typeof fEst!=='undefined') fillEstFiltro();
 }
 function paintApres(){ document.body.classList.toggle('apres', !!S.apres); $('#apresTxt').textContent = S.apres ? 'Sair da apresentação' : 'Apresentar'; paintTech(); }
@@ -1141,17 +1149,44 @@ function paintTop(){
   const ba=$('#badgeAt'); ba.hidden=!op; ba.textContent=op;
   const bs=$('#badgeSync'); bs.hidden=!pend; bs.textContent=pend;
 }
+/* grupos da barra lateral: cada grupo abre a última aba usada; com uma aba só, o botão leva o nome dela */
+function GRUPOS(){ return {
+  painel:{t:'Painel', tabs:[['painel','Painel']]},
+  fila:{t:'Fila', tabs:[['fila','Fila'],['foco','Foco']]},
+  atend:{t:'Atendi&shy;mentos', tabs:[['atend','Atendimentos']]},
+  equipe:{t:'Equipe', tabs:[['equipe','Equipe'],['rota','Emergência']]},
+  prev:{t:'Preventivas', tabs:[['prev','Preventivas']]},
+  rel:{t:'Relatórios', tabs:[['boletim','Boletim'],['ind','Indicadores']]},
+  dados:{t:'Dados', tabs:[['sync','Sincronização'],['dados','Dataset'],['live','Maquete ao vivo']]},
+}; }
+function permitido(v){ return !(isTec() && ['ind','dados','live','equipe','foco','rota','boletim','prev'].includes(v)) && !(!isGes() && ['ind','dados','live'].includes(v)); }
+function grupoDe(v){ return Object.keys(GRUPOS()).find(g=>GRUPOS()[g].tabs.some(t=>t[0]===v)); }
+function abasDe(g){ return GRUPOS()[g].tabs.filter(t=>permitido(t[0])); }
+const ULT = {};
+function atualizarNav(){
+  const G=GRUPOS();
+  document.querySelectorAll('.nav[data-g]').forEach(b=>{ const ab=abasDe(b.dataset.g), um=ab.length===1;
+    b.classList.toggle('one', um); b.querySelector('.nl').innerHTML = um ? ab[0][1] : G[b.dataset.g].t; });
+}
+function renderSubtabs(v){
+  const g=grupoDe(v), ab=g?abasDe(g):[], box=$('#subtabs');
+  if(v==='detalhe' || ab.length<2){ box.hidden=true; return; }
+  box.hidden=false;
+  $('#subSeg').innerHTML=ab.map(([id,t])=>'<button role="tab" data-sub="'+id+'" aria-pressed="'+(id===v)+'" aria-selected="'+(id===v)+'">'+t+'</button>').join('');
+}
+$('#subSeg').addEventListener('click',ev=>{ const b=ev.target.closest('[data-sub]'); if(b) show(b.dataset.sub); });
 function show(v){
-  if(isTec() && ['ind','dados','live','equipe','foco','rota','boletim','prev'].includes(v)) v='painel';
-  if(!isGes() && ['ind','dados','live'].includes(v)) v='painel';
+  if(!permitido(v)) v='painel';
   if(v!=='detalhe'){ prevView = v; Twin.stop(); }
   view=v;
   document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-'+v);
-  document.querySelectorAll('.nav').forEach(b=>b.setAttribute('aria-current', (b.dataset.view===v || (v==='detalhe'&&b.dataset.view===prevView))?'page':'false'));
+  const gAtual = grupoDe(v==='detalhe' ? prevView : v); if(v!=='detalhe' && gAtual) ULT[gAtual]=v;
+  document.querySelectorAll('.nav[data-g]').forEach(b=>b.setAttribute('aria-current', b.dataset.g===gAtual?'page':'false'));
+  atualizarNav(); renderSubtabs(v);
   window.scrollTo(0,0);
   renderAll();
 }
-document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>show(b.dataset.view));
+document.querySelectorAll('.nav[data-g]').forEach(b=>b.onclick=()=>{ const g=b.dataset.g, u=ULT[g]; show(u && permitido(u) ? u : abasDe(g)[0][0]); });
 $('#netPill').onclick=()=>show('sync');
 
 /* ================= TELA 1: painel ================= */
@@ -1216,7 +1251,7 @@ $('#frota').addEventListener('click', ev=>{ const b=ev.target.closest('.card'); 
 
 /* ================= TELA 2: detalhe ================= */
 function openDetalhe(id){ if(id===LV.id) return isGes() ? show('live') : null; if(BYID[id] && !meu(BYID[id])){ toast(id+' é da estação '+ESTN[BYID[id].cod]+' (equipe: '+nomeEquipe(BYID[id].cod)+').'); return; } detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
-  document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); window.scrollTo(0,0); renderAll(); }
+  document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); $('#subtabs').hidden=true; window.scrollTo(0,0); renderAll(); }
 $('#btnBack').onclick=()=>show(prevView||'painel');
 document.querySelectorAll('#dPer button').forEach(b=>b.onclick=()=>{ periodo=+b.dataset.d; document.querySelectorAll('#dPer button').forEach(x=>x.setAttribute('aria-pressed', x===b)); drawCharts(); });
 
