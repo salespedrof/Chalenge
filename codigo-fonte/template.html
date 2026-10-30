@@ -545,7 +545,7 @@ body.apres .sim-note{display:none}
       <div class="filters">
         <label class="field grow"><span>Buscar escada</span><input type="search" id="fBusca" placeholder="Ex.: PIN-ER25" autocomplete="off"></label>
         <label class="field"><span>Estação</span><select id="fEst"></select></label>
-        <label class="field"><span>Grupo</span><select id="fGrupo"><option value="">Todos</option><option value="c">Crítica</option><option value="n">Não crítica</option></select></label>
+        <label class="field"><span>Grupo</span><select id="fGrupo"><option value="">Todos</option><option value="c">Crítica (A e B)</option><option value="cA">Crítica A</option><option value="cB">Crítica B</option><option value="n">Não crítica (A e B)</option><option value="nA">Não crítica A</option><option value="nB">Não crítica B</option></select></label>
         <label class="field"><span>Fabricante</span><select id="fFab"><option value="">Todos</option><option>Thyssen</option><option>ESCAL</option></select></label>
         <button class="btn sm" id="fLimpar">Limpar filtros</button>
       </div>
@@ -829,6 +829,17 @@ const SLOTS=[6,10,14,18,22], T0_ORIG=Date.UTC(2026,6,1), START=6*60;
 let T0=T0_ORIG; /* tempo real: os dados simulados terminam hoje; demonstração: datas originais do dataset */
 let RAW=RAW0, NS=450, END=89*1440+1439;
 const V = CFG.vars;
+/* ---------- grupos de manutenção: crítica/não crítica × A/B pelo desnível ----------
+   A Motiva ainda não informou o corte nem os tempos: valores propostos pelo grupo, a validar.
+   Desnível simulado por estação (as mais profundas têm escadas mais altas) até recebermos o cadastro real. */
+const GRUPO_CFG = {limiteB:10, min:{cA:130, cB:170, nA:110, nB:150}};
+const PROF_EST = {LUZ:1.0, REP:1.1, HIG:1.25, PTA:1.3, FRE:1.15, FRA:1.0, FAL:1.2, PIN:1.0, BUT:1.1, MBI:1.2, VSO:0.95, TVS:0.8};
+function desnSim(id,cod){ let h=2166136261; for(const ch of id+'#desn'){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } const u=(h>>>0)/4294967296;
+  return Math.round((4.5+u*8.5)*(PROF_EST[cod]||1)*10)/10; }
+function subGrupo(e){ return e.desn>=GRUPO_CFG.limiteB ? 'B' : 'A'; }
+function chaveGrupo(e){ return (e.crit?'c':'n')+subGrupo(e); }
+function nomeGrupo(e){ return (e.crit?'Crítica ':'Não crítica ')+subGrupo(e); }
+function durPrev(e){ return GRUPO_CFG.min[chaveGrupo(e)]; }
 const STL = ['BOM','ALERTA','CRÍTICO','EM MANUTENÇÃO'];
 const ICON = [
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5" stroke-width="2"/><path d="M7.5 12.3l3 3 6-6.3"/></svg>',
@@ -871,7 +882,7 @@ const ESTN = Object.fromEntries(EST.map(e=>[e.cod,e.nome]));
 let E=[], BYID={}, DSAT={}, CEN=[];
 function setData(D){
   RAW=D; NS=D.v[0][0].length; END=(NS/5-1)*1440+1439;
-  E = D.esc.map((r,ix) => ({ix, id:r[0], cod:r[1], fab:r[2], crit:r[3]===1, fluxo:r[4], v:D.v[ix], at:[]}));
+  E = D.esc.map((r,ix) => ({ix, id:r[0], cod:r[1], fab:r[2], crit:r[3]===1, fluxo:r[4], v:D.v[ix], at:[], desn:desnSim(r[0],r[1])}));
   BYID = Object.fromEntries(E.map(e=>[e.id,e]));
   DSAT = {};
   D.at.forEach(r => { const e=E[r[1]]; const a={id:'A'+r[0], esc:e.id, tec:r[2], tipo:r[3]?'corretiva':'preventiva', motivo:D.mot[r[4]], ent:r[5], sai:r[6], src:'ds'}; e.at.push(a); DSAT[a.id]=a; });
@@ -1209,7 +1220,7 @@ function cardHTML(e){
   const met='<div class="met"><span>'+(t==null?'—':nf(t,0)+' °C')+'</span><span>'+(v==null?'—':nf(v,1)+' mm/s')+'</span><span>óleo '+(o==null?'—':Math.round(o)+'%')+'</span></div>';
   const sp = (c.code===3||c.kind==='sem') ? '' : '<div class="sprow"><span class="lbl">'+V[k].nome+' · 5 dias</span>'+sparkSVG(e,k,IDX,84,24)+'</div>';
   const os=osAberta(e.id);
-  return '<button class="card s'+c.code+(tr?' trend':'')+'" data-id="'+e.id+'"><div class="card-top"><span class="code">'+e.id+'</span>'+(e.crit?'<span class="tag crit">Crítica</span>':'<span class="tag">'+e.fab+'</span>')+'</div>'+
+  return '<button class="card s'+c.code+(tr?' trend':'')+'" data-id="'+e.id+'"><div class="card-top"><span class="code">'+e.id+'</span>'+(e.crit?'<span class="tag crit">Crítica '+subGrupo(e)+'</span>':'<span class="tag">'+e.fab+' · '+subGrupo(e)+'</span>')+'</div>'+
     '<div class="pills">'+pill(c.code)+(tr?'<span class="chip-trend">↗ tendência</span>':'')+(os?'<span class="chip-os">'+os.id+'</span>':'')+'</div><div class="why">'+why+'</div>'+met+sp+'</button>';
 }
 function renderPainel(){
@@ -1233,7 +1244,8 @@ function renderPainel(){
     if(filt.status==='t'){ if(!TEND[e.ix]) return false; } else if(filt.status!==null && c.code!==filt.status) return false;
     if(filt.busca && !e.id.includes(filt.busca)) return false;
     if(filt.est && e.cod!==filt.est) return false;
-    if(filt.grupo && (filt.grupo==='c')!==e.crit) return false;
+    if(filt.grupo && (filt.grupo[0]==='c')!==e.crit) return false;
+    if(filt.grupo && filt.grupo.length===2 && filt.grupo[1]!==subGrupo(e)) return false;
     if(filt.fab && e.fab!==filt.fab) return false;
     return true;
   });
@@ -1264,7 +1276,7 @@ function renderDetalhe(){
   const act = (c.code===3 ? '<button class="btn maint" id="dAct">'+ICON[3]+'Finalizar atendimento</button>' : '<button class="btn primary" id="dAct">'+ICON[3]+'Iniciar atendimento</button>')+
     ((os||c.code===3) ? '' : '<button class="btn" id="dOS">'+ICON_OS+'Abrir OS</button>')+'<button class="btn" id="dProc">'+ICON_BOOK+'Procedimento</button>';
   const osl = os ? '<div class="osline"><span class="chip-os">'+os.id+'</span>'+os.status+' · '+os.tec+' '+(TECS[os.tec]||'')+' · prazo '+fDH(os.prazo)+(NOW>os.prazo && os.status==='aberta'?' <b style="color:var(--crit)">atrasada</b>':'')+'</div>' : '';
-  $('#dHead').innerHTML = '<div class="dhead s'+c.code+'"><div><div class="id">'+e.id+'</div><div class="meta"><span>'+esc(ESTN[e.cod])+'</span><span>'+e.fab+'</span><span>'+(e.crit?'Grupo crítica':'Grupo não crítica')+'</span><span>Fluxo relativo '+nf(e.fluxo,1)+'</span></div><div class="resp">Equipe da estação: <b>'+esc(nomeEquipe(e.cod))+'</b>'+(supDe(e.cod)?' · supervisor '+esc(supDe(e.cod)[1][1]):'')+'</div>'+osl+'</div>'+
+  $('#dHead').innerHTML = '<div class="dhead s'+c.code+'"><div><div class="id">'+e.id+'</div><div class="meta"><span>'+esc(ESTN[e.cod])+'</span><span>'+e.fab+'</span><span>Grupo '+nomeGrupo(e)+'</span><span title="Simulado até recebermos o cadastro real">Desnível '+nf(e.desn,1)+' m (simulado)</span><span>Fluxo relativo '+nf(e.fluxo,1)+'</span></div><div class="resp">Equipe da estação: <b>'+esc(nomeEquipe(e.cod))+'</b>'+(supDe(e.cod)?' · supervisor '+esc(supDe(e.cod)[1][1]):'')+'</div>'+osl+'</div>'+
     '<div class="st">'+pill(c.code)+'<span>'+esc(c.txt)+'</span><span class="muted" style="font-size:.88rem">'+sinceTxt+'</span></div><div class="act">'+act+'</div></div>';
   $('#dAct').onclick = ()=> c.code===3 ? modalSaida(c.at) : modalEntrada(e);
   if($('#dOS')) $('#dOS').onclick = ()=>modalOS(e);
@@ -1520,7 +1532,7 @@ function renderSucesso(){
   let p1ok=0; E.forEach(e=>{ const p=lastP1(e); if(p!=null && (NOW-p)/1440<=CFG.p1Dias) p1ok++; });
   $('#iSuc').innerHTML=[
     ['Tempo de escada parada', nf(parado30/60,0)+' h', 'Corretivas nos últimos 30 dias · '+nf(parado30/60/E.length,1)+' h por escada'],
-    ['Preventivas eliminadas', disp+' de '+dec.length, 'Dispensáveis neste ciclo pela condição · ~'+nf(disp*PREV.duracaoMin/60,0)+' h de homem-hora'],
+    ['Preventivas eliminadas', disp+' de '+dec.length, 'Dispensáveis neste ciclo pela condição · ~'+nf(dec.filter(x=>x.dec==='Dispensar').reduce((t,x)=>t+durPrev(x.e),0)/60,0)+' h de homem-hora'],
     ['Previsões que acertaram', bt.pred?pct(bt.hit/bt.pred):'—', bt.pred?bt.hit+' de '+bt.pred+' avisos de tendência viraram ALERTA em até 3 dias (antecedência mediana de '+(bt.ant==null?'—':nf(bt.ant,0)+' h')+')':'Sem avisos de tendência no período'],
     ['Homem-hora em 30 dias', nf((hhPrev+hhCorr+hhReset)/60,0)+' h', 'Preventiva '+nf(hhPrev/60,0)+' h · corretiva '+nf(hhCorr/60,0)+' h · resets '+nf(hhReset/60,0)+' h'],
     ['P1 anual em dia', pct(p1ok/E.length), p1ok+' de '+E.length+' escadas · obrigatória, nunca eliminada'],
@@ -1943,7 +1955,7 @@ function modalOS(e){
   const ex=osAberta(e.id); if(ex){ toast(ex.id+' já está aberta para '+e.id+'.'); return; }
   const num='OS-'+String(26)+'-'+String((S.osSeq||0)+1).padStart(4,'0');
   modalOpen('<h2 id="mTitle">Abrir ordem de serviço</h2>'+
-    '<dl class="facts"><dt>Número</dt><dd class="mono">'+num+'</dd><dt>Escada</dt><dd>'+e.id+' · '+esc(ESTN[e.cod])+' · '+(e.crit?'grupo crítica':'grupo não crítica')+'</dd>'+
+    '<dl class="facts"><dt>Número</dt><dd class="mono">'+num+'</dd><dt>Escada</dt><dd>'+e.id+' · '+esc(ESTN[e.cod])+' · grupo '+nomeGrupo(e).toLowerCase()+'</dd>'+
     '<dt>Prioridade</dt><dd>'+despPill(dp)+'</dd><dt>Prazo</dt><dd class="mono">'+fDH(prazo)+' ('+PRAZO_H[dp]+' h)</dd>'+
     '<dt>Diagnóstico</dt><dd><b>'+esc(d.titulo)+'</b><br><span class="muted">'+esc(d.frases.join(' '))+'</span></dd>'+
     '<dt>Componentes</dt><dd>'+(d.comps.length?d.comps.map(k=>COMP[k].nome).join(', '):'—')+'</dd><dt>Ação</dt><dd>'+esc(d.acao)+'</dd></dl>'+
@@ -2159,7 +2171,7 @@ $('#gBox').addEventListener('click',ev=>{
 function csvFile(f){
   const q=x=>{ const s=x==null?'':String(x); return /[",;\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
   const rows=[], dh=m=>toInput(m).replace('T',' ');
-  if(f==='escadas.csv'){ rows.push(['escada_id','estacao_cod','estacao_nome','fabricante','grupo','fluxo_relativo']); E.forEach(e=>rows.push([e.id,e.cod,ESTN[e.cod],e.fab,e.crit?'critica':'nao_critica',e.fluxo])); }
+  if(f==='escadas.csv'){ rows.push(['escada_id','estacao_cod','estacao_nome','fabricante','grupo','fluxo_relativo','desnivel_m_simulado','grupo_manutencao']); E.forEach(e=>rows.push([e.id,e.cod,ESTN[e.cod],e.fab,e.crit?'critica':'nao_critica',e.fluxo,e.desn,nomeGrupo(e)])); }
   else if(f==='limites_status.csv'){ rows.push(['variavel','unidade','limite_alerta','limite_critico','regra']); const K=['vibracao_mm_s','temperatura_c','corrente_a','tensao_v','velocidade_m_s','nivel_oleo_pct']; V.forEach((c,k)=>rows.push([K[k],c.un,c.a,c.c,c.tipo==='desvio'?'desvio % de '+String(c.nom).replace('.',',')+' '+c.un:c.tipo])); }
   else if(f==='atendimentos.csv'){ rows.push(['atendimento_id','escada_id','tecnico_id','tipo','motivo','entrada','saida','duracao_min','componente','acao','observacao','origem']); const all=[]; E.forEach(e=>e.atv.forEach(a=>all.push(a))); all.sort((a,b)=>a.ent-b.ent); all.forEach(a=>{ const ok=a.sai!=null; rows.push([a.id,a.esc,a.tec,a.tipo,a.motivo,dh(a.ent),ok?dh(a.sai):'',ok?Math.round(a.sai-a.ent):'',a.componente||'',a.acao||'',a.obs||'',a.src==='ds'?'historico':'tablet']); }); }
   else { rows.push(['leitura_id','escada_id','data_hora','vibracao_mm_s','temperatura_c','corrente_a','tensao_v','velocidade_m_s','nivel_oleo_pct','status']); const SN=['BOM','ALERTA','CRITICO','EM_MANUTENCAO']; let id=1;
@@ -2338,7 +2350,7 @@ function liveCardHTML(){
 }
 const fSegCurto = s => s<60 ? Math.round(s)+' s' : s<3600 ? Math.floor(s/60)+' min '+pad(Math.round(s%60))+' s' : fDur(s/60);
 function livePainelHTML(){
-  if(filt.est || (filt.busca && !LV.id.includes(filt.busca)) || filt.grupo==='n' || filt.fab) return '';
+  if(filt.est || (filt.busca && !LV.id.includes(filt.busca)) || (filt.grupo && filt.grupo!=='c') || filt.fab) return '';
   const c=LV.cur||liveEval();
   if(filt.status==='t' || (filt.status!==null && c.code!==filt.status)) return '';
   return '<section class="station"><div class="station-h"><h3><span>MAQ</span>Maquete Elevate · ao vivo</h3><div class="mini"><span>ESP32 · 1 leitura por segundo</span><span>não entra nos totais das 197 escadas</span></div></div><div class="grid">'+liveCardHTML()+'</div></section>';
@@ -2842,21 +2854,21 @@ function decisaoPrev(e){
   const c30=e.atv.filter(a=>a.tipo==='corretiva'&&a.ent<=NOW&&a.ent>NOW-30*1440), resets=c30.filter(a=>a.motivo==='parada de seguranca (reset)').length, corr=c30.length-resets;
   let rmax=0, kmax=0; V.forEach((cf,k)=>{ const x=val(e,k,IDX); if(x==null) return; const r=ratio(cf,x); if(r>rmax){ rmax=r; kmax=k; } });
   const base={e, last, prox, corr, resets, rmax};
-  if(p1) return {...base, dec:'P1', ordem:0, motivo:p1.txt+' · exigida pelo órgão fiscalizador', min:PREV.duracaoMin*1.5};
-  if(c.code>=1) return {...base, dec:'Antecipar', ordem:1, motivo:STL[c.code]+' agora · '+c.txt, min:PREV.duracaoMin};
-  if(TEND[e.ix]) return {...base, dec:'Antecipar', ordem:1, motivo:V[TEND[e.ix].k].nome+' piorando: ALERTA em '+fmtPrazo(TEND[e.ix].tA).replace('cerca de ','~'), min:PREV.duracaoMin};
-  if(corr>=2) return {...base, dec:'Antecipar', ordem:1, motivo:corr+' corretivas (sem contar resets) em 30 dias', min:PREV.duracaoMin};
-  if(resets>=PREV.resetsAlerta) return {...base, dec:'Antecipar', ordem:1, motivo:resets+' paradas com reset em 30 dias: investigar o dispositivo de segurança', min:PREV.duracaoMin};
+  if(p1) return {...base, dec:'P1', ordem:0, motivo:p1.txt+' · exigida pelo órgão fiscalizador', min:durPrev(e)*1.5};
+  if(c.code>=1) return {...base, dec:'Antecipar', ordem:1, motivo:STL[c.code]+' agora · '+c.txt, min:durPrev(e)};
+  if(TEND[e.ix]) return {...base, dec:'Antecipar', ordem:1, motivo:V[TEND[e.ix].k].nome+' piorando: ALERTA em '+fmtPrazo(TEND[e.ix].tA).replace('cerca de ','~'), min:durPrev(e)};
+  if(corr>=2) return {...base, dec:'Antecipar', ordem:1, motivo:corr+' corretivas (sem contar resets) em 30 dias', min:durPrev(e)};
+  if(resets>=PREV.resetsAlerta) return {...base, dec:'Antecipar', ordem:1, motivo:resets+' paradas com reset em 30 dias: investigar o dispositivo de segurança', min:durPrev(e)};
   if(c.code===0 && rmax<PREV.limiteBom && corr===0 && resets<=PREV.resetsOk) return {...base, dec:'Dispensar', ordem:3, motivo:'BOM · todas as variáveis abaixo de '+Math.round(PREV.limiteBom*100)+'% do limite (maior: '+V[kmax].nome.toLowerCase()+' a '+Math.round(rmax*100)+'%) · sem corretivas em 30 dias'+(resets?' (só '+resets+' reset'+(resets>1?'s':'')+')':''), min:0};
-  return {...base, dec:'Manter', ordem:2, motivo:corr?corr+' corretiva em 30 dias':rmax>=PREV.limiteBom?V[kmax].nome+' a '+Math.round(rmax*100)+'% do limite':resets+' paradas com reset em 30 dias', min:PREV.duracaoMin};
+  return {...base, dec:'Manter', ordem:2, motivo:corr?corr+' corretiva em 30 dias':rmax>=PREV.limiteBom?V[kmax].nome+' a '+Math.round(rmax*100)+'% do limite':resets+' paradas com reset em 30 dias', min:durPrev(e)};
 }
 const DEC_L = {P1:'P1 obrigatória', Antecipar:'Antecipar', Manter:'Manter', Dispensar:'Dispensar'};
 function renderPrev(){
   if(!isSup()) return show('painel');
   computeCurrent();
   const all=E.filter(meu).map(decisaoPrev).filter(Boolean).sort((a,b)=>a.ordem-b.ordem || a.prox-b.prox);
-  const n=k=>all.filter(x=>x.dec===k).length, disp=n('Dispensar');
-  $('#pvKpis').innerHTML=[[disp,'preventivas dispensáveis neste ciclo'],[nf(disp*PREV.duracaoMin/60,0)+' h','homem-hora economizado no ciclo (estimado)'],[n('Antecipar'),'antecipar (condição piorando)'],[n('P1'),'P1 anual nos próximos '+CFG.p1AvisoDias+' dias']]
+  const n=k=>all.filter(x=>x.dec===k).length, disp=n('Dispensar'), hhDisp=all.filter(x=>x.dec==='Dispensar').reduce((t,x)=>t+durPrev(x.e),0);
+  $('#pvKpis').innerHTML=[[disp,'preventivas dispensáveis neste ciclo'],[nf(hhDisp/60,0)+' h','homem-hora economizado no ciclo (estimado)'],[n('Antecipar'),'antecipar (condição piorando)'],[n('P1'),'P1 anual nos próximos '+CFG.p1AvisoDias+' dias']]
     .map(([v,t])=>'<div class="rt-kpi"><div class="n num">'+v+'</div><div class="t">'+t+'</div></div>').join('');
   /* plano desta noite, por estação: P1, antecipadas e as do calendário que vencem até amanhã */
   const noite=all.filter(x=>x.dec==='P1' || x.dec==='Antecipar' || (x.dec==='Manter' && x.prox<=NOW+1440));
@@ -2870,11 +2882,11 @@ function renderPrev(){
         sobra.map(x=>'<div class="mini" style="justify-content:space-between;align-items:center;opacity:.6"><span class="code">'+x.e.id+'</span><span class="dec '+x.dec+'">'+DEC_L[x.dec]+'</span></div>').join('')+'</div>'; }).join('')
     : '<div class="empty">Nenhuma preventiva para esta noite.</div>';
   const f=$('#pvFiltro').value, lista=all.filter(x=>!f||x.dec===f);
-  $('#pvLista').innerHTML = '<table><thead><tr><th>Escada</th><th>Estação</th><th>Decisão</th><th>Motivo</th><th>Última preventiva</th><th>Próxima pelo calendário</th></tr></thead><tbody>'+
-    lista.slice(0,120).map(x=>'<tr class="click" data-row="'+x.e.id+'"><td class="code">'+x.e.id+'</td><td>'+esc(ESTN[x.e.cod])+'</td><td><span class="dec '+x.dec+'">'+DEC_L[x.dec]+'</span></td><td>'+esc(x.motivo)+'</td><td class="num">'+(x.last==null?'—':fD(x.last))+'</td><td class="num">'+(x.prox<=NOW?'<b style="color:var(--warn)">vencida</b>':fD(x.prox))+'</td></tr>').join('')+'</tbody></table>'+
+  $('#pvLista').innerHTML = '<table><thead><tr><th>Escada</th><th>Estação</th><th>Grupo</th><th>Decisão</th><th>Motivo</th><th>Última preventiva</th><th>Próxima pelo calendário</th></tr></thead><tbody>'+
+    lista.slice(0,120).map(x=>'<tr class="click" data-row="'+x.e.id+'"><td class="code">'+x.e.id+'</td><td>'+esc(ESTN[x.e.cod])+'</td><td style="white-space:nowrap">'+nomeGrupo(x.e)+' <span class="muted">· '+durPrev(x.e)+' min</span></td><td><span class="dec '+x.dec+'">'+DEC_L[x.dec]+'</span></td><td>'+esc(x.motivo)+'</td><td class="num">'+(x.last==null?'—':fD(x.last))+'</td><td class="num">'+(x.prox<=NOW?'<b style="color:var(--warn)">vencida</b>':fD(x.prox))+'</td></tr>').join('')+'</tbody></table>'+
     (lista.length>120?'<p class="hint">Mostrando 120 de '+lista.length+'. Use o filtro para ver o resto.</p>':'');
   $('#pvSub').textContent='Para cada escada '+(escopoEst()?'da estação '+ESTN[escopoEst()]:'da Linha 4')+', o que fazer com a próxima preventiva mensal do plano. A P1 anual nunca é dispensada. A decisão final é da engenharia.';
-  $('#pvNota').textContent='Regras propostas pelo grupo, a validar com a engenharia da Motiva: P1 anual vencendo em até '+CFG.p1AvisoDias+' dias é obrigatória; ALERTA, CRÍTICO, tendência de piora, 2 ou mais corretivas em 30 dias ou '+PREV.resetsAlerta+' ou mais paradas com reset antecipam a preventiva; BOM com todas as variáveis abaixo de '+Math.round(PREV.limiteBom*100)+'% do limite, sem corretivas e com até '+PREV.resetsOk+' resets em 30 dias permite dispensar. Resets isolados contam à parte, porque muitos são acionamentos indevidos ou queda de energia. Duração média de '+PREV.duracaoMin+' min por preventiva (histórico simulado). Escadas em manutenção ficam de fora.';
+  $('#pvNota').textContent='Regras propostas pelo grupo, a validar com a engenharia da Motiva: duração da preventiva por grupo (Crítica A '+GRUPO_CFG.min.cA+' min, Crítica B '+GRUPO_CFG.min.cB+' min, Não crítica A '+GRUPO_CFG.min.nA+' min, Não crítica B '+GRUPO_CFG.min.nB+' min; B = desnível de '+GRUPO_CFG.limiteB+' m ou mais, simulado); P1 anual vencendo em até '+CFG.p1AvisoDias+' dias é obrigatória; ALERTA, CRÍTICO, tendência de piora, 2 ou mais corretivas em 30 dias ou '+PREV.resetsAlerta+' ou mais paradas com reset antecipam a preventiva; BOM com todas as variáveis abaixo de '+Math.round(PREV.limiteBom*100)+'% do limite, sem corretivas e com até '+PREV.resetsOk+' resets em 30 dias permite dispensar. Resets isolados contam à parte, porque muitos são acionamentos indevidos ou queda de energia. Duração média de '+PREV.duracaoMin+' min por preventiva (histórico simulado). Escadas em manutenção ficam de fora.';
 }
 $('#pvFiltro').onchange=renderPrev;
 ['#pvLista','#pvNoite'].forEach(q=>$(q).addEventListener('click',ev=>{ const r=ev.target.closest('[data-row]'); if(r) openDetalhe(r.dataset.row); }));
