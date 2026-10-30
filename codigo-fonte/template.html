@@ -324,13 +324,14 @@ body.apres .techpill{display:flex}
 .techpill{display:flex}
 .techpill .sair{min-height:36px;padding:4px 12px;font-size:.85rem;margin-left:4px}
 body.papel-tec .sup-only{display:none!important}
+body:not(.papel-ges) .ges-only{display:none!important}
 .login{position:fixed;inset:0;z-index:80;background:var(--bg);overflow:auto;display:flex;justify-content:center;padding:48px var(--gut,24px)}
 .login[hidden]{display:none!important}
 .login-box{width:100%;max-width:980px;display:flex;flex-direction:column;gap:22px}
 .login-brand{display:flex;align-items:center;gap:12px;color:var(--brand)}
 .login-brand b{font-family:var(--f-display);font-size:1.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
 .login h1{font-size:2rem}
-.login .lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.login .lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
 .ucard{display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px 16px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);color:var(--fg);min-height:92px}
 .ucard:hover{border-color:var(--brand)}
 .ucard[aria-pressed="true"]{border-color:var(--brand);box-shadow:inset 0 0 0 2px var(--brand)}
@@ -479,14 +480,14 @@ body.apres .sim-note{display:none}
     </div>
     <button class="nav" data-view="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Painel</button>
     <button class="nav" data-view="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 5l1 1 2-2M4 11l1 1 2-2" stroke-linejoin="round"/><circle cx="5" cy="18" r="1.3" fill="currentColor"/></svg>Fila<span class="badge" id="badgeFila" hidden></span></button>
-    <button class="nav" data-view="rota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="6" r="2.2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></svg>Rota</button>
+    <button class="nav sup-only" data-view="rota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="6" r="2.2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></svg>Emergência</button>
     <button class="nav" data-view="atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.5 17.2a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg>Atendi&shy;mentos<span class="badge" id="badgeAt" hidden style="background:var(--maint)"></span></button>
     <button class="nav sup-only" data-view="foco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>Foco</button>
     <button class="nav sup-only" data-view="equipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg>Equipe</button>
-    <button class="nav sup-only" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
+    <button class="nav ges-only" data-view="ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>Indicadores</button>
     <button class="nav" data-view="sync"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Sincronização<span class="badge" id="badgeSync" hidden style="background:var(--warn);color:#1b1100"></span></button>
-    <button class="nav sup-only" data-view="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Ao vivo<span class="live-dot" id="badgeLive" hidden></span></button>
-    <button class="nav sup-only" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
+    <button class="nav ges-only" data-view="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Ao vivo<span class="live-dot" id="badgeLive" hidden></span></button>
+    <button class="nav ges-only" data-view="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Dados</button>
   </nav>
 
   <main>
@@ -608,16 +609,14 @@ body.apres .sim-note{display:none}
     </section>
 
     <!-- TELA: rota do turno -->
-    <section class="view" id="v-rota" hidden aria-label="Rota do turno">
-      <div class="vhead"><div><h2 id="rtTit">Rota do turno</h2><p id="rtSub">Ordem das escadas a atender, pelo caminho da Linha 4, a partir da base de manutenção. A P1 atrasada ou perto de vencer entra sozinha.</p></div></div>
+    <section class="view" id="v-rota" hidden aria-label="Apoio em emergência">
+      <div class="vhead"><div><h2>Apoio em emergência</h2><p>Quando a equipe da estação está ocupada, qual equipe chega primeiro pela Linha 4. Menor caminho calculado pelo algoritmo de Dijkstra.</p></div></div>
       <div class="rt-tools">
-        <label class="field sup-only" id="rtTecF"><span>Técnico</span><select id="rtTec"></select></label>
-        <label class="field"><span>Horas no turno</span><select id="rtHoras"><option value="4">4 horas</option><option value="6">6 horas</option><option value="8" selected>8 horas</option></select></label>
-        <label class="field"><span>Incluir</span><select id="rtIncl"><option value="tend">Fila + escadas com tendência de piora</option><option value="fila">Só a fila (ALERTA e CRÍTICO)</option></select></label>
+        <label class="field"><span>Escada com problema</span><select id="emEsc"></select></label>
       </div>
-      <div class="rt-kpis" id="rtKpis"></div>
+      <div class="fc-rec" id="emRec"></div>
       <div class="rt-map" id="rtMapa"></div>
-      <div class="stack" style="gap:10px" id="rtLista"></div>
+      <div class="stack" style="gap:8px" id="rtLista"></div>
       <p class="rt-note" id="rtNota"></p>
     </section>
 
@@ -659,16 +658,9 @@ body.apres .sim-note{display:none}
       <p class="hint" id="fcNota"></p>
     </section>
 
-    <section class="view" id="v-equipe" hidden aria-label="Equipe">
-      <div class="vhead"><div><h2>Equipe e responsáveis</h2><p>Cada escada tem sempre um técnico responsável. O técnico vê no painel e na fila só as escadas dele. Toque num técnico para ver as escadas dele.</p></div></div>
+    <section class="view" id="v-equipe" hidden aria-label="Equipes">
+      <div class="vhead"><div><h2>Equipes por estação</h2><p id="eqSub">Cada estação da Linha 4 tem um supervisor e uma equipe dedicada de manutenção (2 técnicos por enquanto).</p></div></div>
       <div class="tec-cards" id="eqTec"></div>
-      <div class="eq-tools">
-        <label class="field"><span>Estação</span><select id="eqEst"></select></label>
-        <label class="field"><span>Mostrar</span><select id="eqFiltro"><option value="">Todas as escadas</option><option value="prob">Só ALERTA, CRÍTICO ou em manutenção</option><option value="crit">Só do grupo crítica</option></select></label>
-        <button class="btn sm" id="eqLimpar">Limpar seleção</button>
-        <button class="btn sm" id="eqPadrao">Restaurar distribuição padrão</button>
-      </div>
-      <div class="stack" style="gap:18px" id="eqLista"></div>
     </section>
 
     <section class="view" id="v-ind" hidden aria-label="Indicadores">
@@ -749,8 +741,9 @@ body.apres .sim-note{display:none}
 <div class="login" id="login" hidden>
   <div class="login-box">
     <div class="login-brand"><svg width="44" height="44" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 33h8v-8h8v-8h8V9h6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 5h6v6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Elevate</b></div>
-    <div><h1>Entrar</h1><p class="muted" style="margin:6px 0 0">Escolha o seu usuário. O supervisor vê todas as escadas; cada técnico vê as escadas sob a responsabilidade dele.</p></div>
-    <div><span class="lbl">Supervisão</span><div class="lgrid" id="lSup" style="margin-top:8px"></div></div>
+    <div><h1>Entrar</h1><p class="muted" style="margin:6px 0 0">Escolha o seu usuário. A gestão vê a linha toda; o supervisor e os técnicos veem a estação deles.</p></div>
+    <div><span class="lbl">Gestão da engenharia</span><div class="lgrid" id="lGes" style="margin-top:8px"></div></div>
+    <div><span class="lbl">Supervisores de estação</span><div class="lgrid" id="lSup" style="margin-top:8px"></div></div>
     <div><span class="lbl">Técnicos de manutenção</span><div class="lgrid" id="lTec" style="margin-top:8px"></div></div>
     <div class="lpin">
       <label class="field"><span>PIN</span><input id="lPin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="····"></label>
@@ -778,8 +771,8 @@ const CFG = {
   despacho: [
     {l:'Imediato'}, {l:'Prioridade no turno'}, {l:'Programar em 24 h'}, {l:'Programar em 48 h'}
   ],
-  p1Dias: 30,
-  p1AvisoDias: 3,   /* a P1 entra na rota quando faltam 3 dias ou menos para vencer */
+  p1Dias: 365,     /* P1: exigida anualmente pelo órgão fiscalizador */
+  p1AvisoDias: 30,   /* a P1 entra na rota quando faltam 3 dias ou menos para vencer */
   inicio: '2026-09-05T18:05',
 };
 const RAW0 = JSON.parse(document.getElementById('elevate-dataset').textContent);
@@ -796,11 +789,11 @@ const ICON = [
 ];
 const PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
 const PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5h4v15H6zM14 4.5h4v15h-4z"/></svg>';
-const MOT_L = {'P1 mensal':'Preventiva P1 mensal','parada de seguranca (reset)':'Parada de segurança (reset)','status critico':'Status crítico','sem resposta do sensor':'Sem resposta do sensor','alerta prolongado':'Alerta prolongado'};
-const MOTIVOS_FORM = ['status critico','parada de seguranca (reset)','sem resposta do sensor','alerta prolongado','P1 mensal'];
+const MOT_L = {'P1 anual':'P1 anual (órgão fiscalizador)','P1 mensal':'Preventiva mensal (plano)','parada de seguranca (reset)':'Parada de segurança (reset)','status critico':'Status crítico','sem resposta do sensor':'Sem resposta do sensor','alerta prolongado':'Alerta prolongado'};
+const MOTIVOS_FORM = ['status critico','parada de seguranca (reset)','sem resposta do sensor','alerta prolongado','P1 mensal','P1 anual'];
 const COMPONENTES = ['Sensor ou dispositivo de segurança','Comando/elétrica','Degraus/roletes/guias','Corrimão','Motor','Redutor','Rolamento do redutor','Freio','Corrente principal','Placa pente/rodapé','Lubrificação','Sensor do Elevate','Outro'];
 const ACOES = ['Resetado e testado','Ajustado','Limpo','Lubrificado/completado óleo','Substituído','Reparado','Inspecionado sem defeito'];
-const TECS = {T01:'Marcos Lima',T02:'Ana Ribeiro',T03:'João Pereira',T04:'Carla Mendes',T05:'Rafael Costa',T06:'Beatriz Nunes',T07:'Diego Martins',T08:'Fernanda Rocha',T09:'Lucas Almeida',T10:'Patrícia Gomes',T11:'Thiago Barbosa',T12:'Camila Freitas'};
+const TECS = {T13:'Bruno Carvalho',T14:'Juliana Prado',T15:'André Santos',T16:'Larissa Moura',T17:'Felipe Araújo',T18:'Renata Dias',T19:'Gustavo Teixeira',T20:'Aline Castro',T21:'Rodrigo Pinto',T22:'Vanessa Lopes',T23:'Eduardo Ramos',T24:'Priscila Duarte', T01:'Marcos Lima',T02:'Ana Ribeiro',T03:'João Pereira',T04:'Carla Mendes',T05:'Rafael Costa',T06:'Beatriz Nunes',T07:'Diego Martins',T08:'Fernanda Rocha',T09:'Lucas Almeida',T10:'Patrícia Gomes',T11:'Thiago Barbosa',T12:'Camila Freitas'};
 const SPEEDS = [{l:'Tempo real',v:1},{l:'1 min por segundo',v:60},{l:'10 min por segundo',v:600},{l:'1 hora por segundo',v:3600},{l:'6 horas por segundo',v:21600}];
 
 /* ================= utilidades ================= */
@@ -944,34 +937,35 @@ function current(e){
 let TEND=[];
 function computeCurrent(){ IDX=idxAt(NOW); CUR = E.map(current); TEND = E.map(e => CUR[e.ix].code===0 && CUR[e.ix].kind==='ok' ? tendenciaPiora(e,IDX) : null); }
 
-/* ================= perfis: supervisor e técnico ================= */
-const SUP = {id:'S01', nome:'Ricardo Souza', cargo:'Supervisor do CCO'};
+/* ================= perfis: gestão da engenharia, supervisor da estação e técnico =================
+   Cada estação da Linha 4 tem uma equipe dedicada (2 técnicos por enquanto) e um supervisor. */
+const GES = {id:'G01', nome:'Juliana Alves', cargo:'Gestão da engenharia de manutenção'};
+const SUPS = {S01:['LUZ','Ricardo Souza'],S02:['REP','Sandra Vieira'],S03:['HIG','Paulo Henrique'],S04:['PTA','Mônica Freitas'],S05:['FRE','Carlos Eduardo'],S06:['FRA','Tatiane Rocha'],
+  S07:['FAL','Márcio Nogueira'],S08:['PIN','Cláudia Ramos'],S09:['BUT','Roberto Lima'],S10:['MBI','Elaine Cardoso'],S11:['VSO','Fábio Moreira'],S12:['TVS','Natália Pires']};
+const SUP = {id:'S01', nome:'Ricardo Souza', cargo:'Supervisor'};   /* compatibilidade */
 const PIN_DEMO = '1234';
 const isTec = () => !!(S.login && S.login.papel==='tec');
-const isSup = () => !!(S.login && S.login.papel==='sup');
-const respDe = e => S.resp && S.resp[e.id];
-const meu = e => !isTec() || respDe(e)===S.login.id;
-/* toda escada tem um técnico: distribuição inicial em trechos seguidos da linha, equilibrando a quantidade */
-function distribuicaoPadrao(){
-  const ids=Object.keys(TECS), n=E.length, out={};
-  E.forEach((e,i)=>{ out[e.id]=ids[Math.min(ids.length-1, Math.floor(i*ids.length/n))]; });
-  return out;
-}
+const isGes = () => !!(S.login && S.login.papel==='ges');
+const isSup = () => !!(S.login && (S.login.papel==='sup' || S.login.papel==='ges'));   /* gestão ou supervisor */
+function equipesPadrao(){ const ids=['T01','T02','T03','T04','T05','T06','T07','T08','T09','T10','T11','T12','T13','T14','T15','T16','T17','T18','T19','T20','T21','T22','T23','T24'], o={}; EST.forEach((st,i)=>o[st.cod]=ids.slice(2*i,2*i+2)); return o; }
 function garantirResp(){
-  const pad=distribuicaoPadrao(); S.resp=S.resp||{}; let mudou=false;
-  E.forEach(e=>{ if(!S.resp[e.id] || !TECS[S.resp[e.id]]){ S.resp[e.id]=pad[e.id]; mudou=true; } });
-  if(mudou) save();
+  const pad=equipesPadrao(); S.equipes=S.equipes||{}; let ok=true;
+  const todos=Object.values(S.equipes).flat(); if(todos.length!==24 || new Set(todos).size!==24 || EST.some(st=>!S.equipes[st.cod])) ok=false;
+  if(!ok){ S.equipes=pad; save(); }
+  /* o histórico simulado foi gerado com técnicos sorteados; aqui cada atendimento antigo passa para a equipe padrão da estação */
+  E.forEach(e=>e.at.forEach(a=>{ if(a.src==='ds'){ const eq=pad[e.cod]; if(eq&&eq.length) a.tec=eq[hashId(a.id)%eq.length]; } }));
 }
-const escadasDe = tec => E.filter(e=>S.resp[e.id]===tec);
-function trechoDe(tec){
-  const cods=[...new Set(escadasDe(tec).map(e=>e.cod))];
-  if(!cods.length) return 'nenhuma escada';
-  const ix=cods.map(c=>EST.findIndex(x=>x.cod===c)).sort((a,b)=>a-b), seguido=ix.every((v,i)=>!i||v===ix[i-1]+1);
-  const nomes=ix.map(i=>EST[i].nome);
-  if(nomes.length===1) return nomes[0];
-  if(seguido) return nomes[0]+' a '+nomes[nomes.length-1];
-  return nomes.slice(0,-1).join(', ')+' e '+nomes[nomes.length-1];
-}
+const equipeDe = cod => (S.equipes && S.equipes[cod]) || [];
+const estDoTec = tec => EST.map(x=>x.cod).find(c=>equipeDe(c).includes(tec)) || null;
+const escopoEst = () => !S.login ? null : S.login.papel==='ges' ? null : S.login.papel==='sup' ? (SUPS[S.login.id]||[])[0] : estDoTec(S.login.id);
+const meu = e => !escopoEst() || e.cod===escopoEst();
+const respDe = e => equipeDe(e.cod)[0];
+const nomeEquipe = cod => { const n=equipeDe(cod).map(t=>TECS[t]); return !n.length ? '—' : n.length===1 ? n[0] : n.slice(0,-1).join(', ')+' e '+n[n.length-1]; };
+const escadasDe = tec => E.filter(e=>e.cod===estDoTec(tec));
+const trechoDe = tec => ESTN[estDoTec(tec)] || 'sem estação';
+const supDe = cod => Object.entries(SUPS).find(([k,v])=>v[0]===cod);
+/* técnico ocupado = tem atendimento aberto agora */
+const ocupado = tec => { for(const e of E){ const a=openAt(e); if(a && a.tec===tec) return e; } return null; };
 
 /* RN-03 + RN-04 */
 function fila(){
@@ -981,11 +975,15 @@ function fila(){
     const score=(c.code===2?P.CRITICO:P.ALERTA)+(e.crit?P.grupoCritica:0)+P.fluxo*e.fluxo+Math.min(h,P.horasMax);
     const d = c.code===2 ? (e.crit?0:1) : (e.crit?2:3);
     return {e,c,h,score,d};
-  }).concat(!isTec() && typeof LV!=='undefined' && liveFilaItem() || []).sort((a,b)=>a.d-b.d || b.score-a.score || b.h-a.h);
+  }).concat(isGes() && typeof LV!=='undefined' && liveFilaItem() || []).sort((a,b)=>a.d-b.d || b.score-a.score || b.h-a.h);
 }
 const despPill = d => '<span class="desp d'+d+'">'+(d===0?'● ':'')+CFG.despacho[d].l+'</span>';
 const pill = (code,txt) => '<span class="pill s'+code+'">'+ICON[code]+(txt||STL[code])+'</span>';
-const lastP1 = e => { let m=null; for(const a of e.atv){ if(a.motivo==='P1 mensal' && a.ent<=NOW && (m==null||a.ent>m)) m=a.ent; } return m; };
+/* P1 anual: o dataset traz as preventivas mensais do plano; a data da última P1 anual de cada escada é
+   simulada (espalhada nos últimos 12 meses) até a Motiva enviar o histórico real. Um registro 'P1 anual' feito no tablet vale por cima. */
+const hashId = t => { let h=2166136261; for(const ch of t){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } return h>>>0; };
+const p1Simulada = e => (NS/5-1)*1440 - (hashId(e.id)%355 + 5)*1440 + 22*60;
+const lastP1 = e => { let m=p1Simulada(e); for(const a of e.atv){ if(a.motivo==='P1 anual' && a.ent<=NOW && a.ent>m) m=a.ent; } return m<=NOW ? m : null; };
 
 /* ================= relógio ================= */
 const selSpeed=$('#selSpeed');
@@ -1023,16 +1021,16 @@ $('#selCen').onchange = e=>{
 };
 $('#selTec').onchange = e=>{ S.tec=e.target.value; save(); paintTech(); };
 function fillEstFiltro(){
-  const cods = isTec() ? [...new Set(escadasDe(S.login.id).map(e=>e.cod))] : EST.map(x=>x.cod);
+  const esc0=escopoEst(), cods = esc0 ? [esc0] : EST.map(x=>x.cod);
   const op='<option value="">Todas</option>'+EST.filter(x=>cods.includes(x.cod)).map(x=>'<option value="'+x.cod+'">'+x.cod+' · '+esc(x.nome)+'</option>').join('');
   [fEst,qEst].forEach(sel=>{ const v=sel.value; sel.innerHTML=op; sel.value=cods.includes(v)?v:''; });
   if(filt.est && !cods.includes(filt.est)) filt.est='';
 }
 function paintTech(){
-  const L=S.login, n = !L ? '—' : L.papel==='sup' ? SUP.nome : (TECS[L.id]||L.id);
-  $('#techName').textContent=n; $('#techIni').textContent=n.split(' ').map(x=>x[0]).join('').slice(0,2);
-  $('#techPapel').textContent = !L ? 'Usuário' : L.papel==='sup' ? SUP.cargo : 'Técnico · '+escadasDe(L.id).length+' escadas';
-  document.body.classList.toggle('papel-tec', isTec());
+  const L=S.login, n = !L ? '—' : L.papel==='ges' ? GES.nome : L.papel==='sup' ? (SUPS[L.id]||[])[1] : (TECS[L.id]||L.id);
+  $('#techName').textContent=n; $('#techIni').textContent=String(n).split(' ').map(x=>x[0]).join('').slice(0,2);
+  $('#techPapel').textContent = !L ? 'Usuário' : L.papel==='ges' ? GES.cargo : L.papel==='sup' ? 'Supervisor · '+ESTN[(SUPS[L.id]||[])[0]] : 'Técnico · '+(ESTN[estDoTec(L.id)]||'');
+  document.body.classList.toggle('papel-tec', isTec()); document.body.classList.toggle('papel-ges', isGes());
   if(typeof fEst!=='undefined') fillEstFiltro();
 }
 function paintApres(){ document.body.classList.toggle('apres', !!S.apres); $('#apresTxt').textContent = S.apres ? 'Sair da apresentação' : 'Apresentar'; paintTech(); }
@@ -1093,14 +1091,15 @@ function paintTop(){
   const pend = S.ev.filter(x=>x.status==='pendente').length;
   const net=$('#netPill'); net.classList.toggle('off', S.offline);
   $('#netTxt').innerHTML = (S.offline?'Sem conexão':'Online') + (pend?' · <span class="pend">'+pend+' pendente'+(pend>1?'s':'')+'</span>':'') + (S.offline||!S.hist.length?'':' · sinc. '+new Date(S.hist[S.hist.length-1].real).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}));
-  const imed = E.filter(e=>meu(e)&&CUR[e.ix].code===2&&e.crit).length + (!isTec() && typeof LV!=='undefined' && LV.cur && LV.cur.code===2 ? 1 : 0);
+  const imed = E.filter(e=>meu(e)&&CUR[e.ix].code===2&&e.crit).length + (isGes() && typeof LV!=='undefined' && LV.cur && LV.cur.code===2 ? 1 : 0);
   const bf=$('#badgeFila'); bf.hidden=!imed; bf.textContent=imed;
   const op = E.filter(e=>meu(e)&&CUR[e.ix].code===3).length;
   const ba=$('#badgeAt'); ba.hidden=!op; ba.textContent=op;
   const bs=$('#badgeSync'); bs.hidden=!pend; bs.textContent=pend;
 }
 function show(v){
-  if(isTec() && ['ind','dados','live','equipe','foco'].includes(v)) v='painel';
+  if(isTec() && ['ind','dados','live','equipe','foco','rota'].includes(v)) v='painel';
+  if(!isGes() && ['ind','dados','live'].includes(v)) v='painel';
   if(v!=='detalhe'){ prevView = v; Twin.stop(); }
   view=v;
   document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-'+v);
@@ -1139,10 +1138,11 @@ function renderPainel(){
   const n=[0,0,0,0]; VE.forEach(e=>n[CUR[e.ix].code]++);
   const SUB=['Sem anomalias','Programar inspeção','Intervenção imediata','Técnico em campo'];
   const nt=VE.filter(e=>TEND[e.ix]).length, online=VE.filter(e=>!V.every((_,k)=>val(e,k,IDX)==null)).length;
-  $('#painelSub').textContent = isTec()
-    ? 'Suas '+VE.length+' escadas, de '+trechoDe(S.login.id)+' · '+online+' de '+VE.length+' sensores respondendo. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o procedimento.'
-    : E.length+' escadas rolantes da Linha 4-Amarela · '+online+' de '+E.length+' sensores respondendo. Toque em uma escada para ver o gêmeo digital, o diagnóstico e o histórico.';
-  $('#painelTit').textContent = isTec() ? 'Minhas escadas' : 'Painel da Frota';
+  const est0=escopoEst();
+  $('#painelSub').textContent = est0
+    ? VE.length+' escadas da estação '+ESTN[est0]+' · equipe: '+nomeEquipe(est0)+' · '+online+' de '+VE.length+' sensores respondendo.'
+    : E.length+' escadas rolantes da Linha 4-Amarela, 12 estações · '+online+' de '+E.length+' sensores respondendo. Toque em uma escada para ver o diagnóstico e o histórico.';
+  $('#painelTit').textContent = est0 ? 'Estação '+ESTN[est0] : 'Painel da Frota';
   $('#counters').innerHTML = [0,1,2,3].map(k=>'<button class="counter s'+k+'" data-st="'+k+'" aria-pressed="'+(filt.status===k)+'">'+ICON[k]+'<span class="n num">'+n[k]+'</span><span class="t">'+STL[k]+'</span><span class="sub">'+SUB[k]+'</span></button>').join('')+
     '<button class="counter tr" data-st="t" aria-pressed="'+(filt.status==='t')+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="n num">'+nt+'</span><span class="t">TENDÊNCIA</span><span class="sub">BOM hoje, ALERTA previsto em 48 h</span></button>';
   document.querySelectorAll('.counter').forEach(b=>b.onclick=()=>{ const k=b.dataset.st==='t'?'t':+b.dataset.st; filt.status = filt.status===k?null:k; renderPainel(); });
@@ -1166,12 +1166,12 @@ function renderPainel(){
     html += '<section class="station"><div class="station-h"><h3><span>'+st.cod+'</span>'+esc(st.nome)+'</h3><div class="mini"><span>'+es.length+' escadas</span>'+
       (m[2]?'<b style="color:var(--crit)">'+m[2]+' crítico</b>':'')+(m[1]?'<b style="color:var(--warn)">'+m[1]+' alerta</b>':'')+(m[3]?'<b style="color:var(--maint)">'+m[3]+' em manutenção</b>':'')+'</div></div><div class="grid">'+es.map(cardHTML).join('')+'</div></section>';
   }
-  $('#frota').innerHTML = (isTec() ? '' : livePainelHTML()) + (html || '<div class="empty">Nenhuma escada com esses filtros.</div>');
+  $('#frota').innerHTML = (isGes() ? livePainelHTML() : '') + (html || '<div class="empty">Nenhuma escada com esses filtros.</div>');
 }
 $('#frota').addEventListener('click', ev=>{ const b=ev.target.closest('.card'); if(b) openDetalhe(b.dataset.id); });
 
 /* ================= TELA 2: detalhe ================= */
-function openDetalhe(id){ if(id===LV.id) return isTec() ? null : show('live'); if(isTec() && BYID[id] && !meu(BYID[id])){ toast(id+' está com '+(TECS[respDe(BYID[id])]||'outro técnico')+'. Fale com o supervisor.'); return; } detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
+function openDetalhe(id){ if(id===LV.id) return isGes() ? show('live') : null; if(BYID[id] && !meu(BYID[id])){ toast(id+' é da estação '+ESTN[BYID[id].cod]+' (equipe: '+nomeEquipe(BYID[id].cod)+').'); return; } detalheId=id; if(view!=='detalhe') prevView = view==='detalhe'?prevView:view; view='detalhe';
   document.querySelectorAll('.view').forEach(s=>s.hidden = s.id!=='v-detalhe'); window.scrollTo(0,0); renderAll(); }
 $('#btnBack').onclick=()=>show(prevView||'painel');
 document.querySelectorAll('#dPer button').forEach(b=>b.onclick=()=>{ periodo=+b.dataset.d; document.querySelectorAll('#dPer button').forEach(x=>x.setAttribute('aria-pressed', x===b)); drawCharts(); });
@@ -1185,7 +1185,7 @@ function renderDetalhe(){
   const act = (c.code===3 ? '<button class="btn maint" id="dAct">'+ICON[3]+'Finalizar atendimento</button>' : '<button class="btn primary" id="dAct">'+ICON[3]+'Iniciar atendimento</button>')+
     ((os||c.code===3) ? '' : '<button class="btn" id="dOS">'+ICON_OS+'Abrir OS</button>')+'<button class="btn" id="dProc">'+ICON_BOOK+'Procedimento</button>';
   const osl = os ? '<div class="osline"><span class="chip-os">'+os.id+'</span>'+os.status+' · '+os.tec+' '+(TECS[os.tec]||'')+' · prazo '+fDH(os.prazo)+(NOW>os.prazo && os.status==='aberta'?' <b style="color:var(--crit)">atrasada</b>':'')+'</div>' : '';
-  $('#dHead').innerHTML = '<div class="dhead s'+c.code+'"><div><div class="id">'+e.id+'</div><div class="meta"><span>'+esc(ESTN[e.cod])+'</span><span>'+e.fab+'</span><span>'+(e.crit?'Grupo crítica':'Grupo não crítica')+'</span><span>Fluxo relativo '+nf(e.fluxo,1)+'</span></div><div class="resp">Responsável: <b>'+(TECS[respDe(e)]||'—')+'</b>'+(isTec()?'':' · '+(respDe(e)||''))+'</div>'+osl+'</div>'+
+  $('#dHead').innerHTML = '<div class="dhead s'+c.code+'"><div><div class="id">'+e.id+'</div><div class="meta"><span>'+esc(ESTN[e.cod])+'</span><span>'+e.fab+'</span><span>'+(e.crit?'Grupo crítica':'Grupo não crítica')+'</span><span>Fluxo relativo '+nf(e.fluxo,1)+'</span></div><div class="resp">Equipe da estação: <b>'+esc(nomeEquipe(e.cod))+'</b>'+(supDe(e.cod)?' · supervisor '+esc(supDe(e.cod)[1][1]):'')+'</div>'+osl+'</div>'+
     '<div class="st">'+pill(c.code)+'<span>'+esc(c.txt)+'</span><span class="muted" style="font-size:.88rem">'+sinceTxt+'</span></div><div class="act">'+act+'</div></div>';
   $('#dAct').onclick = ()=> c.code===3 ? modalSaida(c.at) : modalEntrada(e);
   if($('#dOS')) $('#dOS').onclick = ()=>modalOS(e);
@@ -1202,9 +1202,10 @@ function renderDetalhe(){
   const cl=compLevels(e,d);
   const vel=val(e,4,IDX);
   twinUpdate({levels:cl.levels, labels:cl.labels, oil:val(e,5,IDX), speed:(c.code===3||c.kind==='sem'||c.kind==='parada')?0:(vel==null?0.5:vel), manut:c.code===3, sem:c.kind==='sem'}, c, d);
-  const p1=lastP1(e); const dias = p1==null ? null : (NOW-p1)/1440; const late = p1==null ? NOW>CFG.p1Dias*1440 : dias>CFG.p1Dias;
-  $('#dP1').innerHTML = '<h3>Preventiva P1 mensal</h3><div class="p1big num'+(late?' late':'')+'">'+(p1==null?'—':Math.floor(dias)+' dias')+'</div><div class="muted">'+(p1==null?'Nenhuma P1 registrada desde '+fD(0)+'.':'desde a última P1, em '+fDH(p1)+'.')+'</div>'+
-    (late?'<div>'+pill(2,'P1 ATRASADA')+'</div>':'<div>'+pill(0,'EM DIA')+'</div>')+'<p class="hint" style="margin:0">A P1 é exigência legal e continua obrigatória a cada '+CFG.p1Dias+' dias, mesmo com o monitoramento.</p>';
+  const p1=lastP1(e); const dias = p1==null ? null : (NOW-p1)/1440; const falta = dias==null ? null : CFG.p1Dias-dias; const late = falta!=null && falta<0, perto = falta!=null && falta>=0 && falta<=CFG.p1AvisoDias;
+  const dP=dt(p1==null?0:p1), dataP1 = p1==null ? '—' : pad(dP.getUTCDate())+'/'+pad(dP.getUTCMonth()+1)+'/'+dP.getUTCFullYear();
+  $('#dP1').innerHTML = '<h3>P1 anual</h3><div class="p1big num'+(late?' late':'')+'">'+(falta==null?'—':late?Math.ceil(-falta)+' dias de atraso':Math.floor(falta)+' dias')+'</div><div class="muted">'+(p1==null?'Sem P1 registrada.':(late?'vencida':'para vencer')+' · última P1 em '+dataP1+'.')+'</div>'+
+    (late?'<div>'+pill(2,'P1 ATRASADA')+'</div>':perto?'<div>'+pill(1,'P1 VENCE EM BREVE')+'</div>':'<div>'+pill(0,'EM DIA')+'</div>')+'<p class="hint" style="margin:0">A P1 é exigida anualmente pelo órgão fiscalizador e não pode ser eliminada pelo CBM. Data da última P1 simulada até recebermos o histórico real.</p>';
   const hist = e.atv.filter(a=>a.ent<=NOW).sort((a,b)=>b.ent-a.ent);
   $('#dHist').innerHTML = hist.length ? '<table><thead><tr><th>Entrada</th><th>Saída</th><th class="n">Duração</th><th>Tipo</th><th>Motivo</th><th>Componente · ação</th><th>Técnico</th><th>Origem</th></tr></thead><tbody>'+
     hist.slice(0,25).map(a=>{ const open=a.sai==null||a.sai>NOW; return '<tr><td class="num">'+fDH(a.ent)+'</td><td class="num">'+(open?'<b style="color:var(--maint)">em aberto</b>':fDH(a.sai))+'</td><td class="n">'+(open?'<span class="timer" data-since="'+a.ent+'">'+fDur(NOW-a.ent)+'</span>':fDur(a.sai-a.ent))+'</td><td>'+a.tipo+'</td><td>'+esc(MOT_L[a.motivo]||a.motivo)+'</td><td>'+(a.componente?esc(a.componente+' · '+a.acao):'<span class="muted">—</span>')+'</td><td>'+a.tec+'</td><td>'+syncTag(a)+'</td></tr>'; }).join('')+'</tbody></table>'+(hist.length>25?'<p class="hint">Mostrando os 25 mais recentes de '+hist.length+'.</p>':'')
@@ -1318,7 +1319,7 @@ function renderFila(){
   $('#qCount').innerHTML = [0,1,2,3].map(d=>'<div class="qc"><div class="n num" style="color:'+['var(--crit)','var(--crit)','var(--warn)','var(--muted)'][d]+'">'+n[d]+'</div><div class="muted" style="font-size:.88rem">'+CFG.despacho[d].l+'</div></div>').join('');
   const fd=$('#qDesp').value, fe=$('#qEst').value, fg=$('#qGrupo').value;
   const list=all.filter(x=>(fd===''||x.d===+fd)&&(!fe||x.e.cod===fe)&&(!fg||(fg==='c')===x.e.crit));
-  $('#qList').innerHTML = list.length ? list.map((x,i)=>'<div class="qrow"><div class="pos">'+(i+1)+'</div><div><div class="code">'+x.e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[x.e.cod])+' · '+(x.e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+' · '+x.e.fab+(isSup()&&!x.e.live&&respDe(x.e)?'<br>Resp.: '+esc(TECS[respDe(x.e)]):'')+'</div></div>'+
+  $('#qList').innerHTML = list.length ? list.map((x,i)=>'<div class="qrow"><div class="pos">'+(i+1)+'</div><div><div class="code">'+x.e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[x.e.cod])+' · '+(x.e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+' · '+x.e.fab+(isGes()&&!x.e.live?'<br>Equipe: '+esc(nomeEquipe(x.e.cod)):'')+'</div></div>'+
     '<div class="c-h">'+pill(x.c.code)+'<div style="font-size:.9rem;margin-top:4px">'+esc(x.c.txt)+'</div></div><div class="c-d muted" style="font-size:.88rem">há <span data-since="'+x.c.since+'">'+fDur(NOW-x.c.since)+'</span><br>pontos '+nf(x.score,0)+'</div><div class="c-d">'+despPill(x.d)+'</div>'+
     '<div class="acts"><button class="btn sm" data-ver="'+x.e.id+'">Ver escada</button>'+(osAberta(x.e.id)?'<span class="chip-os" style="align-self:center">'+osAberta(x.e.id).id+'</span>':'<button class="btn sm" data-os="'+x.e.id+'">Abrir OS</button>')+'<button class="btn sm primary" data-ini="'+x.e.id+'">Iniciar atendimento</button></div></div>').join('')
     : '<div class="empty">Nenhuma escada em ALERTA ou CRÍTICO com esses filtros.</div>';
@@ -1387,16 +1388,16 @@ function modalSaida(a){
     });
 }
 function renderAtend(){
-  const oss=[...(S.os||[])].filter(o=>!isTec()||o.tec===S.login.id).reverse();
+  const oss=[...(S.os||[])].filter(o=>!BYID[o.esc]||meu(BYID[o.esc])).reverse();
   $('#aOS').innerHTML = oss.length ? '<table><thead><tr><th>Número</th><th>Escada</th><th>Prioridade</th><th>Diagnóstico</th><th>Prazo</th><th>Técnico</th><th>Status</th><th>Sincronização</th></tr></thead><tbody>'+
     oss.map(o=>'<tr class="click" data-row="'+o.esc+'"><td class="mono">'+o.id+'</td><td class="code">'+o.esc+'</td><td>'+despPill(o.desp)+'</td><td>'+esc(o.titulo)+'</td><td class="num">'+fDH(o.prazo)+(o.status==='aberta'&&NOW>o.prazo?' <b style="color:var(--crit)">atrasada</b>':'')+'</td><td>'+o.tec+'</td><td>'+o.status+'</td><td><span class="sync '+(evPend(o.id)?'p">Pendente':'ok">Sincronizado')+'</span></td></tr>').join('')+'</tbody></table>'
     : '<div class="empty">Nenhuma OS emitida. Abra uma pelo detalhe da escada ou pela Fila.</div>';
-  const open=[]; E.forEach(e=>{ const a=openAt(e); if(a && (!isTec()||a.tec===S.login.id)) open.push({e,a}); }); open.sort((x,y)=>x.a.ent-y.a.ent);
+  const open=[]; E.forEach(e=>{ const a=openAt(e); if(a && meu(e)) open.push({e,a}); }); open.sort((x,y)=>x.a.ent-y.a.ent);
   $('#aOpen').innerHTML = open.length ? open.map(({e,a})=>'<div class="ocard"><div class="row"><span class="code">'+e.id+'</span>'+pill(3)+'</div><div class="big" data-since="'+a.ent+'" data-fmt="t">'+fTimer(NOW-a.ent)+'</div>'+
     '<div class="muted" style="font-size:.9rem">'+esc(ESTN[e.cod])+' · '+esc(MOT_L[a.motivo]||a.motivo)+'<br>Entrada '+fDH(a.ent)+' · '+a.tec+' '+(TECS[a.tec]||'')+'</div>'+
     '<div class="row"><button class="btn sm" data-ver="'+e.id+'">Ver escada</button><button class="btn sm maint" data-fim="'+a.id+'|'+e.id+'">Finalizar atendimento</button></div></div>').join('')
     : '<div class="empty">Nenhum atendimento em andamento neste horário.</div>';
-  const mine=[...S.user.filter(a=>a.ent<=NOW), ...Object.keys(S.ov).map(id=>DSAT[id]).filter(Boolean)].filter(a=>!isTec()||a.tec===S.login.id).sort((x,y)=>y.ent-x.ent);
+  const mine=[...S.user.filter(a=>a.ent<=NOW), ...Object.keys(S.ov).map(id=>DSAT[id]).filter(Boolean)].filter(a=>!BYID[a.esc]||meu(BYID[a.esc])).sort((x,y)=>y.ent-x.ent);
   $('#aMine').innerHTML = mine.length ? '<table><thead><tr><th>Escada</th><th>Entrada</th><th>Saída</th><th class="n">Duração</th><th>Tipo</th><th>Motivo</th><th>Componente · ação</th><th>Técnico</th><th>Sincronização</th></tr></thead><tbody>'+
     mine.map(a=>{ const open=a.sai==null||a.sai>NOW; return '<tr class="click" data-row="'+a.esc+'"><td class="code">'+a.esc+'</td><td class="num">'+fDH(a.ent)+'</td><td class="num">'+(open?'<b style="color:var(--maint)">em aberto</b>':fDH(a.sai))+'</td><td class="n">'+(open?'<span data-since="'+a.ent+'">'+fDur(NOW-a.ent)+'</span>':fDur(a.sai-a.ent))+'</td><td>'+a.tipo+'</td><td>'+esc(MOT_L[a.motivo]||a.motivo)+'</td><td>'+(a.componente?esc(a.componente+' · '+a.acao):'—')+'</td><td>'+a.tec+'</td><td>'+syncTag(a)+'</td></tr>'; }).join('')+'</tbody></table>'
     : '<div class="empty">Nenhum registro feito neste tablet ainda. Abra uma escada no Painel ou na Fila e toque em “Iniciar atendimento”.</div>';
@@ -1431,7 +1432,7 @@ function renderInd(){
     ['Reparo médio (corretivas)', rep.length?fDur(mean(rep)):'—', 'Sem contar resets. Paradas de segurança: mediana '+(reset.length?fDur(median(reset)):'—')+' ('+reset.length+')'],
     ['Resposta mediana', resp.length?fDur(median(resp)):'—', 'Do início do CRÍTICO até a entrada do técnico ('+resp.length+' casos)'],
     ['Antecedência ALERTA → CRÍTICO', md==null?'—':nf(md,1)+' dias', 'Mediana de '+leads.length+' sequências; 25% abaixo de '+(leads.length?nf([...leads].sort((a,b)=>a-b)[Math.floor(leads.length*.25)],1):'—')+' dia'],
-    ['Preventiva P1 em dia', pct(p1ok/E.length), p1ok+' de '+E.length+' escadas com P1 nos últimos '+CFG.p1Dias+' dias'],
+    ['P1 anual em dia', pct(p1ok/E.length), p1ok+' de '+E.length+' escadas com P1 nos últimos 12 meses'],
   ].map(([t,n,s])=>'<div class="kpi"><span class="lbl">'+t+'</span><span class="n num">'+n+'</span><small>'+esc(s)+'</small></div>').join('');
   const sbar=(lbl,c)=>{ const t=sum(c)||1; return '<div class="srow"><span>'+lbl+'</span><div class="sbar" role="img" aria-label="'+esc(lbl)+': '+STL.map((s,k)=>s+' '+pct(c[k]/t)).join(', ')+'">'+c.map((x,k)=>'<span class="b'+k+'" style="width:'+(x/t*100)+'%"></span>').join('')+'</div><span class="num muted" style="text-align:right">'+pct((c[1]+c[2])/t)+'</span></div>'; };
   $('#iEst').innerHTML='<div class="srow muted" style="font-size:.75rem"><span></span><span></span><span style="text-align:right">A+C</span></div>'+EST.map(s=>sbar(s.cod+' · '+s.nome, byEst[s.cod]||[0,0,0,0])).join('');
@@ -2503,34 +2504,41 @@ function mapaSVG(plano){
   return '<svg viewBox="0 0 '+W+' 170" role="img" aria-label="Mapa da Linha 4 com as paradas numeradas da rota">'+path+g+'</svg>';
 }
 const hhmm = m => { const d=dt(NOW+m); return pad(d.getUTCHours())+':'+pad(d.getUTCMinutes()); };
-function renderRota(){
-  computeCurrent();
-  if(isTec()) rtTec=S.login.id;
-  else if(!rtTec || !TECS[rtTec]){ let best=null; for(const k of Object.keys(TECS)){ const n=pendenciasDe(k,false).length; if(!best||n>best.n) best={k,n}; } rtTec=best.k; }
-  const sel=$('#rtTec'); if(!sel.options.length) sel.innerHTML=Object.entries(TECS).map(([k,n])=>'<option value="'+k+'">'+k+' · '+esc(n)+'</option>').join(''); sel.value=rtTec;
-  const horas=+$('#rtHoras').value, tend=$('#rtIncl').value==='tend';
-  const pl=planejarTurno('BASE', horas, rtTec, tend);
-  const nEsc=pl.dentro.reduce((s,p)=>s+p.itens.length,0), nFora=pl.fora.reduce((s,p)=>s+p.itens.length,0);
-  $('#rtTit').textContent = isTec() ? 'Minha rota do turno' : 'Rota do turno · '+TECS[rtTec];
-  $('#rtSub').textContent = 'Sai da base de manutenção às '+hhmm(0)+', '+(isTec()?'pelas suas escadas':'pelas escadas de '+TECS[rtTec])+' ('+trechoDe(rtTec)+'), e volta à base. Despacho imediato primeiro; depois a linha num sentido só. A P1 atrasada ou que vence em até '+CFG.p1AvisoDias+' dias entra sozinha na rota.';
-  const nP1=pl.dentro.reduce((s,p)=>s+p.itens.filter(x=>x.p1).length,0);
-  $('#rtKpis').innerHTML = [[pl.dentro.length,'paradas no turno'],[nEsc,'escadas atendidas'],[nP1,'P1 incluídas (lei)'],[fDur(pl.total),'tempo total, com a volta']].map(([n,t])=>'<div class="rt-kpi"><div class="n num">'+n+'</div><div class="t">'+t+'</div></div>').join('');
-  $('#rtMapa').innerHTML = mapaSVG(pl);
-  if(!pl.pend.length){ $('#rtLista').innerHTML='<div class="empty">Nenhuma escada '+(isTec()?'sua':'de '+esc(TECS[rtTec]))+' precisa de atendimento agora'+(tend?'':' na fila')+', e nenhuma P1 está atrasada ou vencendo nos próximos '+CFG.p1AvisoDias+' dias.</div>'; $('#rtNota').textContent=''; return; }
-  const p1Chip = x => x.p1 ? '<span class="p1chip '+x.p1.st+'">'+esc(x.p1.txt)+'</span>' : '';
-  const itemHTML = x => '<button class="rt-e" data-ver="'+x.e.id+'"><span class="code">'+x.e.id+'</span>'+(x.tipo==='p1'?'':x.tipo==='tendencia'?'<span class="chip-trend">↗ tendência</span>':pill(x.c.code))+(x.tipo!=='p1'&&x.d<=3?despPill(x.d):'')+p1Chip(x)+'</button>';
-  const p1Fora=pl.fora.flatMap(p=>p.itens).filter(x=>x.p1&&x.p1.st==='atrasada');
-  let html = pl.dentro.map((p,i)=>'<div class="rt-stop"><div class="rt-num">'+(i+1)+'</div><div><div class="rt-h"><b>'+esc(ESTN[p.cod])+'</b><span class="mono">chegada '+hhmm(p.chegada)+' · saída '+hhmm(p.saida)+'</span><span class="muted">'+p.itens.length+' escada'+(p.itens.length>1?'s':'')+' · '+p.att+' min de atendimento</span></div>'+
-    '<div class="rt-via">Caminho: '+p.r.via.map(NOME_NO).join(' → ')+' · '+p.r.min+' min de viagem + '+nf(p.interno,1)+' min dentro da estação</div><div class="rt-esc">'+p.itens.map(itemHTML).join('')+'</div></div></div>').join('');
-  if(pl.dentro.length) html += '<div class="rt-stop"><div class="rt-num" style="background:var(--surface-3);color:var(--fg)">B</div><div><div class="rt-h"><b>Volta à base</b><span class="mono">chegada '+hhmm(pl.total)+'</span></div><div class="rt-via">Caminho: '+pl.volta.via.map(NOME_NO).join(' → ')+' · '+pl.volta.min+' min</div></div></div>';
-  if(pl.fora.length) html += '<div class="vhead" style="margin-top:6px"><h3>Fica para o próximo turno</h3></div>'+pl.fora.map(p=>'<div class="rt-stop fora"><div class="rt-num">–</div><div><div class="rt-h"><b>'+esc(ESTN[p.cod])+'</b><span class="muted">'+p.itens.length+' escada'+(p.itens.length>1?'s':'')+' · '+p.att+' min de atendimento</span></div><div class="rt-esc">'+p.itens.map(itemHTML).join('')+'</div></div></div>').join('');
-  if(p1Fora.length) html = '<div class="banner" style="--c:var(--crit)">'+ICON[2]+'<div><strong>'+p1Fora.length+' P1 atrasada'+(p1Fora.length>1?'s':'')+' não coube'+(p1Fora.length>1?'ram':'')+' neste turno</strong><span class="muted">'+p1Fora.map(x=>x.e.id).join(' · ')+'. A P1 é obrigatória por lei: aumente o turno ou passe para outro técnico.</span></div></div>' + html;
-  $('#rtLista').innerHTML = html;
-  $('#rtNota').textContent = 'Menor caminho pelo algoritmo de Dijkstra no grafo das 12 estações + base. Tempos estimados pelo grupo, a confirmar com a Motiva: '+REDE.trechos.filter(t=>t[0]!=='BASE').map(t=>t[2]).join('/')+' min entre estações, '+REDE.trechos.find(t=>t[0]==='BASE')[2]+' min da base a Vila Sônia, '+REDE.minBaseEstacao+' min + '+REDE.minPorEscadaNaEstacao*60+' s por escada dentro da estação, e atendimento de '+REDE.atendimento.critico+' min (crítico), '+REDE.atendimento.alerta+' min (alerta), '+REDE.atendimento.tendencia+' min (inspeção de tendência) e '+REDE.atendimento.p1+' min (P1).';
+let emSel=null;
+function mapaEmerg(origem, alvo, via){
+  const n=EST.length, W=1000, x0=24, dx=(W-x0*2)/n, Y=60, xs=i=>x0+dx*i+dx/2, P=c=>xs(POS(c));
+  let g='<line x1="'+xs(0)+'" y1="'+Y+'" x2="'+xs(n-1)+'" y2="'+Y+'" stroke="#FFD23C" stroke-width="8" stroke-linecap="round"/>';
+  if(origem && origem!==alvo){ g+='<path d="M'+P(origem)+' '+(Y-8)+' L'+P(origem)+' '+(Y-26)+' L'+P(alvo)+' '+(Y-26)+' L'+P(alvo)+' '+(Y-8)+'" fill="none" stroke="var(--fg)" stroke-width="2.5" marker-end="url(#emA)"/>'; }
+  EST.forEach((st,i)=>{ const isA=st.cod===alvo, isO=st.cod===origem;
+    g+='<circle cx="'+xs(i)+'" cy="'+Y+'" r="'+(isA||isO?11:7)+'" fill="'+(isA?'var(--crit)':isO?'var(--brand)':'var(--surface)')+'" stroke="'+(isA?'var(--crit)':isO?'var(--brand)':'var(--fg)')+'" stroke-width="2.5"/>'+
+      '<text x="'+xs(i)+'" y="'+(Y+30)+'" text-anchor="middle" font-size="12" font-weight="'+(isA||isO?700:500)+'" fill="'+(isA||isO?'var(--fg)':'var(--muted)')+'">'+st.cod+'</text>'+
+      (isA?'<text x="'+xs(i)+'" y="'+(Y+46)+'" text-anchor="middle" font-size="10.5" fill="var(--crit)">ocorrência</text>':isO&&origem!==alvo?'<text x="'+xs(i)+'" y="'+(Y+46)+'" text-anchor="middle" font-size="10.5" fill="var(--brand)">apoio</text>':''); });
+  return '<svg viewBox="0 0 '+W+' 112" role="img" aria-label="Linha 4 com a estação da ocorrência e a equipe de apoio"><defs><marker id="emA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--fg)"/></marker></defs>'+g+'</svg>';
 }
-$('#rtTec').onchange=e=>{ rtTec=e.target.value; renderRota(); };
-['#rtHoras','#rtIncl'].forEach(q=>$(q).onchange=renderRota);
-$('#rtLista').addEventListener('click',ev=>{ const b=ev.target.closest('[data-ver]'); if(b) openDetalhe(b.dataset.ver); });
+function renderRota(){
+  if(isTec()) return show('painel');
+  computeCurrent();
+  const cand=fila().filter(x=>!x.e.live).map(x=>x.e);
+  const sel=$('#emEsc');
+  sel.innerHTML = cand.length ? cand.map(e=>'<option value="'+e.id+'">'+e.id+' · '+esc(ESTN[e.cod])+' · '+STL[CUR[e.ix].code]+' · '+esc(CUR[e.ix].txt)+'</option>').join('') : '<option value="">Nenhuma escada em ALERTA ou CRÍTICO</option>';
+  if(!emSel || !cand.some(e=>e.id===emSel)) emSel = cand.length ? cand[0].id : null;
+  if(emSel) sel.value=emSel;
+  if(!emSel){ $('#emRec').innerHTML='<p>Nenhuma ocorrência em ALERTA ou CRÍTICO'+(escopoEst()?' na sua estação':'')+' agora.</p>'; $('#rtMapa').innerHTML=mapaEmerg(null,escopoEst()||'PIN'); $('#rtLista').innerHTML=''; $('#rtNota').textContent=''; return; }
+  const e=BYID[emSel], alvo=e.cod;
+  const ops=EST.map(st=>{ const r=rotaEntre(st.cod,alvo), tecs=equipeDe(st.cod).map(t=>({t, oc:ocupado(t)})), livres=tecs.filter(x=>!x.oc);
+    return {cod:st.cod, min:r.min+tempoInterno(alvo), viagem:r.min, via:r.via, tecs, livres:livres.length}; })
+    .sort((a,b)=>(b.livres>0)-(a.livres>0) || a.min-b.min);
+  const melhor=ops[0], propria=ops.find(o=>o.cod===alvo);
+  $('#emRec').innerHTML = '<span class="n">Recomendação</span><b>'+(melhor.cod===alvo?'Equipe da própria estação ('+esc(ESTN[alvo])+')':'Acionar a equipe de '+esc(ESTN[melhor.cod]))+'</b>'+
+    '<p>'+(melhor.cod===alvo ? 'A equipe de '+esc(ESTN[alvo])+' tem '+melhor.livres+' técnico'+(melhor.livres>1?'s':'')+' livre'+(melhor.livres>1?'s':'')+': chega em cerca de '+Math.round(melhor.min)+' min.'
+      : 'A equipe de '+esc(ESTN[alvo])+' está ocupada'+(propria.tecs.filter(x=>x.oc).length?' ('+propria.tecs.filter(x=>x.oc).map(x=>TECS[x.t]+' em '+x.oc.id).join(', ')+')':'')+'. A equipe de '+esc(ESTN[melhor.cod])+' chega em cerca de '+Math.round(melhor.min)+' min: '+melhor.via.map(NOME_NO).join(' → ')+'.')+'</p>';
+  $('#rtMapa').innerHTML = mapaEmerg(melhor.cod, alvo, melhor.via);
+  $('#rtLista').innerHTML = ops.slice(0,6).map((o,i)=>'<div class="rt-stop'+(o.livres?'':' fora')+'"><div class="rt-num">'+(i+1)+'</div><div><div class="rt-h"><b>Equipe '+esc(ESTN[o.cod])+'</b><span class="mono">~'+Math.round(o.min)+' min</span><span class="muted">'+(o.livres?o.livres+' de '+o.tecs.length+' livres':'todos ocupados')+'</span></div>'+
+    '<div class="rt-via">'+o.tecs.map(x=>esc(TECS[x.t])+(x.oc?' (em atendimento em '+x.oc.id+')':' (livre)')).join(' · ')+'</div>'+
+    (o.cod!==alvo?'<div class="rt-via">Caminho: '+o.via.map(NOME_NO).join(' → ')+' · '+o.viagem+' min de viagem + '+nf(tempoInterno(alvo),1)+' min dentro da estação</div>':'<div class="rt-via">Já está na estação · '+nf(tempoInterno(alvo),1)+' min até a escada</div>')+'</div></div>').join('');
+  $('#rtNota').textContent = 'Tempos estimados pelo grupo, a confirmar com a Motiva: 2 a 3 min entre estações e 1 min + 15 s por escada dentro da estação. A equipe da estação vem primeiro sempre que tiver alguém livre.';
+}
+$('#emEsc').onchange=e=>{ emSel=e.target.value; renderRota(); };
 
 /* ================= FOCO DO SUPERVISOR: onde agir primeiro, com o motivo =================
    Pontuação por escada (pesos em FOCO.peso, ajustáveis): status agora, tendência, corretivas e paradas
@@ -2562,7 +2570,7 @@ function pertoDoAlerta(e){
 }
 function recomendacao(f){
   const modos=f.m.map(x=>x.modo);
-  if(modos.includes('agora') && f.c.code===2) return 'Atender agora: '+f.e.id+' está crítica'+(f.e.crit?' e é do grupo crítica':'')+'. Confirme se o técnico responsável ('+(TECS[respDe(f.e)]||'—')+') já está a caminho.';
+  if(modos.includes('agora') && f.c.code===2) return 'Atender agora: '+f.e.id+' está crítica'+(f.e.crit?' e é do grupo crítica':'')+'. Confirme se a equipe da estação ('+nomeEquipe(f.e.cod)+') já está a caminho; se estiver ocupada, use Apoio em emergência.';
   if(modos.includes('parada')) return f.e.id+' parou '+f.par+' vezes com reset. Em vez de só resetar, programe uma inspeção do dispositivo de segurança para achar a causa.';
   if(modos.includes('perto')) return 'Inspecionar '+f.e.id+' antes do ALERTA: '+f.perto.txt.toLowerCase()+'.';
   if(modos.includes('tend')) return 'Programar inspeção em '+f.e.id+' antes do ALERTA: a tendência indica '+MODOS[modoDaVar(f.e,TEND[f.e.ix].k,IDX)].t.toLowerCase()+'.';
@@ -2577,7 +2585,7 @@ function renderFoco(){
   const dias=+$('#fcPer').value;
   /* ordem de foco: CRÍTICO → ALERTA → BOM do grupo crítica perto do ALERTA → BOM não crítica perto do ALERTA → BOM crítica → BOM não crítica.
      Dentro de cada grupo, a pontuação desempata. Escadas em manutenção já estão com o técnico e ficam de fora. */
-  const all=E.map(e=>{ const f=focoEscada(e,dias), c=f.c; if(c.code===3) return null;
+  const all=E.filter(meu).map(e=>{ const f=focoEscada(e,dias), c=f.c; if(c.code===3) return null;
     if(c.code===0){ const pr=pertoDoAlerta(e); if(pr){ f.perto=pr; if(!f.m.some(x=>x.modo==='tend')) f.m.unshift({t:pr.txt, k:'cb', modo:'perto'}); } }
     f.tier = c.code===2 ? 1 : c.code===1 ? 2 : f.perto ? (e.crit?3:4) : (e.crit?5:6);
     return f; }).filter(Boolean).sort((a,b)=>a.tier-b.tier || b.pt-a.pt);
@@ -2591,7 +2599,7 @@ function renderFoco(){
   for(const t of [1,2,3,4,5,6]){ const fs=all.filter(f=>f.tier===t); if(!fs.length) continue; const lim=t>=5?5:fs.length, mostra=fs.slice(0,lim);
     html+='<div class="vhead" style="margin-top:6px"><h3 style="color:'+GRUPO[t][1]+'">'+t+' · '+GRUPO[t][0]+' <span class="muted" style="font-family:var(--f-body);font-size:.9rem;font-weight:400">'+fs.length+' escada'+(fs.length>1?'s':'')+(lim<fs.length?' · mostrando as '+lim+' com mais histórico de falhas':'')+'</span></h3></div>'+mostra.map(f=>linhaFoco(f,++pos,max)).join(''); }
   $('#fcRank').innerHTML = html || '<div class="empty">Nenhuma escada no período.</div>';
-  function linhaFoco(f,i,max){ return '<div class="fc-row"><div class="fc-pos">'+i+'</div><div><div class="code">'+f.e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[f.e.cod])+' · '+(f.e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+' · '+esc(TECS[respDe(f.e)]||'—')+'</div></div>'+
+  function linhaFoco(f,i,max){ return '<div class="fc-row"><div class="fc-pos">'+i+'</div><div><div class="code">'+f.e.id+'</div><div class="muted" style="font-size:.85rem">'+esc(ESTN[f.e.cod])+' · '+(f.e.crit?'<b style="color:var(--brand)">crítica</b>':'não crítica')+' · equipe '+esc(nomeEquipe(f.e.cod))+'</div></div>'+
     '<div class="fc-chips">'+f.m.map(x=>'<span class="fc-chip '+x.k+'">'+esc(x.t)+'</span>').join('')+'</div>'+
     '<div><div class="fc-score num">'+nf(f.pt,0)+'</div><div class="fc-bar"><i style="width:'+Math.round(f.pt/max*100)+'%"></i></div></div>'+
     '<div class="acts"><button class="btn sm" data-ver="'+f.e.id+'">Ver escada</button></div></div>'; }
@@ -2616,63 +2624,33 @@ function renderFoco(){
 $('#fcPer').onchange=renderFoco;
 ['#fcRecs','#fcRank'].forEach(q=>$(q).addEventListener('click',ev=>{ const b=ev.target.closest('[data-ver]'); if(b) openDetalhe(b.dataset.ver); }));
 
-/* ================= TELA: equipe e responsáveis (supervisor) ================= */
-const eqF = {tec:'', est:'', filtro:''}; let eqMudou = null;
-$('#eqEst').innerHTML = '<option value="">Todas</option>'+EST.map(x=>'<option value="'+x.cod+'">'+x.cod+' · '+esc(x.nome)+'</option>').join('');
-const tecOpts = sel => Object.entries(TECS).map(([k,n])=>'<option value="'+k+'"'+(k===sel?' selected':'')+'>'+k+' · '+esc(n)+'</option>').join('');
+/* ================= TELA: equipes por estação ================= */
 function renderEquipe(){
   if(!isSup()) return show('painel');
   computeCurrent();
-  $('#eqTec').innerHTML = Object.entries(TECS).map(([k,n])=>{
-    const es=escadasDe(k), m=[0,0,0,0]; es.forEach(e=>m[CUR[e.ix].code]++); const cr=es.filter(e=>e.crit).length;
-    return '<button class="tcard" data-tec="'+k+'" aria-pressed="'+(eqF.tec===k)+'"><div class="tn"><b>'+esc(n)+'</b><span class="muted mono" style="font-size:.8rem">'+k+'</span></div>'+
-      '<div><span class="big num">'+es.length+'</span> <span class="muted">escadas</span></div><div class="mini"><span>'+esc(trechoDe(k))+'</span></div>'+
-      '<div class="mini"><span>'+cr+' do grupo crítica</span>'+(m[2]?'<b style="color:var(--crit)">'+m[2]+' crítico</b>':'')+(m[1]?'<b style="color:var(--warn)">'+m[1]+' alerta</b>':'')+(m[3]?'<b style="color:var(--maint)">'+m[3]+' em manutenção</b>':'')+'</div></button>';
+  const est0=escopoEst(), lista = est0 ? [EST.find(x=>x.cod===est0), ...EST.filter(x=>x.cod!==est0)] : EST;
+  $('#eqSub').textContent = 'Cada estação tem um supervisor e uma equipe dedicada (2 técnicos por enquanto).'+(isGes()?' A gestão pode mover um técnico para outra estação, por exemplo para cobrir férias.':' Para pedir apoio de outra estação, use Apoio em emergência.');
+  $('#eqTec').innerHTML = lista.map(st=>{
+    const es=E.filter(e=>e.cod===st.cod), m=[0,0,0,0]; es.forEach(e=>m[CUR[e.ix].code]++); const sp=supDe(st.cod);
+    return '<div class="tcard"'+(st.cod===est0?' aria-pressed="true"':'')+'><div class="tn"><b>'+esc(st.nome)+'</b><span class="muted mono" style="font-size:.8rem">'+st.cod+'</span></div>'+
+      '<div class="mini"><span>'+es.length+' escadas · '+es.filter(e=>e.crit).length+' do grupo crítica</span>'+(m[2]?'<b style="color:var(--crit)">'+m[2]+' crítico</b>':'')+(m[1]?'<b style="color:var(--warn)">'+m[1]+' alerta</b>':'')+(m[3]?'<b style="color:var(--maint)">'+m[3]+' em manutenção</b>':'')+'</div>'+
+      '<div class="mini"><span>Supervisor: <b style="color:var(--fg)">'+(sp?esc(sp[1][1]):'—')+'</b></span></div>'+
+      equipeDe(st.cod).map(t=>{ const oc=ocupado(t); return '<div class="mini" style="align-items:center;justify-content:space-between"><span style="color:var(--fg)">'+esc(TECS[t])+' <span class="muted mono">'+t+'</span></span>'+(oc?'<b style="color:var(--maint)">em atendimento · '+oc.id+'</b>':'<span style="color:var(--ok)">livre</span>')+
+        (isGes()?'<select data-mover="'+t+'" aria-label="Mover '+esc(TECS[t])+' para outra estação" style="min-height:34px;font-size:.82rem">'+EST.map(x=>'<option value="'+x.cod+'"'+(x.cod===st.cod?' selected':'')+'>'+x.cod+'</option>').join('')+'</select>':'')+'</div>'; }).join('')+
+      (equipeDe(st.cod).length<2?'<div class="mini"><b style="color:var(--crit)">Equipe abaixo do mínimo de 2 técnicos</b></div>':'')+'</div>';
   }).join('');
-  const list = E.filter(e=>{
-    if(eqF.tec && respDe(e)!==eqF.tec) return false;
-    if(eqF.est && e.cod!==eqF.est) return false;
-    const c=CUR[e.ix].code;
-    if(eqF.filtro==='prob' && c===0) return false;
-    if(eqF.filtro==='crit' && !e.crit) return false;
-    return true;
-  });
-  let html='';
-  for(const st of EST){
-    const es=list.filter(e=>e.cod===st.cod); if(!es.length) continue;
-    const donos=[...new Set(es.map(respDe))];
-    html += '<section class="eq-st"><div class="eq-st-h"><h3><span>'+st.cod+'</span>'+esc(st.nome)+' <span class="muted" style="font-family:var(--f-body);font-size:.9rem;font-weight:400">'+es.length+' escadas</span></h3>'+
-      '<div class="eq-tools"><label class="field"><span>Toda a estação para</span><select data-estsel="'+st.cod+'">'+tecOpts(donos.length===1?donos[0]:'')+'</select></label><button class="btn sm" data-estok="'+st.cod+'">Aplicar</button></div></div>'+
-      '<div class="eq-grid">'+es.map(e=>{ const c=CUR[e.ix];
-        return '<div class="eq-row s'+c.code+(eqMudou&&eqMudou.has(e.id)?' mudou':'')+'"><div class="eq-top"><span class="code">'+e.id+'</span>'+(e.crit?'<span class="tag crit">Crítica</span>':'<span class="tag">'+e.fab+'</span>')+'</div>'+
-          '<div>'+pill(c.code)+'</div><select data-esc="'+e.id+'" aria-label="Responsável por '+e.id+'">'+tecOpts(respDe(e))+'</select></div>'; }).join('')+'</div></section>';
-  }
-  $('#eqLista').innerHTML = html || '<div class="empty">Nenhuma escada com esses filtros.</div>';
 }
-function atribuir(ids, tec){
-  const mud=ids.filter(id=>S.resp[id]!==tec); if(!mud.length){ toast('Nada mudou: '+(ids.length>1?'essas escadas já estão':'a escada já está')+' com '+TECS[tec]+'.'); return; }
-  const de=[...new Set(mud.map(id=>S.resp[id]))];
-  mud.forEach(id=>{ S.resp[id]=tec; logEv('Responsável → '+tec,{id:'R-'+id, esc:id}); });
-  eqMudou=new Set(mud); save(); paintTop(); renderEquipe();
-  toast(mud.length===1 ? mud[0]+' agora está com '+TECS[tec]+' (antes: '+TECS[de[0]]+').' : mud.length+' escadas passaram para '+TECS[tec]+'.', 4500);
-}
-$('#eqTec').addEventListener('click',ev=>{ const b=ev.target.closest('[data-tec]'); if(!b) return; eqF.tec = eqF.tec===b.dataset.tec ? '' : b.dataset.tec; eqMudou=null; renderEquipe(); });
-$('#eqLista').addEventListener('change',ev=>{ const s=ev.target.closest('[data-esc]'); if(s) atribuir([s.dataset.esc], s.value); });
-$('#eqLista').addEventListener('click',ev=>{ const b=ev.target.closest('[data-estok]'); if(!b) return; const cod=b.dataset.estok, tec=$('[data-estsel="'+cod+'"]').value;
-  const ids=E.filter(e=>e.cod===cod && (!eqF.tec||respDe(e)===eqF.tec)).map(e=>e.id); atribuir(ids, tec); });
-$('#eqEst').onchange=e=>{ eqF.est=e.target.value; renderEquipe(); };
-$('#eqFiltro').onchange=e=>{ eqF.filtro=e.target.value; renderEquipe(); };
-$('#eqLimpar').onclick=()=>{ Object.assign(eqF,{tec:'',est:'',filtro:''}); $('#eqEst').value=''; $('#eqFiltro').value=''; eqMudou=null; renderEquipe(); };
-$('#eqPadrao').onclick=()=>{ const pad=distribuicaoPadrao(), mud=E.filter(e=>S.resp[e.id]!==pad[e.id]).map(e=>e.id);
-  if(!mud.length){ toast('A distribuição já é a padrão.'); return; }
-  mud.forEach(id=>{ S.resp[id]=pad[id]; logEv('Responsável → '+pad[id],{id:'R-'+id, esc:id}); }); eqMudou=new Set(mud); save(); renderEquipe(); toast(mud.length+' escadas voltaram ao responsável padrão.'); };
+$('#eqTec').addEventListener('change',ev=>{ const s2=ev.target.closest('[data-mover]'); if(!s2||!isGes()) return; const t=s2.dataset.mover, de=estDoTec(t), para=s2.value; if(de===para) return;
+  S.equipes[de]=S.equipes[de].filter(x=>x!==t); S.equipes[para]=[...S.equipes[para], t]; logEv('Técnico '+t+' → '+para,{id:'Q-'+t, esc:para}); save(); renderEquipe();
+  toast(TECS[t]+' passou de '+ESTN[de]+' para '+ESTN[para]+'.'+(S.equipes[de].length<2?' Atenção: '+ESTN[de]+' ficou com menos de 2 técnicos.':''), 5000); });
 
 /* ================= tela de login ================= */
 let loginSel=null;
 function renderLogin(){
   garantirResp();
-  $('#lSup').innerHTML='<button class="ucard sup" data-u="sup|'+SUP.id+'" aria-pressed="'+(loginSel==='sup|'+SUP.id)+'"><span class="papel">Supervisor</span><b>'+SUP.nome+'</b><small>'+SUP.cargo+' · todas as '+E.length+' escadas</small></button>';
-  $('#lTec').innerHTML=Object.entries(TECS).map(([k,n])=>'<button class="ucard" data-u="tec|'+k+'" aria-pressed="'+(loginSel==='tec|'+k)+'"><span class="papel">Técnico · '+k+'</span><b>'+n+'</b><small>'+escadasDe(k).length+' escadas · '+esc(trechoDe(k))+'</small></button>').join('');
+  $('#lGes').innerHTML='<button class="ucard sup" data-u="ges|'+GES.id+'" aria-pressed="'+(loginSel==='ges|'+GES.id)+'"><span class="papel">Gestão</span><b>'+GES.nome+'</b><small>'+GES.cargo+' · as 12 estações, '+E.length+' escadas</small></button>';
+  $('#lSup').innerHTML=Object.entries(SUPS).map(([k,[cod,n]])=>'<button class="ucard" data-u="sup|'+k+'" aria-pressed="'+(loginSel==='sup|'+k)+'"><span class="papel">Supervisor · '+cod+'</span><b>'+esc(n)+'</b><small>'+esc(ESTN[cod])+' · '+E.filter(e=>e.cod===cod).length+' escadas</small></button>').join('');
+  $('#lTec').innerHTML=EST.map(st=>equipeDe(st.cod).map(k=>'<button class="ucard" data-u="tec|'+k+'" aria-pressed="'+(loginSel==='tec|'+k)+'"><span class="papel">Técnico · '+st.cod+'</span><b>'+esc(TECS[k])+'</b><small>'+esc(st.nome)+' · '+E.filter(e=>e.cod===st.cod).length+' escadas</small></button>').join('')).join('');
   $('#lEntrar').disabled=!loginSel;
 }
 function abrirLogin(){ loginSel=null; $('#lPin').value=''; $('#lHint').textContent='Protótipo: o PIN de todos os usuários é 1234.'; $('#lHint').style.color=''; renderLogin(); $('#login').hidden=false; }
@@ -2681,13 +2659,14 @@ function entrar(){
   if($('#lPin').value!==PIN_DEMO){ $('#lHint').textContent='PIN incorreto. No protótipo, o PIN é 1234.'; $('#lHint').style.color='var(--crit)'; $('#lPin').focus(); return; }
   const [papel,id]=loginSel.split('|'); S.login={papel,id,em:Date.now()}; if(papel==='tec') S.tec=id; save();
   $('#login').hidden=true; Object.assign(filt,{status:null,busca:'',est:'',grupo:'',fab:''});
-  paintTech(); show('painel'); toast(papel==='sup' ? 'Bem-vindo, '+SUP.nome+'. Você vê todas as escadas.' : 'Bem-vindo, '+TECS[id]+'. Você vê as suas '+escadasDe(id).length+' escadas.');
+  paintTech(); show('painel'); toast(papel==='ges' ? 'Bem-vinda, '+GES.nome+'. Você vê as 12 estações.' : 'Bem-vindo(a), '+(papel==='sup'?SUPS[id][1]:TECS[id])+'. Você vê a estação '+ESTN[escopoEst()]+'.');
 }
-['#lSup','#lTec'].forEach(q=>$(q).addEventListener('click',ev=>{ const b=ev.target.closest('[data-u]'); if(!b) return; loginSel=b.dataset.u; renderLogin(); $('#lPin').focus(); }));
+['#lGes','#lSup','#lTec'].forEach(q=>$(q).addEventListener('click',ev=>{ const b=ev.target.closest('[data-u]'); if(!b) return; loginSel=b.dataset.u; renderLogin(); $('#lPin').focus(); }));
 $('#lEntrar').onclick=entrar;
 $('#lPin').addEventListener('keydown',ev=>{ if(ev.key==='Enter') entrar(); });
 $('#lPin').addEventListener('input',()=>{ if($('#lPin').value.length===4 && loginSel) entrar(); });
-$('#btnSair').onclick=()=>{ S.login=null; save(); document.body.classList.remove('papel-tec'); abrirLogin(); };
+$('#btnSair').onclick=()=>{ S.login=null; save(); document.body.classList.remove('papel-tec','papel-ges'); abrirLogin(); };
+if(S.login && S.login.papel==='sup' && !SUPS[S.login.id]) S.login=null;   /* login salvo da versão anterior */
 garantirResp();
 
 computeCurrent(); paintModo(); paintClock(); paintApres(); show('painel');
