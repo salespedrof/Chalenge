@@ -23,10 +23,10 @@ O Elevate é um tablet com Raspberry Pi para a equipe de manutenção. Ele mostr
 
 | Tela | Conteúdo |
 | --- | --- |
-| Login | Entrada como supervisor ou técnico (protótipo: PIN 1234). O técnico vê só as escadas sob a responsabilidade dele |
-| Rota | Rota do turno pela Linha 4: grafo das estações + base no Pátio Vila Sônia, Dijkstra e planejamento do turno (tempos estimados) |
+| Login | Gestão da engenharia (linha toda), supervisor de estação ou técnico (só a estação dele). Protótipo: PIN 1234 |
+| Emergência | Quando a equipe da estação está ocupada, qual equipe vizinha chega primeiro (grafo da Linha 4 + Dijkstra, tempos estimados) |
 | Foco (supervisor) | Ordem de foco: CRÍTICO, ALERTA, BOM perto do ALERTA (grupo crítica antes) e BOM, com motivos, estações e mapa de calor |
-| Equipe (supervisor) | Distribuição das escadas entre os técnicos; toda escada sempre tem um responsável |
+| Equipe | Equipe dedicada por estação (supervisor + 2 técnicos), livre ou em atendimento; a gestão pode mover técnicos |
 | Painel | Status das 197 escadas por estação, mini gráfico de cada uma e contador de tendência de piora |
 | Detalhe da escada | Gêmeo digital 3D ligado aos sensores (ou modo leve 2D), diagnóstico com previsão, ordem de serviço, procedimento, gráficos de 90 dias, P1 e histórico |
 | Fila | Ordem de atendimento com prazo de despacho e escadas que vão entrar em ALERTA nas próximas 48 h |
