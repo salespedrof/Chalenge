@@ -29,9 +29,9 @@ A barra lateral tem 7 grupos: Painel, Fila (Fila · Foco), Atendimentos, Equipe 
 | Emergência | Quando a equipe da estação está ocupada, qual equipe vizinha chega primeiro (grafo da Linha 4 + Dijkstra, tempos estimados) |
 | Foco (supervisor) | Ordem de foco: CRÍTICO, ALERTA, BOM perto do ALERTA (grupo crítica antes) e BOM, com motivos, estações e mapa de calor |
 | Boletim | Escadas paradas agora, liberadas em 24 h e reincidentes; texto pronto para a gestão e CSV |
-| Preventivas | Preventiva por condição: P1 obrigatória, antecipar, manter ou dispensar, e plano da noite por estação (regras a validar) |
+| Preventivas | Preventiva por condição: P1 obrigatória, antecipar, manter ou dispensar, e plano da noite por estação com duração por grupo (Crítica A 130 min, Crítica B 170, Não crítica A 110, Não crítica B 150; regras a validar) |
 | Equipe | Equipe dedicada por estação (supervisor + 2 técnicos), livre ou em atendimento; a gestão pode mover técnicos |
-| Painel | Status das 197 escadas por estação, mini gráfico de cada uma e contador de tendência de piora |
+| Painel | Status das 197 escadas por estação, mini gráfico de cada uma, contador de tendência de piora e filtro pelos 4 grupos de manutenção (Crítica A/B, Não crítica A/B; B = desnível de 10 m ou mais, simulado até recebermos o cadastro real) |
 | Detalhe da escada | Gêmeo digital 3D ligado aos sensores (ou modo leve 2D), diagnóstico com previsão, ordem de serviço, procedimento, gráficos de 90 dias com previsão tracejada até o ALERTA/CRÍTICO, P1 e histórico |
 | Fila | Ordem de atendimento com prazo de despacho e escadas que vão entrar em ALERTA nas próximas 48 h |
 | Atendimentos | Ordens de serviço e entrada e saída do técnico, com cronômetro |
